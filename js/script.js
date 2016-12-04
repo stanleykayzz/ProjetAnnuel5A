@@ -64,37 +64,39 @@ function update_image(selection){
 			current_background = new Array();
 			current_background = background_accueil;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-
+			document.getElementById("script_current_container").innerHTML = "";
 			break;
 
 		case "room":
 			current_background = new Array();
 			current_background = background_room;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
+			document.getElementById("script_current_container").innerHTML = "";
+			var script_room = document.createElement("script");
+			script_room.setAttribute("src", "js/room.js")
+			document.getElementById("script_current_container").append(script_room);
 
 			break;
 
-		case "contact":
-			
+		case "contact":			
 			current_background = new Array();
 			current_background = background_contact;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-
-		
+			document.getElementById("script_current_container").innerHTML = "";
 			break;
 
 		case "restaurant":			
 			current_background = new Array();
 			current_background = background_restaurant;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-
+			document.getElementById("script_current_container").innerHTML = "";
 			break;
 
 		case "about":			
 			current_background = new Array();
 			current_background = background_about;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-
+			document.getElementById("script_current_container").innerHTML = "";
 			break;
 	}
 
@@ -115,7 +117,7 @@ function update_image(selection){
 				index =0;
 				draw_image(index);
 			}
-		}, 8000);
+		}, 5000);
 	}
 
 	draw_image(0);
