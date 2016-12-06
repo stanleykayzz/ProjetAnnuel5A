@@ -1,9 +1,9 @@
 /*
-**restaurant.js
+**home.js
 */
 
 //on définit un tableau des images que l'on souhaite faire défiler sur la page
-background = ["img/restau1.png","img/restau2.png","img/restau3.png","img/restau4.png","img/restau5.png","img/restau6.png","img/restau7.png"]
+background = ["img/home2.png","img/home3.png","img/home4.png","img/home5.png","img/home6.png","img/home-bg.png"]
 
 //une variable i pour compteur
 var i = 0;

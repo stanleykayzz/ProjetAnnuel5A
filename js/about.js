@@ -1,9 +1,9 @@
 /*
-**room.js
+**about.js
 */
 
 //on définit un tableau des images que l'on souhaite faire défiler sur la page
-background = ["img/room1.png","img/room2.png","img/room3.png","img/room4.png","img/room5.png","img/room6.png","img/room7.png","img/room8.png","img/room9.png","img/room10.png","img/roomHall1.png"]
+background = ["img/about-bg.png","img/about2.png","img/about3.png","img/about4.png","img/about5.png","img/about6.png"]
 
 //une variable i pour compteur
 var i = 0;

@@ -1,8 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,17 +70,17 @@
         </div>
         <!-- /.container -->
     </nav>
-
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/roomHall1.jpg')">
+    <header class="intro-header" style="background-image: url('img/roomHall1.png')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>Nos chambres</h1>
-                        <!--<h2 class="subheading">Problems look mighty small from 150 miles up</h2>
-                        <span class="meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</span>-->
+                        <h1>Découvrez nos chambres</h1>
+                         <hr class="small">
+                        <span class="subheading">Vous avez à votre disposition les chambres simple, chambre double, suité junior et suite sénior.</span>
+                        <br/>
                     </div>
                 </div>
             </div>
@@ -111,7 +109,7 @@
                     Une Salle des banquets et Une Réunion , abriteront vos évenements Professionnels, Familiaux et divers...
                 </p>-->
                 <p>
-                    Le charme des chambres et suites vous aident à tendre l'oreille, écouter aussi bien le murmur du Vent dans les arbres et le chant des oiseaux.
+                    Le Charme des Chambres et Suites vous aident à tendre l'Oreille, écouter aussi bien le Murmure du Vent dans les Arbres et le Chant des Oiseaux.
                 </p>
                 <hr class="showBookingButton" />
                 <button class="btn btn-default showBookingButton" onclick="showBookingForm()">Faire une réservation</button>
@@ -147,14 +145,17 @@
                     <div class="row control-group">
                         <div class="form-group col-md-6 floating-label-form-group controls" placeholder="Type de chambre" id="room" required data-validation-required-message="Veuillez choisir un type de chambre.">
                            <br />
-                             <select class="selectpicker form-control" name="bookRoom">
-                                <option>Chambre</option>
-                                <option>Suite</option>
+                             <select class="selectpicker form-control" placeholder="Choisissez un type de chambre" name="bookRoom">
+                                <option>Chambre Simple</option>
+                                <option>Chambre Double</option>
+                                <option>Suite Junior</option>
+                                <option>Suite Sénior</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6 floating-label-form-group controls">
                             <br />
-                            <select class="selectpicker form-control" placeholder="Nombre de chambre de ce type" id="numberRoom" name="amountRoom" required data-validation-required-message="Veuillez saisir le nombre de réservation pour ce type de chambre.">
+                            <input class="form-control" type="number" id="example-number-input" placeholder="Nombre de chambre" id="numberRoom" name="amountRoom" required data-validation-required-message="Veuillez saisir le nombre de réservation pour ce type de chambre.">
+                            <!--<select class="selectpicker form-control" placeholder="Nombre de chambre de ce type" id="numberRoom" name="amountRoom" required data-validation-required-message="Veuillez saisir le nombre de réservation pour ce type de chambre.">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -164,8 +165,7 @@
                                 <option>7</option>
                                 <option>8</option>
                                 <option>9</option>
-                            </select>
-
+                            </select>-->
                         </div>
                     </div>
                     <div class="row control-group">
