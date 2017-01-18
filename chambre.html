@@ -72,15 +72,18 @@
     </nav>
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/roomHall1.png')">
+    <header class="intro-header" style="background-image: url('img/room1.png')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>Découvrez nos chambres</h1>
+                        <!--<h1>Découvrez nos chambres</h1>
                          <hr class="small">
-                        <span class="subheading">Vous avez à votre disposition les chambres simple, chambre double, suité junior et suite sénior.</span>
-                        <br/>
+                        <span class="subheading">Vous avez à votre disposition les chambres simple, chambre double, suité junior et suite sénior.</span>-->
+                        <br /><br />
+                        <br /><br />
+                        <br /><br />
+                        <br /><br />
                     </div>
                 </div>
             </div>
@@ -90,6 +93,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                    <div class="post-heading">
+                        <h1 style="text-align: center;">Découvrez nos Hébergements</h1>
+                    </div>
+
                 <!--<p>
                     Madame, Monsieur ou Chers Clients,
                     Faites le choix de venir savourer une Expérience Authentique,
@@ -109,7 +117,14 @@
                     Une Salle des banquets et Une Réunion , abriteront vos évenements Professionnels, Familiaux et divers...
                 </p>-->
                 <p>
-                    Le Charme des Chambres et Suites vous aident à tendre l'Oreille, écouter aussi bien le Murmure du Vent dans les Arbres et le Chant des Oiseaux.
+
+                    Le Charme de nos :
+                    <ul>
+                        <li>Chambres Supérieures,</li>
+                        <li>Chambres Twin,</li>
+                        <li>Suites Junior,</li>
+                        <li>et Suites Exécutives</li>
+                    </ul> Vous aident à tendre l'Oreille pour écouter aussi bien, <br>le Murmure du Vent dans les Arbres, <br> que le Chant des Oiseaux.
                 </p>
                 <hr class="showBookingButton" />
                 <button class="btn btn-default showBookingButton" onclick="showBookingForm()">Faire une réservation</button>
@@ -146,15 +161,15 @@
                         <div class="form-group col-md-6 floating-label-form-group controls" placeholder="Type de chambre" id="room" required data-validation-required-message="Veuillez choisir un type de chambre.">
                            <br />
                              <select class="selectpicker form-control" placeholder="Choisissez un type de chambre" name="bookRoom">
-                                <option>Chambre Simple</option>
-                                <option>Chambre Double</option>
+                                <option>Chambre Supérieure</option>
+                                <option>Chambre Twin</option>
                                 <option>Suite Junior</option>
-                                <option>Suite Sénior</option>
+                                <option>Suite Exécutive</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6 floating-label-form-group controls">
                             <br />
-                            <input class="form-control" type="number" id="example-number-input" placeholder="Nombre de chambre" id="numberRoom" name="amountRoom" required data-validation-required-message="Veuillez saisir le nombre de réservation pour ce type de chambre.">
+                            <input class="form-control" type="number" id="example-number-input" placeholder="Nombre de chambre" id="numberRoom" name="numberRoom" required data-validation-required-message="Veuillez saisir le nombre de réservation pour ce type de chambre.">
                             <!--<select class="selectpicker form-control" placeholder="Nombre de chambre de ce type" id="numberRoom" name="amountRoom" required data-validation-required-message="Veuillez saisir le nombre de réservation pour ce type de chambre.">
                                 <option>1</option>
                                 <option>2</option>
@@ -215,16 +230,48 @@
     <script>
         $('#bookingForm').hide();
 
-        function hideBookingForm() {
+       /* function hideBookingForm() {
             $('#bookingForm').hide();
             $('.showBookingButton').show();
-        }
+        }*/
 
         function showBookingForm() {
             $('.showBookingButton').hide();
             $('#bookingForm').show();
             
         }
+
+        $('#bookingForm').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        url:'mail/i_book.php',
+        type:'post',
+        data:$('#bookingForm').serialize(),
+        success: function() {
+                    // Success message
+                    $('#success').html("<div class='alert alert-success'>");
+                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $('#success > .alert-success')
+                        .append("<strong>Votre demande de réservation a bien été effectuée. </strong>");
+                    $('#success > .alert-success')
+                        .append('</div>');
+
+                    //clear all fields
+                    $('#bookingForm').trigger("reset");
+                },
+                error: function() {
+                    // Fail message
+                    $('#success').html("<div class='alert alert-danger'>");
+                    $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
+                    $('#success > .alert-danger').append('</div>');
+                    //clear all fields
+                    $('#bookingForm').trigger("reset");
+                }
+    });
+});
     </script>
 
 </body>

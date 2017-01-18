@@ -3,7 +3,7 @@
 */
 
 //on définit un tableau des images que l'on souhaite faire défiler sur la page
-background = ["img/home2.png","img/home3.png","img/home4.png","img/home5.png","img/home6.png","img/home-bg.png"]
+background = ["img/home5.png","img/home6.png","img/home-bg.png"]
 
 //une variable i pour compteur
 var i = 0;
@@ -19,4 +19,4 @@ setInterval(
       if (i == background.length) {
         i =  0;
       }
-  }, 5000);
+  }, 10000);
