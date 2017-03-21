@@ -26,17 +26,18 @@ public class ClientService {
         return (clients.size() == 0) ? null : clients.get(0);
     }
 
-    /*public Client getById(Long id){
-        return clientRepository.findOne(id);
-    }
-
-    public Client login(String pseudo, String password){
-        List<Client> clients = clientRepository.login(pseudo, password);
+    public Client login(String email, String password){
+        List<Client> clients = clientRepository.login(email, password);
         return (clients.size() == 0) ? null : clients.get(0);
     }
 
     public void deleteClient(Long id){
         Client clients = getById(id);
         clientRepository.delete(id);
-    }*/
+    }
+
+    public Client getById(Long id){
+        return clientRepository.findOne(id);
+    }
+
 }
