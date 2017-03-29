@@ -17,6 +17,7 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
+
     public List<Client> getAll() {
         return clientRepository.findAll();
     }
@@ -40,4 +41,11 @@ public class ClientService {
         return clientRepository.findOne(id);
     }
 
+    public Client addClient(Client client) {
+        return clientRepository.save(client);
+    }
+
+    public Client updateClient(Client client) {
+        return clientRepository.save(client);
+    }
 }

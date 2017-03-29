@@ -10,8 +10,6 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Set;
 
-@Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,15 +28,20 @@ public class Client {
     private String name;
 
     @Column(name = "Firstname")
+
     @NotEmpty(message = "A client must have a first name")
     private String firstName;
 
     @Column(name = "Birthday")
-    private Date birsthday;
+    private Date birthday;
 
     @Column(name = "Email", unique = true)
     @NotEmpty(message = "A person must have an Email")
     private String email;
+
+    @Column(name = "Phone")
+    @NotEmpty(message = "A person must have an Phone")
+    private String phone;
 
     @Column(name = "Country")
     @NotEmpty(message = "A person must have a Country")
@@ -59,4 +62,84 @@ public class Client {
     @Column(name = "Password")
     @NotNull
     private String password;
+
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
