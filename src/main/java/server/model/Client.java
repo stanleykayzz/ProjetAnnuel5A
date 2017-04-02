@@ -28,7 +28,6 @@ public class Client {
     private String name;
 
     @Column(name = "Firstname")
-
     @NotEmpty(message = "A client must have a first name")
     private String firstName;
 
@@ -62,6 +61,40 @@ public class Client {
     @Column(name = "Password")
     @NotNull
     private String password;
+
+    @Column(name = "Token")
+    private String token;
+
+    @Column(name = "Token_date")
+    private Date tokenDate;
+
+
+    //--------- GETTERS / SETTERS ---------\\
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Date getTokenDate() {
+        return tokenDate;
+    }
+
+    public void setTokenDate(Date tokenDate) {
+        this.tokenDate = tokenDate;
+    }
 
     public Long getClientId() {
         return clientId;

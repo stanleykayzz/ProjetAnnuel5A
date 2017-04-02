@@ -8,7 +8,10 @@ import server.model.Client;
 import server.repository.ClientRepository;
 import server.service.ClientService;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -30,10 +33,21 @@ public class ClientController {
     public Client login(@RequestParam("email") String email,
                         @RequestParam("password") String password){
         Client client = clientService.login(email, password);
-        if(null == client)
+        if(client == null){
             throw new IllegalArgumentException("Incorrect email or password");
-        return client;
+        } else {
+            client.setToken(UUID.randomUUID().toString());
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            calendar.add(Calendar.DATE, 1);
+            client.setTokenDate(calendar.getTime());
+
+            clientService.updateClient(client);
+
+            return client;
+        }
     }
+    //Request example : http://localhost:8080/client/login?email=b&password=a
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
@@ -48,16 +62,18 @@ public class ClientController {
         return clientService.addClient(client);
         ////Request example : http://localhost:8080/client
         /*{
-                "name": "mollard",
-                "firstName": "maxime",
-                "birthday": "1993-09-15",
-                "email": "momo@hotmail.fr",
-                "phone": "0102030405",
-                "country": "france",
-                "city": "Paris",
-                "address": "70 rue toto",
-                "postalCode": "75015",
-                "password": "test"
+            "name": "mollard",
+            "firstName": "john",
+            "birthday": "1993-09-16",
+            "email": "momo7450@hotmail.fr",
+            "phone": "0102030405",
+            "country": "france",
+            "city": "Paris",
+            "address": "70 rue toto",
+            "postalCode": "75015",
+            "password": "test",
+            "token": "ofehzuhfez",
+            "tokenDate": "2001-09-14"
         }*/
     }
 

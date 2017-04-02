@@ -29,7 +29,12 @@ public class ClientService {
 
     public Client login(String email, String password){
         List<Client> clients = clientRepository.login(email, password);
-        return (clients.size() == 0) ? null : clients.get(0);
+
+        if(clients.size() >= 0){
+            return clients.get(0);
+        } else {
+            return null;
+        }
     }
 
     public void deleteClient(Long id){
