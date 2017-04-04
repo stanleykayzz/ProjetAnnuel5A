@@ -1,0 +1,81 @@
+spring:
+  profiles:
+    active: dev
+
+---
+#---------------------------------------------------
+#            GLOBAL CONFIGURATION
+#---------------------------------------------------
+
+info:
+  name: Projet Annuel
+app:
+  description: ${info.name} est une application pour l'ESGI, groupe[Alvin, Maxime, Vincent]
+spring:
+  application:
+    name: Hotel
+application:
+  version: 1.0
+server:
+  port: 8080
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        hibernate: DEBUG
+
+
+---
+#---------------------------------------------------
+#            DEVELOPER  MODE
+#---------------------------------------------------
+spring:
+  profiles: dev
+  jpa:
+    show-sql: true
+  jmx:
+    enabled: true
+
+
+---
+#---------------------------------------------------
+#            TEST  MODE
+#---------------------------------------------------
+spring:
+  profiles: test
+  jpa:
+    show-sql: true
+  jmx:
+    enabled: true
+server:
+  port: 8080
+
+---
+#---------------------------------------------------
+#            PRODUCTION  MODE
+#---------------------------------------------------
+
+
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/hotel?useSSL=false
+    maxActive: 10
+    maxIdle: 5
+    min-idle: 2
+    initialSize: 5
+    removeAbandoned: true
+    platform: postgres
+    max-wait: 10000
+    test-on-borrow: true
+    username: admin
+    password: admin
+  jpa:
+    show-sql: false
+    database: MYSQL
+  jmx:
+    enabled: true
+server:
+  port: 0
