@@ -1,20 +1,10 @@
 package server.web;
 
-import com.sun.deploy.util.SessionState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import server.model.Client;
-import server.repository.ClientRepository;
 import server.service.ClientService;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
-
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping("/client")
@@ -23,38 +13,39 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    /*@RequestMapping(method = RequestMethod.GET)
     public List<Client> getAll() {
         return clientService.getAll();
-    }
+    }*/
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Client login(@RequestParam("email") String email,
-                        @RequestParam("password") String password){
+    public Client login(@RequestParam("email") String email, @RequestParam("password") String password){
         Client client = clientService.login(email, password);
-        if(client == null){
-            throw new IllegalArgumentException("Incorrect email or password");
-        } else {
-            client.setToken(UUID.randomUUID().toString());
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(new Date());
-            calendar.add(Calendar.DATE, 1);
-            client.setTokenDate(calendar.getTime());
-
+        if(client != null){
+            clientService.generateToken(client);
             clientService.updateClient(client);
 
             return client;
+            //Request example : http://localhost:8080/client/login?email=b&password=a
+        } else {
+            throw new IllegalArgumentException("Incorrect email or password");
         }
     }
-    //Request example : http://localhost:8080/client/login?email=b&password=a
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+
+    @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
-    public void deletePerson(@PathVariable("id") Long id){
-        clientService.deleteClient(id);
+    public void deleteClient(@RequestParam() String token){
+        boolean tokenAvailable = clientService.tokenAvailable(token);
+
+        if(tokenAvailable == true){
+            Client client = clientService.findByToken(token);
+            clientService.deleteClient(client.getClientId());
+            //Request example : http://localhost:8080/client?token=2ca5f8a5-40b6-4e16-9899-c0201c68d347
+        }
     }
-    //Request example : http://localhost:8080/client/4
+
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -71,26 +62,49 @@ public class ClientController {
             "city": "Paris",
             "address": "70 rue toto",
             "postalCode": "75015",
-            "password": "test",
-            "token": "ofehzuhfez",
-            "tokenDate": "2001-09-14"
+            "password": "test"
         }*/
     }
 
 
     @RequestMapping(path = "/update",method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
-    public void updateClient(@RequestBody Client newClient) throws Exception {
-        Client client = clientService.findByEmail(newClient.getEmail());
+    public boolean updateClient(@RequestBody Client newClient, @RequestParam String token) throws Exception {
 
-        if(client != null) {
+
+        boolean tokenAvailable = clientService.tokenAvailable(token);
+
+        if( tokenAvailable == true) {
+            Client client = clientService.findByToken(token);
+
             client.setPhone(newClient.getPhone());
-            client.setEmail(newClient.getEmail());
             client.setCountry(newClient.getCountry());
             client.setCity(newClient.getCity());
             client.setAddress(newClient.getAddress());
             client.setPostalCode(newClient.getPostalCode());
             client.setPassword(newClient.getPassword());
+
+
+            clientService.updateTokenDate(client);
+            clientService.updateClient(client);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    @RequestMapping(path = "/logout", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void logout(@RequestParam String token){
+
+        boolean tokenExists = clientService.tokenExists(token);
+
+        if(tokenExists == true){
+            Client client = clientService.findByToken(token);
+            client.setToken(null);
+            client.setTokenDate(null);
 
             clientService.updateClient(client);
         }

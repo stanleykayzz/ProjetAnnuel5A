@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import server.model.Client;
 import server.repository.ClientRepository;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ClientService {
@@ -22,8 +24,8 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public Client findByEmail(String Email){
-        List<Client> clients = clientRepository.findByEmail(Email);
+    public Client findByToken(String Token){
+        List<Client> clients = clientRepository.findByToken(Token);
         return (clients.size() == 0) ? null : clients.get(0);
     }
 
@@ -31,6 +33,7 @@ public class ClientService {
         List<Client> clients = clientRepository.login(email, password);
 
         if(clients.size() >= 0){
+            //tokenAvailable
             return clients.get(0);
         } else {
             return null;
@@ -52,5 +55,41 @@ public class ClientService {
 
     public Client updateClient(Client client) {
         return clientRepository.save(client);
+    }
+
+    public boolean tokenAvailable(String token){
+
+        Client client    = findByToken(token);
+        Date currentDate = new Date();
+
+        long diff        = Math.abs(currentDate.getTime() - client.getTokenDate().getTime());
+        long diffMinutes = diff / (60 * 1000) % 60;
+        long diffHours   = diff / (60 * 60 * 1000);
+
+        if(diffHours <= 0 && diffMinutes < 15)
+            return true;
+        else
+            return false;
+
+    }
+
+    public boolean tokenExists(String token){
+        Client client = findByToken(token);
+
+        if(client != null)
+            return true;
+        else
+            return false;
+
+    }
+
+    public void generateToken(Client client){
+        client.setToken(UUID.randomUUID().toString());
+        Date dateToken = new Date();
+        client.setTokenDate(dateToken);
+    }
+
+    public void updateTokenDate(Client client){
+        client.setTokenDate(new Date());
     }
 }
