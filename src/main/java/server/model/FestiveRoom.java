@@ -1,0 +1,72 @@
+package server.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+/**
+ * Created by ileossa on 05/04/2017.
+ */
+@Entity
+public class FestiveRoom {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int idPartyRoom;
+    private String event;
+    private int numberChairs;
+    private int numberTables;
+
+
+    public FestiveRoom() {
+    }
+
+    public FestiveRoom(String event, int numberChairs, int numberTables) {
+        this.event = event;
+        this.numberChairs = numberChairs;
+        this.numberTables = numberTables;
+    }
+
+    public int getIdPartyRoom() {
+        return idPartyRoom;
+    }
+
+    public void setIdPartyRoom(int idPartyRoom) {
+        this.idPartyRoom = idPartyRoom;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+
+    public int getNumberChairs() {
+        return numberChairs;
+    }
+
+    public void setNumberChairs(int numberChairs) {
+        this.numberChairs = numberChairs;
+    }
+
+    public int getNumberTables() {
+        return numberTables;
+    }
+
+    public void setNumberTables(int numberTables) {
+        this.numberTables = numberTables;
+    }
+
+    @Override
+    public String toString() {
+        return "FestiveRoom{" +
+                "idPartyRoom=" + idPartyRoom +
+                ", event='" + event + '\'' +
+                ", numberChairs=" + numberChairs +
+                ", numberTables=" + numberTables +
+                '}';
+    }
+}

@@ -15,6 +15,11 @@ public interface ClientRepository  extends JpaRepository<Client, Long> {
     @Query("select c from Client c where email = :Email and password = :Password")
     List<Client> login(@Param("Email") String email, @Param("Password") String password);
 
+<<<<<<< HEAD
     List<Client> findByToken(@Param("Token") String token);
 
 }
+=======
+    List<Client> findByEmail(@Param("Email") String mail);
+}
+>>>>>>> ajout des models et repository
