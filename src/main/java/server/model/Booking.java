@@ -24,7 +24,7 @@ public class Booking {
     private int idClient;
 
     //Use by interface repository
-    public Booking() {
+    public Booking(long l, String format) {
     }
 
 
@@ -126,4 +126,43 @@ public class Booking {
                 ", idClient=" + idClient +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Booking booking = (Booking) o;
+
+        if (idBook != booking.idBook) return false;
+        if (peopleNumber != booking.peopleNumber) return false;
+        if (Float.compare(booking.price, price) != 0) return false;
+        if (idPartyRoom != booking.idPartyRoom) return false;
+        if (idClient != booking.idClient) return false;
+        if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) return false;
+        if (dateStart != null ? !dateStart.equals(booking.dateStart) : booking.dateStart != null) return false;
+        if (dateEnd != null ? !dateEnd.equals(booking.dateEnd) : booking.dateEnd != null) return false;
+        return payementMode != null ? payementMode.equals(booking.payementMode) : booking.payementMode == null;
+    }
+
+
+    public Booking check(Object o){
+        if (this == o) return (Booking) o;
+        if (o == null || getClass() != o.getClass()) return (Booking) o;
+
+        Booking booking = (Booking) o;
+
+        if (idBook != booking.idBook) setIdBook(idBook);
+        if (peopleNumber != booking.peopleNumber) setPeopleNumber(peopleNumber);
+        if (Float.compare(booking.price, price) != 0) setPrice(price);
+        if (idPartyRoom != booking.idPartyRoom) setIdPartyRoom(idPartyRoom);
+        if (idClient != booking.idClient) setIdClient(idClient);
+        if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) setDateBook(dateBook);
+        if (dateStart != null ? !dateStart.equals(booking.dateStart) : booking.dateStart != null) setDateStart(dateStart);
+        if (dateEnd != null ? !dateEnd.equals(booking.dateEnd) : booking.dateEnd != null) setDateEnd(dateEnd);
+        if( payementMode != null ? payementMode.equals(booking.payementMode) : booking.payementMode != null) setPayementMode(payementMode);
+        return this;
+    }
+
+
 }
