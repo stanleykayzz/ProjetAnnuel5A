@@ -27,6 +27,8 @@ public class Booking {
     public Booking(long l, String format) {
     }
 
+    public Booking() {
+    }
 
     public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, int idClient) {
         this.dateBook = dateBook;
@@ -152,15 +154,15 @@ public class Booking {
 
         Booking booking = (Booking) o;
 
-        if (idBook != booking.idBook) setIdBook(idBook);
-        if (peopleNumber != booking.peopleNumber) setPeopleNumber(peopleNumber);
-        if (Float.compare(booking.price, price) != 0) setPrice(price);
-        if (idPartyRoom != booking.idPartyRoom) setIdPartyRoom(idPartyRoom);
-        if (idClient != booking.idClient) setIdClient(idClient);
-        if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) setDateBook(dateBook);
-        if (dateStart != null ? !dateStart.equals(booking.dateStart) : booking.dateStart != null) setDateStart(dateStart);
-        if (dateEnd != null ? !dateEnd.equals(booking.dateEnd) : booking.dateEnd != null) setDateEnd(dateEnd);
-        if( payementMode != null ? payementMode.equals(booking.payementMode) : booking.payementMode != null) setPayementMode(payementMode);
+        if (idBook != booking.idBook) setIdBook(booking.idBook);
+        if (peopleNumber != booking.peopleNumber) setPeopleNumber(booking.peopleNumber);
+        if (Float.compare(booking.price, price) != 0) setPrice(booking.price);
+        if (idPartyRoom != booking.idPartyRoom) setIdPartyRoom(booking.idPartyRoom);
+        if (idClient != booking.idClient) setIdClient(booking.idClient);
+        if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) setDateBook(booking.dateBook);
+        if (dateStart != null ? !dateStart.equals(booking.dateStart) : booking.dateStart != null) setDateStart(booking.dateStart);
+        if (dateEnd != null ? !dateEnd.equals(booking.dateEnd) : booking.dateEnd != null) setDateEnd(booking.dateEnd);
+        if( payementMode != null ? payementMode.equals(booking.payementMode) : booking.payementMode != null) setPayementMode(booking.payementMode);
         return this;
     }
 

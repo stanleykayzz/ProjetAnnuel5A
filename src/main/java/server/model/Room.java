@@ -14,19 +14,18 @@ public class Room {
     private String name;
     private String building;
     private int number;
+    private int idClient;
 
-    @ManyToOne
-    @JoinColumn(name="client")
-    private Client client;
 
 
     public Room() {
     }
 
-    public Room(String name, String building, int number) {
+    public Room(String name, String building, int number, int idClient, Client client) {
         this.name = name;
         this.building = building;
         this.number = number;
+        this.idClient = idClient;
     }
 
     public int getIdRoom() {
@@ -61,6 +60,15 @@ public class Room {
         this.number = number;
     }
 
+    public int getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
+    }
+
+
     @Override
     public String toString() {
         return "Room{" +
@@ -68,6 +76,7 @@ public class Room {
                 ", name='" + name + '\'' +
                 ", building='" + building + '\'' +
                 ", number=" + number +
+                ", idClient=" + idClient +
                 '}';
     }
 }

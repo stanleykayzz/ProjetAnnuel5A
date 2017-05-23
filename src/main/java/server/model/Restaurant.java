@@ -9,20 +9,22 @@ import javax.persistence.Id;
  * Created by ileossa on 05/04/2017.
  */
 @Entity
-public class TableRestaurant {
+public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idTable;
     private String name;
     private int placeNumber;
+    private int idClient;
 
-    public TableRestaurant() {
+    public Restaurant() {
     }
 
-    public TableRestaurant(String name, int placeNumber) {
+    public Restaurant(String name, int placeNumber, int idClient) {
         this.name = name;
         this.placeNumber = placeNumber;
+        this.idClient = idClient;
     }
 
     public int getIdTable() {
@@ -49,12 +51,37 @@ public class TableRestaurant {
         this.placeNumber = placeNumber;
     }
 
+    public int getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
+    }
+
     @Override
     public String toString() {
-        return "TableRestaurant{" +
+        return "Restaurant{" +
                 "idTable=" + idTable +
                 ", name='" + name + '\'' +
                 ", placeNumber=" + placeNumber +
+                ", idClient=" + idClient +
                 '}';
     }
+
+
+    public Restaurant check(Object o) {
+        if (this == o) return (Restaurant) o;
+        if (o == null || getClass() != o.getClass()) return (Restaurant) o;
+
+        Restaurant that = (Restaurant) o;
+
+        if (idTable != that.idTable) setIdTable(that.idTable);
+        if (placeNumber != that.placeNumber) setPlaceNumber(that.placeNumber);
+        if (idClient != that.idClient) setIdClient(that.idClient);
+        if (name.equals(that.name)) setName(that.name);
+        return this;
+    }
+
+
 }

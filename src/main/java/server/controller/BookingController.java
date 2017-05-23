@@ -60,7 +60,7 @@ public class BookingController {
 
     // TODO : enregistrer un nouveau booking
     @RequestMapping(method = POST)
-    public Booking newwBooking(@RequestParam(value="idClient")int idClient ,
+    public Booking newBooking(@RequestParam(value="idClient")int idClient ,
                                @RequestParam(value="idPartyRoom")int idPartyRoom ,
                                @RequestParam(value = "dateStart") String dateStartEntry ,
                                @RequestParam(value = "dateEnd") String dateEndEntry ,
@@ -87,7 +87,7 @@ public class BookingController {
 
     // TODO : mettre à jour un booking
     @RequestMapping(method = PUT)
-    public void updateBooking (@RequestParam(value = "idBooking") int idBooking,
+    public Booking updateBooking (@RequestParam(value = "idBooking") int idBooking,
                                @RequestParam(value="idClient")int idClient ,
                                @RequestParam(value="idPartyRoom")int idPartyRoom ,
                                @RequestParam(value = "dateStart") String dateStartEntry ,
@@ -106,7 +106,10 @@ public class BookingController {
             booking.check(nbPerson);
             booking.check(price);
             booking.check(payementMode);
+
+            return booking;
         }
+        return new Booking();
     }
 
 
