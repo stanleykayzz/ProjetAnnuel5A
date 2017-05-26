@@ -17,15 +17,18 @@ public class FestiveRoom {
     private String event;
     private int numberChairs;
     private int numberTables;
+    private int idClient;
 
 
     public FestiveRoom() {
     }
 
-    public FestiveRoom(String event, int numberChairs, int numberTables) {
+
+    public FestiveRoom(String event, int numberChairs, int numberTables, int idClient) {
         this.event = event;
         this.numberChairs = numberChairs;
         this.numberTables = numberTables;
+        this.idClient = idClient;
     }
 
     public int getIdPartyRoom() {
@@ -60,6 +63,14 @@ public class FestiveRoom {
         this.numberTables = numberTables;
     }
 
+    public int getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
+    }
+
     @Override
     public String toString() {
         return "FestiveRoom{" +
@@ -67,6 +78,7 @@ public class FestiveRoom {
                 ", event='" + event + '\'' +
                 ", numberChairs=" + numberChairs +
                 ", numberTables=" + numberTables +
+                ", idClient=" + idClient +
                 '}';
     }
 }

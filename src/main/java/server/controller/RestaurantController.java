@@ -36,13 +36,13 @@ public class RestaurantController {
 
 
 
-    @RequestMapping(method = GET, value="/client/{id}")
+    @RequestMapping(method = GET, value="/client/{idClient}")
     public Restaurant getReservationByClientId(@PathVariable int idClient){
         return restaurantRepository.findRestaurantByIdClient(idClient);
     }
 
 
-    @RequestMapping(method = GET, value="/restaurant/{id}")
+    @RequestMapping(method = GET, value="/restaurant/{idTable}")
     public Restaurant getRestaurantByRestaurantId(@PathVariable int idTable){
         return restaurantRepository.findRestaurantByIdTable(idTable);
     }
