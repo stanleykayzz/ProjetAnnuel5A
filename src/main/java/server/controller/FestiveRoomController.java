@@ -28,9 +28,6 @@ public class FestiveRoomController {
     @Autowired
     private static FestiveRoomRepository festiveRoomRepository;
 
-    @Autowired
-    private static ClientRepository clientRepository;
-
 
     @RequestMapping(method = GET, value = "/all")
     public List<FestiveRoom> getReservationFestiveRoom(){
@@ -66,12 +63,13 @@ public class FestiveRoomController {
 
 
 
-    @RequestMapping(method = POST )
-    public FestiveRoom updateReservationFestiveRoom(@RequestParam(value="event") String event,
+    @RequestMapping(method = POST, value="{idPartyRoom}" )
+    public FestiveRoom updateReservationFestiveRoom(@RequestParam(value="idPartyRoom") int idPartyRoom,
+                                                 @RequestParam(value="event") String event,
                                                  @RequestParam(value="nbChairs") int nbChairs,
                                                  @RequestParam(value="nbTable") int nbTable,
                                                  @RequestParam(value="idClient") int idCLient){
-        FestiveRoom festiveRoom = festiveRoomRepository.findByIdClient(idCLient);
+        FestiveRoom festiveRoom = festiveRoomRepository.findByIdClient(idPartyRoom);
 
         if( festiveRoom != null){
             festiveRoom.setEvent(event);

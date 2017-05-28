@@ -3,6 +3,7 @@ package server.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,9 @@ public class BookingController {
     private BookingRepository bookingRepository;
     @Autowired
     private ClientRepository clientRepository;
+
+    @Value("${booking.timezone}")
+    String zoneIdForUtcOffset;
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
@@ -72,7 +76,7 @@ public class BookingController {
         LocalDate dateEndTemp = LocalDate.parse(dateEndEntry);
        // Get current Date + Time + zoneId
         Instant now = Instant.now();
-        ZoneId zoneId = ZoneId.of("Europe/Paris");
+        ZoneId zoneId = ZoneId.of(zoneIdForUtcOffset);
         ZonedDateTime dateBook = ZonedDateTime.ofInstant(now, zoneId);
 
         //convert localDate to Date

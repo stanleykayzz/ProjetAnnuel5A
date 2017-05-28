@@ -26,6 +26,10 @@ logging:
         web: DEBUG
         hibernate: DEBUG
 
+booking:
+  timezone: "Africa/Libreville"
+
+
 
 ---
 #---------------------------------------------------

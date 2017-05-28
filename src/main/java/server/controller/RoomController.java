@@ -67,7 +67,7 @@ public class RoomController {
 
 
     //update room
-    @RequestMapping(method = POST)
+    @RequestMapping(method = POST, value="{idRoom}")
     public Room updateBookingRoom(@PathVariable int idRoom,
                                   @PathVariable String name,
                                   @PathVariable String building,

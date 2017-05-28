@@ -25,9 +25,6 @@ public class RestaurantController {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    @Autowired
-    private ClientRepository clientRepository;
-
 
     @RequestMapping(method = GET, value = "/all")
     public List<Restaurant> getAllReservation(){
@@ -58,7 +55,7 @@ public class RestaurantController {
     }
 
 
-    @RequestMapping(method = POST)
+    @RequestMapping(method = POST, value="{idTable}")
     public Restaurant updateReservation(@RequestParam(value = "idTable") int idTable,
                                         @RequestParam(value = "name") String name,
                                         @RequestParam(value = "placeNumber")int nbPlace,
