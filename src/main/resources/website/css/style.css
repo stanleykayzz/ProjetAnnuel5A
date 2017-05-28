@@ -1,13 +1,4 @@
-.title_menu_main:hover{
-	background-color: rgba(127,208,80,1);
-}
-
-.title_menu_main a {
-	opacity: 1;	
-}
-
 #bottom_image{
 	display: block;
 	margin: auto;
-
 }

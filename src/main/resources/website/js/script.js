@@ -1,3 +1,6 @@
+var preUrl = "./html/";
+var _eventHandlers = {};
+
 $(document).ready( function() {
     init();
 });
@@ -9,45 +12,47 @@ function init(){
 
 
 function init_buttons(){
-	$("#btn_room").unbind("click");
-	$("#btn_room").click(function(){
-		clear_all_timeout();	
-		$("#include_content").empty();		
-		$("#include_content").load("./html/chambre.html");
-		update_image("room");
-	});
+	unbindAllButtons();
 
-	$("#btn_index").unbind("click");
-	$("#btn_index").click(function(){
+	addListener(document.getElementById("btn_index"), "click", function () {
 		clear_all_timeout();
-		$("#include_content").empty();		
-		$("#include_content").load("./html/accueil.html");
+		$("#include_content").empty();
+		$("#include_content").load(preUrl + "accueil.html");
 		update_image("accueil");
-	});
+		reloadPage("accueil");
+	}, false);
 
-	$("#btn_contact").unbind("click");
-	$("#btn_contact").click(function(){
-		clear_all_timeout();	
-		$("#include_content").empty();		
-		$("#include_content").load("./html/contact.html");
+	addListener(document.getElementById("btn_room"), "click", function () {
+		clear_all_timeout();
+		$("#include_content").empty();
+		$("#include_content").load(preUrl + "chambre.html");
+		update_image("room");
+		reloadPage("chambre");
+	}, false);
+
+	addListener(document.getElementById("btn_contact"), "click", function () {
+		clear_all_timeout();
+		$("#include_content").empty();
+		$("#include_content").load(preUrl + "contact.html");
 		update_image("contact");
-	});
+		reloadPage("contact");
+	}, false);
 
-	$("#btn_restaurant").unbind("click");
-	$("#btn_restaurant").click(function(){
-		clear_all_timeout();	
+	addListener(document.getElementById("btn_restaurant"), "click", function () {
+		clear_all_timeout();
 		$("#include_content").empty();
-		$("#include_content").load("./html/restaurant.html");
+		$("#include_content").load(preUrl + "restaurant.html");
 		update_image("restaurant");
-	});
+		reloadPage("restaurant");
+	}, false);
 
-	$("#btn_about").unbind("click");
-	$("#btn_about").click(function(){
-		clear_all_timeout();	
+	addListener(document.getElementById("btn_about"), "click", function () {
+		clear_all_timeout();
 		$("#include_content").empty();
-		$("#include_content").load("./html/about.html");
+		$("#include_content").load(preUrl + "about.html");
 		update_image("about");
-	});
+		reloadPage("about");
+	}, false);
 }
       
 function update_image(selection){
@@ -131,6 +136,28 @@ function clear_all_timeout(){
 	}
 }
 
+function unbindAllButtons() {
+	removeAllListeners(document.getElementById("btn_room"), "click");
+	removeAllListeners(document.getElementById("btn_index"), "click");
+	removeAllListeners(document.getElementById("btn_contact"), "click");
+	removeAllListeners(document.getElementById("btn_restaurant"), "click");
+	removeAllListeners(document.getElementById("btn_about"), "click");
+}
+
+function reloadPage(value) {
+	$(document).unbind("keydown");
+	$(document).keydown(function(e){
+
+		if(e.keyCode === 116){
+			pauseEvent(e);
+			clear_all_timeout();
+			$("#include_content").empty();
+			$("#include_content").load(preUrl + value + ".html");
+			update_image(value);
+		}
+	});
+}
+
 function add_footer(){
 	var foot =     '<div class="container">'+
 			            '<div class="row">'+
@@ -141,4 +168,41 @@ function add_footer(){
 			            '</div>'+
 			        '</div>';	
 	document.getElementsByTagName("footer")[0].innerHTML = foot;
+}
+
+
+
+function addListener(node, event, handler, capture) {
+	if(!(node in _eventHandlers)) {
+		// _eventHandlers stores references to nodes
+		_eventHandlers[node] = {};
+	}
+	if(!(event in _eventHandlers[node])) {
+		// each entry contains another entry for each event type
+		_eventHandlers[node][event] = [];
+	}
+	// capture reference
+	_eventHandlers[node][event].push([handler, capture]);
+	node.addEventListener(event, handler, capture);
+}
+
+function removeAllListeners(node, event) {
+	if(node in _eventHandlers) {
+		var handlers = _eventHandlers[node];
+		if(event in handlers) {
+			var eventHandlers = handlers[event];
+			for(var i = eventHandlers.length; i--;) {
+				var handler = eventHandlers[i];
+				node.removeEventListener(event, handler[0], handler[1]);
+			}
+		}
+	}
+}
+
+function pauseEvent(e){
+	if(e.stopPropagation) e.stopPropagation();
+	if(e.preventDefault) e.preventDefault();
+	e.cancelBubble=true;
+	e.returnValue=false;
+	return false;
 }
