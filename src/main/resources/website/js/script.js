@@ -7,51 +7,59 @@ $(document).ready( function() {
 
 function init(){
 	$("#include_content").load("./html/accueil.html");
+	manageUserButton();
 	init_buttons();
 }
-
 
 function init_buttons(){
 	unbindAllButtons();
 
 	addListener(document.getElementById("btn_index"), "click", function () {
 		clear_all_timeout();
+		removeCurrentScript();
 		$("#include_content").empty();
 		$("#include_content").load(preUrl + "accueil.html");
 		update_image("accueil");
-		reloadPage("accueil");
+		reloadPage("accueil", null);
 	}, false);
 
 	addListener(document.getElementById("btn_room"), "click", function () {
 		clear_all_timeout();
+		removeCurrentScript();
 		$("#include_content").empty();
 		$("#include_content").load(preUrl + "chambre.html");
 		update_image("room");
-		reloadPage("chambre");
+		manageScriptImport("js/room.js");
+		reloadPage("chambre", "js/room.js");
 	}, false);
 
 	addListener(document.getElementById("btn_contact"), "click", function () {
 		clear_all_timeout();
+		removeCurrentScript();
 		$("#include_content").empty();
 		$("#include_content").load(preUrl + "contact.html");
 		update_image("contact");
-		reloadPage("contact");
+		manageScriptImport("js/contact.js");
+		reloadPage("contact", "js/contact.js");
 	}, false);
 
 	addListener(document.getElementById("btn_restaurant"), "click", function () {
 		clear_all_timeout();
+		removeCurrentScript();
 		$("#include_content").empty();
 		$("#include_content").load(preUrl + "restaurant.html");
 		update_image("restaurant");
-		reloadPage("restaurant");
+		manageScriptImport("js/restaurant.js");
+		reloadPage("restaurant", "js/restaurant.js");
 	}, false);
 
 	addListener(document.getElementById("btn_about"), "click", function () {
 		clear_all_timeout();
+		removeCurrentScript();
 		$("#include_content").empty();
 		$("#include_content").load(preUrl + "about.html");
 		update_image("about");
-		reloadPage("about");
+		reloadPage("about", null);
 	}, false);
 }
       
@@ -69,39 +77,30 @@ function update_image(selection){
 			current_background = new Array();
 			current_background = background_accueil;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-			document.getElementById("script_current_container").innerHTML = "";
 			break;
 
 		case "room":
 			current_background = new Array();
 			current_background = background_room;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-			document.getElementById("script_current_container").innerHTML = "";
-			var script_room = document.createElement("script");
-			script_room.setAttribute("src", "js/room.js")
-			document.getElementById("script_current_container").append(script_room);
-
 			break;
 
 		case "contact":			
 			current_background = new Array();
 			current_background = background_contact;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-			document.getElementById("script_current_container").innerHTML = "";
 			break;
 
 		case "restaurant":			
 			current_background = new Array();
 			current_background = background_restaurant;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-			document.getElementById("script_current_container").innerHTML = "";
 			break;
 
 		case "about":			
 			current_background = new Array();
 			current_background = background_about;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-			document.getElementById("script_current_container").innerHTML = "";
 			break;
 	}
 
@@ -123,10 +122,9 @@ function update_image(selection){
 				draw_image(index);
 			}
 		}, 5000);
-	}
+	};
 
 	draw_image(0);
-
 }
 
 function clear_all_timeout(){
@@ -144,7 +142,7 @@ function unbindAllButtons() {
 	removeAllListeners(document.getElementById("btn_about"), "click");
 }
 
-function reloadPage(value) {
+function reloadPage(value, script) {
 	$(document).unbind("keydown");
 	$(document).keydown(function(e){
 
@@ -154,8 +152,38 @@ function reloadPage(value) {
 			$("#include_content").empty();
 			$("#include_content").load(preUrl + value + ".html");
 			update_image(value);
+
+			if(script !== null){
+				removeCurrentScript();
+				manageScriptImport(script);
+			}
 		}
 	});
+}
+
+function manageUserButton() {
+	var session = sessionStorage.getItem("token");
+	var userBtn = document.getElementById("btn_user");
+
+	if(session === null){
+		userBtn.textContent = "Sign in";
+		userBtn.className   = "disconnected";
+
+		addListener(userBtn, "click", function () {
+			removeCurrentScript();
+			$("#include_content").empty();
+			$("#include_content").load(preUrl + "signin.html");
+			reloadPage("signin", null);
+		}, false);
+
+	} else {
+		userBtn.textContent = "User Name";
+		userBtn.className   = "connected";
+
+		addListener(userBtn, "click", function () {
+
+		}, false);
+	}
 }
 
 function add_footer(){
@@ -170,7 +198,22 @@ function add_footer(){
 	document.getElementsByTagName("footer")[0].innerHTML = foot;
 }
 
+function manageScriptImport(value) {
+	var script = document.createElement("script");
+	script.setAttribute("class", "currentScript");
+	script.setAttribute("src", value);
 
+	document.getElementById("script_current_container").innerHTML = "";
+	document.getElementById("script_current_container").append(script);
+}
+
+function removeCurrentScript() {
+	var listScripts = document.getElementsByClassName("currentScript");
+
+	while(listScripts[0] !== null && listScripts[0] !== undefined){
+		listScripts[0].parentElement.removeChild(listScripts[0]);
+	}
+}
 
 function addListener(node, event, handler, capture) {
 	if(!(node in _eventHandlers)) {
