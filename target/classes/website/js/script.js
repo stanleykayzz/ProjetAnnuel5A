@@ -1,4 +1,5 @@
 var preUrl = "./html/";
+var preScript = "js/";
 var _eventHandlers = {};
 
 $(document).ready( function() {
@@ -6,7 +7,7 @@ $(document).ready( function() {
 });
 
 function init(){
-	$("#include_content").load("./html/accueil.html");
+	//$("#include_content").load("./html/accueil.html");
 	manageUserButton();
 	init_buttons();
 }
@@ -143,9 +144,8 @@ function unbindAllButtons() {
 }
 
 function reloadPage(value, script) {
-	$(document).unbind("keydown");
-	$(document).keydown(function(e){
-
+	removeAllListeners(document, "keydown");
+	addListener(document, "keydown", function(e){
 		if(e.keyCode === 116){
 			pauseEvent(e);
 			clear_all_timeout();
@@ -158,7 +158,7 @@ function reloadPage(value, script) {
 				manageScriptImport(script);
 			}
 		}
-	});
+	}, false);
 }
 
 function manageUserButton() {
@@ -173,7 +173,12 @@ function manageUserButton() {
 			removeCurrentScript();
 			$("#include_content").empty();
 			$("#include_content").load(preUrl + "signin.html");
+			manageScriptImport(preScript + "login.js");
 			reloadPage("signin", null);
+			/*console.log(document.getElementById("btn_login"));
+			addListener(document.getElementById("btn_login"), "click", function () {
+				console.log("login");
+			}, false);*/
 		}, false);
 
 	} else {
@@ -215,37 +220,3 @@ function removeCurrentScript() {
 	}
 }
 
-function addListener(node, event, handler, capture) {
-	if(!(node in _eventHandlers)) {
-		// _eventHandlers stores references to nodes
-		_eventHandlers[node] = {};
-	}
-	if(!(event in _eventHandlers[node])) {
-		// each entry contains another entry for each event type
-		_eventHandlers[node][event] = [];
-	}
-	// capture reference
-	_eventHandlers[node][event].push([handler, capture]);
-	node.addEventListener(event, handler, capture);
-}
-
-function removeAllListeners(node, event) {
-	if(node in _eventHandlers) {
-		var handlers = _eventHandlers[node];
-		if(event in handlers) {
-			var eventHandlers = handlers[event];
-			for(var i = eventHandlers.length; i--;) {
-				var handler = eventHandlers[i];
-				node.removeEventListener(event, handler[0], handler[1]);
-			}
-		}
-	}
-}
-
-function pauseEvent(e){
-	if(e.stopPropagation) e.stopPropagation();
-	if(e.preventDefault) e.preventDefault();
-	e.cancelBubble=true;
-	e.returnValue=false;
-	return false;
-}

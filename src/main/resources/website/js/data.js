@@ -35,36 +35,33 @@
                 viewPath  : "contact.html",
                 listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
             },
-            compte : {
-                name      : "compte",
-                viewPath  : "compte.html",
-                listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
-            },
             about      : {
                 name      : "about",
                 viewPath  : "about.html",
                 listImage : ["img/about-bg.jpg"]
-            },
-            logout     : {
-                name      : "logout",
-                viewPath  : "accueil.html",
-                listImage : ["img/home-bg.jpg"]
-            },
-            confirmation : {
-                name      : "confirmation",
-                viewPath  : "confirmation.html",
-                listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
             }
         },
         basicUrl   : "http://localhost:8080",
         clientUrl  : "/client",
+        clientService : {
+            login  : {
+                method : "GET",
+                url : "/client/login",
+                func : function (clt) {
+                    var client = new Core.class.client();
+                    console.log(client);
+                }
+            }
+        },
         getMenu : function () {
             return document.getElementById("ul_menu");
         },
         getIncludeContainer : function () {
             return document.getElementById("include_content");
         },
-        currentPath : null,
-        captchaResult : null
+        getUserButton : function () {
+            return document.getElementById("btn_user");
+        },
+        currentPath : null
     };
 })();
