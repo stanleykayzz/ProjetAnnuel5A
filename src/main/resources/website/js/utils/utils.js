@@ -24,20 +24,19 @@
         }(); // () -> Load automatically the function
 
         var xhr = new XMLHttpRequest();
-
         xhr.open(objectService.method, requestUrl , false);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.overrideMimeType('application/json;charset=utf-8');
 
-        xhr.onload = function () {            
-            var response = JSON.parse(this.responseText);
-            objectService.func(response);
-            return true;
+        xhr.onload = function (res) {
+            if(xhr.status === 200){
+                var response = JSON.parse(this.responseText);
+                objectService.func(response);
+            } else {
+                objectService.error(xhr.status);
+            }
         };
 
-        xhr.onerror = function () {
-            return false;
-        };
         xhr.send(requestBody);
     };
 
@@ -50,11 +49,7 @@
             utils.viewManager.initViewEvents(name);
         };
 
-        xhr.onerror = function () {
-            return "Error";
-        };
         xhr.send();
-
     };
 
     Core.utils.removeTimeouts = function () {

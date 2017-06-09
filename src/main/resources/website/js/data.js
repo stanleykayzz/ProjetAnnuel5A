@@ -48,8 +48,10 @@
                 method : "GET",
                 url : "/client/login",
                 func : function (clt) {
-                    var client = new Core.class.client();
-                    console.log(client);
+                    window.client = new Core.class.client(clt);
+                },
+                error : function(statusCode){
+                    console.log(statusCode);
                 }
             }
         },
