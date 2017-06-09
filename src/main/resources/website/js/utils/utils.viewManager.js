@@ -61,6 +61,7 @@
         var viewSignin = function () {
             //var email = "momo@hotmail.fr";
             var loginBtn = document.getElementById("btn_login");
+            var scrollTop;
 
             utils.removeListener(loginBtn, "click");
             utils.addListener(loginBtn, "click", function () {
@@ -77,4 +78,5 @@
                 break;
         }
     };
+
 })();

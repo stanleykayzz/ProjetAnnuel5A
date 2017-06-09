@@ -7,14 +7,24 @@
     Core.class = Core.class || {};
     Core.class.client = Core.class.client || {};
 
-    Core.class.client = function(){
-
+    Core.class.client = function(clientJson){
+        this.address    = clientJson.address;
+        this.birthday   = clientJson.birthday;
+        this.city       = clientJson.city;
+        this.clientId   = clientJson.clientId;
+        this.country    = clientJson.country;
+        this.email      = clientJson.email;
+        this.firstName  = clientJson.firstName;
+        this.name       = clientJson.name;
+        this.password   = clientJson.password;
+        this.phone      = clientJson.phone;
+        this.postalCode = clientJson.postalCode;
+        this.token      = clientJson.token;
+        this.tokenDate  = clientJson.tokenDate;
     };
 
     Core.class.client.login = function (email, password) {
-        //var paramRequest = "email=momo@hotmail.fr&password=test";
         var paramRequest = "email="+email+"&password="+password;
-        var request = utils.ajaxRequest(data.clientService.login, paramRequest, null);
+        utils.ajaxRequest(data.clientService.login, paramRequest, null);
     };
-
 })();
