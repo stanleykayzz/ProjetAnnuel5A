@@ -8,8 +8,7 @@ background = ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/cont
 //une variable i pour compteur
 var i = 0;
 //appel de la fonction setInterval qui appel la fonction en paramètre toutes les X secondes
-var intervalID = setInterval(
-	function(){
+var intervalID = setInterval(function(){
 	//on ajoute des effets de fadeIn et fadeOut comme transition des images
     	$(".intro-header").fadeOut(1000,function(){
       		$(".intro-header").css("background-image","url(" + background[i] + ")");

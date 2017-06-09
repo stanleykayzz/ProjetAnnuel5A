@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import server.model.Client;
 import server.service.ClientService;
 
+@CrossOrigin(origins = "http://localhost:63342")
 @RestController
 @RequestMapping("/client")
 public class ClientController {

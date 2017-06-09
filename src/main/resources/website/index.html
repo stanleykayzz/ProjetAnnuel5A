@@ -14,8 +14,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/clean-blog.min.js"></script>
-    <script src="js/script.js"></script>
 
+    <!-- Main Scripts -->
+    <script src="js/core.js"></script>
+    <script src="js/utils/utils.js"></script>
+    <script src="js/utils/utils.viewManager.js"></script>
+    <script src="js/class/client.js"></script>
+    <script src="js/data.js"></script>
+    <!-- End -->
     <title>Résidence des hauts de Menaye - Accueil</title>
      <link href="./css/style.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
@@ -26,20 +32,16 @@
     <link href="css/clean-blog.min.css" rel="stylesheet">
 
 
-
-
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+   <![endif]-->
  
 </head>
 
 <body>
-
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
@@ -56,7 +58,7 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul id="ul_menu" class="nav navbar-nav navbar-right">
                     <li class="title_menu_main">
                         <a id="btn_index" href="#">Accueil</a>
                     </li>
@@ -102,11 +104,8 @@
     </header>
 
     <div id="include_content" class="container">
-     
+
     </div>
-
-
-    <hr>
 
     <!-- Footer -->
     <footer>
@@ -121,9 +120,7 @@
     </footer>
 
    
-   <div id="script_current_container">
-
-  </div>
+   <div id="script_current_container"></div>
 </body>
 
 </html>

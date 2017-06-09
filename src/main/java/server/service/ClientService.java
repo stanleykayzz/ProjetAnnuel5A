@@ -64,7 +64,7 @@ public class ClientService {
 
         long diff        = Math.abs(currentDate.getTime() - client.getTokenDate().getTime());
         long diffMinutes = diff / (60 * 1000) % 60;
-        long diffHours   = diff / (60 * 60 * 1000);
+        long diffHours   = diff / 3600000;
 
         if(diffHours <= 0 && diffMinutes < 15)
             return true;

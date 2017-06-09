@@ -1,53 +1,67 @@
+var preUrl = "./html/";
+var preScript = "js/";
+var _eventHandlers = {};
+
 $(document).ready( function() {
     init();
 });
 
 function init(){
-	$("#include_content").load("./html/accueil.html");
+	//$("#include_content").load("./html/accueil.html");
+	manageUserButton();
 	init_buttons();
 }
 
-
 function init_buttons(){
-	$("#btn_room").unbind("click");
-	$("#btn_room").click(function(){
-		clear_all_timeout();	
-		$("#include_content").empty();		
-		$("#include_content").load("./html/chambre.html");
-		update_image("room");
-	});
+	unbindAllButtons();
 
-	$("#btn_index").unbind("click");
-	$("#btn_index").click(function(){
+	addListener(document.getElementById("btn_index"), "click", function () {
 		clear_all_timeout();
-		$("#include_content").empty();		
-		$("#include_content").load("./html/accueil.html");
+		removeCurrentScript();
+		$("#include_content").empty();
+		$("#include_content").load(preUrl + "accueil.html");
 		update_image("accueil");
-	});
+		reloadPage("accueil", null);
+	}, false);
 
-	$("#btn_contact").unbind("click");
-	$("#btn_contact").click(function(){
-		clear_all_timeout();	
-		$("#include_content").empty();		
-		$("#include_content").load("./html/contact.html");
+	addListener(document.getElementById("btn_room"), "click", function () {
+		clear_all_timeout();
+		removeCurrentScript();
+		$("#include_content").empty();
+		$("#include_content").load(preUrl + "chambre.html");
+		update_image("room");
+		manageScriptImport("js/room.js");
+		reloadPage("chambre", "js/room.js");
+	}, false);
+
+	addListener(document.getElementById("btn_contact"), "click", function () {
+		clear_all_timeout();
+		removeCurrentScript();
+		$("#include_content").empty();
+		$("#include_content").load(preUrl + "contact.html");
 		update_image("contact");
-	});
+		manageScriptImport("js/contact.js");
+		reloadPage("contact", "js/contact.js");
+	}, false);
 
-	$("#btn_restaurant").unbind("click");
-	$("#btn_restaurant").click(function(){
-		clear_all_timeout();	
+	addListener(document.getElementById("btn_restaurant"), "click", function () {
+		clear_all_timeout();
+		removeCurrentScript();
 		$("#include_content").empty();
-		$("#include_content").load("./html/restaurant.html");
+		$("#include_content").load(preUrl + "restaurant.html");
 		update_image("restaurant");
-	});
+		manageScriptImport("js/restaurant.js");
+		reloadPage("restaurant", "js/restaurant.js");
+	}, false);
 
-	$("#btn_about").unbind("click");
-	$("#btn_about").click(function(){
-		clear_all_timeout();	
+	addListener(document.getElementById("btn_about"), "click", function () {
+		clear_all_timeout();
+		removeCurrentScript();
 		$("#include_content").empty();
-		$("#include_content").load("./html/about.html");
+		$("#include_content").load(preUrl + "about.html");
 		update_image("about");
-	});
+		reloadPage("about", null);
+	}, false);
 }
       
 function update_image(selection){
@@ -64,39 +78,30 @@ function update_image(selection){
 			current_background = new Array();
 			current_background = background_accueil;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-			document.getElementById("script_current_container").innerHTML = "";
 			break;
 
 		case "room":
 			current_background = new Array();
 			current_background = background_room;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-			document.getElementById("script_current_container").innerHTML = "";
-			var script_room = document.createElement("script");
-			script_room.setAttribute("src", "js/room.js")
-			document.getElementById("script_current_container").append(script_room);
-
 			break;
 
 		case "contact":			
 			current_background = new Array();
 			current_background = background_contact;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-			document.getElementById("script_current_container").innerHTML = "";
 			break;
 
 		case "restaurant":			
 			current_background = new Array();
 			current_background = background_restaurant;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-			document.getElementById("script_current_container").innerHTML = "";
 			break;
 
 		case "about":			
 			current_background = new Array();
 			current_background = background_about;
 			document.getElementById("main_header").setAttribute("style", "background-image : url('" + current_background[0] + "')");
-			document.getElementById("script_current_container").innerHTML = "";
 			break;
 	}
 
@@ -118,16 +123,71 @@ function update_image(selection){
 				draw_image(index);
 			}
 		}, 5000);
-	}
+	};
 
 	draw_image(0);
-
 }
 
 function clear_all_timeout(){
 	var highestTimeoutId = setTimeout(";");
 	for (var i = 0 ; i < highestTimeoutId ; i++) {
 	    clearTimeout(i); 
+	}
+}
+
+function unbindAllButtons() {
+	removeAllListeners(document.getElementById("btn_room"), "click");
+	removeAllListeners(document.getElementById("btn_index"), "click");
+	removeAllListeners(document.getElementById("btn_contact"), "click");
+	removeAllListeners(document.getElementById("btn_restaurant"), "click");
+	removeAllListeners(document.getElementById("btn_about"), "click");
+}
+
+function reloadPage(value, script) {
+	removeAllListeners(document, "keydown");
+	addListener(document, "keydown", function(e){
+		if(e.keyCode === 116){
+			pauseEvent(e);
+			clear_all_timeout();
+			$("#include_content").empty();
+			$("#include_content").load(preUrl + value + ".html");
+			update_image(value);
+
+			if(script !== null){
+				removeCurrentScript();
+				manageScriptImport(script);
+			}
+		}
+	}, false);
+}
+
+function manageUserButton() {
+	var session = sessionStorage.getItem("token");
+	var userBtn = document.getElementById("btn_user");
+
+	if(session === null){
+		userBtn.textContent = "Sign in";
+		userBtn.className   = "disconnected";
+
+		addListener(userBtn, "click", function () {
+			removeCurrentScript();
+			$("#include_content").empty();
+			$("#include_content").load(preUrl + "signin.html");
+			manageScriptImport(preScript + "login.js");
+			reloadPage("signin", null);
+			/*console.log(document.getElementById("btn_login"));
+			addListener(document.getElementById("btn_login"), "click", function () {
+				console.log("login");
+			}, false);*/
+		}, false);
+
+	} else {
+		userBtn.textContent = "User Name";
+		userBtn.className   = "connected";
+
+		addListener(userBtn, "click", function () {
+
+		}, false);
 	}
 }
 
@@ -142,3 +202,21 @@ function add_footer(){
 			        '</div>';	
 	document.getElementsByTagName("footer")[0].innerHTML = foot;
 }
+
+function manageScriptImport(value) {
+	var script = document.createElement("script");
+	script.setAttribute("class", "currentScript");
+	script.setAttribute("src", value);
+
+	document.getElementById("script_current_container").innerHTML = "";
+	document.getElementById("script_current_container").append(script);
+}
+
+function removeCurrentScript() {
+	var listScripts = document.getElementsByClassName("currentScript");
+
+	while(listScripts[0] !== null && listScripts[0] !== undefined){
+		listScripts[0].parentElement.removeChild(listScripts[0]);
+	}
+}
+
