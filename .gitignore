@@ -4,7 +4,7 @@
 .settings/
 
 # Intellij
-.idea/
+.idea/*
 *.iml
 *.iws
 
@@ -19,3 +19,6 @@ target/
 /build
 /local.properties
 .gradle
+/.idea/
+/target/
+/.idea/workspace.xml
