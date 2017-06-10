@@ -19,6 +19,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 /**
  * Created by ileossa on 23/05/2017.
  */
+//todo test si 2 festive room
 @RestController
 @RequestMapping("/room/festive")
 public class FestiveRoomController {
