@@ -19,6 +19,7 @@
         this.password   = clientJson.password;
         this.phone      = clientJson.phone;
         this.postalCode = clientJson.postalCode;
+        this.status     = clientJson.status;
         this.token      = clientJson.token;
         this.tokenDate  = clientJson.tokenDate;
     };
@@ -26,5 +27,9 @@
     Core.class.client.login = function (email, password) {
         var paramRequest = "email="+email+"&password="+password;
         utils.ajaxRequest(data.clientService.login, paramRequest, null);
+    };
+
+    Core.class.client.signup = function (client) {
+        utils.ajaxRequest(data.clientService.signup, null, client);
     };
 })();

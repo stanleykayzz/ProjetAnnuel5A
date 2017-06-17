@@ -1,10 +1,13 @@
 package server.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import server.model.Client;
 import server.service.ClientService;
+
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:63342")
 @RestController
@@ -28,7 +31,6 @@ public class ClientController {
             clientService.updateClient(client);
 
             return client;
-            //Request example : http://localhost:8080/client/login?email=b&password=a
         } else {
             throw new IllegalArgumentException("Incorrect email or password");
         }
@@ -51,20 +53,14 @@ public class ClientController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public Client addClient(@RequestBody Client client) throws Exception {
-        return clientService.addClient(client);
-        ////Request example : http://localhost:8080/client
-        /*{
-            "name": "mollard",
-            "firstName": "john",
-            "birthday": "1993-09-16",
-            "email": "momo7450@hotmail.fr",
-            "phone": "0102030405",
-            "country": "france",
-            "city": "Paris",
-            "address": "70 rue toto",
-            "postalCode": "75015",
-            "password": "test"
-        }*/
+        boolean clientExist = clientService.findByEmail(client.getEmail());
+
+        if(!clientExist){
+            client.setStatus(0);
+            return clientService.addClient(client);
+        } else {
+            throw new IllegalArgumentException("Incorrect email");
+        }
     }
 
 

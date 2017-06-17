@@ -2,3 +2,7 @@
 	display: block;
 	margin: auto;
 }
+
+.signup_error {
+	border: red;
+}

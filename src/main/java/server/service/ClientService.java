@@ -19,9 +19,16 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-
     public List<Client> getAll() {
         return clientRepository.findAll();
+    }
+
+    public boolean findByEmail(String Email){
+        if(clientRepository.findByEmail(Email).size() > 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public Client findByToken(String Token){

@@ -21,15 +21,14 @@
                 requestBody = paramBody;
             else
                 requestBody = "";
-        }(); // () -> Load automatically the function
+        }();
 
         var xhr = new XMLHttpRequest();
         xhr.open(objectService.method, requestUrl , false);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.overrideMimeType('application/json;charset=utf-8');
+        xhr.setRequestHeader('Content-type', 'application/json');
 
         xhr.onload = function (res) {
-            if(xhr.status === 200){
+            if(xhr.status === 200 || xhr.status === 201){
                 var response = JSON.parse(this.responseText);
                 objectService.func(response);
             } else {
@@ -92,6 +91,94 @@
         };
 
         timeOut(0);
+    };
+
+    Core.utils.captcha = function (element) {
+        var catchpaElement, value1, value2, operator, result;
+        var type = Math.floor((Math.random() * 3) + 1);
+        value1 = Math.floor((Math.random() * 10) + 1);
+        value2 = Math.floor((Math.random() * 10) + 1);
+
+        switch (type){
+            case 1:
+                operator = "+";
+                data.captchaResult = value1 + value2;
+                break;
+            case 2:
+                operator = "-";
+                data.captchaResult = value1 - value2;
+                break;
+            case 3:
+                operator = "*";
+                data.captchaResult = value1 * value2;
+                break;
+        }
+
+        catchpaElement = '<span>'+ value1 +'</span><span> '+ operator +' </span><span>'+ value2 +'</span> = <input id="captcha_value" type="text" style ="width: 100px; text-align: center;">'
+            +'<div id="captcha_reload" href="#" style="margin-left: 10px; display: inline-block; cursor: pointer;"><i class="glyphicon glyphicon-repeat"></i></div>'
+            +'<span id="captcha_error" style="margin-left: 10px;color: red; font: 16px Lora,Times New Roman,serif;"></span>';
+        element.innerHTML = catchpaElement;
+
+        utils.removeListener(document.getElementById("captcha_reload"), "click");
+        utils.addListener(document.getElementById("captcha_reload"), "click", function () {
+            utils.captcha(element);
+        }, false);
+    };
+
+    Core.utils.checkDate = function (type, value) {
+        var currentTime = new Date()
+
+        switch (type){
+            case "year":
+                if(value > 1900 && value <= currentTime.getFullYear())
+                    return true;
+                else
+                    return false;
+
+                break;
+
+            case "month":
+                if(value >= 1 && value <= 12)
+                    return true;
+                else
+                    return false;
+
+                break;
+
+            case "day":
+                if(value >= 1 && value <= 31)
+                    return true;
+                else
+                    return false;
+
+                break;
+        } ;
+    };
+
+    Core.utils.setDatepickerLanguage = function () {
+        $.datepicker.regional['fr'] = {clearText: 'Effacer', clearStatus: '',
+            closeText: 'Fermer', closeStatus: 'Fermer sans modifier',
+            prevText: '<Préc', prevStatus: 'Voir le mois précédent',
+            nextText: 'Suiv>', nextStatus: 'Voir le mois suivant',
+            currentText: 'Courant', currentStatus: 'Voir le mois courant',
+            monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin',
+                'Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+            monthNamesShort: ['Jan','Fév','Mar','Avr','Mai','Jun',
+                'Jul','Aoû','Sep','Oct','Nov','Déc'],
+            monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre année',
+            weekHeader: 'Sm', weekStatus: '',
+            dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+            dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
+            dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
+            dayStatus: 'Utiliser DD comme premier jour de la semaine', dateStatus: 'Choisir le DD, MM d',
+            dateFormat: 'dd/mm/yy', firstDay: 0,
+            initStatus: 'Choisir la date', isRTL: false};
+        $.datepicker.setDefaults($.datepicker.regional['fr']);  
+    };
+
+    Core.utils.emailValidation = function (email) {
+        var rgx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return rgx.test(email.value);
     };
 
     Core.utils.addListener = function (node, event, handler, capture) {

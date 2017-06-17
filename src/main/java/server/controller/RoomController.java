@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import server.model.Room;
-import server.repository.ClientRepository;
 import server.repository.RoomRepository;
 
 import java.util.List;

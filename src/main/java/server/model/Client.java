@@ -60,6 +60,9 @@ public class Client {
     @NotNull
     private String password;
 
+    @Column(name = "Status")
+    private int status;
+
     @Column(name = "Token")
     private String token;
 
@@ -166,6 +169,10 @@ public class Client {
         this.postalCode = postalCode;
     }
 
+    public int getStatus() { return status; }
+
+    public void setStatus(int status) { this.status = status; }
+
     public String getPassword() {
         return password;
     }
@@ -173,4 +180,5 @@ public class Client {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
