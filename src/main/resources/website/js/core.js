@@ -21,10 +21,10 @@
 
     this.onload = function(){
         //Declaration variables in Global Scope
-        window.utils = Core.utils || {};
-        window.data  = Core.data  || {};
-        window.class = Core.class || {};
-
+        window.utils   = Core.utils   || {};
+        window.data    = Core.data    || {};
+        window.class   = Core.class   || {};
+        window.service = Core.service || {};
         data.currentPath = data.viewList.accueil.viewPath;
 
         utils.manageImages(data.viewList.contact.listImage);

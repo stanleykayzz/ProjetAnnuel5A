@@ -28,7 +28,6 @@
         xhr.setRequestHeader('Content-type', 'application/json');
 
         xhr.onload = function (res) {
-            console.log(xhr.status);
             if(xhr.status === 200 || xhr.status === 201){
                 var response = JSON.parse(this.responseText);
                 objectService.func(response);
@@ -180,6 +179,32 @@
     Core.utils.emailValidation = function (email) {
         var rgx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return rgx.test(email.value);
+    };
+
+    Core.utils.verifSessionStorage = function (token, date) {
+        var currentDate = new Date();
+        var paramDate   = new Date(date);
+        var diffHours   = currentDate.getHours() - paramDate.getHours();
+        var diffMin     = currentDate.getMinutes() - paramDate.getMinutes();
+        var diffMinExc  = (paramDate.getMinutes() +  60) - currentDate.getMinutes();
+
+        if(paramDate.getFullYear()  !== currentDate.getFullYear()
+            || paramDate.getMonth() !== currentDate.getMonth()
+            || paramDate.getDate()  !== currentDate.getDate())
+            return false;
+        
+        if(diffHours === 0){
+            
+            if(diffMin <= 15){                
+                return true;
+            } else {
+                return false;
+            }
+            
+        } else if(diffHours === 1 && diffMinExc <= 15){
+            return true;
+        }
+        return false;
     };
 
     Core.utils.addListener = function (node, event, handler, capture) {

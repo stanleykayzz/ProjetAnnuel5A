@@ -102,10 +102,11 @@ public class ClientService {
         client.setToken(UUID.randomUUID().toString());
         Date dateToken = new Date();
         client.setTokenDate(dateToken);
-        boolean tokenExists = tokenExists(client.getToken(), client.getTokenDate());
-        if(tokenExists(client.getToken(), client.getTokenDate()) == true) {
+        //boolean tokenExists = tokenExists(client.getToken(), client.getTokenDate());
+        /*System.out.println(tokenExists);
+        if(tokenExists == true) {
             this.generateToken(client);
-        }
+        }*/
     }
 
     public void updateTokenDate(Client client){

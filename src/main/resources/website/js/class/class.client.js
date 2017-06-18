@@ -26,19 +26,26 @@
 
     Core.class.client.login = function (email, password) {
         var paramRequest = "email="+email+"&password="+password;
-        utils.ajaxRequest(data.clientService.login, paramRequest, null);
+        utils.ajaxRequest(Core.service.client.login(), paramRequest, null);
     };
 
     Core.class.client.signup = function (client) {
-        utils.ajaxRequest(data.clientService.signup, null, client);
+        utils.ajaxRequest(Core.service.client.signup(), null, client);
     };
 
-    Core.class.client.logout = function () {
+    Core.class.client.reloadClient = function () {
+        var paramRequest = "token="+ window.sessionStorage.getItem("token");
+        utils.ajaxRequest(Core.service.client.getClientByToken(), paramRequest, null);
+    };
+
+    //Prototype function
+
+    Core.class.client.prototype.logout = function () {
         var paramRequest = "token="+ window.client.token;
-        utils.ajaxRequest(data.clientService.logout, paramRequest, null);
+        utils.ajaxRequest(Core.service.client.logout(), paramRequest, null);
     };
 
-    Core.class.client.update = function (client) {
+    Core.class.client.prototype.update = function (client) {
         var paramRequest = "token="+ window.client.token;
         client = '{'+
             '"name": "mollard",'+
@@ -52,6 +59,27 @@
             '"postalCode": "75015",'+
             '"password": "test_5"'+
         '}';
-        utils.ajaxRequest(data.clientService.update, paramRequest, client);
+        utils.ajaxRequest(Core.service.client.update(), paramRequest, client);
     };
+
+    Core.class.client.prototype.createSessionStorage = function (token, tokenDate) {        
+        var tokenAvailable = utils.verifSessionStorage(token, tokenDate);
+
+        if(tokenAvailable === true){
+            window.sessionStorage.setItem("token", token);
+            window.sessionStorage.setItem("token_date", tokenDate);
+        }
+    };
+
+    Core.class.client.prototype.removeSessionStorage = function () {
+        window.sessionStorage.removeItem("token");
+        window.sessionStorage.removeItem("token_date");
+    };
+
+    Core.class.client.prototype.reloadTokenDate = function (token) {
+        var paramRequest = "token="+ window.client.token;
+        utils.ajaxRequest(Core.service.client.reloadToken(), paramRequest, client);
+    };
+
+
 })();

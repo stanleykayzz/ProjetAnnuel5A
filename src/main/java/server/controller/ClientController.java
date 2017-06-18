@@ -1,11 +1,14 @@
 package server.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import server.model.Client;
 import server.service.ClientService;
+import springfox.documentation.spring.web.json.Json;
 
 import java.util.Date;
 import java.util.List;
@@ -97,6 +100,23 @@ public class ClientController {
         clientService.updateClient(client);
 
         return true;
+    }
+
+    @RequestMapping(path = "/reloadToken", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public Date  reloadToken(@RequestParam String token){
+        Client client = clientService.findByToken(token);
+
+        clientService.updateTokenDate(client);
+        clientService.updateClient(client);
+
+        return client.getTokenDate();
+    }
+
+    @RequestMapping(path = "/getByToken", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public Client getClientByToken(@RequestParam String token){
+        return clientService.findByToken(token);
     }
 }
 

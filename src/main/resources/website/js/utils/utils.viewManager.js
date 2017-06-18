@@ -35,13 +35,16 @@
                         utils.viewManager.switchView("logout");
                         break;
                 }
+
+                if(window.client !== null && window.client !== undefined)
+                    window.client.reloadTokenDate();
             }
         }, false);
     };
 
     Core.utils.viewManager.switchView = function (value) {
         var pageObject = null;
-
+       
         switch (value){
             case "accueil" :
                 pageObject = data.viewList.accueil;
@@ -73,6 +76,7 @@
         }
 
         if(pageObject !== null){
+            utils.viewManager.addContextualMenuButtons();
             Core.utils.empty(data.getIncludeContainer());
             utils.include(pageObject.viewPath, pageObject.name);
             data.currentPath = pageObject.viewPath;
@@ -108,6 +112,10 @@
             if(window.client){
                 createButton("btn_account", "Compte", menuLastChild);
                 createButton("btn_logout", "Déconnecter", menuLastChild);
+            } else if(window.sessionStorage.getItem("token") != null && window.sessionStorage.getItem("token") != undefined){
+                Core.class.client.reloadClient();
+                createButton("btn_account", "Compte", menuLastChild);
+                createButton("btn_logout", "Déconnecter", menuLastChild);
             } else {
                 createButton("btn_user", "Connexion", menuLastChild);
             }
@@ -126,7 +134,6 @@
     };
 
     Core.utils.viewManager.initViewEvents = function (viewName) {
-
         var viewSignin = function () {
             var loginBtn, signupBtn, forgetpassword_Btn;
             var showSingupBtn, showLoginBtn, showforgetpasswordBtn, showLoginFromForgetPassword;
@@ -338,7 +345,6 @@
                     } else {
                         utils.captcha(captchaElement);
                     }
-                    
                 }, false);
             }();
         };
@@ -431,7 +437,7 @@
                 viewSignin();
                 break;
             case "logout" :
-                Core.class.client.logout();
+                client.logout();
                 break;
             case "update" :
                 viewUpdate();
