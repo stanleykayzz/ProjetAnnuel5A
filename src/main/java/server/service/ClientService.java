@@ -89,7 +89,7 @@ public class ClientService {
         }
     }
 
-    public boolean tokenExists(String token, Date token_date){
+    public boolean tokenExists(String token){
         Client client = findByToken(token);
         if(client != null){
             return true;
@@ -102,7 +102,7 @@ public class ClientService {
         client.setToken(UUID.randomUUID().toString());
         Date dateToken = new Date();
         client.setTokenDate(dateToken);
-        //boolean tokenExists = tokenExists(client.getToken(), client.getTokenDate());
+        //boolean tokenExists = tokenExists(client.getToken());
         /*System.out.println(tokenExists);
         if(tokenExists == true) {
             this.generateToken(client);

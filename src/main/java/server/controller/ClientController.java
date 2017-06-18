@@ -74,23 +74,25 @@ public class ClientController {
 
     @RequestMapping(path = "/update",method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
-    public Client updateClient(@RequestBody Client newClient, @RequestParam String token) throws Exception {
+    public Client updateClient(@RequestBody Client newClient, @RequestParam String token, @RequestParam String password) throws Exception {
         Client client = clientService.findByToken(token);
-
+        String psw = ClientUtils.encryptPassword(password);
         if(client != null) {
-            client.setPhone(newClient.getPhone());
-            client.setCountry(newClient.getCountry());
-            client.setCity(newClient.getCity());
-            client.setAddress(newClient.getAddress());
-            client.setPostalCode(newClient.getPostalCode());
-            client.setPassword(ClientUtils.encryptPassword(newClient.getPassword()));
+            if(client.getPassword() == psw){
+                client.setPhone(newClient.getPhone());
+                client.setCountry(newClient.getCountry());
+                client.setCity(newClient.getCity());
+                client.setAddress(newClient.getAddress());
+                client.setPostalCode(newClient.getPostalCode());
+                client.setPassword(ClientUtils.encryptPassword(newClient.getPassword()));
 
-            clientService.updateTokenDate(client);
-            clientService.updateClient(client);
+                clientService.updateTokenDate(client);
+                clientService.updateClient(client);
 
-            return clientService.findByToken(token);
+                return clientService.findByToken(token);
+            }
+            return null;
         }
-
         return null;
     }
 
@@ -108,13 +110,16 @@ public class ClientController {
 
     @RequestMapping(path = "/reloadToken", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Date  reloadToken(@RequestParam String token){
+    public Date reloadToken(@RequestParam String token){
         Client client = clientService.findByToken(token);
+        if(client != null){
+            clientService.updateTokenDate(client);
+            clientService.updateClient(client);
 
-        clientService.updateTokenDate(client);
-        clientService.updateClient(client);
-
-        return client.getTokenDate();
+            return client.getTokenDate();
+        } else {
+            throw new IllegalArgumentException("Token not available");
+        }
     }
 
     @RequestMapping(path = "/getByToken", method = RequestMethod.GET)

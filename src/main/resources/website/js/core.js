@@ -27,6 +27,10 @@
         window.service = Core.service || {};
         data.currentPath = data.viewList.accueil.viewPath;
 
+        if(window.sessionStorage.getItem("token")     != null
+            && window.sessionStorage.getItem("token") != undefined)
+            Core.class.client.reloadClient();
+
         utils.manageImages(data.viewList.contact.listImage);
         utils.viewManager.reloadPage();
         utils.viewManager.addContextualMenuButtons();

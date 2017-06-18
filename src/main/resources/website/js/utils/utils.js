@@ -181,20 +181,20 @@
         return rgx.test(email.value);
     };
 
-    Core.utils.verifSessionStorage = function (token, date) {
+    Core.utils.verifSessionStorage = function (token_date) {
         var currentDate = new Date();
-        var paramDate   = new Date(date);
-        var diffHours   = currentDate.getHours() - paramDate.getHours();
-        var diffMin     = currentDate.getMinutes() - paramDate.getMinutes();
-        var diffMinExc  = (paramDate.getMinutes() +  60) - currentDate.getMinutes();
+        var tokenDate   = new Date(token_date);
 
-        if(paramDate.getFullYear()  !== currentDate.getFullYear()
-            || paramDate.getMonth() !== currentDate.getMonth()
-            || paramDate.getDate()  !== currentDate.getDate())
+        var diffHours  = currentDate.getHours()   - tokenDate.getHours();
+        var diffMin    = currentDate.getMinutes() - tokenDate.getMinutes();
+        var diffMinExc = (tokenDate.getMinutes() +  60) - currentDate.getMinutes();
+
+        if(tokenDate.getFullYear()  !== currentDate.getFullYear()
+            || tokenDate.getMonth() !== currentDate.getMonth()
+            || tokenDate.getDate()  !== currentDate.getDate())
             return false;
         
         if(diffHours === 0){
-            
             if(diffMin <= 15){                
                 return true;
             } else {

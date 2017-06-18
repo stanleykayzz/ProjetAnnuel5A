@@ -61,7 +61,7 @@
             method : "GET",
             url : "/client/logout",
             func : function () {
-                client.removeSessionStorage();
+                Core.class.client.removeSessionStorage();
                 window.client = null;
                 utils.viewManager.switchView("accueil");
             },
@@ -90,9 +90,12 @@
             url : "/client/reloadToken",
             func : function (newTokenDate) {
                 client.tokenDate = newTokenDate;
-                client.createSessionStorage(client.token, client.tokenDate);
+                client.createSessionStorage(client.tokenDate);
             },
             error : function(statusCode){
+                console.log("erreur");
+                Core.class.client.removeSessionStorage();
+                utils.viewManager.addContextualMenuButtons();
             }
         };
     };
@@ -102,10 +105,12 @@
             method : "GET",
             url : "/client/getByToken",
             func : function (clt) {
-                console.log(clt);
                 window.client = new Core.class.client(clt);
             },
             error : function(statusCode){
+                console.log("erreur get by token");
+                Core.class.client.removeSessionStorage();
+                utils.viewManager.addContextualMenuButtons();
             }
         };
     };

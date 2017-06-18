@@ -33,9 +33,17 @@
         utils.ajaxRequest(Core.service.client.signup(), null, client);
     };
 
+    Core.class.client.removeSessionStorage = function () {
+        window.sessionStorage.removeItem("token");
+        window.sessionStorage.removeItem("token_date");
+    };
+
     Core.class.client.reloadClient = function () {
-        var paramRequest = "token="+ window.sessionStorage.getItem("token");
-        utils.ajaxRequest(Core.service.client.getClientByToken(), paramRequest, null);
+        var token = window.sessionStorage.getItem("token");
+        var paramRequest = "token=" + token;
+
+        if(token !== null && token !== undefined)
+            utils.ajaxRequest(Core.service.client.getClientByToken(), paramRequest, null);
     };
 
     //Prototype function
@@ -62,8 +70,8 @@
         utils.ajaxRequest(Core.service.client.update(), paramRequest, client);
     };
 
-    Core.class.client.prototype.createSessionStorage = function (token, tokenDate) {        
-        var tokenAvailable = utils.verifSessionStorage(token, tokenDate);
+    Core.class.client.prototype.createSessionStorage = function (token, tokenDate) {
+        var tokenAvailable = utils.verifSessionStorage(tokenDate);
 
         if(tokenAvailable === true){
             window.sessionStorage.setItem("token", token);
@@ -71,15 +79,8 @@
         }
     };
 
-    Core.class.client.prototype.removeSessionStorage = function () {
-        window.sessionStorage.removeItem("token");
-        window.sessionStorage.removeItem("token_date");
-    };
-
     Core.class.client.prototype.reloadTokenDate = function (token) {
         var paramRequest = "token="+ window.client.token;
         utils.ajaxRequest(Core.service.client.reloadToken(), paramRequest, client);
     };
-
-
 })();

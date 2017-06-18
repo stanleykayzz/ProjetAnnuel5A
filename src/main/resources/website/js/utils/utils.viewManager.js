@@ -9,6 +9,9 @@
     Core.utils.viewManager.manageMenuButtons = function () {
         utils.addListener(data.getMenu(), "click", function (e) {
             if(e.target.tagName === "A"){
+                if(window.client !== null && window.client !== undefined)
+                    window.client.reloadTokenDate();
+
                 switch (e.target.id){
                     case "btn_index" :
                         utils.viewManager.switchView("accueil");
@@ -35,9 +38,6 @@
                         utils.viewManager.switchView("logout");
                         break;
                 }
-
-                if(window.client !== null && window.client !== undefined)
-                    window.client.reloadTokenDate();
             }
         }, false);
     };
@@ -104,24 +104,20 @@
         };
         var removeButtons = function () {
             var arrayButtons = document.getElementsByClassName("contextualMenu");
-
-            while(arrayButtons[0] !== undefined && arrayButtons[0] !== null){
+            while(arrayButtons.length > 0){
                 arrayButtons[0].parentElement.removeChild(arrayButtons[0]);
             }
-        }();
+        };
         var addButtons = function () {
             if(window.client){
-                createButton("btn_account", "Compte", menuLastChild);
-                createButton("btn_logout", "Déconnecter", menuLastChild);
-            } else if(window.sessionStorage.getItem("token") != null && window.sessionStorage.getItem("token") != undefined){
-                Core.class.client.reloadClient();
+                removeButtons();
                 createButton("btn_account", "Compte", menuLastChild);
                 createButton("btn_logout", "Déconnecter", menuLastChild);
             } else {
+                removeButtons();
                 createButton("btn_user", "Connexion", menuLastChild);
             }
         }();
-
     };
 
     Core.utils.viewManager.reloadPage = function () {
