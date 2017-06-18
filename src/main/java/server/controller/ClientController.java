@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import server.model.Client;
+import server.utils.ClientUtils;
 import server.service.ClientService;
 import springfox.documentation.spring.web.json.Json;
 
@@ -29,14 +30,15 @@ public class ClientController {
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public Client login(@RequestParam("email") String email, @RequestParam("password") String password){
-        Client client = clientService.login(email, password);
+        String pswd = ClientUtils.encryptPassword(password);
+        Client client = clientService.login(email, pswd);
         if(client != null){
             clientService.generateToken(client);
             clientService.updateClient(client);
 
             return client;
         } else {
-            throw new IllegalArgumentException("Incorrect email or password");
+            return null;
         }
     }
 
@@ -60,10 +62,12 @@ public class ClientController {
         boolean clientExist = clientService.findByEmail(client.getEmail());
 
         if(!clientExist){
+            String pswd = ClientUtils.encryptPassword(client.getPassword());
             client.setStatus(0);
+            client.setPassword(pswd);
             return clientService.addClient(client);
         } else {
-            throw new IllegalArgumentException("Incorrect email");
+            return null;
         }
     }
 
@@ -79,7 +83,7 @@ public class ClientController {
             client.setCity(newClient.getCity());
             client.setAddress(newClient.getAddress());
             client.setPostalCode(newClient.getPostalCode());
-            client.setPassword(newClient.getPassword());
+            client.setPassword(ClientUtils.encryptPassword(newClient.getPassword()));
 
             clientService.updateTokenDate(client);
             clientService.updateClient(client);

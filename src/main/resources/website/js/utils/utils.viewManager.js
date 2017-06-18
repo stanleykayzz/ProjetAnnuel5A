@@ -76,6 +76,7 @@
         }
 
         if(pageObject !== null){
+            Core.service.client.getClientByToken();
             utils.viewManager.addContextualMenuButtons();
             Core.utils.empty(data.getIncludeContainer());
             utils.include(pageObject.viewPath, pageObject.name);

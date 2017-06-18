@@ -102,6 +102,7 @@
             method : "GET",
             url : "/client/getByToken",
             func : function (clt) {
+                console.log(clt);
                 window.client = new Core.class.client(clt);
             },
             error : function(statusCode){

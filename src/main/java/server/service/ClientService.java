@@ -51,7 +51,7 @@ public class ClientService {
     public Client login(String email, String password){
         List<Client> clients = clientRepository.login(email, password);
 
-        if(clients.size() >= 0){
+        if(clients.size() > 0){
             return clients.get(0);
         } else {
             return null;
