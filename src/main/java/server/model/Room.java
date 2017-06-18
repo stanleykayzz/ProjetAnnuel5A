@@ -15,17 +15,19 @@ public class Room {
     private String building;
     private int number;
     private int idClient;
+    private int price;
 
 
 
     public Room() {
     }
 
-    public Room(String name, String building, int number, int idClient, Client client) {
+    public Room(String name, String building, int number, int idClient, int price) {
         this.name = name;
         this.building = building;
         this.number = number;
         this.idClient = idClient;
+        this.price = price;
     }
 
     public int getIdRoom() {
@@ -68,6 +70,13 @@ public class Room {
         this.idClient = idClient;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     @Override
     public String toString() {
@@ -77,6 +86,7 @@ public class Room {
                 ", building='" + building + '\'' +
                 ", number=" + number +
                 ", idClient=" + idClient +
+                ", price=" + price +
                 '}';
     }
 }
