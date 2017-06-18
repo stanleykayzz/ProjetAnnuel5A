@@ -32,4 +32,26 @@
     Core.class.client.signup = function (client) {
         utils.ajaxRequest(data.clientService.signup, null, client);
     };
+
+    Core.class.client.logout = function () {
+        var paramRequest = "token="+ window.client.token;
+        utils.ajaxRequest(data.clientService.logout, paramRequest, null);
+    };
+
+    Core.class.client.update = function (client) {
+        var paramRequest = "token="+ window.client.token;
+        client = '{'+
+            '"name": "mollard",'+
+            '"firstName": "toto",'+
+            '"birthday": "1993-09-16",'+
+            '"email": "tefzt@hotmail.fr",'+
+            '"phone": "0102030406",'+
+            '"country": "france",'+
+            '"city": "Paris",'+
+            '"address": "70 rue toto",'+
+            '"postalCode": "75015",'+
+            '"password": "test_5"'+
+        '}';
+        utils.ajaxRequest(data.clientService.update, paramRequest, client);
+    };
 })();

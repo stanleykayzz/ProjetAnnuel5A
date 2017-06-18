@@ -28,6 +28,7 @@
         xhr.setRequestHeader('Content-type', 'application/json');
 
         xhr.onload = function (res) {
+            console.log(xhr.status);
             if(xhr.status === 200 || xhr.status === 201){
                 var response = JSON.parse(this.responseText);
                 objectService.func(response);

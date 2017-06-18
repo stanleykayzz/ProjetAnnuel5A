@@ -1,8 +1,33 @@
+body{
+	width: 100%;
+	bottom: 0;
+	padding: 0;
+	margin: 0;
+}
+
+footer{
+	text-align: center;
+}
+
 #bottom_image{
 	display: block;
 	margin: auto;
 }
 
+#include_content{
+	width: 100%;
+}
+
 .signup_error {
 	border: red;
+}
+
+.container{
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+}
+.user_infos{
+	display: inline-block;
+	width: 49.5%;
 }

@@ -9,33 +9,32 @@
     Core.utils.viewManager.manageMenuButtons = function () {
         utils.addListener(data.getMenu(), "click", function (e) {
             if(e.target.tagName === "A"){
-                Core.utils.empty(data.getIncludeContainer());
-                var pageObject;
-
                 switch (e.target.id){
                     case "btn_index" :
-                        pageObject = data.viewList.accueil;
+                        utils.viewManager.switchView("accueil");
                         break;
                     case "btn_about" :
-                        pageObject = data.viewList.about;
+                        utils.viewManager.switchView("about");
                         break;
                     case "btn_restaurant" :
-                        pageObject = data.viewList.restaurant;
+                        utils.viewManager.switchView("restaurant");
                         break;
                     case "btn_room" :
-                        pageObject = data.viewList.chambre;
+                        utils.viewManager.switchView("chambre");
                         break;
                     case "btn_user" :
-                        pageObject = data.viewList.connexion;
+                        utils.viewManager.switchView("user");
                         break;
                     case "btn_contact" :
-                        pageObject = data.viewList.contact;
+                        utils.viewManager.switchView("contact");
+                        break;
+                    case "btn_account" :
+                        utils.viewManager.switchView("compte");
+                        break;
+                    case "btn_logout" :
+                        utils.viewManager.switchView("logout");
                         break;
                 }
-
-                utils.include(pageObject.viewPath, pageObject.name);
-                utils.manageImages(pageObject.listImage);
-                data.currentPath = pageObject.viewPath;
             }
         }, false);
     };
@@ -62,6 +61,15 @@
             case "contact" :
                 pageObject = data.viewList.contact;
                 break;
+            case "compte" :
+                pageObject = data.viewList.compte;
+                break;
+            case "logout" :
+                pageObject = data.viewList.logout;
+                break;
+            case "update" :
+                pageObject = data.viewList.update;
+                break;
         }
 
         if(pageObject !== null){
@@ -71,10 +79,40 @@
         }
     };
 
-    Core.utils.viewManager.addSignInButton = function () {
-        var userBtn = data.getUserButton();
-        userBtn.textContent = "Connexion";
-        userBtn.className   = "disconnected";
+    Core.utils.viewManager.addContextualMenuButtons = function () {
+        var menu = data.getMenu();
+        var menuLastChild = menu.children[menu.children.length-1];
+
+        var createButton = function (id, content, elementAfter) {
+            var baliseLi, baliseA;
+
+            baliseLi = document.createElement("li");
+            baliseLi.className    = "title_menu_main contextualMenu";
+            baliseLi.style.cursor = "pointer";
+
+            baliseA = document.createElement("a");
+            baliseA.id = id;
+            baliseA.textContent = content;
+
+            baliseLi.appendChild(baliseA);
+            menu.insertBefore(baliseLi, elementAfter);
+        };
+        var removeButtons = function () {
+            var arrayButtons = document.getElementsByClassName("contextualMenu");
+
+            while(arrayButtons[0] !== undefined && arrayButtons[0] !== null){
+                arrayButtons[0].parentElement.removeChild(arrayButtons[0]);
+            }
+        }();
+        var addButtons = function () {
+            if(window.client){
+                createButton("btn_account", "Compte", menuLastChild);
+                createButton("btn_logout", "Déconnecter", menuLastChild);
+            } else {
+                createButton("btn_user", "Connexion", menuLastChild);
+            }
+        }();
+
     };
 
     Core.utils.viewManager.reloadPage = function () {
@@ -304,10 +342,99 @@
                 }, false);
             }();
         };
+        var viewUpdate = function () {
+            var name, firstName, birthday, email, phone,
+                country, city, address, postalCode, password;
+            var validation = true;
+
+            var initVariables = function () {
+                name       = window.client.name;
+                firstName  = window.client.firstName;
+                birthday   = window.client.birthday;
+                email      = window.client.email;
+                phone      = document.getElementById("").value;
+                country    = document.getElementById("").value;
+                city       = document.getElementById("").value;
+                address    = document.getElementById("").value;
+                postalCode = document.getElementById("").value;
+                password   = document.getElementById("").value;
+            }();
+            var verifValues = function () {
+                if(utils.emailValidation(email) === false){
+                    validation = false;
+
+                } else {
+
+                }
+
+                if(password.length < 6){
+                    validation = false;
+
+                } else {
+
+                }
+
+                if(phone === null || phone === undefined || phone === ""){
+                    validation = false;
+
+                } else {
+
+                }
+
+                if(country === null || country === undefined || country === ""){
+                    validation = false;
+
+                } else {
+
+                }
+
+                if(city === null || city === undefined || city === ""){
+                    validation = false;
+
+                } else {
+
+                }
+
+                if(address === null || address === undefined || address === ""){
+                    validation = false;
+
+                } else {
+
+                }
+
+                if(postalCode === null || postalCode === undefined || postalCode === ""){
+                    validation = false;
+
+                } else {
+
+                }
+            }();
+
+            var client = '{'+
+                '"name":       "'+ name       +'",'+
+                '"firstName":  "'+ firstName  +'",'+
+                '"birthday":   "'+ birthday   +'",'+
+                '"email":      "'+ email      +'",'+
+                '"phone":      "'+ phone      +'",'+
+                '"country":    "'+ country    +'",'+
+                '"city":       "'+ city       +'",'+
+                '"address":    "'+ address    +'",'+
+                '"postalCode": "'+ postalCode +'",'+
+                '"password":   "'+ password   +'"'+
+                '}';
+
+            Core.class.client.update(client);
+        };
 
         switch (viewName){
             case "connexion" :
                 viewSignin();
+                break;
+            case "logout" :
+                Core.class.client.logout();
+                break;
+            case "update" :
+                viewUpdate();
                 break;
         }
     };

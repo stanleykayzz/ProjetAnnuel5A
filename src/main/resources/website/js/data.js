@@ -35,10 +35,25 @@
                 viewPath  : "contact.html",
                 listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
             },
+            compte : {
+                name      : "compte",
+                viewPath  : "compte.html",
+                listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
+            },
             about      : {
                 name      : "about",
                 viewPath  : "about.html",
                 listImage : ["img/about-bg.jpg"]
+            },
+            logout     : {
+                name      : "logout",
+                viewPath  : "accueil.html",
+                listImage : ["img/home-bg.jpg"]
+            },
+            update : {
+                name      : "update",
+                viewPath  : "compte.html",
+                listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
             }
         },
         basicUrl   : "http://localhost:8080",
@@ -49,6 +64,8 @@
                 url : "/client/login",
                 func : function (clt) {
                     window.client = new Core.class.client(clt);
+                    utils.viewManager.switchView("accueil");
+                    utils.viewManager.addContextualMenuButtons();
                 },
                 error : function(statusCode){
                     document.getElementById("error_container").textContent = "Identifiants incorrects";
@@ -85,6 +102,29 @@
                     document.getElementById("emailBtn").value = "";
                     document.getElementById("passwordBtn").value = "";
                 }
+            },
+            logout : {
+                method : "GET",
+                url : "/client/logout",
+                func : function () {
+                    window.client = null;
+                    utils.viewManager.switchView("accueil");
+                    utils.viewManager.addContextualMenuButtons();
+                },
+                error : function(statusCode){
+                }
+            },
+            update : {
+                method : "POST",
+                url : "/client/update",
+                func : function () {
+                    console.log("update");
+                    //window.client = null;
+                    utils.viewManager.switchView("accueil");
+                    utils.viewManager.addContextualMenuButtons();
+                },
+                error : function(statusCode){
+                }
             }
         },
         getMenu : function () {
@@ -92,9 +132,6 @@
         },
         getIncludeContainer : function () {
             return document.getElementById("include_content");
-        },
-        getUserButton : function () {
-            return document.getElementById("btn_user");
         },
         currentPath : null,
         captchaResult : null

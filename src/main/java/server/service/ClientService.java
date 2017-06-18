@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 import server.model.Client;
 import server.repository.ClientRepository;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -33,14 +37,21 @@ public class ClientService {
 
     public Client findByToken(String Token){
         List<Client> clients = clientRepository.findByToken(Token);
-        return (clients.size() == 0) ? null : clients.get(0);
+
+        if(clients.size() > 0){
+            boolean available = tokenAvailable(clients.get(0));
+            if(available == true){
+                return clients.get(0);
+            }
+            return null;
+        }
+        return null;
     }
 
     public Client login(String email, String password){
         List<Client> clients = clientRepository.login(email, password);
 
         if(clients.size() >= 0){
-            //tokenAvailable
             return clients.get(0);
         } else {
             return null;
@@ -64,36 +75,37 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
-    public boolean tokenAvailable(String token){
-
-        Client client    = findByToken(token);
+    public boolean tokenAvailable(Client client){
         Date currentDate = new Date();
 
         long diff        = Math.abs(currentDate.getTime() - client.getTokenDate().getTime());
-        long diffMinutes = diff / (60 * 1000) % 60;
+        long diffMinutes = diff / 60000 % 60;
         long diffHours   = diff / 3600000;
 
-        if(diffHours <= 0 && diffMinutes < 15)
+        if(diffHours <= 0 && diffMinutes < 15){
             return true;
-        else
+        } else {
             return false;
-
+        }
     }
 
-    public boolean tokenExists(String token){
+    public boolean tokenExists(String token, Date token_date){
         Client client = findByToken(token);
-
-        if(client != null)
+        if(client != null){
             return true;
-        else
+        } else {
             return false;
-
+        }
     }
 
     public void generateToken(Client client){
         client.setToken(UUID.randomUUID().toString());
         Date dateToken = new Date();
         client.setTokenDate(dateToken);
+        boolean tokenExists = tokenExists(client.getToken(), client.getTokenDate());
+        if(tokenExists(client.getToken(), client.getTokenDate()) == true) {
+            this.generateToken(client);
+        }
     }
 
     public void updateTokenDate(Client client){

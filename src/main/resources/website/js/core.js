@@ -29,7 +29,7 @@
 
         utils.manageImages(data.viewList.contact.listImage);
         utils.viewManager.reloadPage();
-        utils.viewManager.addSignInButton();
+        utils.viewManager.addContextualMenuButtons();
         utils.viewManager.manageMenuButtons();
         
         utils.include(data.viewList.accueil.viewPath, data.viewList.accueil.name);
