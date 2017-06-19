@@ -118,14 +118,20 @@ public class ClientController {
 
             return client.getTokenDate();
         } else {
-            throw new IllegalArgumentException("Token not available");
+            return null;
         }
     }
 
     @RequestMapping(path = "/getByToken", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public Client getClientByToken(@RequestParam String token){
-        return clientService.findByToken(token);
+        Client client = clientService.findByToken(token);
+
+        if(client != null){
+            return clientService.findByToken(token);
+        }
+
+        return null;
     }
 }
 

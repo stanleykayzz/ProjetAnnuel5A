@@ -8,12 +8,14 @@
 
     Core.service.client.login = function () {
         return {
+            name   : "login",
             method : "GET",
-                url : "/client/login",
-                func : function (clt) {
+            url    : "/client/login",
+            func : function (clt) {
                 window.client = new Core.class.client(clt);
-                utils.viewManager.switchView("accueil");
                 client.createSessionStorage(client.token, client.tokenDate);
+                utils.viewManager.switchView("accueil");
+                Core.utils.viewManager.addContextualMenuButtons();
             },
             error : function(statusCode){
                 document.getElementById("error_container").textContent = "Identifiants incorrects";
@@ -26,6 +28,7 @@
 
     Core.service.client.signup = function () {
         return {
+            name : "signup",
             method : "POST",
             url : "/client",
             func : function (clt) {
@@ -58,12 +61,14 @@
 
     Core.service.client.logout = function () {
         return {
+            name : "logout",
             method : "GET",
             url : "/client/logout",
             func : function () {
                 Core.class.client.removeSessionStorage();
                 window.client = null;
                 utils.viewManager.switchView("accueil");
+                Core.utils.viewManager.addContextualMenuButtons();
             },
             error : function(statusCode){
             }
@@ -72,6 +77,7 @@
 
     Core.service.client.update = function () {
         return {
+            name : "update",
             method : "POST",
             url : "/client/update",
             func : function (clt) {
@@ -86,31 +92,33 @@
 
     Core.service.client.reloadToken = function () {
         return {
+            name : "reloadToken",
             method : "GET",
             url : "/client/reloadToken",
             func : function (newTokenDate) {
                 client.tokenDate = newTokenDate;
                 client.createSessionStorage(client.tokenDate);
+                utils.viewManager.addContextualMenuButtons();
             },
             error : function(statusCode){
-                console.log("erreur");
                 Core.class.client.removeSessionStorage();
-                utils.viewManager.addContextualMenuButtons();
+                window.client = null;
+                utils.viewManager.switchView("user");
+                utils.viewManager.addContextualMenuButtons();                
             }
         };
     };
 
     Core.service.client.getClientByToken = function () {
         return {
+            name : "getClientByToken",
             method : "GET",
             url : "/client/getByToken",
             func : function (clt) {
                 window.client = new Core.class.client(clt);
             },
             error : function(statusCode){
-                console.log("erreur get by token");
                 Core.class.client.removeSessionStorage();
-                utils.viewManager.addContextualMenuButtons();
             }
         };
     };

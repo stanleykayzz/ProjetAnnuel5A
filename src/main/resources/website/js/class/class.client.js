@@ -43,14 +43,14 @@
         var paramRequest = "token=" + token;
 
         if(token !== null && token !== undefined)
-            utils.ajaxRequest(Core.service.client.getClientByToken(), paramRequest, null);
+            utils.ajaxRequest(Core.service.client.getClientByToken(), paramRequest, null, true);
     };
 
     //Prototype function
 
     Core.class.client.prototype.logout = function () {
         var paramRequest = "token="+ window.client.token;
-        utils.ajaxRequest(Core.service.client.logout(), paramRequest, null);
+        utils.ajaxRequest(Core.service.client.logout(), paramRequest, null, false);
     };
 
     Core.class.client.prototype.update = function (client) {
@@ -81,6 +81,6 @@
 
     Core.class.client.prototype.reloadTokenDate = function (token) {
         var paramRequest = "token="+ window.client.token;
-        utils.ajaxRequest(Core.service.client.reloadToken(), paramRequest, client);
+        utils.ajaxRequest(Core.service.client.reloadToken(), paramRequest, client, true);
     };
 })();

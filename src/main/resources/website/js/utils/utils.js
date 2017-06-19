@@ -8,7 +8,7 @@
     var _eventHandlers = {};
     var _timeoutsID = [];
 
-    Core.utils.ajaxRequest = function (objectService, paramRequest, paramBody) {
+    Core.utils.ajaxRequest = function (objectService, paramRequest, paramBody, option) {
         var requestUrl, requestBody;
 
         var initVariables = function () {
@@ -27,10 +27,14 @@
         xhr.open(objectService.method, requestUrl , false);
         xhr.setRequestHeader('Content-type', 'application/json');
 
-        xhr.onload = function (res) {
+        xhr.onload = function (re) {
             if(xhr.status === 200 || xhr.status === 201){
-                var response = JSON.parse(this.responseText);
-                objectService.func(response);
+                if(option === true && (this.responseText == undefined || this.responseText == "")){
+                    objectService.error(xhr.status);
+                } else {
+                    var response = JSON.parse(this.responseText);
+                    objectService.func(response);
+                }
             } else {
                 objectService.error(xhr.status);
             }
