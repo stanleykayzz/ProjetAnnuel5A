@@ -24,6 +24,21 @@ footer{
 	background-color: black;
 }
 
+.main_menu{
+	background-color: white!important;
+	opacity: 0.8!important;;
+	width: 100%!important;
+	padding: 0!important;
+}
+
+.title_menu_main_a{
+	color: black!important;
+}
+
+.title_menu_main_a:hover{
+	color: #337ab7!important;
+}
+
 .signup_error {
 	border: red;
 }

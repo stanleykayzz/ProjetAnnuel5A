@@ -97,6 +97,7 @@
 
             baliseA = document.createElement("a");
             baliseA.id = id;
+            baliseA.className = "title_menu_main_a";
             baliseA.textContent = content;
 
             baliseLi.appendChild(baliseA);
