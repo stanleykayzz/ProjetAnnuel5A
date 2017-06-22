@@ -27,7 +27,7 @@
                         var tmID = setTimeout(function(){
                             Core.utils.empty(data.getIncludeContainer());
                             utils.viewManager.switchView("confirmation");
-                        }, 8000);
+                        }, 5000);
                     }();
                 }();
                 //client.createSessionStorage(client.token, client.tokenDate);
@@ -113,8 +113,7 @@
             func : function (newTokenDate) {
                 client.tokenDate = newTokenDate;
                 client.createSessionStorage(client.tokenDate);
-                utils.viewManager.addContextualMenuButtons();
-            },
+             },
             error : function(statusCode){
                 Core.class.client.removeSessionStorage();
                 window.client = null;
@@ -146,6 +145,8 @@
             func : function (clt) {
                 window.client = new Core.class.client(clt);
                 client.createSessionStorage(client.token, client.tokenDate);
+                utils.viewManager.switchView("accueil");
+                utils.viewManager.addContextualMenuButtons();
             },
             error : function(statusCode){
                 //Core.class.client.removeSessionStorage();
