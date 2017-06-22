@@ -14,6 +14,7 @@ import springfox.documentation.spring.web.json.Json;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @CrossOrigin(origins = "http://localhost:63342")
 @RestController
@@ -35,14 +36,13 @@ public class ClientController {
     @ResponseStatus(value = HttpStatus.OK)
     public Client login(@RequestParam("email") String email, @RequestParam("password") String password) {
 
+        int randomCode = ThreadLocalRandom.current().nextInt(0, 9999);
         emailService.sendSimpleMessage("mollard.maxime75@gmail.com",
-                "hello", password);
-        String hashPsd = ClientUtils.hashPassword(password);
-
+                "Your code", String.valueOf(randomCode));
         //String pswd = ClientUtils.encryptPassword(password);
-        Client client = clientService.login(email, hashPsd);
+        Client client = clientService.login(email, ClientUtils.hashPassword(password));
         if (client != null) {
-            clientService.generateToken(client);
+            client.setCode(String.valueOf(randomCode));
             clientService.updateClient(client);
 
             return client;
@@ -138,6 +138,21 @@ public class ClientController {
 
         if (client != null) {
             return clientService.findByToken(token);
+        }
+
+        return null;
+    }
+
+    @RequestMapping(path = "/confirmation", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public Client confirmation(@RequestParam("email") String email, @RequestParam("password") String password, @RequestParam String code) {
+        Client client = clientService.confirmation(email, ClientUtils.hashPassword(password), code);
+
+        if (client != null) {
+            clientService.generateToken(client);
+            clientService.updateClient(client);
+
+            return client;
         }
 
         return null;
