@@ -4,16 +4,18 @@
 <head>    
     <meta charset="utf-8">
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-    <meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8;"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Réservation de chambres simple, double, suite sénior et suite junior.
     Restaurant, bar et mini-golf vous attendent sur notre site. Venez découvrir les résidences des hauts de Menaye, Franceville (Gabon). Vous pouvez nous contacter pour plus d'informations. ">
     <meta name="author" content="">
     <meta name="keywords" content="Hotel, Gabon, Franceville, Résidence, Hauts,Menaye, chambre, suite"/>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/clean-blog.min.js"></script>
+    <script src="lib/sha256.min.js"></script>
 
     <!-- Main Scripts -->
     <script src="js/core.js"></script>
@@ -21,16 +23,19 @@
     <script src="js/utils/utils.viewManager.js"></script>
     <script src="js/class/class.client.js"></script>
     <script src="js/data.js"></script>
+    <script src="js/service/service.js"></script>
+    <script src="js/service/service.client.js"></script>
     <!-- End -->
     <title>Résidence des hauts de Menaye - Accueil</title>
-     <link href="./css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- Bootstrap Core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- On rajoute le favicon -->
     <link rel="icon" href="/img/fav.png" />
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,45 +49,44 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--<a class="navbar-brand" href="index.html">Logo <!--<img src="img/minilogo.png"/>-></a>-->
-            </div>
+        <div class="main_menu">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--<a class="navbar-brand" href="index.html">Logo <!--<img src="img/minilogo.png"/>-></a>-->
+                </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul id="ul_menu" class="nav navbar-nav navbar-right">
-                    <li class="title_menu_main">
-                        <a id="btn_index" href="#">Accueil</a>
-                    </li>
 
-                     <li class="title_menu_main">
-                        <a id="btn_about" href="#">A propos de RHM</a>
-                    </li> 
+                <div class=" navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul id="ul_menu" class="nav navbar-nav navbar-right">
+                        <li class="title_menu_main">
+                            <a id="btn_index" class="title_menu_main_a" href="#">Accueil</a>
+                        </li>
 
-                     <li class="title_menu_main">
-                        <a id="btn_restaurant" href="#">Restaurant & Bar</a>
-                    </li>
+                         <li class="title_menu_main">
+                            <a id="btn_about" class="title_menu_main_a" href="#">A propos de RHM</a>
+                        </li>
 
-                    <li class="title_menu_main">
-                        <a id="btn_room" href="#">Chambres</a>
-                    </li>
+                         <li class="title_menu_main">
+                            <a id="btn_restaurant" class="title_menu_main_a" href="#">Restaurant & Bar</a>
+                        </li>
 
-                    <li class="title_menu_main">
-                        <a id="btn_user" href="#"></a>
-                    </li>
+                        <li class="title_menu_main">
+                            <a id="btn_room" class="title_menu_main_a" href="#">Chambres</a>
+                        </li>
 
-                    <li class="title_menu_main">
-                        <a id="btn_contact" href="#">Contact</a>
-                    </li>                    
-                </ul>
+                        <li class="title_menu_main">
+                            <a id="btn_contact" class="title_menu_main_a" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <!-- /.navbar-collapse -->
         </div>
