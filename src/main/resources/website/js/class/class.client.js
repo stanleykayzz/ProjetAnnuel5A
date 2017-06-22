@@ -25,7 +25,10 @@
     };
 
     Core.class.client.login = function (email, password) {
+        var hash = sha256.update(password);
+        //var paramRequest = "email="+email+"&password="+hash.toString();
         var paramRequest = "email="+email+"&password="+password;
+
         utils.ajaxRequest(Core.service.client.login(), paramRequest, null);
     };
 

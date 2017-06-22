@@ -211,20 +211,30 @@
         return false;
     };
 
+    /**
+     * Facade pattern
+     *
+     * @param node
+     * @param event
+     * @param handler
+     * @param capture
+     */
     Core.utils.addListener = function (node, event, handler, capture) {
         if(!(node in _eventHandlers)) {
-            // _eventHandlers stores references to nodes
             _eventHandlers[node] = {};
         }
         if(!(event in _eventHandlers[node])) {
-            // each entry contains another entry for each event type
             _eventHandlers[node][event] = [];
         }
-        // capture reference
         _eventHandlers[node][event].push([handler, capture]);
         node.addEventListener(event, handler, capture);
     };
 
+    /**
+     *
+     * @param node
+     * @param event
+     */
     Core.utils.removeListener = function (node, event) {
         if(node in _eventHandlers) {
             var handlers = _eventHandlers[node];
@@ -238,6 +248,11 @@
         }
     };
 
+    /**
+     *
+     * @param e
+     * @returns {boolean}
+     */
     Core.utils.pauseEvent = function (e){
         if(e.stopPropagation) e.stopPropagation();
         if(e.preventDefault) e.preventDefault();

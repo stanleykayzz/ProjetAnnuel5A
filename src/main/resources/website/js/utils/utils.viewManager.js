@@ -160,6 +160,11 @@
                 captchaElement = document.getElementById("captchaID");
             }();
             var showViewEvents = function () {
+
+                var manageBirthday = function () {
+
+                }();
+
                 utils.removeListener(showLoginBtn, "click");
                 utils.addListener(showLoginBtn, "click", function () {
                     document.getElementById("error_container").textContent = "";
@@ -345,7 +350,7 @@
                 }, false);
             }();
         };
-        var viewUpdate = function () {
+        var viewUpdateAccount = function () {
             var name, firstName, birthday, email, phone,
                 country, city, address, postalCode, password;
             var validation = true;
@@ -437,7 +442,7 @@
                 client.logout();
                 break;
             case "update" :
-                viewUpdate();
+                viewUpdateAccount();
                 break;
         }
     };

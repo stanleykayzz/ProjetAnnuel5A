@@ -42,7 +42,6 @@ public class ClientController {
         }
     }
 
-
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteClient(@RequestParam() String token){
@@ -54,7 +53,6 @@ public class ClientController {
             //Request example : http://localhost:8080/client?token=2ca5f8a5-40b6-4e16-9899-c0201c68d347
         }*/
     }
-
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
