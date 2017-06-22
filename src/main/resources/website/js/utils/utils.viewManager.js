@@ -81,7 +81,9 @@
         if(pageObject !== null){
             Core.class.client.reloadClient();            
             Core.utils.empty(data.getIncludeContainer());
+
             utils.include(pageObject.viewPath, pageObject.name);
+
             data.currentPath = pageObject.viewPath;
         }
     };
@@ -431,7 +433,14 @@
 
             Core.class.client.update(client);
         };
-
+        var viewConfirmation = function () {
+            var btn_code = document.getElementById("btn_code");
+            var ipt_code = document.getElementById("codeBtn");
+            utils.addListener(btn_code, "click", function () {
+                console.log("click conf");
+                Core.class.client.confirmation(client.email, ipt_code.value);
+            }, false);
+        };
         switch (viewName){
             case "connexion" :
                 viewSignin();
@@ -443,7 +452,7 @@
                 viewUpdate();
                 break;
             case "confirmation":
-                client.confirmation();
+                viewConfirmation();
                 break;
         }
     };

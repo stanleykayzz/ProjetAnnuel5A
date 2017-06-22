@@ -19,20 +19,18 @@
                     utils.empty(data.getIncludeContainer());
                     data.getIncludeContainer().innerHTML = ""+
                         "<div style='display: inline-block; width: 100%; color: #3c763d; text-align: center; padding-bottom: 40px;'>"+
-                        "</br>Inscription réussi, vous allez être redirigé vers la page de confirmation."+
+                        "</br>Veuillez saisir le code pour valider l'email."+
                         "</h2></div>";
                 }();
                 var redirection = function () {
                     var timeOut = function(){
                         var tmID = setTimeout(function(){
                             Core.utils.empty(data.getIncludeContainer());
-                            utils.include(pageObject.viewPath, pageObject.name);
+                            utils.viewManager.switchView("confirmation");
                         }, 8000);
                     }();
                 }();
-                client.createSessionStorage(client.token, client.tokenDate);
-                utils.viewManager.switchView("accueil");
-                Core.utils.viewManager.addContextualMenuButtons();
+                //client.createSessionStorage(client.token, client.tokenDate);
             },
             error : function(statusCode){
                 document.getElementById("error_container").textContent = "Identifiants incorrects";
@@ -147,9 +145,10 @@
             url : "/client/confirmation",
             func : function (clt) {
                 window.client = new Core.class.client(clt);
+                client.createSessionStorage(client.token, client.tokenDate);
             },
             error : function(statusCode){
-                Core.class.client.removeSessionStorage();
+                //Core.class.client.removeSessionStorage();
             }
         };
     };

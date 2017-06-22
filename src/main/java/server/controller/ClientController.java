@@ -41,6 +41,7 @@ public class ClientController {
 
         //String pswd = ClientUtils.encryptPassword(password);
         Client client = clientService.login(email, hashPsd);
+        System.out.println(client.getName());
         if (client != null) {
             clientService.generateToken(client);
             clientService.updateClient(client);

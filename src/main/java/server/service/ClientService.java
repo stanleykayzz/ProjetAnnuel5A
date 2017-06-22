@@ -49,6 +49,7 @@ public class ClientService {
     }
 
     public Client login(String email, String password){
+        System.out.println(password);
         List<Client> clients = clientRepository.login(email, password);
 
         if(clients.size() > 0){

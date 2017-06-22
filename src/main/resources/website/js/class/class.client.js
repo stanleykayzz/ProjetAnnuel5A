@@ -38,8 +38,11 @@
         window.sessionStorage.removeItem("token_date");
     };
 
-    Core.class.client.confirmation = function (client) {
-        utils.ajaxRequest(Core.service.client.signup(), null, client);
+    Core.class.client.confirmation = function (email, password, code) {
+        var paramRequest = "email=" + email + "&password=" + password + "&code="+code;
+
+        console.log(paramRequest);
+        //utils.ajaxRequest(Core.service.client.signup(), paramRequest, null);
     };
 
     Core.class.client.reloadClient = function () {
