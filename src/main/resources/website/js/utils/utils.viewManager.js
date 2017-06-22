@@ -73,6 +73,9 @@
             case "update" :
                 pageObject = data.viewList.update;
                 break;
+            case "confirmation" :
+                pageObject = data.viewList.confirmation;
+                break;
         }
 
         if(pageObject !== null){
@@ -438,6 +441,9 @@
                 break;
             case "update" :
                 viewUpdate();
+                break;
+            case "confirmation":
+                client.confirmation();
                 break;
         }
     };

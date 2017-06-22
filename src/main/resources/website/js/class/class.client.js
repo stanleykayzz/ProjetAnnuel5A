@@ -38,6 +38,10 @@
         window.sessionStorage.removeItem("token_date");
     };
 
+    Core.class.client.confirmation = function (client) {
+        utils.ajaxRequest(Core.service.client.signup(), null, client);
+    };
+
     Core.class.client.reloadClient = function () {
         var token = window.sessionStorage.getItem("token");
         var paramRequest = "token=" + token;

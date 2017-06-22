@@ -54,6 +54,11 @@
                 name      : "update",
                 viewPath  : "compte.html",
                 listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
+            },
+            confirmation : {
+                name      : "confirmation",
+                viewPath  : "confirmation.html",
+                listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
             }
         },
         basicUrl   : "http://localhost:8080",

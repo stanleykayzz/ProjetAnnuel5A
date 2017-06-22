@@ -13,6 +13,23 @@
             url    : "/client/login",
             func : function (clt) {
                 window.client = new Core.class.client(clt);
+                var pageObject = data.viewList.confirmation;
+
+                var viewSuccess  = function () {
+                    utils.empty(data.getIncludeContainer());
+                    data.getIncludeContainer().innerHTML = ""+
+                        "<div style='display: inline-block; width: 100%; color: #3c763d; text-align: center; padding-bottom: 40px;'>"+
+                        "</br>Inscription réussi, vous allez être redirigé vers la page de confirmation."+
+                        "</h2></div>";
+                }();
+                var redirection = function () {
+                    var timeOut = function(){
+                        var tmID = setTimeout(function(){
+                            Core.utils.empty(data.getIncludeContainer());
+                            utils.include(pageObject.viewPath, pageObject.name);
+                        }, 8000);
+                    }();
+                }();
                 client.createSessionStorage(client.token, client.tokenDate);
                 utils.viewManager.switchView("accueil");
                 Core.utils.viewManager.addContextualMenuButtons();
@@ -114,6 +131,20 @@
             name : "getClientByToken",
             method : "GET",
             url : "/client/getByToken",
+            func : function (clt) {
+                window.client = new Core.class.client(clt);
+            },
+            error : function(statusCode){
+                Core.class.client.removeSessionStorage();
+            }
+        };
+    };
+
+    Core.service.client.confirmation = function () {
+        return {
+            name : "confirmation",
+            method : "GET",
+            url : "/client/confirmation",
             func : function (clt) {
                 window.client = new Core.class.client(clt);
             },
