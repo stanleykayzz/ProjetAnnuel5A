@@ -17,6 +17,7 @@ public class ClientUtils {
             digest = MessageDigest.getInstance("SHA-256");
             byte[] encodedhash = digest.digest(
                     password.getBytes(StandardCharsets.UTF_8));
+            System.out.println(bytesToHex(encodedhash));
             return bytesToHex(encodedhash);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

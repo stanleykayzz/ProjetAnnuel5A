@@ -1,20 +1,18 @@
 package server.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import server.exception.BadCode;
-import server.exception.BadPassword;
-import server.exception.UserExist;
-import server.exception.UserNotFound;
-import server.mail.EmailServiceImpl;
 import server.model.Client;
 import server.utils.ClientUtils;
 import server.service.ClientService;
+import springfox.documentation.spring.web.json.Json;
 
 import java.util.Date;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:63342")
 @RestController
@@ -24,9 +22,6 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @Autowired
-    public EmailServiceImpl emailService;
-
     /*@RequestMapping(method = RequestMethod.GET)
     public List<Client> getAll() {
         return clientService.getAll();
@@ -34,17 +29,17 @@ public class ClientController {
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Client login(@RequestParam("email") String email, @RequestParam("password") String password) throws UserNotFound {
+    public Client login(@RequestParam("email") String email, @RequestParam("password") String password){
         String pswd = ClientUtils.hashPassword(password);
+        System.out.println(pswd);
         Client client = clientService.login(email, pswd);
-
         if(client != null){
             clientService.generateToken(client);
             clientService.updateClient(client);
 
             return client;
         } else {
-            throw new UserNotFound();
+            return null;
         }
     }
 
@@ -62,48 +57,44 @@ public class ClientController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Client addClient(@RequestBody Client client) throws UserExist {
+    public Client addClient(@RequestBody Client client) throws Exception {
         boolean clientExist = clientService.findByEmail(client.getEmail());
 
         if(!clientExist){
-            int randomCode = ThreadLocalRandom.current().nextInt(0, 9999);
-            emailService.sendSimpleMessage(client.getEmail(), "Code de confirmation d'adresse email.", String.valueOf(randomCode));
             String pswd = ClientUtils.hashPassword(client.getPassword());
             client.setStatus(0);
-            client.setCode(String.valueOf(randomCode));
             client.setPassword(pswd.toString());
             return clientService.addClient(client);
         } else {
-            throw new UserExist();
+            return null;
         }
     }
 
+
     @RequestMapping(path = "/update",method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
-    public Client updateClient(@RequestBody Client newClient, @RequestParam String token, @RequestParam String password) throws UserNotFound, BadPassword {
+    public Client updateClient(@RequestBody Client newClient, @RequestParam String token, @RequestParam String password) throws Exception {
         Client client = clientService.findByToken(token);
         String psw = ClientUtils.hashPassword(password);
-
         if(client != null) {
-             if(client.getPassword().equals(psw)){
+            if(client.getPassword() == psw.toString()){
                 client.setPhone(newClient.getPhone());
                 client.setCountry(newClient.getCountry());
                 client.setCity(newClient.getCity());
                 client.setAddress(newClient.getAddress());
                 client.setPostalCode(newClient.getPostalCode());
-                client.setPassword(ClientUtils.hashPassword(newClient.getPassword()));
+                client.setPassword(ClientUtils.hashPassword(newClient.getPassword()).toString());
 
                 clientService.updateTokenDate(client);
                 clientService.updateClient(client);
 
-                return client;
-            } else {
-                throw new BadPassword();
+                return clientService.findByToken(token);
             }
-        } else {
-            throw new UserNotFound();
+            return null;
         }
+        return null;
     }
+
 
     @RequestMapping(path = "/logout", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
@@ -140,32 +131,6 @@ public class ClientController {
         }
 
         return null;
-    }
-
-    @RequestMapping(path = "/confirmation", method = RequestMethod.GET)
-    @ResponseStatus(value = HttpStatus.OK)
-    public Client confirmation(@RequestParam("email") String email, @RequestParam String code) throws BadCode {
-        Client client = clientService.confirmation(email, code);
-
-        if (client != null) {
-            clientService.generateToken(client);
-            client.setCode("OK");
-            clientService.updateClient(client);
-
-            return client;
-        } else {
-            throw new BadCode();
-        }
-    }
-
-    @RequestMapping(path = "/passwordRecovery", method = RequestMethod.GET)
-    @ResponseStatus(value = HttpStatus.OK)
-    public void passwordRecovery(@RequestParam("email") String email) throws BadCode {
-        boolean clientExist = clientService.findByEmail(email);
-
-        if(clientExist)
-            clientService.passwordRecovery(email);
-
     }
 }
 
