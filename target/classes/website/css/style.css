@@ -19,9 +19,9 @@ footer{
 }
 
 #account_form{
-	width: 100%;
-	height: 100%;
-	background-color: black;
+	display: inline-block;
+	text-align: left;
+	margin: auto;
 }
 
 .main_menu{
@@ -49,6 +49,11 @@ footer{
 	text-align: center;
 }
 .user_infos{
+	display: block;
+	padding: 0 0 10px 0;
+	font: 18px Lora,'Times New Roman',serif;
+}
+
+.user_infos_values{
 	display: inline-block;
-	width: 49.5%;
 }

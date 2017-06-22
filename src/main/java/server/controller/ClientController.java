@@ -30,7 +30,8 @@ public class ClientController {
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public Client login(@RequestParam("email") String email, @RequestParam("password") String password){
-        String pswd = ClientUtils.encryptPassword(password);
+        String pswd = ClientUtils.hashPassword(password);
+        System.out.println(pswd);
         Client client = clientService.login(email, pswd);
         if(client != null){
             clientService.generateToken(client);
@@ -60,9 +61,9 @@ public class ClientController {
         boolean clientExist = clientService.findByEmail(client.getEmail());
 
         if(!clientExist){
-            String pswd = ClientUtils.encryptPassword(client.getPassword());
+            String pswd = ClientUtils.hashPassword(client.getPassword());
             client.setStatus(0);
-            client.setPassword(pswd);
+            client.setPassword(pswd.toString());
             return clientService.addClient(client);
         } else {
             return null;
@@ -74,15 +75,15 @@ public class ClientController {
     @ResponseStatus(value = HttpStatus.OK)
     public Client updateClient(@RequestBody Client newClient, @RequestParam String token, @RequestParam String password) throws Exception {
         Client client = clientService.findByToken(token);
-        String psw = ClientUtils.encryptPassword(password);
+        String psw = ClientUtils.hashPassword(password);
         if(client != null) {
-            if(client.getPassword() == psw){
+            if(client.getPassword() == psw.toString()){
                 client.setPhone(newClient.getPhone());
                 client.setCountry(newClient.getCountry());
                 client.setCity(newClient.getCity());
                 client.setAddress(newClient.getAddress());
                 client.setPostalCode(newClient.getPostalCode());
-                client.setPassword(ClientUtils.encryptPassword(newClient.getPassword()));
+                client.setPassword(ClientUtils.hashPassword(newClient.getPassword()).toString());
 
                 clientService.updateTokenDate(client);
                 clientService.updateClient(client);
