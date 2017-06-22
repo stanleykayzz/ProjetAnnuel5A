@@ -8,15 +8,7 @@
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
 
-    Core.utils.crypto.exclusiveOR = function (x, y) {
-        var result = new Uint8Array(x.length);
-        for (var i = 0; i < x.length; i++) {
-            result[i] = x[i] ^ y[i];
-        }
-        return result;
-    };
-
-    Core.utils.crypto.exclusiveOR = function (x, y) {
+    Core.utils.crypto.XOR = function (x, y) {
         var result = new Uint8Array(x.length);
         for (var i = 0; i < x.length; i++) {
             result[i] = x[i] ^ y[i];
@@ -50,11 +42,9 @@
         }
 
         for (var numBloc = 0; numBloc < aChiffrer.length; numBloc++) {
-            // 1ère phase
             var result1 = new Uint8Array(TAILLE_BLOC);
-            result1 = self.exclusiveOR(iv, aChiffrer[numBloc]);
-            // 2ème phase
-            var result2 = Core.utils.crypto.exclusiveOR(result1, uneCle);
+            result1 = Core.utils.crypto.XOR(iv, aChiffrer[numBloc]);
+            var result2 = Core.utils.crypto.XOR(result1, uneCle);
             chiffre[numBloc] = new Uint8Array(TAILLE_BLOC);
             for (var i = 0; i < TAILLE_BLOC; i++) {
                 chiffre[numBloc][i] = result2[i];
@@ -86,7 +76,7 @@
         return result;
     };
 
-    Core.utils.crypto.getCbc = function () {
+    Core.utils.crypto.getCbc = function (password) {
         var key = new Uint8Array(TAILLE_BLOC);
 
         key[0] = 55;
@@ -94,7 +84,7 @@
         key[2] = 77;
         key[3] = 88;
 
-        return  Core.utils.crypto.chiffrer(key, Core.utils.crypto.stringToByteArray("heroes of the storm"));
+        return  Core.utils.crypto.chiffrer(key, Core.utils.crypto.stringToByteArray(password));
     };
 
 })();

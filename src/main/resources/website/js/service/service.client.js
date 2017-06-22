@@ -14,7 +14,7 @@
             func : function (clt) {
                 window.client = new Core.class.client(clt);
                 var pageObject = data.viewList.confirmation;
-                console.log(Core.utils.crypto.getCbc());
+                
                 /*var viewSuccess  = function () {
                     utils.empty(data.getIncludeContainer());
                     data.getIncludeContainer().innerHTML = ""+

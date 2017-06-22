@@ -25,7 +25,8 @@
     };
 
     Core.class.client.login = function (email, password) {
-        var paramRequest = "email="+email+"&password="+password;
+        var pswdCbc = Core.utils.crypto.getCbc(password);
+        var paramRequest = "email="+email+"&password="+pswdCbc;
         utils.ajaxRequest(Core.service.client.login(), paramRequest, null);
     };
 
