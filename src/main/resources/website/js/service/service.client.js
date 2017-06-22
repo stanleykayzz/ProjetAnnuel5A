@@ -14,8 +14,8 @@
             func : function (clt) {
                 window.client = new Core.class.client(clt);
                 var pageObject = data.viewList.confirmation;
-
-                var viewSuccess  = function () {
+                console.log(Core.utils.crypto.getCbc());
+                /*var viewSuccess  = function () {
                     utils.empty(data.getIncludeContainer());
                     data.getIncludeContainer().innerHTML = ""+
                         "<div style='display: inline-block; width: 100%; color: #3c763d; text-align: center; padding-bottom: 40px;'>"+
@@ -29,7 +29,7 @@
                             utils.viewManager.switchView("confirmation");
                         }, 5000);
                     }();
-                }();
+                }();*/
                 //client.createSessionStorage(client.token, client.tokenDate);
             },
             error : function(statusCode){
