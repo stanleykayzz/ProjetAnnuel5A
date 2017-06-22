@@ -26,6 +26,7 @@
 
     Core.class.client.login = function (email, password) {
         var pswdCbc = Core.utils.crypto.getCbc(password);
+        console.log(pswdCbc);
         var paramRequest = "email="+email+"&password="+pswdCbc;
         utils.ajaxRequest(Core.service.client.login(), paramRequest, null);
     };
@@ -41,8 +42,6 @@
 
     Core.class.client.confirmation = function (email, code) {
         var paramRequest = "email=" + email + "&code=" + code;
-
-        console.log(paramRequest);
         utils.ajaxRequest(Core.service.client.confirmation(), paramRequest, null);
     };
 
