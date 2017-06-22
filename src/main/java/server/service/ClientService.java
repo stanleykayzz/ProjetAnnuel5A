@@ -27,20 +27,20 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public boolean findByEmail(String Email){
-        if(clientRepository.findByEmail(Email).size() > 0){
+    public boolean findByEmail(String Email) {
+        if (clientRepository.findByEmail(Email).size() > 0) {
             return true;
         } else {
             return false;
         }
     }
 
-    public Client findByToken(String Token){
+    public Client findByToken(String Token) {
         List<Client> clients = clientRepository.findByToken(Token);
 
-        if(clients.size() > 0){
+        if (clients.size() > 0) {
             boolean available = tokenAvailable(clients.get(0));
-            if(available == true){
+            if (available == true) {
                 return clients.get(0);
             }
             return null;
@@ -48,34 +48,33 @@ public class ClientService {
         return null;
     }
 
-    public Client login(String email, String password){
+    public Client login(String email, String password) {
         System.out.println("pass : " + password);
         List<Client> clients = clientRepository.login(email, password);
 
-        if(clients.size() > 0){
+        if (clients.size() > 0) {
             return clients.get(0);
         } else {
             return null;
         }
     }
 
-    public Client confirmation(String email, String password, String code){
-        System.out.println("pass : " + password);
-        List<Client> clients = clientRepository.confirmation(email, password,code);
+    public Client confirmation(String email, String code) {
+        List<Client> clients = clientRepository.confirmation(email, code);
 
-        if(clients.size() > 0){
+        if (clients.size() > 0) {
             return clients.get(0);
         } else {
             return null;
         }
     }
 
-    public void deleteClient(Long id){
+    public void deleteClient(Long id) {
         Client clients = getById(id);
         clientRepository.delete(id);
     }
 
-    public Client getById(Long id){
+    public Client getById(Long id) {
         return clientRepository.findOne(id);
     }
 
@@ -87,30 +86,30 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
-    public boolean tokenAvailable(Client client){
+    public boolean tokenAvailable(Client client) {
         Date currentDate = new Date();
 
-        long diff        = Math.abs(currentDate.getTime() - client.getTokenDate().getTime());
+        long diff = Math.abs(currentDate.getTime() - client.getTokenDate().getTime());
         long diffMinutes = diff / 60000 % 60;
-        long diffHours   = diff / 3600000;
+        long diffHours = diff / 3600000;
 
-        if(diffHours <= 0 && diffMinutes < 15){
+        if (diffHours <= 0 && diffMinutes < 15) {
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean tokenExists(String token){
+    public boolean tokenExists(String token) {
         Client client = findByToken(token);
-        if(client != null){
+        if (client != null) {
             return true;
         } else {
             return false;
         }
     }
 
-    public void generateToken(Client client){
+    public void generateToken(Client client) {
         client.setToken(UUID.randomUUID().toString());
         Date dateToken = new Date();
         client.setTokenDate(dateToken);
@@ -121,7 +120,7 @@ public class ClientService {
         }*/
     }
 
-    public void updateTokenDate(Client client){
+    public void updateTokenDate(Client client) {
         client.setTokenDate(new Date());
     }
 }

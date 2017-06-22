@@ -81,7 +81,10 @@
         if(pageObject !== null){
             Core.class.client.reloadClient();            
             Core.utils.empty(data.getIncludeContainer());
+
             utils.include(pageObject.viewPath, pageObject.name);
+            utils.viewManager.initViewEvents(name);
+
             data.currentPath = pageObject.viewPath;
         }
     };

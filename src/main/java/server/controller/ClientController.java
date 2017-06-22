@@ -37,7 +37,7 @@ public class ClientController {
     public Client login(@RequestParam("email") String email, @RequestParam("password") String password) {
 
         int randomCode = ThreadLocalRandom.current().nextInt(0, 9999);
-        emailService.sendSimpleMessage("mollard.maxime75@gmail.com",
+        emailService.sendSimpleMessage(email,
                 "Your code", String.valueOf(randomCode));
         //String pswd = ClientUtils.encryptPassword(password);
         Client client = clientService.login(email, ClientUtils.hashPassword(password));
@@ -145,8 +145,8 @@ public class ClientController {
 
     @RequestMapping(path = "/confirmation", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Client confirmation(@RequestParam("email") String email, @RequestParam("password") String password, @RequestParam String code) {
-        Client client = clientService.confirmation(email, ClientUtils.hashPassword(password), code);
+    public Client confirmation(@RequestParam("email") String email, @RequestParam String code) {
+        Client client = clientService.confirmation(email, code);
 
         if (client != null) {
             clientService.generateToken(client);
