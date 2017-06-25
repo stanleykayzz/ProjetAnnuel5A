@@ -69,8 +69,11 @@ public class Client {
     @Column(name = "Token_date")
     private Date tokenDate;
 
+    @Column(name = "Code")
+    private String code;
 
-    //--------- GETTERS / SETTERS ---------\\
+
+//--------- GETTERS / SETTERS ---------\\
 
 
     public String getName() {
@@ -181,4 +184,7 @@ public class Client {
         this.password = password;
     }
 
+    public String getCode() { return code; }
+
+    public void setCode(String code) { this.code = code; }
 }

@@ -270,7 +270,11 @@
                             day.style.border = "1px solid rgb(204, 204, 204)";
                         }
 
-                        if(month.value === null || month.value === undefined || month.value === "" || Core.utils.checkDate("month", month.value) === false){
+                        if(month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name")     === null
+                            || month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name") === undefined
+                            || month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name") === ""
+                            || Core.utils.checkDate("month", month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name")) === false){
+
                             validation = false;
                             month.style.border = "1px solid red";
                         } else {
@@ -329,7 +333,7 @@
                     }
 
                     if(validation === true){
-                        birthday = year.value + "-" + month.value + "-" + day.value;
+                        birthday = year.value + "-" + month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name") + "-" + day.value;
                         client = '{'+
                             '"name"       : "'+ lastname.value   +'",'+
                             '"firstName"  : "'+ firstname.value  +'",'+

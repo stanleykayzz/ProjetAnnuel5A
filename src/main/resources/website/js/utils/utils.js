@@ -40,6 +40,10 @@
             }
         };
 
+        xhr.onerror = function (res) {
+            console.log("error xhr");
+        };
+
         xhr.send(requestBody);
     };
 
@@ -154,7 +158,6 @@
                     return true;
                 else
                     return false;
-
                 break;
         } ;
     };

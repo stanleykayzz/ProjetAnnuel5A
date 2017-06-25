@@ -25,7 +25,7 @@
         <dbunit.version>2.5.0</dbunit.version>
         <spring-test-dbunit.version>1.2.1</spring-test-dbunit.version>
     </properties>
-    
+
     <dependencies>
         <!--Spring-->
         <dependency>
@@ -52,6 +52,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!--Email-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>1.4.3.RELEASE</version>
         </dependency>
 
         <!--Database-->
@@ -135,6 +142,7 @@
             <artifactId>json</artifactId>
             <version>20160810</version>
         </dependency>
+
     </dependencies>
 
     <build>

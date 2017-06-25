@@ -1,18 +1,16 @@
 package server.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import server.exception.UserNotFound;
+import server.mail.EmailServiceImpl;
 import server.model.Client;
 import server.utils.ClientUtils;
 import server.service.ClientService;
-import springfox.documentation.spring.web.json.Json;
 
 import java.util.Date;
-import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @CrossOrigin(origins = "http://localhost:63342")
 @RestController
@@ -22,6 +20,9 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
+    @Autowired
+    public EmailServiceImpl emailService;
+
     /*@RequestMapping(method = RequestMethod.GET)
     public List<Client> getAll() {
         return clientService.getAll();
@@ -29,17 +30,17 @@ public class ClientController {
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Client login(@RequestParam("email") String email, @RequestParam("password") String password){
+    public Client login(@RequestParam("email") String email, @RequestParam("password") String password) throws UserNotFound {
         String pswd = ClientUtils.hashPassword(password);
-        System.out.println(pswd);
         Client client = clientService.login(email, pswd);
+
         if(client != null){
             clientService.generateToken(client);
             clientService.updateClient(client);
 
             return client;
         } else {
-            return null;
+            throw new UserNotFound();
         }
     }
 
@@ -61,8 +62,11 @@ public class ClientController {
         boolean clientExist = clientService.findByEmail(client.getEmail());
 
         if(!clientExist){
+            int randomCode = ThreadLocalRandom.current().nextInt(0, 9999);
+            emailService.sendSimpleMessage(client.getEmail(), "Code de confirmation d'adresse email.", String.valueOf(randomCode));
             String pswd = ClientUtils.hashPassword(client.getPassword());
             client.setStatus(0);
+            client.setCode(String.valueOf(randomCode));
             client.setPassword(pswd.toString());
             return clientService.addClient(client);
         } else {
@@ -128,6 +132,22 @@ public class ClientController {
 
         if(client != null){
             return clientService.findByToken(token);
+        }
+
+        return null;
+    }
+
+    @RequestMapping(path = "/confirmation", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public Client confirmation(@RequestParam("email") String email, @RequestParam String code) {
+        Client client = clientService.confirmation(email, code);
+
+        if (client != null) {
+            clientService.generateToken(client);
+            client.setCode("OK");
+            clientService.updateClient(client);
+
+            return client;
         }
 
         return null;
