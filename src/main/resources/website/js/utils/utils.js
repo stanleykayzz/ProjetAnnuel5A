@@ -41,7 +41,7 @@
         };
 
         xhr.onerror = function (res) {
-            console.log("error xhr");
+            objectService.error(xhr.status);
         };
 
         xhr.send(requestBody);
@@ -158,8 +158,9 @@
                     return true;
                 else
                     return false;
+
                 break;
-        } ;
+        };
     };
 
     Core.utils.setDatepickerLanguage = function () {

@@ -12,10 +12,16 @@
             method : "GET",
             url    : "/client/login",
             func : function (clt) {
-                window.client = new Core.class.client(clt);
-                client.createSessionStorage(client.token, client.tokenDate);
-                utils.viewManager.switchView("accueil");
-                Core.utils.viewManager.addContextualMenuButtons();
+                if(clt.code !== "OK"){
+                    Core.utils.empty(data.getIncludeContainer());
+                    utils.viewManager.switchView("confirmation");
+                    window.sessionStorage.setItem("tmp_email", clt.email);
+                } else {
+                    window.client = new Core.class.client(clt);
+                    client.createSessionStorage(client.token, client.tokenDate);
+                    utils.viewManager.switchView("accueil");
+                    Core.utils.viewManager.addContextualMenuButtons();
+                }
             },
             error : function(statusCode){
                 document.getElementById("error_container").textContent = "Identifiants incorrects";
@@ -46,7 +52,7 @@
                         var tmID = setTimeout(function(){
                             Core.utils.empty(data.getIncludeContainer());
                             utils.include(pageObject.viewPath, pageObject.name);
-                        }, 8000);
+                        }, 3500);
                     }();
                 }();
             },
@@ -119,6 +125,28 @@
             },
             error : function(statusCode){
                 Core.class.client.removeSessionStorage();
+            }
+        };
+    };
+
+    Core.service.client.confirmation = function () {
+        return {
+            name : "confirmation",
+            method : "GET",
+            url : "/client/confirmation",
+            func : function (clt) {
+                window.sessionStorage.removeItem("tmp_email");
+                window.client = new Core.class.client(clt);
+                client.createSessionStorage(client.token, client.tokenDate);
+                utils.viewManager.switchView("accueil");
+                utils.viewManager.addContextualMenuButtons();
+            },
+            error : function(statusCode){
+                var error_container = document.getElementById("error_container");
+                error_container.textContent = "Code incorrect.";
+
+                var input_code = document.getElementById("codeBtn");
+                input_code.value = "";
             }
         };
     };
