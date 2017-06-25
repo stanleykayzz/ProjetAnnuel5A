@@ -160,7 +160,7 @@
 
                 utils.removeListener(signupBtn, "click");
                 utils.addListener(signupBtn, "click", function () {
-                    var client, firstname, lastname, email, 
+                    var client, firstname, lastname, sexe, female, male, email,
                         password_1, password_2, day, month, year, birthday, phone,
                         country, city, address, postalcode;
 
@@ -170,6 +170,8 @@
                     var initVariables = function () {
                         firstname  = document.getElementById("signup_name");
                         lastname   = document.getElementById("signup_firstname");
+                        female     = document.getElementById("signup_sexe_female");
+                        male       = document.getElementById("signup_sexe_male");
                         email      = document.getElementById("signup_email");
                         password_1 = document.getElementById("signup_password");
                         password_2 = document.getElementById("signup_password2");
@@ -195,6 +197,17 @@
                             lastname.style.border = "1px solid red";
                         } else {
                             lastname.style.border = "1px solid rgb(204, 204, 204)";
+                        }
+
+                        if(female.checked == false && male.checked == false){
+                            validation = false;
+                            female.style.border = "1px solid red";
+                            male.style.border   = "1px solid red";
+                        } else {
+                            if(female.checked == true)
+                                sexe = 1;
+                            else if(male.checked == true)
+                                sexe = 0;
                         }
 
                         if(utils.emailValidation(email) === false){
@@ -292,6 +305,7 @@
                         client = '{'+
                             '"name"       : "'+ lastname.value   +'",'+
                             '"firstName"  : "'+ firstname.value  +'",'+
+                            '"sexe"       : "'+ sexe             +'",'+
                             '"birthday"   : "'+ birthday         +'",'+
                             '"email"      : "'+ email.value      +'",'+
                             '"phone"      : "'+ phone.value      +'",'+
@@ -302,6 +316,7 @@
                             '"password"   : "'+ password_1.value +'"'+
                         '}';
 
+
                         Core.class.client.signup(client);
                     } else {
                         utils.captcha(captchaElement);
@@ -309,75 +324,58 @@
                 }, false);
             }();
         };
-        var viewUpdateAccount = function () {
+
+        var viewAccount = function () {
             var name, firstName, birthday, email, phone,
-                country, city, address, postalCode, password;
+                country, city, address, postalCode, sexe;
             var validation = true;
 
             var initVariables = function () {
-                name       = window.client.name;
-                firstName  = window.client.firstName;
-                birthday   = window.client.birthday;
-                email      = window.client.email;
-                phone      = document.getElementById("").value;
-                country    = document.getElementById("").value;
-                city       = document.getElementById("").value;
-                address    = document.getElementById("").value;
-                postalCode = document.getElementById("").value;
-                password   = document.getElementById("").value;
+                name       = document.getElementById("user_lastname");
+                firstName  = document.getElementById("user_firstname");
+                birthday   = document.getElementById("user_birthday");
+                email      = document.getElementById("user_email");
+                phone      = document.getElementById("user_tel");
+                country    = document.getElementById("user_country");
+                city       = document.getElementById("user_city");
+                address    = document.getElementById("user_address");
+                postalCode = document.getElementById("user_postal_code");
+                sexe       = document.getElementById("user_sexe");
             }();
-            var verifValues = function () {
-                if(utils.emailValidation(email) === false){
-                    validation = false;
+            var setContent  = function () {
+                name.textContent       = client.name;
+                firstName.textContent  = client.firstName;
+                birthday.textContent   = client.birthday;
+                email.textContent      = client.email;
+                phone.textContent      = client.phone;
+                country.textContent    = client.country;
+                city.textContent       = client.city;
+                address.textContent    = client.address;
+                postalCode.textContent = client.postalCode;
 
-                } else {
+                if(client.sexe == 0)
+                    sexe.textContent = "Homme";
+                else if(client.sexe == 1)
+                    sexe.textContent = "Femme";
+             }();
+            var viewEvents = function () {
+                var btn_update, btn_delete;
+                var container_account, container_update;
 
-                }
+                btn_update = document.getElementById("btn_update");
+                btn_delete = document.getElementById("btn_delete");
 
-                if(password.length < 6){
-                    validation = false;
+                container_account = document.getElementById("show_account");
+                container_update  = document.getElementById("show_update");
 
-                } else {
-
-                }
-
-                if(phone === null || phone === undefined || phone === ""){
-                    validation = false;
-
-                } else {
-
-                }
-
-                if(country === null || country === undefined || country === ""){
-                    validation = false;
-
-                } else {
-
-                }
-
-                if(city === null || city === undefined || city === ""){
-                    validation = false;
-
-                } else {
-
-                }
-
-                if(address === null || address === undefined || address === ""){
-                    validation = false;
-
-                } else {
-
-                }
-
-                if(postalCode === null || postalCode === undefined || postalCode === ""){
-                    validation = false;
-
-                } else {
-
-                }
+                utils.addListener(btn_update, "click", function () {
+                    container_account.style.display = "none";
+                    container_update.style.display  = "inline-block";
+                }, false);
             }();
 
-            var client = '{'+
+
+            /*var client = '{'+
                 '"name":       "'+ name       +'",'+
                 '"firstName":  "'+ firstName  +'",'+
                 '"birthday":   "'+ birthday   +'",'+
@@ -388,10 +386,11 @@
                 '"address":    "'+ address    +'",'+
                 '"postalCode": "'+ postalCode +'",'+
                 '"password":   "'+ password   +'"'+
-                '}';
+                '}';*/
 
-            Core.class.client.update(client);
+            //Core.class.client.update(client);
         };
+
         var viewConfirmation = function () {
             var btn_code = document.getElementById("btn_code");
             var ipt_code = document.getElementById("codeBtn");
@@ -408,8 +407,8 @@
             case "logout" :
                 client.logout();
                 break;
-            case "update" :
-                viewUpdateAccount();
+            case "compte" :
+                viewAccount();
                 break;
             case "confirmation" :
                 viewConfirmation();
