@@ -78,6 +78,7 @@ public class ClientService {
     }
 
     public Client addClient(Client client) {
+        System.out.println(client.getSexe());
         return clientRepository.save(client);
     }
 

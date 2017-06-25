@@ -29,6 +29,9 @@ public class Client {
     @NotEmpty(message = "A client must have a first name")
     private String firstName;
 
+    @Column(name = "Sexe")
+    private int sexe;
+
     @Column(name = "Birthday")
     private Date birthday;
 
@@ -115,6 +118,10 @@ public class Client {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    public int getSexe() { return sexe; }
+
+    public void setSexe(int sexe) { this.sexe = sexe; }
 
     public Date getBirthday() {
         return birthday;

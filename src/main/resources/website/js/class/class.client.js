@@ -10,6 +10,7 @@
     Core.class.client = function(clientJson){
         this.address    = clientJson.address;
         this.birthday   = clientJson.birthday;
+        this.sexe       = clientJson.sexe;
         this.city       = clientJson.city;
         this.clientId   = clientJson.clientId;
         this.country    = clientJson.country;
