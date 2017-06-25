@@ -29,6 +29,11 @@
         utils.ajaxRequest(Core.service.client.login(), paramRequest, null);
     };
 
+    Core.class.client.confirmation = function (code) {
+        var paramRequest = "email=" + window.sessionStorage.getItem("tmp_email") + "&code=" + code;
+        utils.ajaxRequest(Core.service.client.confirmation(), paramRequest, null);
+    };
+
     Core.class.client.signup = function (client) {
         utils.ajaxRequest(Core.service.client.signup(), null, client);
     };

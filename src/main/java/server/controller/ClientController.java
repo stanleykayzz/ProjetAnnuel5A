@@ -3,6 +3,9 @@ package server.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import server.exception.BadCode;
+import server.exception.BadPassword;
+import server.exception.UserExist;
 import server.exception.UserNotFound;
 import server.mail.EmailServiceImpl;
 import server.model.Client;
@@ -58,7 +61,7 @@ public class ClientController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Client addClient(@RequestBody Client client) throws Exception {
+    public Client addClient(@RequestBody Client client) throws UserExist {
         boolean clientExist = clientService.findByEmail(client.getEmail());
 
         if(!clientExist){
@@ -70,14 +73,14 @@ public class ClientController {
             client.setPassword(pswd.toString());
             return clientService.addClient(client);
         } else {
-            return null;
+            throw new UserExist();
         }
     }
 
 
     @RequestMapping(path = "/update",method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
-    public Client updateClient(@RequestBody Client newClient, @RequestParam String token, @RequestParam String password) throws Exception {
+    public Client updateClient(@RequestBody Client newClient, @RequestParam String token, @RequestParam String password) throws UserNotFound, BadPassword {
         Client client = clientService.findByToken(token);
         String psw = ClientUtils.hashPassword(password);
         if(client != null) {
@@ -93,10 +96,13 @@ public class ClientController {
                 clientService.updateClient(client);
 
                 return clientService.findByToken(token);
+            } else {
+                throw new BadPassword();
             }
-            return null;
+        } else {
+            throw new UserNotFound();
         }
-        return null;
+
     }
 
 
@@ -139,7 +145,7 @@ public class ClientController {
 
     @RequestMapping(path = "/confirmation", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Client confirmation(@RequestParam("email") String email, @RequestParam String code) {
+    public Client confirmation(@RequestParam("email") String email, @RequestParam String code) throws BadCode {
         Client client = clientService.confirmation(email, code);
 
         if (client != null) {
@@ -148,9 +154,9 @@ public class ClientController {
             clientService.updateClient(client);
 
             return client;
+        } else {
+            throw new BadCode();
         }
-
-        return null;
     }
 }
 

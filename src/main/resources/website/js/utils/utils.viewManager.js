@@ -12,68 +12,14 @@
                 if(window.client !== null && window.client !== undefined)
                     window.client.reloadTokenDate();
 
-                switch (e.target.id){
-                    case "btn_index" :
-                        utils.viewManager.switchView("accueil");
-                        break;
-                    case "btn_about" :
-                        utils.viewManager.switchView("about");
-                        break;
-                    case "btn_restaurant" :
-                        utils.viewManager.switchView("restaurant");
-                        break;
-                    case "btn_room" :
-                        utils.viewManager.switchView("chambre");
-                        break;
-                    case "btn_user" :
-                        utils.viewManager.switchView("user");
-                        break;
-                    case "btn_contact" :
-                        utils.viewManager.switchView("contact");
-                        break;
-                    case "btn_account" :
-                        utils.viewManager.switchView("compte");
-                        break;
-                    case "btn_logout" :
-                        utils.viewManager.switchView("logout");
-                        break;
-                }
+                var pageName = e.target.id.substring(4);
+                utils.viewManager.switchView(pageName);
             }
         }, false);
     };
 
-    Core.utils.viewManager.switchView = function (value) {
-        var pageObject = null;
-       
-        switch (value){
-            case "accueil" :
-                pageObject = data.viewList.accueil;
-                break;
-            case "about" :
-                pageObject = data.viewList.about;
-                break;
-            case "restaurant" :
-                pageObject = data.viewList.restaurant;
-                break;
-            case "chambre":
-                pageObject = data.viewList.chambre;
-                break;
-            case "user" :
-                pageObject = data.viewList.connexion;
-                break;
-            case "contact" :
-                pageObject = data.viewList.contact;
-                break;
-            case "compte" :
-                pageObject = data.viewList.compte;
-                break;
-            case "logout" :
-                pageObject = data.viewList.logout;
-                break;
-            case "update" :
-                pageObject = data.viewList.update;
-                break;
-        }
+    Core.utils.viewManager.switchView = function (key) {
+        var pageObject = data.viewList[key.toString()];
 
         if(pageObject !== null){
             Core.class.client.reloadClient();            
@@ -111,11 +57,11 @@
         var addButtons = function () {
             if(window.client){
                 removeButtons();
-                createButton("btn_account", "Compte", menuLastChild);
+                createButton("btn_compte", "Compte", menuLastChild);
                 createButton("btn_logout", "Déconnecter", menuLastChild);
             } else {
                 removeButtons();
-                createButton("btn_user", "Connexion", menuLastChild);
+                createButton("btn_connexion", "Connexion", menuLastChild);
             }
         }();
     };
@@ -136,7 +82,7 @@
             var showSingupBtn, showLoginBtn, showforgetpasswordBtn, showLoginFromForgetPassword;
             var loginContainer, signupContainer, forgerpasswordContainer;
             var captchaElement;
-            
+
             var iniVariables = function () {
                 loginBtn  = document.getElementById("btn_login");
                 signupBtn = document.getElementById("btn_signup");
@@ -159,12 +105,21 @@
 
                 captchaElement = document.getElementById("captchaID");
             }();
+            var initYear = function () {
+                var monthElement = document.getElementById("signup_date_year");
+                var minYear = 1900;
+                var date = new Date();
+                var length = date.getFullYear() - minYear + 1;
+
+                for(var i = 0 ; i < length ; i++){
+                    var option = document.createElement("option");
+                    option.value = date.getFullYear() - i;
+                    option.textContent = date.getFullYear() - i;
+
+                    monthElement.appendChild(option);
+                }
+            }();
             var showViewEvents = function () {
-
-                var manageBirthday = function () {
-
-                }();
-
                 utils.removeListener(showLoginBtn, "click");
                 utils.addListener(showLoginBtn, "click", function () {
                     document.getElementById("error_container").textContent = "";
@@ -437,6 +392,14 @@
 
             Core.class.client.update(client);
         };
+        var viewConfirmation = function () {
+            var btn_code = document.getElementById("btn_code");
+            var ipt_code = document.getElementById("codeBtn");
+
+            utils.addListener(btn_code, "click", function () {
+                Core.class.client.confirmation(ipt_code.value);
+            }, false);
+        };
 
         switch (viewName){
             case "connexion" :
@@ -447,6 +410,9 @@
                 break;
             case "update" :
                 viewUpdateAccount();
+                break;
+            case "confirmation" :
+                viewConfirmation();
                 break;
         }
     };
