@@ -76,6 +76,135 @@
         }, false);
     };
 
+    Core.utils.viewManager.formValidator = function (jsonObject, style) {
+        var validation = true;
+        var sexe = null;
+        var password;
+
+        for(var key in jsonObject){
+            var val = true;
+            var current_style = jsonObject[key].style;
+            switch (key){
+                case "firstname":
+                    if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "lastname":
+                    if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === "") {
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "email":
+                    if(utils.emailValidator(jsonObject[key]) === false){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "password":
+                    if(jsonObject[key].value.length < 6){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    } else {
+                        password = jsonObject[key].value;
+                    }
+                    break;
+
+                case "password_2":
+                    if(jsonObject[key].value  !== password){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "day":
+                    if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === "" || Core.utils.checkDate("day", jsonObject[key].value) === false){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "month":
+                    if(jsonObject[key].getElementsByTagName("option")[jsonObject[key].selectedIndex].getAttribute("name")     === null
+                        || jsonObject[key].getElementsByTagName("option")[jsonObject[key].selectedIndex].getAttribute("name") === undefined
+                        || jsonObject[key].getElementsByTagName("option")[jsonObject[key].selectedIndex].getAttribute("name") === ""
+                        || Core.utils.checkDate("month", jsonObject[key].getElementsByTagName("option")[jsonObject[key].selectedIndex].getAttribute("name")) === false){
+
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "year":
+                    if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === "" || Core.utils.checkDate("year", jsonObject[key].value) === false){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "phone":
+                    if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "country":
+                    if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "city":
+                    if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "address":
+                    if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+
+                case "postalcode":
+                    if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
+                        validation = false;
+                        val = false;
+                        jsonObject[key].style.border = "1px solid red";
+                    }
+                    break;
+            }
+
+            if(val === true){
+                if(jsonObject[key].tagName != "SELECT")
+                    jsonObject[key].style = style;
+            }
+        }
+
+        return validation;
+    };
+
     Core.utils.viewManager.initViewEvents = function (viewName) {
         var viewSignin = function () {
             var loginBtn, signupBtn, forgetpassword_Btn;
@@ -83,7 +212,7 @@
             var loginContainer, signupContainer, forgerpasswordContainer;
             var captchaElement;
 
-            var iniVariables = function () {
+            var iniVariables   = function () {
                 loginBtn  = document.getElementById("btn_login");
                 signupBtn = document.getElementById("btn_signup");
                 forgetpassword_Btn = document.getElementById("btn_sendforgetpassword");
@@ -105,7 +234,7 @@
 
                 captchaElement = document.getElementById("captchaID");
             }();
-            var initYear = function () {
+            var initYear       = function () {
                 var monthElement = document.getElementById("signup_date_year");
                 var minYear = 1900;
                 var date = new Date();
@@ -149,7 +278,7 @@
                     loginContainer.style.display  = "inline-block";
                 }, false);
             }();
-            var requestEvents = function () {
+            var requestEvents  = function () {
                 utils.removeListener(loginBtn, "click");
                 utils.addListener(loginBtn, "click", function () {
                     var email    = document.getElementById("emailBtn").value;
@@ -165,8 +294,8 @@
                         country, city, address, postalcode;
 
                     var captchaInput = document.getElementById("captcha_value");
-                    var validation = true;
-                    
+                    var formValid, sexeValid;
+
                     var initVariables = function () {
                         firstname  = document.getElementById("signup_name");
                         lastname   = document.getElementById("signup_firstname");
@@ -184,115 +313,40 @@
                         address    = document.getElementById("signup_address");
                         postalcode = document.getElementById("signup_postalcode");
                     }();
-                    var verifValues = function () {
-                        if(firstname.value === null || firstname.value === undefined || firstname.value === ""){
-                            validation = false;
-                            firstname.style.border = "1px solid red";
-                        } else {
-                            firstname.style.border = "1px solid rgb(204, 204, 204)";
-                        }
 
-                        if(lastname.value === null || lastname.value === undefined || lastname.value === "") {
-                            validation = false;
-                            lastname.style.border = "1px solid red";
-                        } else {
-                            lastname.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
+                    var checkSexe = function () {
                         if(female.checked == false && male.checked == false){
-                            validation = false;
                             female.style.border = "1px solid red";
                             male.style.border   = "1px solid red";
+                            sexeValid = false;
                         } else {
-                            if(female.checked == true)
+                            if(female.checked == true){
                                 sexe = 1;
-                            else if(male.checked == true)
+                                sexeValid = true;
+                            } else if(male.checked == true){
                                 sexe = 0;
-                        }
-
-                        if(utils.emailValidation(email) === false){
-                            validation = false;
-                            email.style.border = "1px solid red";
-                        } else {
-                            email.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
-                        if(password_1.value.length < 6 || password_1.value === firstname.value || password_1.value === lastname.value){
-                            validation = false;
-                            password_1.style.border = "1px solid red";
-                        } else {
-                            password_1.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
-                        if(password_2.value  !== password_1.value){
-                            validation = false;
-                            password_2.style.border = "1px solid red";
-                        } else {
-                            password_2.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
-                        if(day.value === null || day.value === undefined || day.value === "" || Core.utils.checkDate("day", day.value) === false){
-                            validation = false;
-                            day.style.border = "1px solid red";
-                        } else {
-                            day.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
-                        if(month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name")     === null
-                            || month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name") === undefined
-                            || month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name") === ""
-                            || Core.utils.checkDate("month", month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name")) === false){
-
-                            validation = false;
-                            month.style.border = "1px solid red";
-                        } else {
-                            month.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
-                        if(year.value === null || year.value === undefined || year.value === "" || Core.utils.checkDate("year", year.value) === false){
-                            validation = false;
-                            year.style.border = "1px solid red";
-                        } else {
-                            year.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
-                        if(phone.value === null || phone.value === undefined || phone.value === ""){
-                            validation = false;
-                            phone.style.border = "1px solid red";
-                        } else {
-                            phone.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
-                        if(country.value === null || country.value === undefined || country.value === ""){
-                            validation = false;
-                            country.style.border = "1px solid red";
-                        } else {
-                            country.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
-                        if(city.value === null || city.value === undefined || city.value === ""){
-                            validation = false;
-                            city.style.border = "1px solid red";
-                        } else {
-                            city.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
-                        if(address.value === null || address.value === undefined || address.value === ""){
-                            validation = false;
-                            address.style.border = "1px solid red";
-                        } else {
-                            address.style.border = "1px solid rgb(204, 204, 204)";
-                        }
-
-                        if(postalcode.value === null || postalcode.value === undefined || postalcode.value === ""){
-                            validation = false;
-                            postalcode.style.border = "1px solid red";
-                        } else {
-                            postalcode.style.border = "1px solid rgb(204, 204, 204)";
+                                sexeValid = true;
+                            }
                         }
                     }();
 
-                    if(validation === false)
+                    formValid = utils.viewManager.formValidator({
+                        firstname  : firstname,
+                        lastname   : lastname,
+                        email      : email,
+                        password   : password_1,
+                        password_2 : password_2,
+                        day        : day,
+                        month      : month,
+                        year       : year,
+                        phone      : phone,
+                        country    : country,
+                        city       : city,
+                        address    : address,
+                        postalcode : postalcode
+                    });
+
+                    if(formValid === false || sexeValid === false)
                         document.getElementById("error_container").textContent = "Veuillez remplir tous les champs";
 
                     if(captchaInput.value != data.captchaResult){
@@ -300,7 +354,7 @@
                         return;
                     }
 
-                    if(validation === true){
+                    if(formValid === true && sexeValid === true){
                         birthday = year.value + "-" + month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name") + "-" + day.value;
                         client = '{'+
                             '"name"       : "'+ lastname.value   +'",'+
@@ -324,10 +378,13 @@
                 }, false);
             }();
         };
-
         var viewAccount = function () {
             var name, firstName, birthday, email, phone,
                 country, city, address, postalCode, sexe;
+
+            var phone_update, country_update, city_update, address_update, postalCode_update,
+                new_password_update, verif_paswword_update, current_password_update, jsonPassword;
+            var btn_update;
             var validation = true;
 
             var initVariables = function () {
@@ -341,11 +398,21 @@
                 address    = document.getElementById("user_address");
                 postalCode = document.getElementById("user_postal_code");
                 sexe       = document.getElementById("user_sexe");
+
+                new_password_update     = document.getElementById("user_update_password_new");
+                verif_paswword_update   = document.getElementById("user_update_password_verif");
+                current_password_update = document.getElementById("user_update_password_current");
+                phone_update      = document.getElementById("user_update_tel");
+                country_update    = document.getElementById("user_update_country");
+                city_update       = document.getElementById("user_update_city");
+                address_update    = document.getElementById("user_update_address");
+                postalCode_update = document.getElementById("user_update_postal_code");
+                btn_update        = document.getElementById("btn_update_account");
             }();
-            var setContent  = function () {
+            var setContent    = function () {
                 name.textContent       = client.name;
                 firstName.textContent  = client.firstName;
-                birthday.textContent   = client.birthday;
+                birthday.textContent   = utils.formatDate(client.birthday, "view_account");
                 email.textContent      = client.email;
                 phone.textContent      = client.phone;
                 country.textContent    = client.country;
@@ -357,8 +424,14 @@
                     sexe.textContent = "Homme";
                 else if(client.sexe == 1)
                     sexe.textContent = "Femme";
+
+                phone_update.value      = client.phone;
+                country_update.value    = client.country;
+                city_update.value       = client.city;
+                address_update.value    = client.address;
+                postalCode_update.value = client.postalCode;
              }();
-            var viewEvents = function () {
+            var viewEvents    = function () {
                 var btn_update, btn_delete;
                 var container_account, container_update;
 
@@ -373,24 +446,48 @@
                     container_update.style.display  = "inline-block";
                 }, false);
             }();
+            var requestEvents = function () {
+                utils.removeListener(btn_update, "click");
+                utils.addListener(btn_update, "click", function () {               
+                    var json = {
+                        phone      : phone_update,
+                        country    : country_update,
+                        city       : city_update,
+                        address    : address_update,
+                        postalcode : postalCode_update
+                    };
 
+                    if(new_password_update.value !== null && new_password_update.value !== undefined & new_password_update.value !== ""){
+                        json.password  = new_password_update;
+                        json.password_2 = verif_paswword_update;
+                        jsonPassword = new_password_update;
+                    } else {
+                        jsonPassword = current_password_update;
+                    }
 
-            /*var client = '{'+
-                '"name":       "'+ name       +'",'+
-                '"firstName":  "'+ firstName  +'",'+
-                '"birthday":   "'+ birthday   +'",'+
-                '"email":      "'+ email      +'",'+
-                '"phone":      "'+ phone      +'",'+
-                '"country":    "'+ country    +'",'+
-                '"city":       "'+ city       +'",'+
-                '"address":    "'+ address    +'",'+
-                '"postalCode": "'+ postalCode +'",'+
-                '"password":   "'+ password   +'"'+
-                '}';*/
+                    var formValid = utils.viewManager.formValidator(json, phone_update.style);
 
-            //Core.class.client.update(client);
+                    if(formValid === true){
+                        var date = utils.formatDate(client.birthday, "update_account")
+
+                        var clientJson = '{'+
+                            '"name":       "'+ client.name          +'",'+
+                            '"firstName":  "'+ client.firstName     +'",'+
+                            '"birthday":   "'+ date                 +'",'+
+                            '"email":      "'+ client.email         +'",'+
+                            '"phone":      "'+ phone_update.value   +'",'+
+                            '"country":    "'+ country_update.value +'",'+
+                            '"city":       "'+ city_update.value    +'",'+
+                            '"address":    "'+ address_update.value +'",'+
+                            '"postalCode": "'+ address_update.value +'",'+
+                            '"password":   "'+ jsonPassword.value   +'"'+
+                            '}';
+
+                        client.update(clientJson, current_password_update.value);
+                    }
+                }, false);
+            }();
         };
-
         var viewConfirmation = function () {
             var btn_code = document.getElementById("btn_code");
             var ipt_code = document.getElementById("codeBtn");

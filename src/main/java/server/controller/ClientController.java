@@ -83,23 +83,26 @@ public class ClientController {
     public Client updateClient(@RequestBody Client newClient, @RequestParam String token, @RequestParam String password) throws UserNotFound, BadPassword {
         Client client = clientService.findByToken(token);
         String psw = ClientUtils.hashPassword(password);
+
         if(client != null) {
-            if(client.getPassword() == psw.toString()){
+             if(client.getPassword() == psw){
                 client.setPhone(newClient.getPhone());
                 client.setCountry(newClient.getCountry());
                 client.setCity(newClient.getCity());
                 client.setAddress(newClient.getAddress());
                 client.setPostalCode(newClient.getPostalCode());
-                client.setPassword(ClientUtils.hashPassword(newClient.getPassword()).toString());
+                client.setPassword(ClientUtils.hashPassword(newClient.getPassword()));
 
                 clientService.updateTokenDate(client);
                 clientService.updateClient(client);
 
-                return clientService.findByToken(token);
+                return client;
             } else {
+                System.out.println("BadPassword");
                 throw new BadPassword();
             }
         } else {
+            System.out.println("UserNotFound");
             throw new UserNotFound();
         }
 
