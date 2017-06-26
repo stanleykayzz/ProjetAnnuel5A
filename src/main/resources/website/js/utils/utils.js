@@ -134,7 +134,7 @@
     };
 
     Core.utils.checkDate = function (type, value) {
-        var currentTime = new Date()
+        var currentTime = new Date();
 
         switch (type){
             case "year":
@@ -163,6 +163,35 @@
         };
     };
 
+    Core.utils.formatDate = function (time, type) {
+        var year, month, day;
+        var dateObject = new Date(time);
+
+        var initVariables = function () {
+            year = dateObject.getFullYear();
+
+            if(dateObject.getMonth() < 9)
+                month = "0" + (parseInt(dateObject.getMonth()) + 1);
+            else
+                month = (parseInt(dateObject.getMonth()) + 1);
+
+            if(dateObject.getDate() < 10)
+                day = "0" + dateObject.getDate();
+            else
+                day = dateObject.getDate();
+        }();
+
+
+        switch (type){
+            case "view_account":
+                return day + "/" + month + "/" + year;
+            case  "update_account":
+                return year + "-" + month + "-" + day;
+        }
+
+
+    };
+
     Core.utils.setDatepickerLanguage = function () {
         $.datepicker.regional['fr'] = {clearText: 'Effacer', clearStatus: '',
             closeText: 'Fermer', closeStatus: 'Fermer sans modifier',
@@ -184,7 +213,7 @@
         $.datepicker.setDefaults($.datepicker.regional['fr']);  
     };
 
-    Core.utils.emailValidation = function (email) {
+    Core.utils.emailValidator = function (email) {
         var rgx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return rgx.test(email.value);
     };

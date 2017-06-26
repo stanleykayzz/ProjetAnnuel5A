@@ -59,20 +59,8 @@
         utils.ajaxRequest(Core.service.client.logout(), paramRequest, null, false);
     };
 
-    Core.class.client.prototype.update = function (client) {
-        var paramRequest = "token="+ window.client.token;
-        client = '{'+
-            '"name": "mollard",'+
-            '"firstName": "toto",'+
-            '"birthday": "1993-09-16",'+
-            '"email": "tefzt@hotmail.fr",'+
-            '"phone": "0102030406",'+
-            '"country": "france",'+
-            '"city": "Paris",'+
-            '"address": "70 rue toto",'+
-            '"postalCode": "75015",'+
-            '"password": "test_5"'+
-        '}';
+    Core.class.client.prototype.update = function (client, password) {
+        var paramRequest = "token="+ window.client.token + "&password=" + password;
         utils.ajaxRequest(Core.service.client.update(), paramRequest, client);
     };
 
