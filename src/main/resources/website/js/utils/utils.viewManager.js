@@ -384,7 +384,7 @@
 
             var phone_update, country_update, city_update, address_update, postalCode_update,
                 new_password_update, verif_paswword_update, current_password_update, jsonPassword;
-            var btn_update;
+            var btn_update, btn_back;
             var validation = true;
 
             var initVariables = function () {
@@ -436,7 +436,7 @@
                 var container_account, container_update;
 
                 btn_update = document.getElementById("btn_update");
-                btn_delete = document.getElementById("btn_delete");
+                btn_back = document.getElementById("btn_update_account_back");
 
                 container_account = document.getElementById("show_account");
                 container_update  = document.getElementById("show_update");
@@ -444,6 +444,12 @@
                 utils.addListener(btn_update, "click", function () {
                     container_account.style.display = "none";
                     container_update.style.display  = "inline-block";
+                }, false);
+
+                utils.removeListener(btn_back, "click");
+                utils.addListener(btn_back, "click", function () {
+                    container_update.style.display  = "none";
+                    container_account.style.display = "inline-block";
                 }, false);
             }();
             var requestEvents = function () {
@@ -468,13 +474,9 @@
                     var formValid = utils.viewManager.formValidator(json, phone_update.style);
 
                     if(formValid === true){
-                        var date = utils.formatDate(client.birthday, "update_account")
+                        var date = utils.formatDate(client.birthday, "update_account");
 
                         var clientJson = '{'+
-                            '"name":       "'+ client.name          +'",'+
-                            '"firstName":  "'+ client.firstName     +'",'+
-                            '"birthday":   "'+ date                 +'",'+
-                            '"email":      "'+ client.email         +'",'+
                             '"phone":      "'+ phone_update.value   +'",'+
                             '"country":    "'+ country_update.value +'",'+
                             '"city":       "'+ city_update.value    +'",'+

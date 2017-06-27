@@ -85,7 +85,7 @@ public class ClientController {
         String psw = ClientUtils.hashPassword(password);
 
         if(client != null) {
-             if(client.getPassword() == psw){
+             if(client.getPassword().equals(psw)){
                 client.setPhone(newClient.getPhone());
                 client.setCountry(newClient.getCountry());
                 client.setCity(newClient.getCity());
@@ -98,11 +98,9 @@ public class ClientController {
 
                 return client;
             } else {
-                System.out.println("BadPassword");
                 throw new BadPassword();
             }
         } else {
-            System.out.println("UserNotFound");
             throw new UserNotFound();
         }
 
