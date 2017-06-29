@@ -1,5 +1,7 @@
 package server.model;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 import java.util.Date;
 

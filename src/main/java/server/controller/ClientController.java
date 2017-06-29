@@ -10,8 +10,12 @@ import server.service.ClientService;
 @RequestMapping("/client")
 public class ClientController {
 
-    @Autowired
     private ClientService clientService;
+
+    @Autowired
+    public ClientController(ClientService clientService) {
+        this.clientService = clientService;
+    }
 
     /*@RequestMapping(method = RequestMethod.GET)
     public List<Client> getAll() {

@@ -8,13 +8,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table (name = "client")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Client {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

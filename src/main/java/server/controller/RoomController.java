@@ -24,8 +24,13 @@ public class RoomController {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
     private RoomRepository roomRepository;
+
+    @Autowired
+    public RoomController(RoomRepository roomRepository) {
+        this.roomRepository = roomRepository;
+    }
+
 
     //todo renvoie la list de tout les room
     @RequestMapping(method = GET, value = "/all")

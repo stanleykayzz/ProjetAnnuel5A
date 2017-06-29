@@ -22,9 +22,12 @@ public class RestaurantController {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
     private RestaurantRepository restaurantRepository;
 
+    @Autowired
+    public RestaurantController(RestaurantRepository restaurantRepository) {
+        this.restaurantRepository = restaurantRepository;
+    }
 
     @RequestMapping(method = GET, value = "/all")
     public List<Restaurant> getAllReservation(){
