@@ -150,4 +150,18 @@
             }
         };
     };
+
+    Core.service.client.passwordRecovery = function () {
+        return {
+            name : "passwordRecovery",
+            method : "GET",
+            url : "/client/passwordRecovery",
+            func : function (clt) {
+
+            },
+            error : function(statusCode){
+
+            }
+        };
+    };
 })();

@@ -13,6 +13,7 @@ import server.utils.ClientUtils;
 import server.service.ClientService;
 
 import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @CrossOrigin(origins = "http://localhost:63342")
@@ -77,7 +78,6 @@ public class ClientController {
         }
     }
 
-
     @RequestMapping(path = "/update",method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public Client updateClient(@RequestBody Client newClient, @RequestParam String token, @RequestParam String password) throws UserNotFound, BadPassword {
@@ -103,9 +103,7 @@ public class ClientController {
         } else {
             throw new UserNotFound();
         }
-
     }
-
 
     @RequestMapping(path = "/logout", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
@@ -158,6 +156,16 @@ public class ClientController {
         } else {
             throw new BadCode();
         }
+    }
+
+    @RequestMapping(path = "/passwordRecovery", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void passwordRecovery(@RequestParam("email") String email) throws BadCode {
+        boolean clientExist = clientService.findByEmail(email);
+
+        if(clientExist)
+            clientService.passwordRecovery(email);
+
     }
 }
 
