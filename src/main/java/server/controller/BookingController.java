@@ -33,10 +33,14 @@ public class BookingController {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
     private BookingRepository bookingRepository;
-    @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository) {
+        this.bookingRepository = bookingRepository;
+        this.clientRepository = clientRepository;
+    }
 
     @Value("${booking.timezone}")
     String zoneIdForUtcOffset;
@@ -62,7 +66,7 @@ public class BookingController {
     }
 
 
-    // TODO : enregistrer un nouveau booking
+    // TODO : envoyer un email de confirmation
     @RequestMapping(method = POST)
     public Booking newBooking(@RequestParam(value="idClient")int idClient ,
                                @RequestParam(value="idPartyRoom")int idPartyRoom ,

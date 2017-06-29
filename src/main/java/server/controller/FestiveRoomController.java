@@ -26,9 +26,12 @@ public class FestiveRoomController {
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 
-    @Autowired
     private static FestiveRoomRepository festiveRoomRepository;
 
+    @Autowired
+    public FestiveRoomController(FestiveRoomRepository festiveRoomRepository) {
+        this.festiveRoomRepository = festiveRoomRepository;
+    }
 
     @RequestMapping(method = GET, value = "/all")
     public List<FestiveRoom> getReservationFestiveRoom(){

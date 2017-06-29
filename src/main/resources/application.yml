@@ -42,7 +42,11 @@ mail:
 spring.mail.path.file.attachement: classpath:/files/confirmation_reservation.pdf
 
 # VELOCITY TEMPLATES
+<<<<<<< HEAD
 #spring.velocity.resource-loader-path: classpath:/templates/velocity
+=======
+spring.velocity.resource-loader-path: classpath:/templates/velocity
+>>>>>>> fixe, update, and add h2 database for dev mode, configure postgresql heroku database
 
 # JPA  - USE this to generate table
 spring.jpa.generate-ddl: true

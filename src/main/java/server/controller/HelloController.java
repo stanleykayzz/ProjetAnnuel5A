@@ -10,7 +10,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  * Created by ileossa on 22/05/2017.
  */
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class HelloController {
 
     @RequestMapping(method = GET)

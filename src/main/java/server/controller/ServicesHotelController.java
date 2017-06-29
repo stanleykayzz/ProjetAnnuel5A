@@ -1,5 +1,8 @@
 package server.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +19,14 @@ import java.util.List;
 @RequestMapping("/services")
 public class ServicesHotelController {
 
+    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
     private ServicesHotelRepository servicesHotelRepository;
 
+    @Autowired
+    public ServicesHotelController(ServicesHotelRepository servicesHotelRepository) {
+        this.servicesHotelRepository = servicesHotelRepository;
+    }
 
     public List<ServicesHotel> getAllServiceHotel(){
         return servicesHotelRepository.findAll();

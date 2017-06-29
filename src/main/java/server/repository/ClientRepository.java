@@ -13,13 +13,22 @@ import java.util.List;
 @Repository
 public interface ClientRepository  extends JpaRepository<Client, Long> {
 
+    //todo tout refaire
+
     @Query("select c from Client c where email = :Email and password = :Password")
     List<Client> login(@Param("Email") String email, @Param("Password") String password);
 
     @Query("select c from Client c where email = :Email and code = :Code")
     List<Client> confirmation(@Param("Email") String email, @Param("Code") String code);
 
+<<<<<<< HEAD
     List<Client> findByToken(@Param("Token") String Token);
 
     List<Client> findByEmail(@Param("Email") String email);
+=======
+    boolean findOneByToken(@Param("Token") String token);
+
+    Client findClientByEmailAndPassword(String email, String password);
+
+>>>>>>> fixe, update, and add h2 database for dev mode, configure postgresql heroku database
 }
