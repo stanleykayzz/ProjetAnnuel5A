@@ -8,10 +8,7 @@ import server.repository.ClientRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class ClientService {
@@ -118,6 +115,19 @@ public class ClientService {
         if(tokenExists == true) {
             this.generateToken(client);
         }*/
+    }
+
+    public void passwordRecovery(String email) {
+        char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < 20; i++) {
+            char c = chars[random.nextInt(chars.length)];
+            sb.append(c);
+        }
+
+        String output = sb.toString();
+        System.out.println(output);
     }
 
     public void updateTokenDate(Client client) {
