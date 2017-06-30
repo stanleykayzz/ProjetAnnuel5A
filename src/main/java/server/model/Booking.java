@@ -1,7 +1,5 @@
 package server.model;
 
-import lombok.Builder;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -23,7 +21,7 @@ public class Booking {
     private float price;
     private String payementMode;
     private int idPartyRoom;
-    private int idClient;
+    private String tokenId;
 
     //Use by interface repository
     public Booking(long l, String format) {
@@ -32,7 +30,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, int idClient) {
+    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId) {
         this.dateBook = dateBook;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -40,7 +38,7 @@ public class Booking {
         this.price = price;
         this.payementMode = payementMode;
         this.idPartyRoom = idPartyRoom;
-        this.idClient = idClient;
+        this.tokenId = tokenId;
     }
 
     public int getIdBook() {
@@ -107,12 +105,12 @@ public class Booking {
         this.idPartyRoom = idPartyRoom;
     }
 
-    public int getIdClient() {
-        return idClient;
+    public String getTokenId() {
+        return tokenId;
     }
 
-    public void setIdClient(int idClient) {
-        this.idClient = idClient;
+    public void setTokenId(String tokenId) {
+        this.tokenId = tokenId;
     }
 
 
@@ -127,7 +125,7 @@ public class Booking {
                 ", price=" + price +
                 ", payementMode='" + payementMode + '\'' +
                 ", idPartyRoom=" + idPartyRoom +
-                ", idClient=" + idClient +
+                ", tokenId=" + tokenId +
                 '}';
     }
 
@@ -142,7 +140,7 @@ public class Booking {
         if (peopleNumber != booking.peopleNumber) return false;
         if (Float.compare(booking.price, price) != 0) return false;
         if (idPartyRoom != booking.idPartyRoom) return false;
-        if (idClient != booking.idClient) return false;
+        if (tokenId != booking.tokenId) return false;
         if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) return false;
         if (dateStart != null ? !dateStart.equals(booking.dateStart) : booking.dateStart != null) return false;
         if (dateEnd != null ? !dateEnd.equals(booking.dateEnd) : booking.dateEnd != null) return false;
@@ -160,7 +158,7 @@ public class Booking {
         if (peopleNumber != booking.peopleNumber) setPeopleNumber(booking.peopleNumber);
         if (Float.compare(booking.price, price) != 0) setPrice(booking.price);
         if (idPartyRoom != booking.idPartyRoom) setIdPartyRoom(booking.idPartyRoom);
-        if (idClient != booking.idClient) setIdClient(booking.idClient);
+        if (tokenId != booking.tokenId) setTokenId(booking.tokenId);
         if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) setDateBook(booking.dateBook);
         if (dateStart != null ? !dateStart.equals(booking.dateStart) : booking.dateStart != null) setDateStart(booking.dateStart);
         if (dateEnd != null ? !dateEnd.equals(booking.dateEnd) : booking.dateEnd != null) setDateEnd(booking.dateEnd);

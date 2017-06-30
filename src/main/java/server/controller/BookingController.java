@@ -11,6 +11,7 @@ import server.model.Booking;
 import server.model.Client;
 import server.repository.BookingRepository;
 import server.repository.ClientRepository;
+import server.service.mail.MailRegistrationService;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -35,11 +36,13 @@ public class BookingController {
 
     private BookingRepository bookingRepository;
     private ClientRepository clientRepository;
+    private MailRegistrationService mailService;
 
     @Autowired
-    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository) {
+    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, MailRegistrationService mailService) {
         this.bookingRepository = bookingRepository;
         this.clientRepository = clientRepository;
+        this.mailService = mailService;
     }
 
     @Value("${booking.timezone}")
@@ -48,7 +51,6 @@ public class BookingController {
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
 
-    // TODO : renvoie la liste de tout les booking
     @RequestMapping(method = GET, value="/all")
     public List<Booking> getListBooking(){
         return bookingRepository.findAll();
@@ -62,13 +64,13 @@ public class BookingController {
     @RequestMapping(method = GET)
     List<Booking> getListBookingByIdUser(@RequestParam(value = "idClient") String token){
         List<Client> clients = clientRepository.findByToken(token);
-        return bookingRepository.findAllByIdClient(clients.get(0).getToken());
+        return bookingRepository.findAllByTokenId(clients.get(0).getToken());
     }
 
 
     // TODO : envoyer un email de confirmation
     @RequestMapping(method = POST)
-    public Booking newBooking(@RequestParam(value="idClient")int idClient ,
+    public Booking newBooking(@RequestParam(value="tokenCLient")String tokenClient ,
                                @RequestParam(value="idPartyRoom")int idPartyRoom ,
                                @RequestParam(value = "dateStart") String dateStartEntry ,
                                @RequestParam(value = "dateEnd") String dateEndEntry ,
@@ -87,16 +89,18 @@ public class BookingController {
         Date dateStart = Date.from(dateStartTemp.atStartOfDay(zoneId).toInstant());
         Date dateEnd = Date.from(dateEndTemp.atStartOfDay(zoneId).toInstant());
 
-        Booking booking = new Booking(Date.from(dateBook.toInstant()), dateStart, dateEnd, nbPerson, price, payementMode, idPartyRoom, idClient);
-        return bookingRepository.save(booking);
+        Booking booking = new Booking(Date.from(dateBook.toInstant()), dateStart, dateEnd, nbPerson, price, payementMode, idPartyRoom, tokenClient);
+        Booking result =  bookingRepository.save(booking);
+        Client client = clientRepository.findByToken(tokenClient).get(0);
+        mailService.sendEmail(client, booking, "booking registry", "booking registry");
+        return result;
     }
 
 
 
-    // TODO : mettre à jour un booking
     @RequestMapping(method = PUT)
     public Booking updateBooking (@RequestParam(value = "idBooking") int idBooking,
-                               @RequestParam(value="idClient")int idClient ,
+                               @RequestParam(value="tokenClient")String tokenClient ,
                                @RequestParam(value="idPartyRoom")int idPartyRoom ,
                                @RequestParam(value = "dateStart") String dateStartEntry ,
                                @RequestParam(value = "dateEnd") String dateEndEntry ,
@@ -107,14 +111,15 @@ public class BookingController {
 
             Booking booking = bookingRepository.findOne(idBooking);
 
-            booking.check(idClient);
+            booking.check(tokenClient);
             booking.check(idPartyRoom);
             booking.check(stringToDate(dateStartEntry));
             booking.check(stringToDate(dateEndEntry));
             booking.check(nbPerson);
             booking.check(price);
             booking.check(payementMode);
-
+            Client client = clientRepository.findByToken(tokenClient).get(0);
+            mailService.sendEmail(client, booking, "reservation updated", "reservation_updated.vm");
             return booking;
         }
         return new Booking();
