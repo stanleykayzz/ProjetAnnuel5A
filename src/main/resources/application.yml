@@ -30,15 +30,7 @@ booking:
   timezone: "Africa/Libreville"
 
 
-# Mailing
-mail:
-  protocol: smtp
-  smtp:
-    host: smtp.gmail.com
-    port: 587
-  support:
-    username:
-    password:
+
 spring.mail.path.file.attachement: classpath:/files/confirmation_reservation.pdf
 
 # VELOCITY TEMPLATES
@@ -57,17 +49,27 @@ spring:
     show-sql: true
   jmx:
     enabled: true
-# H2 (acces with localhost:port/h2 )
+# H2 (acces with localhost:port/h2 or localhost:port/h2-console/)
   h2:
     console:
       enabled: true
       path: /h2
-# Datasource
+# Datasource( The database URL jdbc:h2:~/test opens the database test in your user home directory)
   datasource:
     url: jdbc:h2:file:~/test
     username: sa
     password:
     driver-class-name: org.h2.Driver
+
+# Mailing (download fakeSMTP, and run with java -jar fakeSMTP.jar )
+mail:
+  protocol: smtp
+  smtp:
+    host: localhost
+    port: 2505
+  support:
+    username: test
+    password: test
 
 
 
@@ -83,6 +85,29 @@ spring:
     enabled: true
 server:
   port: 8080
+
+# H2 (acces with localhost:port/h2 or localhost:port/h2-console/)
+  h2:
+    console:
+      enabled: true
+      path: /h2
+# Datasource( The database URL jdbc:h2:~/test opens the database test in your user home directory)
+  datasource:
+    url: jdbc:h2:file:~/test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+# Mailing (download fakeSMTP, and run with java -jar fakeSMTP.jar )
+mail:
+  protocol: smtp
+  smtp:
+    host: localhost
+    port: 2505
+  support:
+    username: test
+    password: test
+
 
 ---
 #---------------------------------------------------
@@ -114,3 +139,14 @@ spring:
     enabled: true
 server:
   port: 0
+
+# Mailing
+mail:
+  protocol: smtp
+  smtp:
+    host: smtp.gmail.com
+    port: 587
+  support:
+    username: ${EMAIL_USER}
+    password: ${EMAIL_PASS}
+
