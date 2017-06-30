@@ -59,6 +59,12 @@
         xhr.send();
     };
 
+    Core.utils.empty = function (element) {
+        while(element.firstChild){
+            element.removeChild(element.firstChild);
+        }
+    };
+
     Core.utils.removeTimeouts = function () {
         var length = _timeoutsID.length;
         for(var  i = 0 ; i < length ; i++){
@@ -66,12 +72,6 @@
         }
 
         _timeoutsID = [];
-    };
-
-    Core.utils.empty = function (element) {
-        while(element.firstChild){
-            element.removeChild(element.firstChild);
-        }
     };
 
     Core.utils.manageImages = function (background) {
@@ -188,8 +188,6 @@
             case  "update_account":
                 return year + "-" + month + "-" + day;
         }
-
-
     };
 
     Core.utils.setDatepickerLanguage = function () {
@@ -210,7 +208,7 @@
             dayStatus: 'Utiliser DD comme premier jour de la semaine', dateStatus: 'Choisir le DD, MM d',
             dateFormat: 'dd/mm/yy', firstDay: 0,
             initStatus: 'Choisir la date', isRTL: false};
-        $.datepicker.setDefaults($.datepicker.regional['fr']);  
+        $.datepicker.setDefaults($.datepicker.regional['fr']);
     };
 
     Core.utils.emailValidator = function (email) {

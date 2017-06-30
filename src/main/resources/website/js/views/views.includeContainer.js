@@ -336,4 +336,10 @@
         }, false);
     };
 
+    Core.views.includeContainer.roomReservation = function () {   
+        utils.reservation.datePicker("#reservation_start_date", new Date(), null);
+        utils.reservation.datePicker("#reservation_end_date", new Date(), null);
+        
+        
+    };
 })();

@@ -93,6 +93,9 @@
             case "confirmation" :
                 views.includeContainer.confirmationCode();
                 break;
+            case "chambre":
+                views.includeContainer.roomReservation();
+                break;
         }
     };
 })();
