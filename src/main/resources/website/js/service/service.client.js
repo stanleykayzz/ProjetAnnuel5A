@@ -14,13 +14,13 @@
             func : function (clt) {
                 if(clt.code !== "OK"){
                     Core.utils.empty(data.getIncludeContainer());
-                    utils.viewManager.switchView("confirmation");
+                    views.menu.switchView("confirmation");
                     window.sessionStorage.setItem("tmp_email", clt.email);
                 } else {
                     window.client = new Core.class.client(clt);
                     client.createSessionStorage(client.token, client.tokenDate);
-                    utils.viewManager.switchView("accueil");
-                    Core.utils.viewManager.addContextualMenuButtons();
+                    views.menu.switchView("accueil");
+                    views.menu.addContextualMenuButtons();
                 }
             },
             error : function(statusCode){
@@ -73,8 +73,8 @@
             func : function () {
                 Core.class.client.removeSessionStorage();
                 window.client = null;
-                utils.viewManager.switchView("accueil");
-                Core.utils.viewManager.addContextualMenuButtons();
+                views.menu.switchView("accueil");
+                views.menu.addContextualMenuButtons();
             },
             error : function(statusCode){
             }
@@ -89,7 +89,7 @@
             func : function (clt) {
                 window.client = new Core.class.client(clt);
                 client.createSessionStorage(client.token, client.tokenDate);
-                utils.viewManager.switchView("compte");
+                views.menu.switchView("compte");
             },
             error : function(statusCode){
             }
@@ -104,13 +104,13 @@
             func : function (newTokenDate) {
                 client.tokenDate = newTokenDate;
                 client.createSessionStorage(client.tokenDate);
-                utils.viewManager.addContextualMenuButtons();
+                views.menu.addContextualMenuButtons();
             },
             error : function(statusCode){
                 Core.class.client.removeSessionStorage();
                 window.client = null;
-                utils.viewManager.switchView("user");
-                utils.viewManager.addContextualMenuButtons();                
+                views.menu.switchView("user");
+                views.menu.addContextualMenuButtons();
             }
         };
     };
@@ -138,8 +138,8 @@
                 window.sessionStorage.removeItem("tmp_email");
                 window.client = new Core.class.client(clt);
                 client.createSessionStorage(client.token, client.tokenDate);
-                utils.viewManager.switchView("accueil");
-                utils.viewManager.addContextualMenuButtons();
+                views.menu.switchView("accueil");
+                views.menu.addContextualMenuButtons();
             },
             error : function(statusCode){
                 var error_container = document.getElementById("error_container");

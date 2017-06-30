@@ -53,7 +53,7 @@
         xhr.open("GET", fullPath , true);
         xhr.onload = function () {
             document.getElementById("include_content").innerHTML = this.responseText;
-            utils.viewManager.initViewEvents(name);
+            views.menu.initViewEvents(name);
         };
 
         xhr.send();

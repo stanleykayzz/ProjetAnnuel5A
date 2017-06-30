@@ -21,17 +21,23 @@
 
     this.onload = function(){
         //Declaration variables in Global Scope
-        window.utils = Core.utils || {};
-        window.data  = Core.data  || {};
-        window.class = Core.class || {};
-
+        window.utils   = Core.utils   || {};
+        window.data    = Core.data    || {};
+        window.class   = Core.class   || {};
+        window.service = Core.service || {};
+        window.views   = Core.views   || {};
         data.currentPath = data.viewList.accueil.viewPath;
 
-        utils.manageImages(data.viewList.contact.listImage);
-        utils.viewManager.reloadPage();
-        utils.viewManager.addSignInButton();
-        utils.viewManager.manageMenuButtons();
+        if(window.sessionStorage.getItem("token")     != null
+            && window.sessionStorage.getItem("token") != undefined)
+            Core.class.client.reloadClient();
 
+        utils.manageImages(data.viewList.contact.listImage);
+
+        views.menu.reloadPage();
+        views.menu.addContextualMenuButtons();
+        views.menu.manageMenuButtons();
+        
         utils.include(data.viewList.accueil.viewPath, data.viewList.accueil.name);
     };
 

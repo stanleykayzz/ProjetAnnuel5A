@@ -7,7 +7,7 @@ import server.exception.BadCode;
 import server.exception.BadPassword;
 import server.exception.UserExist;
 import server.exception.UserNotFound;
-import server.mail.EmailServiceImpl;
+
 import server.model.Client;
 import server.utils.ClientUtils;
 import server.service.ClientService;
@@ -23,9 +23,6 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
-
-    @Autowired
-    public EmailServiceImpl emailService;
 
     /*@RequestMapping(method = RequestMethod.GET)
     public List<Client> getAll() {
@@ -67,7 +64,7 @@ public class ClientController {
 
         if(!clientExist){
             int randomCode = ThreadLocalRandom.current().nextInt(0, 9999);
-            emailService.sendSimpleMessage(client.getEmail(), "Code de confirmation d'adresse email.", String.valueOf(randomCode));
+
             String pswd = ClientUtils.hashPassword(client.getPassword());
             client.setStatus(0);
             client.setCode(String.valueOf(randomCode));
