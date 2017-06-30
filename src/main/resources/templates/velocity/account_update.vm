@@ -1,0 +1,5 @@
+<html>
+    <body>
+        <h3>Hi ${user.name}, your account it's correctly update, cheers</h3>
+    </body>
+</html>
