@@ -11,6 +11,7 @@ import server.exception.UserNotFound;
 import server.model.Client;
 import server.utils.ClientUtils;
 import server.service.ClientService;
+import server.service.mail.MailRegistrationService;
 
 import java.util.Date;
 import java.util.Random;
@@ -23,15 +24,14 @@ public class ClientController {
 
     private ClientService clientService;
 
+    private MailRegistrationService mailRegistrationService;
+
     @Autowired
-    public ClientController(ClientService clientService) {
+    public ClientController(ClientService clientService, MailRegistrationService mailRegistrationService) {
         this.clientService = clientService;
+        this.mailRegistrationService = mailRegistrationService;
     }
 
-    /*@RequestMapping(method = RequestMethod.GET)
-    public List<Client> getAll() {
-        return clientService.getAll();
-    }*/
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
@@ -49,6 +49,7 @@ public class ClientController {
         }
     }
 
+<<<<<<< HEAD
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteClient(@RequestParam() String token){
@@ -65,6 +66,16 @@ public class ClientController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public Client addClient(@RequestBody Client client) throws UserExist {
         boolean clientExist = clientService.findByEmail(client.getEmail());
+=======
+
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public Client newClient(@RequestBody Client client) throws Exception {
+        Client newClient = clientService.addClient(client);
+        mailRegistrationService.sendEmail(client, "Confirmation registration", "registration-confirmation.vm");
+        return newClient;
+    }
+>>>>>>> integratation mailservice in controller
 
         if(!clientExist){
             int randomCode = ThreadLocalRandom.current().nextInt(0, 9999);
@@ -81,6 +92,7 @@ public class ClientController {
 
     @RequestMapping(path = "/update",method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
+<<<<<<< HEAD
     public Client updateClient(@RequestBody Client newClient, @RequestParam String token, @RequestParam String password) throws UserNotFound, BadPassword {
         Client client = clientService.findByToken(token);
         String psw = ClientUtils.hashPassword(password);
@@ -126,6 +138,23 @@ public class ClientController {
             clientService.updateClient(client);
 
             return client.getTokenDate();
+=======
+    public boolean updateClient(@RequestBody Client newClient, @RequestParam String token) throws Exception {
+        boolean tokenAvailable = clientService.tokenAvailable(token);
+        if( tokenAvailable == true) {
+            Client client = clientService.findByToken(token);
+            client.setPhone(newClient.getPhone());
+            client.setCountry(newClient.getCountry());
+            client.setCity(newClient.getCity());
+            client.setAddress(newClient.getAddress());
+            client.setPostalCode(newClient.getPostalCode());
+            client.setPassword(newClient.getPassword());
+
+            clientService.updateTokenDate(client);
+            clientService.updateClient(client);
+            mailRegistrationService.sendEmail(client, "account updated", "account_update");
+            return true;
+>>>>>>> integratation mailservice in controller
         } else {
             return null;
         }
@@ -133,6 +162,7 @@ public class ClientController {
 
     @RequestMapping(path = "/getByToken", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
+<<<<<<< HEAD
     public Client getClientByToken(@RequestParam String token){
         Client client = clientService.findByToken(token);
 
@@ -142,6 +172,14 @@ public class ClientController {
 
         return null;
     }
+=======
+    public void logout(@RequestParam String token){
+        boolean tokenExists = clientService.tokenExists(token);
+        if(tokenExists == true){
+            Client client = clientService.findByToken(token);
+            client.setToken(null);
+            client.setTokenDate(null);
+>>>>>>> integratation mailservice in controller
 
     @RequestMapping(path = "/confirmation", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
@@ -158,6 +196,7 @@ public class ClientController {
             throw new BadCode();
         }
     }
+<<<<<<< HEAD
 
     @RequestMapping(path = "/passwordRecovery", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
@@ -171,3 +210,6 @@ public class ClientController {
 }
 
 
+=======
+}
+>>>>>>> integratation mailservice in controller

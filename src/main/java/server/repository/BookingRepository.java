@@ -12,9 +12,5 @@ import java.util.List;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
-    List<Booking> findAllByIdClient(String token);
-
-
-
-
+    List<Booking> findAllByTokenId(String token);
 }
