@@ -2,16 +2,94 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b611892f-211f-41e5-864d-4ac52eeaa729" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.reservation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/img/suiteExecutive/IMG_5552.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/img/suiteExecutive/IMG_5553.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/img/suiteExecutive/IMG_5555.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/img/suiteExecutive/IMG_5557.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/html/chambre.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/class/class.room.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/payment/payment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/payment/payment.paypal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/service/service.room.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/website/html/chambre.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/website/css/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/website/html/chambre.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/website/img/restau3.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/website/index.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/css/clean-blog.min.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/clean-blog.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/css/style.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/fonts/Edwardian_Script_ITC.ttf" afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/Edwardian_Script_ITC.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/glyphicons-halflings-regular.eot" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/glyphicons-halflings-regular.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/glyphicons-halflings-regular.woff" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/html/about.html" afterPath="$PROJECT_DIR$/src/main/resources/static/html/about.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/html/accueil.html" afterPath="$PROJECT_DIR$/src/main/resources/static/html/accueil.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/html/compte.html" afterPath="$PROJECT_DIR$/src/main/resources/static/html/compte.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/html/confirmation.html" afterPath="$PROJECT_DIR$/src/main/resources/static/html/confirmation.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/html/contact.html" afterPath="$PROJECT_DIR$/src/main/resources/static/html/contact.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/html/post.html" afterPath="$PROJECT_DIR$/src/main/resources/static/html/post.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/html/restaurant.html" afterPath="$PROJECT_DIR$/src/main/resources/static/html/restaurant.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/html/signin.html" afterPath="$PROJECT_DIR$/src/main/resources/static/html/signin.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/about-bg.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/img/about-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/chambre-bg.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/img/chambre-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/contact-bg.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/img/contact-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/contact1.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/contact1.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/contact2.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/contact2.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/contact3.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/contact3.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/contact4.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/contact4.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/contact5.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/contact5.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/fav.png" afterPath="$PROJECT_DIR$/src/main/resources/static/img/fav.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/home-bg.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/img/home-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/logoRHM.png" afterPath="$PROJECT_DIR$/src/main/resources/static/img/logoRHM.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/minilogo.png" afterPath="$PROJECT_DIR$/src/main/resources/static/img/minilogo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/post-bg.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/img/post-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/post-sample-image.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/img/post-sample-image.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/restau1.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/restau1.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/restau2.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/restau2.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/restau3.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/restau3.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/restau4.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/restau4.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/restau5.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/restau5.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/restau6.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/restau6.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/restau7.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/restau7.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/restau8.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/restau8.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/restaurant-bg.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/img/restaurant-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/room1.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/room1.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/room10.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/img/room10.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/room2.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/room2.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/room3.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/room3.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/room4.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/room4.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/room5.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/room5.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/room6.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/room6.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/room7.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/room7.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/room8.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/room8.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/room9.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/room9.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/img/roomHall1.JPG" afterPath="$PROJECT_DIR$/src/main/resources/static/img/roomHall1.JPG" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/index.html" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/class/class.client.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/class/class.client.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/core.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/core.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/data.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/data.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/service/service.client.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/service/service.client.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/service/service.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/service/service.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.form.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/utils/utils.form.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/utils/utils.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.reservation.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/utils/utils.reservation.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/views/views.includeContainer.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/views/views.includeContainer.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/views/views.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/views/views.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/js/views/views.menu.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/views/views.menu.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/less/clean-blog.less" afterPath="$PROJECT_DIR$/src/main/resources/static/less/clean-blog.less" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/less/mixins.less" afterPath="$PROJECT_DIR$/src/main/resources/static/less/mixins.less" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/less/variables.less" afterPath="$PROJECT_DIR$/src/main/resources/static/less/variables.less" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/lib/bootstrap.min.js" afterPath="$PROJECT_DIR$/src/main/resources/static/lib/bootstrap.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/lib/clean-blog.min.js" afterPath="$PROJECT_DIR$/src/main/resources/static/lib/clean-blog.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/lib/sha256.min.js" afterPath="$PROJECT_DIR$/src/main/resources/static/lib/sha256.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/mail/contact_me.php" afterPath="$PROJECT_DIR$/src/main/resources/static/mail/contact_me.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/website/mail/i_book.php" afterPath="$PROJECT_DIR$/src/main/resources/static/mail/i_book.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/website/css/style.css" afterPath="$PROJECT_DIR$/src/main/resources/website/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/website/html/chambre.html" afterPath="$PROJECT_DIR$/src/main/resources/website/html/chambre.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/website/html/restaurant.html" afterPath="$PROJECT_DIR$/src/main/resources/website/html/restaurant.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/website/index.html" afterPath="$PROJECT_DIR$/src/main/resources/website/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/website/js/core.js" afterPath="$PROJECT_DIR$/src/main/resources/website/js/core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.js" afterPath="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/website/js/views/views.includeContainer.js" afterPath="$PROJECT_DIR$/src/main/resources/website/js/views/views.includeContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/website/js/views/views.menu.js" afterPath="$PROJECT_DIR$/src/main/resources/website/js/views/views.menu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/server/controller/BookingController.java" afterPath="$PROJECT_DIR$/src/main/java/server/controller/BookingController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" />
     </list>
     <ignored path="ProjetAnnuel2017.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,56 +118,93 @@
     <favorites_list name="ProjetAnnuel2017" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.522884">
+    <splitter split-orientation="horizontal" split-proportion="0.48664495">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="views.includeContainer.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/views/views.includeContainer.js">
+          <file leaf-file-name="views.includeContainer.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/views/views.includeContainer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="340" column="68" selection-start-line="340" selection-start-column="68" selection-end-line="340" selection-end-column="68" />
+                <state relative-caret-position="339">
+                  <caret line="610" column="6" selection-start-line="610" selection-start-column="6" selection-end-line="610" selection-end-column="6" />
                   <folding>
-                    <element signature="e#233#2194#0" expanded="false" />
-                    <element signature="e#2250#8304#0" expanded="false" />
-                    <element signature="e#3356#3711#0" expanded="false" />
-                    <element signature="e#8368#9268#0" expanded="false" />
-                    <element signature="e#9325#11417#0" expanded="false" />
-                    <element signature="e#11480#15152#0" expanded="false" />
-                    <element signature="e#12866#13420#0" expanded="false" />
-                    <element signature="e#15218#15483#0" expanded="false" />
+                    <element signature="e#690#2651#0" expanded="false" />
+                    <element signature="e#904#1418#0" expanded="false" />
+                    <element signature="e#1463#2238#0" expanded="false" />
+                    <element signature="e#2707#8761#0" expanded="false" />
+                    <element signature="e#3813#4168#0" expanded="false" />
+                    <element signature="e#8825#9725#0" expanded="false" />
+                    <element signature="e#9782#11874#0" expanded="false" />
+                    <element signature="e#11937#15609#0" expanded="false" />
+                    <element signature="e#13323#13877#0" expanded="false" />
+                    <element signature="e#15675#15940#0" expanded="false" />
+                    <element signature="e#24170#25522#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="payment.paypal.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/payment/payment.paypal.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="289">
+                  <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="payment.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/payment/payment.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="class.room.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/class/class.room.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="461">
+                  <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+                  <folding>
+                    <element signature="e#2025#4097#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="views.menu.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/views/views.menu.js">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/views/views.menu.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="538">
-                  <caret line="85" column="27" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
+                <state relative-caret-position="82">
+                  <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
                   <folding>
-                    <element signature="e#1026#2366#0" expanded="false" />
-                    <element signature="e#2414#2724#0" expanded="false" />
+                    <element signature="e#213#921#0" expanded="false" />
+                    <element signature="e#2824#3134#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="chambre.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/chambre.html">
+          <file leaf-file-name="service.client.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/service/service.client.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-                  <folding />
+                <state relative-caret-position="360">
+                  <caret line="140" column="47" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="47" />
+                  <folding>
+                    <marker date="1499097008383" expanded="true" signature="1713:1806" ph="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/website/index.html">
+          <file leaf-file-name="utils.reservation.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/utils/utils.reservation.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="589">
-                  <caret line="35" column="56" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
+                <state relative-caret-position="323">
+                  <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -98,73 +213,133 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file leaf-file-name="utils.reservation.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/utils/utils.reservation.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/website/css/style.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="869">
-                  <caret line="134" column="21" selection-start-line="134" selection-start-column="21" selection-end-line="134" selection-end-column="21" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="core.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/core.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="663">
-                  <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/utils/utils.js">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/utils/utils.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="249">
-                  <caret line="165" column="50" selection-start-line="165" selection-start-column="50" selection-end-line="165" selection-end-column="50" />
+                <state relative-caret-position="357">
+                  <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
                   <folding>
                     <element signature="e#296#1583#0" expanded="false" />
                     <element signature="e#1633#1965#0" expanded="false" />
                     <element signature="e#2010#2115#0" expanded="false" />
                     <element signature="e#2162#2340#0" expanded="false" />
-                    <element signature="e#2395#3131#0" expanded="false" />
-                    <element signature="e#3178#4591#0" expanded="false" />
-                    <element signature="e#4644#5300#0" expanded="false" />
-                    <element signature="e#5353#6092#0" expanded="false" />
-                    <element signature="e#6146#7416#0" expanded="false" />
-                    <element signature="e#7468#7685#0" expanded="false" />
-                    <element signature="e#7747#8599#0" expanded="false" />
-                    <element signature="e#8800#9117#0" expanded="false" />
-                    <element signature="e#9237#9648#0" expanded="false" />
-                    <element signature="e#9756#9944#0" expanded="false" />
-                    <marker date="1498832723099" expanded="true" signature="3984:4017" ph="..." />
-                    <marker date="1498832723099" expanded="true" signature="4076:4134" ph="..." />
-                    <marker date="1498832723099" expanded="true" signature="4232:4300" ph="..." />
+                    <element signature="e#3220#4633#0" expanded="false" />
+                    <element signature="e#4686#5342#0" expanded="false" />
+                    <element signature="e#5395#6134#0" expanded="false" />
+                    <element signature="e#6188#7458#0" expanded="false" />
+                    <element signature="e#7510#7727#0" expanded="false" />
+                    <element signature="e#7789#8641#0" expanded="false" />
+                    <element signature="e#8701#9082#0" expanded="false" />
+                    <element signature="e#9283#9600#0" expanded="false" />
+                    <element signature="e#9720#10131#0" expanded="false" />
+                    <element signature="e#10239#10427#0" expanded="false" />
+                    <marker date="1499114808279" expanded="true" signature="4026:4059" ph="..." />
+                    <marker date="1499114808279" expanded="true" signature="4118:4176" ph="..." />
+                    <marker date="1499114808279" expanded="true" signature="4274:4342" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="service.room.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/service/service.room.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="373">
+                  <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="chambre.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/html/chambre.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="387">
+                  <caret line="63" column="66" selection-start-line="63" selection-start-column="66" selection-end-line="63" selection-end-column="66" />
+                  <folding>
+                    <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#0;n#select#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#1;n#select#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#2;n#select#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#3;n#select#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#4;n#select#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#h3#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#label#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#span#0;n#div#3;n#div#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#label#0;n#div#3;n#div#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="utils.form.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/utils/utils.form.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="136">
+                  <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#221#6526#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="173">
+                  <caret line="108" column="50" selection-start-line="108" selection-start-column="38" selection-end-line="108" selection-end-column="50" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="204">
+                  <caret line="93" column="18" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="class.client.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/class/class.client.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="187">
+                  <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+                  <folding>
+                    <element signature="e#239#930#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="data.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/data.js">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/data.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="255">
-                  <caret line="61" column="54" selection-start-line="61" selection-start-column="54" selection-end-line="61" selection-end-column="54" />
+                  <caret line="61" column="10" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
                   <folding>
                     <element signature="e#249#2379#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="core.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/core.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="390">
+                  <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -193,9 +368,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/server/controller/ClientController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.form.js" />
         <option value="$PROJECT_DIR$/src/main/resources/website/js/class/class.client.js" />
         <option value="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.viewManager.js" />
         <option value="$PROJECT_DIR$/src/main/resources/website/js/views/views.signin.js" />
@@ -209,11 +382,32 @@
         <option value="$PROJECT_DIR$/src/main/resources/website/js/views/views.menu.js" />
         <option value="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.js" />
         <option value="$PROJECT_DIR$/src/main/resources/website/index.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/website/js/core.js" />
         <option value="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.reservation.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/website/js/core.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/website/html/compte.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/website/js/utils/utils.form.js" />
         <option value="$PROJECT_DIR$/src/main/resources/website/js/views/views.includeContainer.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/website/html/chambre.html" />
         <option value="$PROJECT_DIR$/src/main/resources/website/css/style.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/website/html/chambre.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/utils/utils.reservation.js" />
+        <option value="$PROJECT_DIR$/src/main/java/server/repository/ClientRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/paypal/paypaltest.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/payment/payment.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/class/class.client.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/views/views.menu.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/service/service.client.js" />
+        <option value="$PROJECT_DIR$/src/main/java/server/controller/BookingController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/core.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/data.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/payment/payment.paypal.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/html/chambre.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/style.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/service/service.room.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/utils/utils.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/class/class.room.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/views/views.includeContainer.js" />
       </list>
     </option>
   </component>
@@ -268,7 +462,6 @@
     <panes>
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -331,7 +524,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -357,7 +550,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -387,7 +580,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -421,7 +614,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -451,6 +644,198 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="payment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="class" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -459,8 +844,159 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjetAnnuel2017" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -469,6 +1005,11 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maxime\Desktop\ProjetAnnuel2017\src\main\resources\static\js\paypal" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Application">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -900,12 +1441,18 @@
       <updated>1498760203023</updated>
       <workItem from="1498760205340" duration="386000" />
       <workItem from="1498760608595" duration="2906000" />
-      <workItem from="1498817304198" duration="15012000" />
+      <workItem from="1498817304198" duration="20399000" />
+      <workItem from="1498904472151" duration="11193000" />
+      <workItem from="1498920413162" duration="11125000" />
+      <workItem from="1498986005873" duration="7307000" />
+      <workItem from="1499003382110" duration="9833000" />
+      <workItem from="1499019509682" duration="3440000" />
+      <workItem from="1499072267760" duration="34120000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18304000" />
+    <option name="totallyTimeSpent" value="100709000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -919,16 +1466,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17984831" sideWeight="0.07782516" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.9221748" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3629469" sideWeight="0.9221748" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14978679" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18176973" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22535211" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -937,7 +1482,9 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22535211" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -982,7 +1529,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -991,121 +1538,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="64" selection-start-line="5" selection-start-column="64" selection-end-line="5" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/controller/ClientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="69" column="36" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/utils/utils.viewManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/service/ClientService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3094">
-          <caret line="182" column="20" selection-start-line="182" selection-start-column="20" selection-end-line="182" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/controller/ClientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/web/ClientController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/service/ClientService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/server/mail/EmailService.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/server/mail/EmailServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/class/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/class/client.js" />
     <entry file="file://$PROJECT_DIR$/src/main/java/server/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1114,75 +1549,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/controller/ClientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/server/model/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="69" column="36" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/utils/utils.form.js">
-      <provider editor-type-id="ui-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/view/view.signin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/view/view.account.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/view/view.confirmationCode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/class/class.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/view/view.signin.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/view/view.account.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/view/view.confirmationCode.js" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -1191,61 +1560,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/utils/utils.viewManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/service/service.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="141" column="26" selection-start-line="141" selection-start-column="26" selection-end-line="141" selection-end-column="26" />
-          <folding>
-            <marker date="1498821516971" expanded="true" signature="1689:1782" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/views/views.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/default_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/post.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/utils/utils.viewManager.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/default_index.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/html/post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-646">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/contact.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/html/contact.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/confirmation.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/html/confirmation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1253,158 +1587,342 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/about.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/html/about.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/accueil.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/html/accueil.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/html/restaurant.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/html/signin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1445">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/room2.JPG">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/room3.JPG">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/html/compte.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1938">
+          <caret line="114" column="6" selection-start-line="114" selection-start-column="6" selection-end-line="114" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/model/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="76" column="0" selection-start-line="18" selection-start-column="4" selection-end-line="76" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/service/ClientService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/repository/ClientRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/controller/ClientController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/model/Booking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/controller/RestaurantController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/controller/FestiveRoomController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/restaurant.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/views/views.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+        <state relative-caret-position="136">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/paypal/paypaltest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/service/service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/service/service.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="140" column="47" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="47" />
+          <folding>
+            <marker date="1499097008383" expanded="true" signature="1713:1806" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/server/controller/BookingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/server/controller/RoomController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="74" column="56" selection-start-line="74" selection-start-column="56" selection-end-line="74" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/signin.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/class/class.client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1445">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        <state relative-caret-position="187">
+          <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+          <folding>
+            <element signature="e#239#930#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/views/views.menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
+          <folding>
+            <element signature="e#213#921#0" expanded="false" />
+            <element signature="e#2824#3134#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/about-bg.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/utils/utils.form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#221#6526#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="108" column="50" selection-start-line="108" selection-start-column="38" selection-end-line="108" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/data.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/html/chambre.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="63" column="66" selection-start-line="63" selection-start-column="66" selection-end-line="63" selection-end-column="66" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#0;n#select#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#1;n#select#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#2;n#select#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#3;n#select#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#4;n#select#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h3#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#3;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#3;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="93" column="18" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/utils/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding>
+            <element signature="e#296#1583#0" expanded="false" />
+            <element signature="e#1633#1965#0" expanded="false" />
+            <element signature="e#2010#2115#0" expanded="false" />
+            <element signature="e#2162#2340#0" expanded="false" />
+            <element signature="e#3220#4633#0" expanded="false" />
+            <element signature="e#4686#5342#0" expanded="false" />
+            <element signature="e#5395#6134#0" expanded="false" />
+            <element signature="e#6188#7458#0" expanded="false" />
+            <element signature="e#7510#7727#0" expanded="false" />
+            <element signature="e#7789#8641#0" expanded="false" />
+            <element signature="e#8701#9082#0" expanded="false" />
+            <element signature="e#9283#9600#0" expanded="false" />
+            <element signature="e#9720#10131#0" expanded="false" />
+            <element signature="e#10239#10427#0" expanded="false" />
+            <marker date="1499114808279" expanded="true" signature="4026:4059" ph="..." />
+            <marker date="1499114808279" expanded="true" signature="4118:4176" ph="..." />
+            <marker date="1499114808279" expanded="true" signature="4274:4342" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/utils/utils.reservation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/payment/payment.paypal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/payment/payment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/data.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="61" column="54" selection-start-line="61" selection-start-column="54" selection-end-line="61" selection-end-column="54" />
+          <caret line="61" column="10" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
           <folding>
             <element signature="e#249#2379#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/compte.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="32" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="32" />
+        <state relative-caret-position="390">
+          <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/views/views.menu.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/class/class.room.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="85" column="27" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
+        <state relative-caret-position="461">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding>
-            <element signature="e#1026#2366#0" expanded="false" />
-            <element signature="e#2414#2724#0" expanded="false" />
+            <element signature="e#2025#4097#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/utils/utils.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/views/views.includeContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="165" column="50" selection-start-line="165" selection-start-column="50" selection-end-line="165" selection-end-column="50" />
+        <state relative-caret-position="339">
+          <caret line="610" column="6" selection-start-line="610" selection-start-column="6" selection-end-line="610" selection-end-column="6" />
           <folding>
-            <element signature="e#296#1583#0" expanded="false" />
-            <element signature="e#1633#1965#0" expanded="false" />
-            <element signature="e#2010#2115#0" expanded="false" />
-            <element signature="e#2162#2340#0" expanded="false" />
-            <element signature="e#2395#3131#0" expanded="false" />
-            <element signature="e#3178#4591#0" expanded="false" />
-            <element signature="e#4644#5300#0" expanded="false" />
-            <element signature="e#5353#6092#0" expanded="false" />
-            <element signature="e#6146#7416#0" expanded="false" />
-            <element signature="e#7468#7685#0" expanded="false" />
-            <element signature="e#7747#8599#0" expanded="false" />
-            <element signature="e#8800#9117#0" expanded="false" />
-            <element signature="e#9237#9648#0" expanded="false" />
-            <element signature="e#9756#9944#0" expanded="false" />
-            <marker date="1498832723099" expanded="true" signature="3984:4017" ph="..." />
-            <marker date="1498832723099" expanded="true" signature="4076:4134" ph="..." />
-            <marker date="1498832723099" expanded="true" signature="4232:4300" ph="..." />
+            <element signature="e#690#2651#0" expanded="false" />
+            <element signature="e#904#1418#0" expanded="false" />
+            <element signature="e#1463#2238#0" expanded="false" />
+            <element signature="e#2707#8761#0" expanded="false" />
+            <element signature="e#3813#4168#0" expanded="false" />
+            <element signature="e#8825#9725#0" expanded="false" />
+            <element signature="e#9782#11874#0" expanded="false" />
+            <element signature="e#11937#15609#0" expanded="false" />
+            <element signature="e#13323#13877#0" expanded="false" />
+            <element signature="e#15675#15940#0" expanded="false" />
+            <element signature="e#24170#25522#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/core.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/service/service.room.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/views/views.includeContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="340" column="68" selection-start-line="340" selection-start-column="68" selection-end-line="340" selection-end-column="68" />
-          <folding>
-            <element signature="e#233#2194#0" expanded="false" />
-            <element signature="e#2250#8304#0" expanded="false" />
-            <element signature="e#3356#3711#0" expanded="false" />
-            <element signature="e#8368#9268#0" expanded="false" />
-            <element signature="e#9325#11417#0" expanded="false" />
-            <element signature="e#11480#15152#0" expanded="false" />
-            <element signature="e#12866#13420#0" expanded="false" />
-            <element signature="e#15218#15483#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="35" column="56" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/js/utils/utils.reservation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/html/chambre.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/website/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="869">
-          <caret line="134" column="21" selection-start-line="134" selection-start-column="21" selection-end-line="134" selection-end-column="21" />
+        <state relative-caret-position="373">
+          <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
           <folding />
         </state>
       </provider>
