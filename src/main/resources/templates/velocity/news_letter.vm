@@ -1,0 +1,8 @@
+<html>
+<body>
+<h3>Hi ${user.name}, This is a news letter :)!</h3>
+<div>
+    If you want describe, clik here <a href="https://residencedeshautsdemenaye.herokuapp.com/api/describe/${user.email}">clik here</a>
+</div>
+</body>
+</html>
