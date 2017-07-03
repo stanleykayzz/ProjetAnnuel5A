@@ -15,16 +15,17 @@ public class NewsLetter {
     private int idNewsLetter;
 
     private long idClient;
-
     private boolean sendNewsLetter;
+    private String description;
 
 
     public NewsLetter() {
         this.sendNewsLetter = true;
     }
 
-    public NewsLetter(boolean sendNewsLetter) {
+    public NewsLetter(boolean sendNewsLetter, String description) {
         this.sendNewsLetter = sendNewsLetter;
+        this.description = description;
     }
 
     public long getIdClient() {
@@ -41,5 +42,13 @@ public class NewsLetter {
 
     public void setSendNewsLetter(boolean sendNewsLetter) {
         this.sendNewsLetter = sendNewsLetter;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
