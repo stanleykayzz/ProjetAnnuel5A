@@ -86,7 +86,7 @@ public class Room {
                 ", building='" + building + '\'' +
                 ", number=" + number +
                 ", idClient=" + idClient +
-                ", price=" + price +
+                ", costByNight=" + price +
                 '}';
     }
 }

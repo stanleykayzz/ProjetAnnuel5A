@@ -11,7 +11,7 @@ import server.exception.UserNotFound;
 import server.model.Client;
 import server.utils.ClientUtils;
 import server.service.ClientService;
-import server.service.mail.MailRegistrationService;
+import server.service.mail.MailService;
 
 import java.util.Date;
 import java.util.Random;
@@ -19,17 +19,17 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @CrossOrigin(origins = "http://localhost:63342")
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/api/client")
 public class ClientController {
 
     private ClientService clientService;
 
-    private MailRegistrationService mailRegistrationService;
+    private MailService mailService;
 
     @Autowired
-    public ClientController(ClientService clientService, MailRegistrationService mailRegistrationService) {
+    public ClientController(ClientService clientService, MailService mailService) {
         this.clientService = clientService;
-        this.mailRegistrationService = mailRegistrationService;
+        this.mailService = mailService;
     }
 
 
@@ -72,7 +72,7 @@ public class ClientController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public Client newClient(@RequestBody Client client) throws Exception {
         Client newClient = clientService.addClient(client);
-        mailRegistrationService.sendEmail(client, "Confirmation registration", "registration-confirmation.vm");
+        mailService.sendEmail(client, "Confirmation registration", "registration_confirmation.vm");
         return newClient;
     }
 >>>>>>> integratation mailservice in controller
@@ -152,7 +152,7 @@ public class ClientController {
 
             clientService.updateTokenDate(client);
             clientService.updateClient(client);
-            mailRegistrationService.sendEmail(client, "account updated", "account_update");
+            mailService.sendEmail(client, "account updated", "account_update");
             return true;
 >>>>>>> integratation mailservice in controller
         } else {

@@ -12,7 +12,7 @@ import server.repository.BookingRepository;
 import server.repository.CategoryRoomRepository;
 import server.repository.ClientRepository;
 import server.service.DateService;
-import server.service.mail.MailRegistrationService;
+import server.service.mail.MailService;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -37,12 +37,12 @@ public class BookingController {
 
     private BookingRepository bookingRepository;
     private ClientRepository clientRepository;
-    private MailRegistrationService mailService;
+    private MailService mailService;
     private DateService dateService;
     private CategoryRoomRepository categoryRoomRepository;
 
     @Autowired
-    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, MailRegistrationService mailService, DateService dateService, CategoryRoomRepository categoryRoomRepository) {
+    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, MailService mailService, DateService dateService, CategoryRoomRepository categoryRoomRepository) {
         this.bookingRepository = bookingRepository;
         this.clientRepository = clientRepository;
         this.mailService = mailService;
@@ -94,7 +94,7 @@ public class BookingController {
         Date dateStart = Date.from(dateStartTemp.atStartOfDay(zoneId).toInstant());
         Date dateEnd = Date.from(dateEndTemp.atStartOfDay(zoneId).toInstant());
 
-        Booking booking = new Booking(Date.from(dateBook.toInstant()), dateStart, dateEnd, nbPerson, price, payementMode, idPartyRoom, tokenClient);
+        Booking booking = new Booking(Date.from(dateBook.toInstant()), dateStart, dateEnd, nbPerson, price, payementMode, idPartyRoom, tokenClient, sendEvaluation);
         Booking result =  bookingRepository.save(booking);
         Client client = clientRepository.findByToken(tokenClient).get(0);
         mailService.sendEmail(client, booking, "booking registry", "booking registry");

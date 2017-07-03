@@ -17,7 +17,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  * Created by ileossa on 22/05/2017.
  */
 @RestController
-@RequestMapping("/restaurant")
+@RequestMapping("/api/restaurant")
 public class RestaurantController {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());

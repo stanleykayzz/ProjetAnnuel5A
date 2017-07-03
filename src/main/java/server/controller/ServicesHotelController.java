@@ -16,7 +16,7 @@ import java.util.List;
  * Created by ileossa on 18/06/2017.
  */
 @RestController
-@RequestMapping("/services")
+@RequestMapping("/api/services")
 public class ServicesHotelController {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());

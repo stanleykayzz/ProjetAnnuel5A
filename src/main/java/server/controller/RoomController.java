@@ -18,7 +18,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  * Created by ileossa on 23/05/2017.
  */
 @RestController
-@RequestMapping("/room")
+@RequestMapping("/api/room")
 public class RoomController {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());

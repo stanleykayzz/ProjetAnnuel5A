@@ -22,12 +22,11 @@ public class Booking {
     private String payementMode;
     private int idPartyRoom;
     private String tokenId;
+    private boolean sendEvaluation;
 
     //Use by interface repository
-    public Booking(long l, String format) {
-    }
-
     public Booking() {
+        this.sendEvaluation = true;
     }
 
     public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId) {
@@ -39,6 +38,7 @@ public class Booking {
         this.payementMode = payementMode;
         this.idPartyRoom = idPartyRoom;
         this.tokenId = tokenId;
+        this.sendEvaluation = true;
     }
 
     public int getIdBook() {
@@ -113,21 +113,14 @@ public class Booking {
         this.tokenId = tokenId;
     }
 
-
-    @Override
-    public String toString() {
-        return "Booking{" +
-                "idBook=" + idBook +
-                ", dateBook=" + dateBook +
-                ", dateStart=" + dateStart +
-                ", dateEnd=" + dateEnd +
-                ", peopleNumber=" + peopleNumber +
-                ", costByNight=" + price +
-                ", payementMode='" + payementMode + '\'' +
-                ", idPartyRoom=" + idPartyRoom +
-                ", tokenId=" + tokenId +
-                '}';
+    public boolean isSendEvaluation() {
+        return sendEvaluation;
     }
+
+    public void setSendEvaluation(boolean sendEvaluation) {
+        this.sendEvaluation = sendEvaluation;
+    }
+
 
     @Override
     public boolean equals(Object o) {

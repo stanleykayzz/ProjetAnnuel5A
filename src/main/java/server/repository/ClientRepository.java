@@ -30,5 +30,13 @@ public interface ClientRepository  extends JpaRepository<Client, Long> {
 
     Client findClientByEmailAndPassword(String email, String password);
 
+<<<<<<< HEAD
 >>>>>>> fixe, update, and add h2 database for dev mode, configure postgresql heroku database
+=======
+    Client findClientByClientIdEquals(long clientId );
+
+    Client findClientByEmailEquals(String email);
+
+    Client findDistinctFirstByToken(String token);
+>>>>>>> Update service, add category room.
 }

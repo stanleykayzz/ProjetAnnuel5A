@@ -21,7 +21,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  */
 //todo test si 2 festive room
 @RestController
-@RequestMapping("/room/festive")
+@RequestMapping("/api/room/festive")
 public class FestiveRoomController {
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 

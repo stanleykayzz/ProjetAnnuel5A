@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -24,5 +25,13 @@ public class DateService {
 
         //convert localDate to Date
         return Date.from(dateLocal.atStartOfDay(zoneId).toInstant());
+    }
+
+    public Date currentLocalTime(){
+        LocalDate currentDate = LocalDate.now();
+        String zoneI = zoneId;    //refuse de passer directement zoneId dans la methodes
+        ZoneId zoneId = ZoneId.of(zoneI);
+        return Date.from(currentDate.atStartOfDay(zoneId).toInstant());
+
     }
 }
