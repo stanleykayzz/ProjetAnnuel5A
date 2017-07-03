@@ -16,9 +16,9 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.AUTO)
     int idArticle;
 
-    String title;
-    String content;
-    String pathFile;
+    private String title;
+    private String content;
+    private String pathFile;
 
     public Article() {
     }
