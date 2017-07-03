@@ -23,4 +23,9 @@ public interface ClientRepository  extends JpaRepository<Client, Long> {
 
     Client findClientByEmailAndPassword(String email, String password);
 
+    Client findClientByClientIdEquals(long clientId );
+
+    Client findClientByEmailEquals(String email);
+
+    Client findDistinctFirstByToken(String token);
 }

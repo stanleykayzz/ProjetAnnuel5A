@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import server.model.Booking;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,4 +14,5 @@ import java.util.List;
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
     List<Booking> findAllByTokenId(String token);
+    List<Booking> findAllByDateEndIsAfter(Date dateEnd);
 }

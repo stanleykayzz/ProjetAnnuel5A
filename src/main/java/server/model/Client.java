@@ -66,7 +66,27 @@ public class Client {
     private Date tokenDate;
 
 
-    //--------- GETTERS / SETTERS ---------\\
+    //--------- CONSTRUCTOR ---------\\
+
+    public Client() {
+    }
+
+    public Client(String name, String firstName, Date birthday, String email, String phone, String country, String city, String address, String postalCode, String password, String token, Date tokenDate) {
+        this.name = name;
+        this.firstName = firstName;
+        this.birthday = birthday;
+        this.email = email;
+        this.phone = phone;
+        this.country = country;
+        this.city = city;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.password = password;
+        this.token = token;
+        this.tokenDate = tokenDate;
+    }
+
+    // --------- GETTERS / SETTERS ---------\\
 
 
     public String getName() {

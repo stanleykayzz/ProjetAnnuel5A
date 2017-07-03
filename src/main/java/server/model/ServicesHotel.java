@@ -76,7 +76,7 @@ public class ServicesHotel {
                 "idServicesHotel=" + idServicesHotel +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
-                ", price=" + price +
+                ", costByNight=" + price +
                 ", comment='" + comment + '\'' +
                 '}';
     }
