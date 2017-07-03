@@ -11,6 +11,7 @@ import server.model.Client;
 import server.repository.BookingRepository;
 import server.repository.CategoryRoomRepository;
 import server.repository.ClientRepository;
+import server.repository.RoomRepository;
 import server.service.DateService;
 import server.service.mail.MailService;
 
@@ -40,14 +41,16 @@ public class BookingController {
     private MailService mailService;
     private DateService dateService;
     private CategoryRoomRepository categoryRoomRepository;
+    private RoomRepository roomRepository;
 
     @Autowired
-    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, MailService mailService, DateService dateService, CategoryRoomRepository categoryRoomRepository) {
+    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, MailService mailService, DateService dateService, CategoryRoomRepository categoryRoomRepository, RoomRepository roomRepository) {
         this.bookingRepository = bookingRepository;
         this.clientRepository = clientRepository;
         this.mailService = mailService;
         this.dateService = dateService;
         this.categoryRoomRepository = categoryRoomRepository;
+        this.roomRepository = roomRepository;
     }
 
     @Value("${booking.timezone}")
@@ -94,7 +97,14 @@ public class BookingController {
         Date dateStart = Date.from(dateStartTemp.atStartOfDay(zoneId).toInstant());
         Date dateEnd = Date.from(dateEndTemp.atStartOfDay(zoneId).toInstant());
 
-        Booking booking = new Booking(Date.from(dateBook.toInstant()), dateStart, dateEnd, nbPerson, price, payementMode, idPartyRoom, tokenClient, sendEvaluation);
+        Booking booking = new Booking(Date.from(dateBook.toInstant()),
+                dateStart,
+                dateEnd,
+                nbPerson,
+                price,
+                payementMode,
+                idPartyRoom,
+                tokenClient);
         Booking result =  bookingRepository.save(booking);
         Client client = clientRepository.findByToken(tokenClient).get(0);
         mailService.sendEmail(client, booking, "booking registry", "booking registry");
@@ -133,7 +143,6 @@ public class BookingController {
 
 
 
-
     @RequestMapping(method = GET)
     public double costByNight(@RequestParam(value="date_start") String dateStartEnter,
                            @RequestParam(value = "date_end") String dateEndEnter,
@@ -151,6 +160,12 @@ public class BookingController {
         }
         return Double.MAX_VALUE;
     }
+
+
+
+
+
+
 
 
 }
