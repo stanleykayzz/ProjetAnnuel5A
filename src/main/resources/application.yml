@@ -55,6 +55,8 @@ spring:
   profiles: dev
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: update
   jmx:
     enabled: true
 # H2 (acces with localhost:port/h2 )

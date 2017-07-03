@@ -61,7 +61,6 @@ public class BookingController {
         return bookingRepository.findAllByIdClient(clients.get(0).getToken());
     }
 
-
     // TODO : enregistrer un nouveau booking
     @RequestMapping(method = POST)
     public Booking newBooking(@RequestParam(value="idClient")int idClient ,

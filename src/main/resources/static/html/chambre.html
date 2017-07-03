@@ -1,0 +1,67 @@
+﻿<div id="search_container" class="room_container">
+
+    <div style="display:inline-block; width: 100%; text-align: left; color: #1A1A1A;">
+        <div class="div_reservation sm_c_left">
+            <span>Date d'arrivée</span>
+            </br>
+            <input class="datepicker beauty_input" type="text" id="reservation_start_date"/>
+        </div>
+
+        <div class="div_reservation sm_c_right">
+            <span>Date de départ</span>
+            </br>
+            <input class="datepicker beauty_input" type="text" id="reservation_end_date"/>
+        </div>
+
+        <div class="div_reservation sm_c_left">
+            <span>Type</span>
+            </br>
+            <select id="reservation_type" class="beauty_input"
+                    style="color:#474747;font-weight: 600; margin-top: 10px; height: 25px; line-height: 25px;">
+                <option value="all" style="color:#474747;font-weight: 500;">Tous les types</option>
+                <option value="0" style="color:#474747;font-weight: 500;">Chambre simple</option>
+                <option value="1" style="color:#474747;font-weight: 500;">Chambre double</option>
+                <option value="2" style="color:#474747;font-weight: 500;">Suite junior</option>
+                <option value="3" style="color:#474747;font-weight: 500;">Suite exécutive</option>
+            </select>
+        </div>
+
+        <div class="div_reservation sm_c_right" style="margin-top: 50px;">
+            <a class="btn_form" id="btn_search">Recherche</a>
+        </div>
+    </div>
+
+    <div id="include_room" style="margin-top: 40px;display: inline-block;width: 100%;margin: 0;">
+
+    </div>
+</div>
+
+<div id="include_reservation" class="reservation_container" style="display: none; text-align: left;">
+    <h3 style="text-align: center;color: #006483;">Confirmer la réservation</h3>
+    <div style="display: block; margin-left: 50px; padding-bottom: 20px;">
+        <div class="div_reservation">
+            <span class="title_span">Date d'arrivée</span>
+            </br>
+            <label class="text_span" id="label_start_date"></label>
+        </div>
+        <div class="div_reservation">
+            <span  style="margin-left: 40px;" class="title_span">Date de départ</span>
+            </br>
+            <label style="margin-left: 40px;" class="text_span" id="label_end_date"></label>
+        </div>
+
+        <div class="div_reservation">
+            <span class="title_span">Type de réservation</span>
+            </br>
+            <label class="text_span" id="labelType"></label>
+        </div>
+        <div class="div_reservation">
+            <span style="margin-left: 40px;" class="title_span">Coût du séjour</span>
+            </br>
+            <label style="margin-left: 40px;" class="text_span" id="label_price"></label>
+        </div>
+
+        <div id="button_paypal" style="display: block;width: 100%;"></div>
+    </div>
+
+</div>
