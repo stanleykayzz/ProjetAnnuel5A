@@ -23,6 +23,7 @@ public class Booking {
     private int idPartyRoom;
     private String tokenId;
     private boolean sendEvaluation;
+    private int idRoomForClient;
 
     //Use by interface repository
     public Booking() {
@@ -38,6 +39,20 @@ public class Booking {
         this.payementMode = payementMode;
         this.idPartyRoom = idPartyRoom;
         this.tokenId = tokenId;
+        this.idRoomForClient = -1;
+        this.sendEvaluation = true;
+    }
+
+    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, int idRoomForClient) {
+        this.dateBook = dateBook;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.peopleNumber = peopleNumber;
+        this.price = price;
+        this.payementMode = payementMode;
+        this.idPartyRoom = idPartyRoom;
+        this.tokenId = tokenId;
+        this.idRoomForClient = idRoomForClient;
         this.sendEvaluation = true;
     }
 
@@ -121,6 +136,13 @@ public class Booking {
         this.sendEvaluation = sendEvaluation;
     }
 
+    public int getIdRoomForClient() {
+        return idRoomForClient;
+    }
+
+    public void setIdRoomForClient(int idRoomForClient) {
+        this.idRoomForClient = idRoomForClient;
+    }
 
     @Override
     public boolean equals(Object o) {

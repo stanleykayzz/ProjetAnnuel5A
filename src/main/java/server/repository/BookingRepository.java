@@ -15,4 +15,5 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
     List<Booking> findAllByTokenId(String token);
     List<Booking> findAllByDateEndIsAfter(Date dateEnd);
+    List<Booking> findAllByDateBookBetween(Date dateBook);
 }
