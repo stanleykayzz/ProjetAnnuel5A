@@ -1,9 +1,6 @@
 package server.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -15,12 +12,14 @@ public class CategoryRoom {
 
     @Id
     @GeneratedValue(strategy = AUTO)
-    int idCategoryRoom;
+    private int idCategoryRoom;
 
-    String name;
-    double costByNight;
-    String description;
-    String picturePath;
+    private String name;
+    private double costByNight;
+    private String description;
+    private String picturePath;
+    @Column(name="CATEGORY_ID_ROOM")
+    private Room room;
 
 
     public CategoryRoom() {
@@ -63,5 +62,14 @@ public class CategoryRoom {
 
     public void setPicturePath(String picturePath) {
         this.picturePath = picturePath;
+    }
+
+    @OneToOne(mappedBy = "CategoryRoom")
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }

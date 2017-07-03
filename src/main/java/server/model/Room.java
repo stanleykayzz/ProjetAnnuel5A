@@ -2,6 +2,8 @@ package server.model;
 
 import javax.persistence.*;
 
+import static javax.persistence.CascadeType.ALL;
+
 /**
  * Created by ileossa on 05/04/2017.
  */
@@ -16,18 +18,36 @@ public class Room {
     private int number;
     private int idClient;
     private int price;
+    private int idCategory;
+
+    @OneToOne
+    @JoinColumn(name = "NAME_BUILDING")
+    private int idBuilding;
+
+    @OneToOne(cascade = ALL)
+    @JoinColumn(name = "CATEGORY_ID_ROOM")
+    private CategoryRoom categoryRoom;
 
 
 
     public Room() {
     }
 
-    public Room(String name, String building, int number, int idClient, int price) {
+    public Room(String name, String building, int number, int idClient, int price, int idBuilding) {
         this.name = name;
         this.building = building;
         this.number = number;
         this.idClient = idClient;
         this.price = price;
+        this.idBuilding = idBuilding;
+    }
+
+    public CategoryRoom getCategoryRoom() {
+        return categoryRoom;
+    }
+
+    public void setCategoryRoom(CategoryRoom categoryRoom) {
+        this.categoryRoom = categoryRoom;
     }
 
     public int getIdRoom() {
@@ -76,6 +96,14 @@ public class Room {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getIdBuilding() {
+        return idBuilding;
+    }
+
+    public void setIdBuilding(int idBuilding) {
+        this.idBuilding = idBuilding;
     }
 
     @Override
