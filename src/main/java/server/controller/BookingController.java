@@ -4,13 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import server.model.Booking;
+import server.model.CategoryRoom;
 import server.model.Client;
 import server.repository.BookingRepository;
+import server.repository.CategoryRoomRepository;
 import server.repository.ClientRepository;
+import server.service.DateService;
 import server.service.mail.MailRegistrationService;
 
 import java.text.SimpleDateFormat;
@@ -29,7 +30,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
  * Created by ileossa on 18/05/2017.
  */
 @RestController
-@RequestMapping("/booking")
+@RequestMapping("/api/booking")
 public class BookingController {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
@@ -37,12 +38,16 @@ public class BookingController {
     private BookingRepository bookingRepository;
     private ClientRepository clientRepository;
     private MailRegistrationService mailService;
+    private DateService dateService;
+    private CategoryRoomRepository categoryRoomRepository;
 
     @Autowired
-    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, MailRegistrationService mailService) {
+    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, MailRegistrationService mailService, DateService dateService, CategoryRoomRepository categoryRoomRepository) {
         this.bookingRepository = bookingRepository;
         this.clientRepository = clientRepository;
         this.mailService = mailService;
+        this.dateService = dateService;
+        this.categoryRoomRepository = categoryRoomRepository;
     }
 
     @Value("${booking.timezone}")
@@ -61,8 +66,8 @@ public class BookingController {
      * @param token
      * @return
      */
-    @RequestMapping(method = GET)
-    List<Booking> getListBookingByIdUser(@RequestParam(value = "idClient") String token){
+    @RequestMapping(method = GET, value="{token}")
+    List<Booking> getListBookingByIdUser(@PathVariable String token){
         List<Client> clients = clientRepository.findByToken(token);
         return bookingRepository.findAllByTokenId(clients.get(0).getToken());
     }
@@ -113,8 +118,8 @@ public class BookingController {
 
             booking.check(tokenClient);
             booking.check(idPartyRoom);
-            booking.check(stringToDate(dateStartEntry));
-            booking.check(stringToDate(dateEndEntry));
+            booking.check(dateService.stringToDate(dateStartEntry));
+            booking.check(dateService.stringToDate(dateEndEntry));
             booking.check(nbPerson);
             booking.check(price);
             booking.check(payementMode);
@@ -127,61 +132,25 @@ public class BookingController {
 
 
 
-// ------------------------------------------------------------------
 
-    private Date stringToDate(String dateEntry) {
-        LocalDate dateLocal = LocalDate.parse(dateEntry);
-        // Get current Date + Time + zoneId
-        ZoneId zoneId = ZoneId.of("Europe/Paris");
 
-        //convert localDate to Date
-        return Date.from(dateLocal.atStartOfDay(zoneId).toInstant());
+    @RequestMapping(method = GET)
+    public double costByNight(@RequestParam(value="date_start") String dateStartEnter,
+                           @RequestParam(value = "date_end") String dateEndEnter,
+                           @RequestParam(value = "reservation_type") String typeReservation){
+
+        // recup le liste des type avec prix
+        List<CategoryRoom> categories = categoryRoomRepository.findAll();
+        for(CategoryRoom one : categories){
+            if(one.getName().equals(typeReservation)){
+                Date dateStart = dateService.stringToDate(dateStartEnter);
+                Date dateEnd = dateService.stringToDate(dateEndEnter);
+                long diff = dateEnd.getTime() - dateStart.getTime();
+                return diff * one.getCostByNight();
+            }
+        }
+        return Double.MAX_VALUE;
     }
 
 
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -51,6 +51,8 @@ spring:
   profiles: dev
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: update
   jmx:
     enabled: true
 # H2 (acces with localhost:port/h2 or localhost:port/h2-console/)
@@ -64,6 +66,7 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+
 
 # Mailing (download fakeSMTP, and run with java -jar fakeSMTP.jar )
 mail:

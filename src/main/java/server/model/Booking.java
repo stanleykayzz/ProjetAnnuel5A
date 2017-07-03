@@ -122,7 +122,7 @@ public class Booking {
                 ", dateStart=" + dateStart +
                 ", dateEnd=" + dateEnd +
                 ", peopleNumber=" + peopleNumber +
-                ", price=" + price +
+                ", costByNight=" + price +
                 ", payementMode='" + payementMode + '\'' +
                 ", idPartyRoom=" + idPartyRoom +
                 ", tokenId=" + tokenId +
