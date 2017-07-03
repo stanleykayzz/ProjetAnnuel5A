@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by ileossa on 27/06/2017.
  */
 @Service
-public class MailRegistrationService {
+public class MailService {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
