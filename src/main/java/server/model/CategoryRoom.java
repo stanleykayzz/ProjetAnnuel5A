@@ -8,6 +8,7 @@ import static javax.persistence.GenerationType.AUTO;
  * Created by ileossa on 02/07/2017.
  */
 @Entity
+@Table(name = "category_room")
 public class CategoryRoom {
 
     @Id
@@ -18,7 +19,9 @@ public class CategoryRoom {
     private double costByNight;
     private String description;
     private String picturePath;
-    @Column(name="CATEGORY_ID_ROOM")
+
+    @OneToOne
+    @JoinColumn(name = "id_room")
     private Room room;
 
 

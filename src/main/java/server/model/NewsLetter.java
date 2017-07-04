@@ -8,6 +8,7 @@ import static javax.persistence.GenerationType.AUTO;
  * Created by ileossa on 03/07/2017.
  */
 @Entity
+@Table(name = "news_letter")
 public class NewsLetter {
 
     @Id

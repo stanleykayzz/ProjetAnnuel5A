@@ -6,11 +6,12 @@ import javax.persistence.*;
  * Created by ileossa on 03/07/2017.
  */
 @Entity
+@Table(name = "building")
 public class Building {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "NAME_BUILDING")
+    @Column(name = "id_building")
     private int idBuilding;
 
 

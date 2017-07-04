@@ -1,12 +1,18 @@
 package server.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by ileossa on 05/04/2017.
  */
+@Getter
+@Setter
 @Entity
+@Table(name = "booking")
 public class Booking {
 
     @Id
@@ -24,10 +30,12 @@ public class Booking {
     private String tokenId;
     private boolean sendEvaluation;
     private int idRoomForClient;
+    private int rate;
 
     //Use by interface repository
+
+
     public Booking() {
-        this.sendEvaluation = true;
     }
 
     public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId) {
@@ -41,6 +49,7 @@ public class Booking {
         this.tokenId = tokenId;
         this.idRoomForClient = -1;
         this.sendEvaluation = true;
+        this.rate = -1;
     }
 
     public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, int idRoomForClient) {
@@ -54,6 +63,7 @@ public class Booking {
         this.tokenId = tokenId;
         this.idRoomForClient = idRoomForClient;
         this.sendEvaluation = true;
+        this.rate = -1;
     }
 
     public int getIdBook() {
@@ -142,6 +152,14 @@ public class Booking {
 
     public void setIdRoomForClient(int idRoomForClient) {
         this.idRoomForClient = idRoomForClient;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 
     @Override
