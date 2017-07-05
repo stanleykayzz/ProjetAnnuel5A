@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            margin-top: 5%;
+            border: 2px solid black;
+            width: 100%;
+            margin-top: 4%;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .left {
+            float: left;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        .clientTable, .bookingTable {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="auto-style1">
+        <img src="http://residencedeshautsdemenaye.com/img/logoRHM.png" />
+        <div class="right">
+            <h2>Facture</h2>
+            <strong>Date</strong> : invoiceDate         
+        </div>
+    </div>
+    <div class="clientInfo">
+        <br />
+        <br />
+        <table class="clientTable">
+            <caption>Informations client</caption>
+            <tr>
+                <td>clientFullname</td>
+                <td>clientPhone</td>
+            </tr>
+            <tr>
+                <td>clientCountry</td>
+                <td>clientBirthday</td>
+            </tr>
+            <tr>
+                <td>clientCity</td>
+                <td>clientEmail</td>
+            </tr>
+            <tr>
+                <td colspan="2">clientAddress</td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <div class="bookingInfo">
+        <table class="bookingTable">
+            <caption>Informations de réservation</caption>
+            <tr>
+                <th>Chambre                            </th>
+                <th>Quantité                            </th>
+                <th>Arrivé                            </th>
+                <th>Départ                            </th>
+                <th>Nuit (s)                            </th>
+                <th>Prix / nuit (s)                            </th>
+                <th>Total                            </th>
+            </tr>
