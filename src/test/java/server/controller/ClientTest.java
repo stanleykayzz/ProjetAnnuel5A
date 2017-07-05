@@ -54,7 +54,7 @@ public class ClientTest {
     {
         name       : "name",
         firstName  : "firstname",
-        sexe       : "sexe",
+
         birthday   : "birthday",
         email      : "email",
         phone      : "phone",
@@ -69,7 +69,16 @@ public class ClientTest {
     @Test
     public void should_create_client_donald(){
         // todo refaire en se basant sur le json fournis par maxime
-        given().param("name","kevin").param("password","hello123").param("email","kevin.vivor@gmail.com")
+        given().param("name","donald")
+                .param("firstName", "duck")
+                .param("birthday", "01-01-1860")
+                .param("email", "donal@disney.com")
+                .param("phone", "019098374")
+                .param("country", "USA")
+                .param("city", "Floride")
+                .param("postalCode", "198")
+                .param("password", "secret")
+
                 .when().post("/user").then().log().all()
                 .body("id",is(4))
                 .body("password",is("hello123"))
