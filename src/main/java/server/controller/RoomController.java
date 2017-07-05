@@ -14,7 +14,7 @@ import server.repository.BookingRepository;
 import server.repository.BuildingRepository;
 import server.repository.RoomRepository;
 import server.service.DateService;
-import server.service.mail.BookingService;
+import server.service.BookingService;
 
 import java.util.ArrayList;
 import java.util.List;

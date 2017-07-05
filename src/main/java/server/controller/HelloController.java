@@ -24,7 +24,8 @@ public class HelloController {
     @RequestMapping(method = GET, value = "/mail")
     public String hello(){
         Client riri = new Client("riri", "duck", new Date(100009), "riri@localhost", "0616657098", "Disney", "duck city", "12 av disney", "190183", "secretpassword", null, null);
-        mailService.sendEmail(riri, "test connard", "account_update.vm");
+        //mailService.sendEmail(riri, "test connard", "account_update.html");
+        mailService.sendEmailWithAttachement(riri, "test coco", "account_update.html", "D:\\ileossa\\workspace\\ProjetAnnuel5A\\src\\main\\resources\\files\\rhm_mcd.jpg");
         return "sending";
     }
 }

@@ -73,6 +73,11 @@ mail:
   support:
     username: test
     password: test
+  template.path.logo: src\main\resources\static\img\logoRHM.png
+  template:
+    url:
+      home: http://residencedeshautsdemenaye.com/
+      unsubscribe: http://residencedeshautsdemenaye.com/api/mail/unsubscribe/
 
 
 
