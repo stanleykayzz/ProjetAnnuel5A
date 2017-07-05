@@ -122,7 +122,7 @@ public class RoomController {
             rooms = roomRepository.findAllByCategoryRoomEquals(typeRoom);
         }
         //recuperer les room occupe pendant la duree
-        List<Booking> bookings = bookingRepository.findAllByDateBookBetween(dateService.stringToDate(begin_date));
+        List<Booking> bookings = bookingRepository.findAllByDateBookBetween(dateService.stringToDate(begin_date), dateService.stringToDate(end_date));
         // enlever de la liste room les chambre prisent
         for (Booking book : bookings){
             if(bookingService.isFree(book)){
