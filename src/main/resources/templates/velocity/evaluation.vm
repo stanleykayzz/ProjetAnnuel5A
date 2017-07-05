@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>WELCOME</title>
+    <title>WHAT YOU THINK!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
@@ -67,6 +67,9 @@
             td[class=em_height]{
                 height: 20px !important;
             }
+            td[class=em_space]{
+                width:10px !important;
+            }
             td[class=em_font]{
                 font-size:14px !important;
             }
@@ -94,10 +97,6 @@
             td[class=em_align_cent] {
                 text-align: center !important;
             }
-            td[class=em_align_cent1] {
-                text-align: center !important;
-                padding-bottom: 10px !important;
-            }
             td[class=em_height]{
                 height: 20px !important;
             }
@@ -109,16 +108,21 @@
                 font-size:14px !important;
                 line-height:28px !important;
             }
+            td[class=em_space]{
+                width:10px !important;
+            }
             span[class=em_br]{
                 display:block !important;
+            }
+            td[class=em_align_cent1] {
+                text-align: center !important;
+                padding-bottom: 10px !important;
             }
         }
     </style>
 </head>
 <body style="margin:0px; padding:0px;" bgcolor="#ffffff">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
-
-    <!-- === BODY SECTION=== -->
     <tr>
         <td align="center" valign="top"  bgcolor="#ffffff">
             <table width="600" cellpadding="0" cellspacing="0" border="0" align="center" class="em_main_table" style="table-layout:fixed;">
@@ -158,7 +162,7 @@
                     <td height="1" bgcolor="#fed69c" style="font-size:0px; line-height:0px;"><img src="https://www.sendwithus.com/assets/img/emailmonks/images/spacer.gif" width="1" height="1" style="display:block;" border="0" alt="" /></td>
                 </tr>
                 <!-- === //NEVIGATION SECTION === -->
-                <!-- === IMG WITH TEXT AND COUPEN CODE SECTION === -->
+                <!-- === RATE OUR SERVICE SECTION === -->
                 <tr>
                     <td valign="top" class="em_aside">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -166,45 +170,73 @@
                                 <td height="36" class="em_height">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td valign="middle" align="center"><img src="https://www.sendwithus.com/assets/img/emailmonks/images/banner.jpg" width="333" height="303" alt="WELCOME" style="display:block; font-family:Arial, sans-serif; font-size:25px; line-height:303px; color:#c27cbb;max-width:333px;" class="em_full_img" border="0" /></td>
+                                <td  align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:18px; font-weight:bold; line-height:20px; text-transform:uppercase; color:#feae39;">let us know</td>
+                            </tr>
+                            <tr>
+                                <td height="16" style="font-size:1px; line-height:1px;">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td align="center"><a target="_blank" style="text-decoration:none;"><img src="https://www.sendwithus.com/assets/img/emailmonks/images/img1.jpg" width="408" height="46" style="display:block;font-family: Arial, sans-serif; font-size:24px; line-height:28px; color:#feae39; letter-spacing:5px;max-width:408px;"  border="0" alt="WHAT YOU THINK!" class="em_full_img"/></a></td>
                             </tr>
                             <tr>
                                 <td height="41" class="em_height">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td bgcolor="#feae39" width="1"></td>
+                                            <td align="center" valign="top">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                                                    <tr>
+                                                        <td bgcolor="#feae39" height="1" style="line-height:0px; font-size:0px;"><img src="https://www.sendwithus.com/assets/img/emailmonks/images/spacer.gif" width="1" height="1" alt=" "  style="display:block;" border="0" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="36" class="em_height">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td   align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:18px; font-weight:bold; line-height:20px; text-transform:uppercase; color:#feae39;"><a href="#" target="_blank" style="color:#feae39; text-decoration:none;"> Click to rate our services</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="18" style="font-size:1px; line-height:1px;">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" valign="top" >
+                                                            <table width="400" border="0" cellspacing="0" cellpadding="0" align="center" class="em_wrapper" style="max-width:400px;">
+                                                                <tr>
+                                                                    <td  width="9">&nbsp;</td>
+                                                                    <td  width="45" bgcolor="#feae39" height="45" align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;"><a href="https://residencedeshautsdemenaye.herokuapp.com/rate/${user.mail}/1" target="_blank" style="color:#ffffff; text-decoration:none;"> 1</a></td>
+                                                                    <td class="em_space" width="39">&nbsp;</td>
+                                                                    <td width="45" bgcolor="#feae39" height="45" align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;"><a href="https://residencedeshautsdemenaye.herokuapp.com/rate/${user.mail}/2" target="_blank" style="color:#ffffff; text-decoration:none;"> 2</a></td>
+                                                                    <td class="em_space"  width="39">&nbsp;</td>
+                                                                    <td width="45" bgcolor="#feae39" height="45" align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;"><a href="https://residencedeshautsdemenaye.herokuapp.com/rate/${user.mail}/3" target="_blank" style="color:#ffffff; text-decoration:none;"> 3</a></td>
+                                                                    <td class="em_space"  width="39">&nbsp;</td>
+                                                                    <td width="45" bgcolor="#feae39" height="45" align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;"><a href="https://residencedeshautsdemenaye.herokuapp.com/rate/${user.mail}/4" target="_blank" style="color:#ffffff; text-decoration:none;"> 4</a></td>
+                                                                    <td class="em_space"   width="39">&nbsp;</td>
+                                                                    <td width="45" bgcolor="#feae39" height="45" align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;"><a href="https://residencedeshautsdemenaye.herokuapp.com/rate/${user.mail}/5" target="_blank" style="color:#ffffff; text-decoration:none;"> 5</a></td>
+                                                                    <td  width="10">&nbsp;</td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="36" class="em_height">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td bgcolor="#feae39" height="1" style="line-height:0px; font-size:0px;"><img src="https://www.sendwithus.com/assets/img/emailmonks/images/spacer.gif" width="1" height="1" alt=" "  style="display:block;" border="0" /></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td  bgcolor="#feae39" width="1"></td>
+                                        </tr>
+                                    </table>
+                                </td>
                             </tr>
                             <tr>
                                 <td height="1" bgcolor="#d8e4f0" style="font-size:0px;line-height:0px;"><img src="https://www.sendwithus.com/assets/img/emailmonks/images/spacer.gif" width="1" height="1" alt="" style="display:block;" border="0" /></td>
                             </tr>
                             <tr>
                                 <td height="35" class="em_height">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:15px; font-weight:bold; line-height:18px; color:#30373b;">Welcome ${user.name}</td>
-                            </tr>
-                            <tr>
-                                <td height="22" style="font-size:1px; line-height:1px;">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:18px; font-weight:bold; line-height:20px; color:#feae39;">Don't waste your time and benefit your special offers</td>
-                            </tr>
-                            <tr>
-                                <td height="20" style="font-size:1px; line-height:1px;">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td height="12" style="font-size:1px; line-height:1px;">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td valign="top" align="center">
-                                    <table width="210" border="0" cellspacing="0" cellpadding="0" align="center">
-                                        <tr>
-                                            <td valign="middle" align="center" height="45" bgcolor="#feae39" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff; text-transform:uppercase;">
-                                                <a href="https://residencedeshautsdemenaye.herokuapp.com/">ACCES SITE</a>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="34" class="em_height">&nbsp;</td>
                             </tr>
                             <tr>
                                 <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:22px; color:#999999;"> <br class="em_hide"/>
@@ -219,18 +251,20 @@
                         </table>
                     </td>
                 </tr>
-                <!-- === //IMG WITH TEXT AND COUPEN CODE SECTION === -->
+                <!-- === RATE OUR SERVICE SECTION === -->
             </table>
         </td>
     </tr>
-    <!-- === //BODY SECTION=== -->
     <!-- === FOOTER SECTION === -->
     <tr>
         <td align="center" valign="top"  bgcolor="#30373b" class="em_aside">
             <table width="600" cellpadding="0" cellspacing="0" border="0" align="center" class="em_main_table" style="table-layout:fixed;">
                 <tr>
+                    <td height="35" class="em_height">&nbsp;</td>
+                </tr>
+                <tr>
                     <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789;text-transform:uppercase;">
-                        If you do not wish to receive any further emails from us, please  <span style="text-decoration:underline;"><a href="#" target="_blank" style="text-decoration:underline; color:#848789;">unsubscribe</a></span>
+                        If you do not wish to receive any further emails from us, please  <span style="text-decoration:underline;"><a href="https://residencedeshautsdemenaye.herokuapp.com/api/mail/unsubscribe/${user.email}" target="_blank" style="text-decoration:underline; color:#848789;">unsubscribe</a></span>
                     </td>
                 </tr>
                 <tr>
@@ -241,5 +275,6 @@
     </tr>
     <!-- === //FOOTER SECTION === -->
 </table>
+<div style="display:none; white-space:nowrap; font:20px courier; color:#ffffff; background-color:#ffffff;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
 </body>
 </html>
