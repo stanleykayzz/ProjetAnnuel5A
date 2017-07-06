@@ -31,6 +31,7 @@ public class Booking {
     private boolean sendEvaluation;
     private int idRoomForClient;
     private int rate;
+    private Reason reason;
 
     //Use by interface repository
 
@@ -38,7 +39,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId) {
+    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, Reason reason) {
         this.dateBook = dateBook;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -47,12 +48,13 @@ public class Booking {
         this.payementMode = payementMode;
         this.idPartyRoom = idPartyRoom;
         this.tokenId = tokenId;
+        this.reason = reason;
         this.idRoomForClient = -1;
         this.sendEvaluation = true;
         this.rate = -1;
     }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, int idRoomForClient) {
+    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, int idRoomForClient, Reason reason) {
         this.dateBook = dateBook;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -62,6 +64,7 @@ public class Booking {
         this.idPartyRoom = idPartyRoom;
         this.tokenId = tokenId;
         this.idRoomForClient = idRoomForClient;
+        this.reason = reason;
         this.sendEvaluation = true;
         this.rate = -1;
     }
@@ -160,6 +163,14 @@ public class Booking {
 
     public void setRate(int rate) {
         this.rate = rate;
+    }
+
+    public Reason getReason() {
+        return reason;
+    }
+
+    public void setReason(Reason reason) {
+        this.reason = reason;
     }
 
     @Override
