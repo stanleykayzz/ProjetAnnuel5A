@@ -1,7 +1,7 @@
 # CRM Hôtellerie
 # La Résidence des hauts de Menaye
 
-One Paragraph of project description goes here
+In order to develop its activity and thus offer its services to a wider range of customers, the Résidence des Hauts de Ménaye wishes to set up a website at the outset that allows customers to book rooms, tables at restaurants or Well the festive hall. 
 
 ## Getting Started
 
@@ -48,6 +48,9 @@ datasource:
 ## Running the tests
 
 `mvn -U clean install -Ptest`
+
+
+We use [GreenMail](http://www.icegreen.com/greenmail/)  to test mail.
 
 
 
