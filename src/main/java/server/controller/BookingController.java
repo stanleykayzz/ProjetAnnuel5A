@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import server.model.Booking;
 import server.model.CategoryRoom;
 import server.model.Client;
+import server.model.Reason;
 import server.repository.BookingRepository;
 import server.repository.CategoryRoomRepository;
 import server.repository.ClientRepository;
@@ -76,18 +77,11 @@ public class BookingController {
     }
 
 
-    // TODO : envoyer un email de confirmation
     @RequestMapping(method = POST)
-    public Booking newBooking(@RequestParam(value="tokenCLient")String tokenClient ,
-                               @RequestParam(value="idPartyRoom")int idPartyRoom ,
-                               @RequestParam(value = "dateStart") String dateStartEntry ,
-                               @RequestParam(value = "dateEnd") String dateEndEntry ,
-                               @RequestParam(value = "nbPerson") int nbPerson ,
-                               @RequestParam(value = "price") float price ,
-                               @RequestParam(value = "payementMode") String payementMode){
+    public Booking newBooking(@RequestBody Booking booking){
         //Convertion String to Date
-        LocalDate dateStartTemp = LocalDate.parse(dateStartEntry);
-        LocalDate dateEndTemp = LocalDate.parse(dateEndEntry);
+        LocalDate dateStartTemp = LocalDate.parse(booking.getDateStart().toString());
+        LocalDate dateEndTemp = LocalDate.parse(booking.getDateEnd().toString());
        // Get current Date + Time + zoneId
         Instant now = Instant.now();
         ZoneId zoneId = ZoneId.of(zoneIdForUtcOffset);
@@ -97,17 +91,13 @@ public class BookingController {
         Date dateStart = Date.from(dateStartTemp.atStartOfDay(zoneId).toInstant());
         Date dateEnd = Date.from(dateEndTemp.atStartOfDay(zoneId).toInstant());
 
-        Booking booking = new Booking(Date.from(dateBook.toInstant()),
-                dateStart,
-                dateEnd,
-                nbPerson,
-                price,
-                payementMode,
-                idPartyRoom,
-                tokenClient);
         Booking result =  bookingRepository.save(booking);
-        Client client = clientRepository.findByToken(tokenClient).get(0);
-        mailService.sendEmail(client, booking, "booking registry", "booking registry");
+        Client client = clientRepository.findByToken(booking.getTokenId()).get(0);
+        if(booking.getReason().equals(Reason.VACANCY))
+            mailService.sendEmail(client, booking, "booking registry", "booking_registry_vacancy");
+        else {
+            mailService.sendEmail(client, booking, "booking registry", "booking_registry_work");
+        }
         return result;
     }
 
