@@ -4,19 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import server.Application;
-import server.model.Booking;
 import server.repository.BookingRepository;
 
 /**
  * Created by ileossa on 01/07/2017.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebIntegrationTest({"spring.profiles.active: test"})
 public class BookingTest {
 
     private BookingRepository bookingRepository;
