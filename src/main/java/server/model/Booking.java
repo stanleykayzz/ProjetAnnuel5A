@@ -32,6 +32,7 @@ public class Booking {
     private int idRoomForClient;
     private int rate;
     private Reason reason;
+    private Statut statut;
 
     //Use by interface repository
 
@@ -39,7 +40,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, Reason reason) {
+    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, Reason reason, Statut statut) {
         this.dateBook = dateBook;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -49,12 +50,13 @@ public class Booking {
         this.idPartyRoom = idPartyRoom;
         this.tokenId = tokenId;
         this.reason = reason;
+        this.statut = statut;
         this.idRoomForClient = -1;
         this.sendEvaluation = true;
         this.rate = -1;
     }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, int idRoomForClient, Reason reason) {
+    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, int idRoomForClient, Reason reason, Statut statut) {
         this.dateBook = dateBook;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -65,8 +67,17 @@ public class Booking {
         this.tokenId = tokenId;
         this.idRoomForClient = idRoomForClient;
         this.reason = reason;
+        this.statut = statut;
         this.sendEvaluation = true;
         this.rate = -1;
+    }
+
+    public Statut getStatut() {
+        return statut;
+    }
+
+    public void setStatut(Statut statut) {
+        this.statut = statut;
     }
 
     public int getIdBook() {

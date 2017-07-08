@@ -3,11 +3,9 @@ package server.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import server.model.Booking;
-import server.model.Building;
-import server.model.CategoryRoom;
-import server.model.Room;
+import server.model.*;
 import server.repository.BookingRepository;
 import server.repository.BuildingRepository;
 import server.repository.CategoryRoomRepository;
@@ -18,8 +16,10 @@ import server.service.BookingService;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static server.model.Statut.CANCELED;
 
 /**
  * Created by ileossa on 23/05/2017.
@@ -95,6 +95,12 @@ public class RoomController {
     }
 
 
+    @RequestMapping(method = GET, value = "/category/all")
+    public List<CategoryRoom> getAllCategoriesRoom(){
+        return categoryRoomRepository.findAll();
+    }
+
+
 
 
 
@@ -112,9 +118,15 @@ public class RoomController {
 
 
 
-
-
-
+    @RequestMapping(method = DELETE, value="/cancel")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void cancelBook(@RequestParam(value="token") String tokenClient){
+        List<Booking> books = bookingRepository.findAllByTokenId(tokenClient);
+        for (Booking book : books){
+            book.setStatut(CANCELED);
+            bookingRepository.saveAndFlush(book);
+        }
+    }
 
 
 }

@@ -3,6 +3,7 @@ package server.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import server.model.Booking;
+import server.model.Statut;
 import server.service.DateService;
 
 /**
@@ -24,5 +25,13 @@ public class BookingService {
             return true;
         }
         return false;
+    }
+
+    public boolean isVacant(Booking booking){
+        if(booking.getStatut() == Statut.VACANT){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
