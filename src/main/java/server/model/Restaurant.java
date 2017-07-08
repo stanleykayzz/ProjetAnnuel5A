@@ -1,72 +1,64 @@
 package server.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /**
  * Created by ileossa on 05/04/2017.
  */
 @Entity
+@Getter
+@Setter
 @Table(name = "restaurant")
 public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idTable;
-    private String name;
-    private int placeNumber;
-    private int idClient;
+    private String type;
+    private String tokenClient;
+    private int nbClients;
 
     public Restaurant() {
     }
 
-    public Restaurant(String name, int placeNumber, int idClient) {
-        this.name = name;
-        this.placeNumber = placeNumber;
-        this.idClient = idClient;
+    public Restaurant(String type, String tokenClient, int nbClients) {
+        this.type = type;
+        this.tokenClient = tokenClient;
+        this.nbClients = nbClients;
     }
 
     public int getIdTable() {
         return idTable;
     }
 
-    public void setIdTable(int idTable) {
-        this.idTable = idTable;
+
+
+    public String getType() {
+        return type;
     }
 
-    public String getName() {
-        return name;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getTokenClient() {
+        return tokenClient;
     }
 
-    public int getPlaceNumber() {
-        return placeNumber;
+    public void setTokenClient(String tokenClient) {
+        this.tokenClient = tokenClient;
     }
 
-    public void setPlaceNumber(int placeNumber) {
-        this.placeNumber = placeNumber;
+    public int getNbClients() {
+        return nbClients;
     }
 
-    public int getIdClient() {
-        return idClient;
+    public void setNbClients(int nbClients) {
+        this.nbClients = nbClients;
     }
-
-    public void setIdClient(int idClient) {
-        this.idClient = idClient;
-    }
-
-    @Override
-    public String toString() {
-        return "Restaurant{" +
-                "idTable=" + idTable +
-                ", name='" + name + '\'' +
-                ", placeNumber=" + placeNumber +
-                ", idClient=" + idClient +
-                '}';
-    }
-
 
     public Restaurant check(Object o) {
         if (this == o) return (Restaurant) o;
@@ -74,10 +66,9 @@ public class Restaurant {
 
         Restaurant that = (Restaurant) o;
 
-        if (idTable != that.idTable) setIdTable(that.idTable);
-        if (placeNumber != that.placeNumber) setPlaceNumber(that.placeNumber);
-        if (idClient != that.idClient) setIdClient(that.idClient);
-        if (name.equals(that.name)) setName(that.name);
+        if (nbClients != that.nbClients) setNbClients(that.nbClients);
+        if (tokenClient != that.tokenClient) setTokenClient(that.tokenClient);
+        if (type.equals(that.type)) setType(that.type);
         return this;
     }
 
