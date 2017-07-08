@@ -59,7 +59,7 @@ footer{
 	color: green;
 	font: 28px Roboto, Helvetica, Arial, sans-serif;
 	text-align: center;
- }
+}
 
 .signup_error {
 	border: red;
@@ -73,10 +73,7 @@ footer{
 
 .user_infos_container {
 	width: 35%;
-<<<<<<< HEAD
-=======
 	min-width: 570px;
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 	margin: auto;
 	background-color: #FBFBFB;
 	padding: 40px 0px 20px 80px;
@@ -89,11 +86,6 @@ footer{
 }
 
 .room_container{
-<<<<<<< HEAD
-
-<<<<<<< 0950d44fb69e95d7348a5bc1857fd2b9e1207fc3
-=======
-=======
 	font: 16px Roboto, Helvetica, Arial, sans-serif;
 	color: dimgrey;
 	width: 30%;
@@ -109,7 +101,6 @@ footer{
 	box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.75);
 }
 
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 .reservation_container{
 	font: 16px Roboto, Helvetica, Arial, sans-serif;
 	color: dimgrey;
@@ -125,10 +116,6 @@ footer{
 	-webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.75);
-<<<<<<< HEAD
->>>>>>> [FRONT]
-=======
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 }
 
 .reservation_content_container{
@@ -140,20 +127,12 @@ footer{
 
 .small_container {
 	margin-top: 20px;
-<<<<<<< HEAD
-	width: 40%;
-=======
 	width: 45%;
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 	display: inline-block;
 }
 
 .sm_c_left {
-<<<<<<< HEAD
-
-=======
 	float: left;
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 }
 
 .sm_c_right {
@@ -166,52 +145,31 @@ footer{
 }
 
 .user_infos{
-<<<<<<< HEAD
-	display: block;
-	padding: 0 0 0 0;
-	font: 12px Roboto, Helvetica, Arial, sans-serif;
-=======
 	font: 14px Roboto, Helvetica, Arial, sans-serif;
 	font-weight: 600;
 	display: block;
 	padding: 0 0 0 0;
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 	color: #5D5D5D;
 }
 
 .user_infos_span{
 	display: inline-block;
-<<<<<<< HEAD
-	font: 18px Roboto, Helvetica, Arial, sans-serif;
-	border-bottom: 1px solid rgb(39, 166, 56);
-	min-width: 60%;
-=======
 	font: 17px Roboto, Helvetica, Arial, sans-serif;
 	border-bottom: 1px solid rgb(39, 166, 56);
 	min-width: 60%;
 	font-weight: 500;
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 }
 
 .user_infos_span_xl {
 	display: inline-block;
-<<<<<<< HEAD
-	font: 18px Roboto, Helvetica, Arial, sans-serif;
-	border-bottom: 1px solid rgb(39, 166, 56);
-=======
 	font: 17px Roboto, Helvetica, Arial, sans-serif;
 	border-bottom: 1px solid rgb(39, 166, 56);
 	font-weight: 500;
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 }
 
 .user_infos_input{
 	display: inline-block;
-<<<<<<< HEAD
-	font: 14px Lora,'Times New Roman',serif;
-=======
 	font: 17px Roboto, Helvetica, Arial, sans-serif;
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 	border: 0px;
 	border-bottom: 1px solid rgb(39, 166, 56);
 }
@@ -228,17 +186,10 @@ footer{
 
 .user_infos_input:focus{
 	outline: none;
-<<<<<<< HEAD
-	border-bottom: 1.5px solid #197F31;
-}
-
-.btn_account {
-=======
 	border-bottom: 1px solid #197F31;
 }
 
 .btn_form {
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 	text-decoration: none!important;
 	color: white!important;
 	font: 14px Roboto, Helvetica, Arial, sans-serif;
@@ -247,13 +198,6 @@ footer{
 	background-color: #007395;
 	border-radius: 2px;
 	font-weight: 700;
-<<<<<<< HEAD
-}
-
-.btn_account:hover {
-	color: white!important;
-	background-color: #006483!important;
-=======
 	cursor: pointer;
 }
 
@@ -278,37 +222,21 @@ footer{
 
 .btn_reservation:active{
 	background-color: #006483;
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 }
 
 .datepicker{
 	font-size: 14px;
 	line-height: 14px;
-<<<<<<< HEAD
-	width: 120px;
-	height: 20px;
-	vertical-align: middle;
-}
-
-.datepicker:active{
-=======
 	width: 140px;
 	height: 20px;
 	vertical-align: middle;
 	padding-left: 2px;
 	margin-top: 10px;
 
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 }
 
 .ui-datepicker{
 	font-size: 14px!important;
-<<<<<<< HEAD
-<<<<<<< 0950d44fb69e95d7348a5bc1857fd2b9e1207fc3
-}
-=======
-=======
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
 }
 
 .div_reservation {
@@ -432,7 +360,3 @@ footer{
 	text-align: left;
 	font-weight: 600;
 }
-<<<<<<< HEAD
->>>>>>> [FRONT]
-=======
->>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb

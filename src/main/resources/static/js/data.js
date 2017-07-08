@@ -61,7 +61,7 @@
                 listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
             }
         },
-        basicUrl   : "http://localhost:8080",
+        basicUrl   : "http://localhost:8080/api",
         getMenu : function () {
             return document.getElementById("ul_menu");
         },

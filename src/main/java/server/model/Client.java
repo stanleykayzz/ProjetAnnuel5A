@@ -8,12 +8,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table (name = "client")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Client {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +28,9 @@ public class Client {
     @Column(name = "Firstname")
     @NotEmpty(message = "A client must have a first name")
     private String firstName;
+
+    @Column(name = "Sexe")
+    private int sexe;
 
     @Column(name = "Birthday")
     private Date birthday;
@@ -59,34 +63,20 @@ public class Client {
     @NotNull
     private String password;
 
+    @Column(name = "Status")
+    private int status;
+
     @Column(name = "Token")
     private String token;
 
     @Column(name = "Token_date")
     private Date tokenDate;
 
+    @Column(name = "Code")
+    private String code;
 
-    //--------- CONSTRUCTOR ---------\\
 
-    public Client() {
-    }
-
-    public Client(String name, String firstName, Date birthday, String email, String phone, String country, String city, String address, String postalCode, String password, String token, Date tokenDate) {
-        this.name = name;
-        this.firstName = firstName;
-        this.birthday = birthday;
-        this.email = email;
-        this.phone = phone;
-        this.country = country;
-        this.city = city;
-        this.address = address;
-        this.postalCode = postalCode;
-        this.password = password;
-        this.token = token;
-        this.tokenDate = tokenDate;
-    }
-
-    // --------- GETTERS / SETTERS ---------\\
+//--------- GETTERS / SETTERS ---------\\
 
 
     public String getName() {
@@ -128,6 +118,10 @@ public class Client {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    public int getSexe() { return sexe; }
+
+    public void setSexe(int sexe) { this.sexe = sexe; }
 
     public Date getBirthday() {
         return birthday;
@@ -185,6 +179,10 @@ public class Client {
         this.postalCode = postalCode;
     }
 
+    public int getStatus() { return status; }
+
+    public void setStatus(int status) { this.status = status; }
+
     public String getPassword() {
         return password;
     }
@@ -192,4 +190,8 @@ public class Client {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getCode() { return code; }
+
+    public void setCode(String code) { this.code = code; }
 }

@@ -10,6 +10,7 @@ import server.repository.ClientRepository;
 import server.repository.NewsLetterRepository;
 
 import java.awt.print.Book;
+import java.util.List;
 
 /**
  * Created by ileossa on 03/07/2017.
@@ -32,8 +33,8 @@ public class MailController {
 
     @RequestMapping(value = "/unsubscribe/${email}")
     public String unsucribe(@PathVariable String email){
-        Client client = clientRepository.findClientByEmailEquals(email);
-        NewsLetter letter = newsLetterRepository.findNewsLetterByIdClientEquals(client.getClientId());
+        List<Client> client = clientRepository.findClientByEmailEquals(email);
+        NewsLetter letter = newsLetterRepository.findNewsLetterByIdClientEquals(client.get(0).getClientId());
         letter.setSendNewsLetter(false);
         newsLetterRepository.save(letter);
         return "Description to the newsletter has been well recorded. The cancellation treatment may take a few days.";

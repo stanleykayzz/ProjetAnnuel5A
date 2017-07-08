@@ -17,6 +17,9 @@ public interface ClientRepository  extends JpaRepository<Client, Long> {
     @Query("select c from Client c where email = :Email and password = :Password")
     List<Client> login(@Param("Email") String email, @Param("Password") String password);
 
+    @Query("select c from Client c where email = :Email and code = :Code")
+    List<Client> confirmation(@Param("Email") String email, @Param("Code") String code);
+
     List<Client> findByToken(@Param("Token") String token);
 
     boolean findOneByToken(@Param("Token") String token);
@@ -25,7 +28,7 @@ public interface ClientRepository  extends JpaRepository<Client, Long> {
 
     Client findClientByClientIdEquals(long clientId );
 
-    Client findClientByEmailEquals(String email);
+    List<Client> findClientByEmailEquals(String email);
 
     Client findDistinctFirstByToken(String token);
 }
