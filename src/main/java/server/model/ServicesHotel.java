@@ -11,14 +11,13 @@ public class ServicesHotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_SERVICE")
     private int idServicesHotel;
     private String name;
     private String type;
     private float price;
     private String comment;
 
-    @Column(name="")
-    private int idRelation;
 
     public ServicesHotel() {
     }

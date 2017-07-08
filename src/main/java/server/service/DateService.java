@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
@@ -33,5 +34,11 @@ public class DateService {
         ZoneId zoneId = ZoneId.of(zoneI);
         return Date.from(currentDate.atStartOfDay(zoneId).toInstant());
 
+    }
+
+    public long numberDaysBetween(String startDate, String endDate){
+        LocalDate dateBefore = LocalDate.parse(startDate);
+        LocalDate dateAfter = LocalDate.parse(endDate);
+        return ChronoUnit.DAYS.between(dateBefore, dateAfter);
     }
 }

@@ -2,6 +2,8 @@ package server.model;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static javax.persistence.CascadeType.ALL;
 
 /**
@@ -30,6 +32,10 @@ public class Room {
     @OneToOne(cascade = ALL)
     @JoinColumn(name = "CATEGORY_ID_ROOM")
     private CategoryRoom categoryRoom;
+
+    @JoinColumn(name= "ID_SERVICE")
+    @OneToMany
+    private List<ServicesHotel> servicesHotel;
 
 
 
