@@ -38,9 +38,9 @@ public class RestaurantController {
 
 
 
-    @RequestMapping(method = GET, value="/client/{idClient}")
-    public Restaurant getReservationByClientId(@PathVariable int idClient){
-        return restaurantRepository.findRestaurantByIdClient(idClient);
+    @RequestMapping(method = GET, value="/client/{tokenClient}")
+    public Restaurant getReservationByClientId(@PathVariable String tokenClient){
+        return restaurantRepository.findRestaurantByTokenClientEquals(tokenClient);
     }
 
 
