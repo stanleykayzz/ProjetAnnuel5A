@@ -76,11 +76,11 @@ public class ClientService {
 
     public Client addClient(Client client) {
         System.out.println(client.getSexe());
-        return clientRepository.save(client);
+        return clientRepository.saveAndFlush(client);
     }
 
     public Client updateClient(Client client) {
-        return clientRepository.save(client);
+        return clientRepository.saveAndFlush(client);
     }
 
     public boolean tokenAvailable(Client client) {

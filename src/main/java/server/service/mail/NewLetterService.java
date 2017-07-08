@@ -53,7 +53,7 @@ public class NewLetterService {
                 Client client = clientRepository.findDistinctFirstByToken(book.getTokenId());
                 mailService.sendEmail(client, "La Résidence des hauts de Menaye", "evalution.vm");
                 book.setSendEvaluation(false);
-                bookingRepository.save(book);
+                bookingRepository.saveAndFlush(book);
             }
         }
     }

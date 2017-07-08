@@ -36,7 +36,7 @@ public class MailController {
         List<Client> client = clientRepository.findClientByEmailEquals(email);
         NewsLetter letter = newsLetterRepository.findNewsLetterByIdClientEquals(client.get(0).getClientId());
         letter.setSendNewsLetter(false);
-        newsLetterRepository.save(letter);
+        newsLetterRepository.saveAndFlush(letter);
         return "Description to the newsletter has been well recorded. The cancellation treatment may take a few days.";
     }
 

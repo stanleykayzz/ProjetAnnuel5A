@@ -13,20 +13,17 @@ public class FestiveRoom {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idPartyRoom;
     private String event;
-    private int numberChairs;
-    private int numberTables;
-    private int idClient;
+    private String tokenClient;
+    private ServicesHotel servicesHotel;
 
 
     public FestiveRoom() {
     }
 
 
-    public FestiveRoom(String event, int numberChairs, int numberTables, int idClient) {
+    public FestiveRoom(String event, int numberChairs, int numberTables, String tokenClient) {
         this.event = event;
-        this.numberChairs = numberChairs;
-        this.numberTables = numberTables;
-        this.idClient = idClient;
+        this.tokenClient = tokenClient;
     }
 
     public int getIdPartyRoom() {
@@ -45,38 +42,14 @@ public class FestiveRoom {
         this.event = event;
     }
 
-    public int getNumberChairs() {
-        return numberChairs;
+
+    public String getTokenClient() {
+        return tokenClient;
     }
 
-    public void setNumberChairs(int numberChairs) {
-        this.numberChairs = numberChairs;
+    public void setTokenClient(String tokenClient) {
+        this.tokenClient = tokenClient;
     }
 
-    public int getNumberTables() {
-        return numberTables;
-    }
 
-    public void setNumberTables(int numberTables) {
-        this.numberTables = numberTables;
-    }
-
-    public int getIdClient() {
-        return idClient;
-    }
-
-    public void setIdClient(int idClient) {
-        this.idClient = idClient;
-    }
-
-    @Override
-    public String toString() {
-        return "FestiveRoom{" +
-                "idPartyRoom=" + idPartyRoom +
-                ", event='" + event + '\'' +
-                ", numberChairs=" + numberChairs +
-                ", numberTables=" + numberTables +
-                ", idClient=" + idClient +
-                '}';
-    }
 }

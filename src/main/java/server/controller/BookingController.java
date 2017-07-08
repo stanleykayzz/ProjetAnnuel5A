@@ -91,7 +91,7 @@ public class BookingController {
         Date dateStart = Date.from(dateStartTemp.atStartOfDay(zoneId).toInstant());
         Date dateEnd = Date.from(dateEndTemp.atStartOfDay(zoneId).toInstant());
 
-        Booking result =  bookingRepository.save(booking);
+        Booking result =  bookingRepository.saveAndFlush(booking);
         Client client = clientRepository.findByToken(booking.getTokenId()).get(0);
         if(booking.getReason().equals(Reason.VACANCY))
             mailService.sendEmail(client, booking, "booking registry", "booking_registry_vacancy");

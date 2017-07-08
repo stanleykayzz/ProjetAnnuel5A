@@ -54,7 +54,7 @@ public class RestaurantController {
                                      @RequestParam(value = "idClient") int idClient){
 
         Restaurant restaurant = new Restaurant(name, nbPlace, idClient);
-        return restaurantRepository.save(restaurant);
+        return restaurantRepository.saveAndFlush(restaurant);
     }
 
 

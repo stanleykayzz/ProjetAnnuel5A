@@ -38,7 +38,7 @@ public class ServicesHotelController {
                                          @RequestParam(value = "price") float price,
                                          @RequestParam(value = "comment") String comment){
         ServicesHotel newService = new ServicesHotel(name, type, price, comment);
-        return servicesHotelRepository.save(newService);
+        return servicesHotelRepository.saveAndFlush(newService);
     }
 
 
@@ -55,6 +55,6 @@ public class ServicesHotelController {
         newService.setType(type);
         newService.setPrice(price);
         newService.setComment(comment);
-        return servicesHotelRepository.save(newService);
+        return servicesHotelRepository.saveAndFlush(newService);
     }
 }

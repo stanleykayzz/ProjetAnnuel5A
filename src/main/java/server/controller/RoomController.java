@@ -98,7 +98,7 @@ public class RoomController {
             room.setBuilding(building);
             room.setIdClient(idClient);
 
-            room = roomRepository.save(room);
+            room = roomRepository.saveAndFlush(room);
             LOG.info("booking number: "+idRoom+" update in bdd, object: " + room.toString());
         }else{
             LOG.error("Booking room doest not exist in BDD");

@@ -17,6 +17,9 @@ public class ServicesHotel {
     private float price;
     private String comment;
 
+    @Column(name="")
+    private int idRelation;
+
     public ServicesHotel() {
     }
 
