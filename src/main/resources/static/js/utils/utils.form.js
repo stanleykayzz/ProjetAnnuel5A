@@ -6,20 +6,20 @@
 
     Core.utils.form = Core.utils.form || {};
 
-    Core.utils.form.formValidator = function (jsonObject, style) {
+    Core.utils.form.formValidator = function (jsonObject, key_style, style, error_style) {
         var validation = true;
         var sexe = null;
         var password;
 
         for(var key in jsonObject){
             var val = true;
-            var current_style = jsonObject[key].style;
+
             switch (key){
                 case "firstname":
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -27,7 +27,7 @@
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === "") {
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -35,7 +35,7 @@
                     if(utils.emailValidator(jsonObject[key]) === false){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -43,7 +43,7 @@
                     if(jsonObject[key].value.length < 6){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     } else {
                         password = jsonObject[key].value;
                     }
@@ -53,7 +53,7 @@
                     if(jsonObject[key].value  !== password){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -61,7 +61,7 @@
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === "" || Core.utils.checkDate("day", jsonObject[key].value) === false){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -73,7 +73,7 @@
 
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -81,7 +81,7 @@
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === "" || Core.utils.checkDate("year", jsonObject[key].value) === false){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -89,7 +89,7 @@
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -97,7 +97,7 @@
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -105,7 +105,7 @@
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -113,7 +113,7 @@
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -121,7 +121,7 @@
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined || jsonObject[key].value === ""){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
 
@@ -129,7 +129,7 @@
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
                 
@@ -137,14 +137,15 @@
                     if(jsonObject[key].value === null || jsonObject[key].value === undefined){
                         validation = false;
                         val = false;
-                        jsonObject[key].style.border = "1px solid red";
+                        jsonObject[key].style[key_style] = error_style;
                     }
                     break;
             }
 
             if(val === true){
-                if(jsonObject[key].tagName != "SELECT")
-                    jsonObject[key].style = style;
+                if(jsonObject[key].tagName != "SELECT") {
+                    jsonObject[key].style[key_style] = style;
+                }
             }
         }
 

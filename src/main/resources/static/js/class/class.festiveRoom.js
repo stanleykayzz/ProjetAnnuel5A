@@ -6,7 +6,6 @@
 
     Core.class.festiveRoom = Core.class.festiveRoom || {};
 
-
     Core.class.festiveRoom.initView = function () {
         var paramRequest = "token=" + client.token;
         //utils.ajaxRequest(Core.service.festiveRoom.getItems(), paramRequest, null);

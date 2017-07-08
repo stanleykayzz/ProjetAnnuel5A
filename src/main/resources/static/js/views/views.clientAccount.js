@@ -59,6 +59,7 @@
 
         var error_container = document.getElementById("error_container");
         var btn_update;
+        var style = null;
 
         var initVariables = function () {
             new_password_update = document.getElementById("user_update_password_new");
@@ -96,6 +97,10 @@
             utils.removeListener(btn_update, "click");
             utils.addListener(btn_update, "click", function () {
                 error_container.textContent = "";
+
+                if(style === null)
+                    style = phone_update.style.borderBottom;
+
                 var json = {
                     phone: phone_update,
                     country: country_update,
@@ -122,12 +127,10 @@
                     jsonPassword = current_password_update;
                 }
 
-
-                var formValid = utils.form.formValidator(json, phone_update.style);
-
+                var formValid = utils.form.formValidator(json, "border-bottom", style, "1px solid red");
+           
                 if (formValid === true) {
                     var date = utils.formatDate(client.birthday, "update_account");
-                    console.log(jsonPassword);
                     var clientJson = '{' +
                         '"phone":      "' + phone_update.value + '",' +
                         '"country":    "' + country_update.value + '",' +

@@ -56,6 +56,7 @@
         var showLoginBtn;
         var loginContainer, signupContainer;
         var captchaElement;
+        var style = null;
 
         var iniVariables = function () {
             signupBtn = document.getElementById("btn_signup");
@@ -114,6 +115,9 @@
                     city = document.getElementById("signup_city");
                     address = document.getElementById("signup_address");
                     postalcode = document.getElementById("signup_postalcode");
+
+                    if(style === null)
+                        style = firstname.style.border;
                 }();
 
                 var checkSexe = function () {
@@ -146,7 +150,7 @@
                     city: city,
                     address: address,
                     postalcode: postalcode
-                });
+                }, "border", style, "1px solid red");
 
                 if (formValid === false || sexeValid === false)
                     document.getElementById("error_container").textContent = "Veuillez remplir tous les champs";

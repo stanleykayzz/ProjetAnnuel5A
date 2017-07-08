@@ -6,7 +6,7 @@
 
     Core.views.restaurant = Core.views.restaurant || {};
 
-    Core.views.includeContainer.initView = function () {
+    Core.views.restaurant.initView = function () {
         var typeElement, numberElement, btn_booking;
 
         typeElement = document.getElementById("select_time");

@@ -7,6 +7,18 @@ body{
 
 footer{
 	text-align: center;
+	margin-top: 50px;
+}
+
+ul {
+	list-style:none;
+}
+
+.no-select {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 #bottom_image {
@@ -373,4 +385,101 @@ footer{
 	display: inline-block;
 	text-align: left;
 	font-weight: 600;
+}
+
+
+.list_book_container{
+	font-family: Roboto, Helvetica, Arial, sans-serif;
+	color: dimgrey;
+	margin: auto;
+	width: 1400px;
+	min-height: 250px;
+	background-color: #FBFBFB;
+	padding: 0px 0px 0px 0px;
+}
+
+.template_container_div{
+	margin-top: 20px;
+	display: inline-block;
+	position: relative;
+	width: 90%;
+	margin-left: 0;
+	padding-bottom: 40px;
+}
+
+.template_container_div > ul{
+	display: inline-block;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	border-top: 1px solid #9B9B9B;
+}
+
+.template_container_div > ul > li > ul{
+	display: inline-block;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.template_li_title{
+	cursor: pointer;
+	position: relative;
+	display: block;
+	width: 100%;
+	border: 1px solid #9B9B9B;
+	border-top: 0px;
+	color: #006483;
+	font-weight: 600;
+	font-size: 18px;
+
+	height: 50px;
+	line-height: 50px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+50,e1e1e1+51,f6f6f6+100;White+Gloss+%231 */
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+}
+
+.template_li_content {
+	display: none;
+	border: 1px solid #9B9B9B;
+	border-top: 0px;
+}
+
+.div_table {
+	width: 90%;
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: table;
+}
+
+.div_row{
+	display: table-row;
+}
+
+.div_cell{
+	display: table-cell;
+	border: 1px solid #CECECE;
+	border-right: 0px;
+	border-top: 0px;
+}
+
+.header_list {
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	background-color: black;
+	color: white;
+	font-size: 14px;
+}
+
+.content_cell{
+	padding: 5px 0px 5px 0px;
+	font-size: 12px;
+}
+.last {
+	border-right: 1px solid #CECECE;
 }
