@@ -28,6 +28,7 @@
                 document.getElementById("search_container").style.display = "none";
                 document.getElementById("include_book").style.display = "inline-block";
                 Core.payment.paypal.generateButton(price, document.getElementById("button_paypal"));
+                document.getElementById("label_price").textContent = price + " €";
             },
             error: function (statusCode) {
                 document.getElementById("error_container").textContent = "La salle des fêtes n'est pas disponible durant cette période.";

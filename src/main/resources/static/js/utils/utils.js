@@ -189,7 +189,8 @@
                 return day + "/" + month + "/" + year;
             case  "update_account":
                 return year + "-" + month + "-" + day;
-        }
+            case "reservation":
+        }       return  year + "-" + month + "-" + day;
     };
 
     Core.utils.setDatepickerLanguage = function () {
