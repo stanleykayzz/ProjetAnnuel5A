@@ -10,7 +10,7 @@
         return {
             name: "getItems",
             method: "GET",
-            url: "",
+            url: "festiveRoom/getItems",
             func: function (json) {
                 Core.views.includeContainer.festiveRoom(json);
             },
@@ -23,7 +23,7 @@
         return {
             name: "book",
             method: "POST",
-            url: "",
+            url: "festiveRoom/book",
             func: function (price) {
                 document.getElementById("search_container").style.display = "none";
                 document.getElementById("include_book").style.display = "inline-block";

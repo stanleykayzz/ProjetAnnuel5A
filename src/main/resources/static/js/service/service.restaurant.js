@@ -10,7 +10,7 @@
         return {
             name: "restaurantBook",
             method: "POST",
-            url: "",
+            url: "restaurant/book",
             func: function () {
                 document.getElementById("error_container").textContent = "";
                 document.getElementById("valide_container").textContent = "Réservation effectuée"

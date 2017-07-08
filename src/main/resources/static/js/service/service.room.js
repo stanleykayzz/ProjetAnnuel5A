@@ -10,7 +10,7 @@
         return {
             name   : "searchRoom",
             method : "GET",
-            url    : "/booking/search",
+            url    : "/room/search",
             func : function (listRoom) {
                 if(listRoom !== null && listRoom !== undefined)
                     Core.views.includeContainer.roomSearch(listRoom);
@@ -26,7 +26,7 @@
         return {
             name   : "getListCategories",
             method : "GET",
-            url    : "/category/getListCategories",
+            url    : "/room/category/getListCategories",
             func : function (listCategories) {
                 if(listCategories !== null && listCategories !== undefined)
                     data.listCategories = listCategories;
@@ -42,7 +42,7 @@
         return {
             name   : "booking",
             method : "POST",
-            url    : "/booking/bookRoom",
+            url    : "/room/bookRoom",
             func : function (price) {
                 if(price !== null && price !== undefined){
                     document.getElementById("label_price").textContent = price + " €";
@@ -61,7 +61,7 @@
         return {
             name   : "booking",
             method : "DELETE",
-            url    : "/booking/cancelBookRoom",
+            url    : "/room/cancelBookRoom",
             func : function () {
                 views.includeContainer.switchView("chambre");
             },
