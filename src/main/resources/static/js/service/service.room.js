@@ -13,7 +13,7 @@
             url    : "/room/search",
             func : function (listRoom) {
                 if(listRoom !== null && listRoom !== undefined)
-                    Core.views.includeContainer.roomSearch(listRoom);
+                    Core.views.room.roomSearch(listRoom);
                 else
                     return null;
             },

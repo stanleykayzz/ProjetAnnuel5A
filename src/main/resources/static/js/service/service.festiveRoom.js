@@ -12,7 +12,7 @@
             method: "GET",
             url: "festiveRoom/getItems",
             func: function (json) {
-                Core.views.includeContainer.festiveRoom(json);
+                Core.views.festiveRoom.initView(json);
             },
             error: function (statusCode) {
             }

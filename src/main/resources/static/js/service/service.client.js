@@ -159,7 +159,7 @@
             name : "passwordRecovery",
             method : "GET",
             url : "/client/passwordRecovery",
-            func : function (clt) {
+            func : function () {
 
             },
             error : function(statusCode){
