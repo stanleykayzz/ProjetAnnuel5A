@@ -831,7 +831,7 @@
                 var title_span = document.createElement("span");
                 title_span.classList.add("title_span_black");
                 title_span.style.textAlign = "left";
-                title_span.textContent = utils.capitalizeFirstLetter(object.name);
+                title_span.textContent = utils.capitalizeFirstLetter(object.name) + " " + object.unitPrice + "€";
 
                 var input = document.createElement("input");
                 input.classList.add("item_input");
@@ -950,12 +950,7 @@
             $(startDateID).datepicker("option", "onSelect", function () {
                 var minDate = $(startDateID).datepicker("getDate");
                 $(endDateID).datepicker("option", "minDate", minDate);
-                resizeContainer("-", list_booked_items.getBoundingClientRect().height);
                 label_start_date.textContent = utils.formatDate();
-            });
-
-            $(endDateID).datepicker("option", "onSelect", function () {
-                resizeContainer("-", list_booked_items.getBoundingClientRect().height);
             });
 
             utils.removeListener(btn_book, "click");
@@ -982,7 +977,7 @@
 
                 if (result.day >= 0 && formValid === true) {
                     error_container.textContent = "";
-                    Core.class.festiveRoom.search(json, jsonItems);
+                    Core.class.festiveRoom.book(json, jsonItems);
                 } else {
                     error_container.textContent = "Veuillez choisir les dates de début et de fin de l'évènement.";
                 }
