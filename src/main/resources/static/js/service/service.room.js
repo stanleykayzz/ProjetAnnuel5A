@@ -38,20 +38,32 @@
         };
     };
 
-    Core.service.room.getBookinPrice = function () {
+    Core.service.room.book = function () {
         return {
-            name   : "getBookinPrice",
-            method : "GET",
-            url    : "/booking/getBookinPrice",
+            name   : "booking",
+            method : "POST",
+            url    : "/booking/bookRoom",
             func : function (price) {
                 if(price !== null && price !== undefined){
                     document.getElementById("label_price").textContent = price + " €";
                     Core.payment.paypal.generateButton(price, document.getElementById("button_paypal"));
-
                 } else {
                     return null;
                 }
 
+            },
+            error : function(statusCode){
+            }
+        };
+    };
+
+    Core.service.room.cancelBook = function () {
+        return {
+            name   : "booking",
+            method : "DELETE",
+            url    : "/booking/cancelBookRoom",
+            func : function () {
+                views.includeContainer.switchView("chambre");
             },
             error : function(statusCode){
             }

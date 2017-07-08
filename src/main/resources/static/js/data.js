@@ -54,6 +54,11 @@
                 name      : "confirmation",
                 viewPath  : "confirmation.html",
                 listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
+            },
+            festiveRoom : {
+                name      : "festiveRoom",
+                viewPath  : "festiveRoom.html",
+                listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
             }
         },
         basicUrl   : "http://localhost:8080",
@@ -71,6 +76,6 @@
         },
         currentPath : null,
         captchaResult : null,
-        mainImgaID : "main_header"
+        mainImageID : "main_header"
     };
 })();
