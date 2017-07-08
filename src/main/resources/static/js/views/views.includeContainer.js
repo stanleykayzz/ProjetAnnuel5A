@@ -823,6 +823,7 @@
         };
         var createItem = function (id, object) {
             var div_reservation = document.createElement("div");
+            var div_list;
             div_reservation.classList.add("div_reservation");
 
             if (object !== null) {
@@ -835,12 +836,13 @@
                 title_span.textContent = utils.capitalizeFirstLetter(object.name) + " " + object.unitPrice + "€";
 
                 var input = document.createElement("input");
-                input.classList.add("item_input");
+                input.classList.add("input_green");
                 input.min = 0;
                 input.max = object.quantity;
-                input.value = 0;
                 input.style.width = "70%";
                 utils.addListener(input, "keyup", function (e) {
+                    if(e.target.value === "")
+                        e.target.value = 0;
 
                     if (parseInt(e.target.value) > parseInt(e.target.max))
                         e.target.value = e.target.max;
@@ -850,7 +852,10 @@
 
                     if (e.target.value > 0) {
                         jsonItems[id.split("_")[1]].quantity = e.target.value;
-                        viewList("list_" + object.id, e.target, e.target.value, utils.capitalizeFirstLetter(object.name));
+                        div_list = viewList("list_" + object.id, e.target, e.target.value, utils.capitalizeFirstLetter(object.name));
+                    } else {
+                        div_list = viewList("list_" + object.id, e.target, e.target.value, utils.capitalizeFirstLetter(object.name));
+                        div_list.parentElement.removeChild(div_list);
                     }
                 }, false);
 
@@ -896,6 +901,8 @@
             div.appendChild(button_delete);
             div.appendChild(span_container);
             list_booked_items.appendChild(div);
+
+            return div;
         };
         var getDays = function () {
             return utils.getDays(new Date(formatDateStart), new Date(formatDateEnd));

@@ -68,7 +68,7 @@ public class FestiveRoomController {
         if( books.size() == 0){
             festiveRoomRepository.saveAndFlush(festiveRoom);
             return festiveRoom.getPrice() * dateService.numberDaysBetween(dateStart, dateEnd);
-        }else{
+        } else {
             throw new FestiveRoomErrorBooking();
         }
     }

@@ -167,6 +167,20 @@ footer{
 	font-weight: 500;
 }
 
+.input_green {
+	text-align: left;
+	display: inline-block;
+	font: 17px Roboto, Helvetica, Arial, sans-serif;
+	border: 0px;
+	border-bottom: 1px solid rgb(39, 166, 56);
+}
+
+.input_green:focus{
+	text-align: right;
+	outline: none;
+	border-bottom: 1px solid #197F31;
+}
+
 .user_infos_input{
 	display: inline-block;
 	font: 17px Roboto, Helvetica, Arial, sans-serif;
