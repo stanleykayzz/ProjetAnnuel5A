@@ -3,15 +3,14 @@ package server.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import server.model.Booking;
 import server.model.Building;
+import server.model.CategoryRoom;
 import server.model.Room;
 import server.repository.BookingRepository;
 import server.repository.BuildingRepository;
+import server.repository.CategoryRoomRepository;
 import server.repository.RoomRepository;
 import server.service.DateService;
 import server.service.BookingService;
@@ -36,14 +35,16 @@ public class RoomController {
     private DateService dateService;
     private BookingService bookingService;
     private BuildingRepository buildingRepository;
+    private CategoryRoomRepository categoryRoomRepository;
 
     @Autowired
-    public RoomController(RoomRepository roomRepository, BookingRepository bookingRepository, DateService dateService, BookingService bookingService, BuildingRepository buildingRepository) {
+    public RoomController(RoomRepository roomRepository, BookingRepository bookingRepository, DateService dateService, BookingService bookingService, BuildingRepository buildingRepository, CategoryRoomRepository categoryRoomRepository) {
         this.roomRepository = roomRepository;
         this.bookingRepository = bookingRepository;
         this.dateService = dateService;
         this.bookingService = bookingService;
         this.buildingRepository = buildingRepository;
+        this.categoryRoomRepository = categoryRoomRepository;
     }
 
 
@@ -52,74 +53,35 @@ public class RoomController {
         return roomRepository.findAll();
     }
 
-    //todo renvoie la room avec roomId
     @RequestMapping(method = GET, value = "/client/{idClient}")
     public List<Room> getRoomsBookingByUserId(@PathVariable int idClient){
         return roomRepository.findAllByIdClient(idClient);
     }
 
-
-    // todo renvoie la room avec userId
     @RequestMapping(method = GET, value="/room/{idRoom}")
     public List<Room> getRoomsByRoomId(@PathVariable int idRoom){
         return roomRepository.findAllByIdRoom(idRoom);
     }
 
-    @RequestMapping(method = POST)
-    public Room newBookingRoom(@PathVariable String name,
-                               @PathVariable String building,
-                               @PathVariable int number,
-                               @PathVariable int idClient){
-        Room room = roomRepository.findByIdClient(idClient);
-        if (room == null){
-            room.setIdClient(idClient);
-            room.setName(name);
-            room.setNumber(number);
-            room.setBuilding(building);
-
-        }else {
-            LOG.error("Booking exist in BDD");
-            return room;
-        }
-        return room;
+    @RequestMapping(method = GET, value="/${building}")
+    public List<Room> searchRoomByBuilding(@PathVariable String building){
+        Building b1 = buildingRepository.findBuildingByNameBuildEquals(building);
+        List<Room> rooms = roomRepository.findAllByIdBuildingEquals(b1.getIdBuilding());
+        return rooms;
     }
 
 
-    @RequestMapping(method = POST, value="{idRoom}")
-    public Room updateBookingRoom(@PathVariable int idRoom,
-                                  @PathVariable String name,
-                                  @PathVariable String building,
-                                  @PathVariable int number,
-                                  @PathVariable int idClient){
-        Room room = roomRepository.findByIdRoom(idRoom);
-        if (room != null){
-            room.setNumber(number);
-            room.setName(name);
-            room.setBuilding(building);
-            room.setIdClient(idClient);
+    @RequestMapping(method =GET ,value= "/search")
+    public List<Room> searchRoomFree(@RequestParam(value = "date_start") String begin_date,
+                                     @RequestParam(value = "date_end") String end_date,
+                                     @RequestParam(value = "type") String nameTypeCategoryRoom){
 
-            room = roomRepository.saveAndFlush(room);
-            LOG.info("booking number: "+idRoom+" update in bdd, object: " + room.toString());
-        }else{
-            LOG.error("Booking room doest not exist in BDD");
-        }
-        return room;
-    }
-
-
-    // [API] Requete recherche de chambres par:                            token
-    // date_debut_reservation date_fin_reservation    type_chambre
-
-    @RequestMapping(method =POST ,value= "/free")
-    public List<Room> searchRoomFree(@RequestParam(value = "begin_date") String begin_date,
-                                     @RequestParam(value = "end_date") String end_date,
-                                     @RequestParam(value = "type_room") String typeRoom){
-
+        CategoryRoom typeRoom = categoryRoomRepository.findCategoryRoomByName(nameTypeCategoryRoom);
         List<Room> rooms = new ArrayList<>();
-        if(typeRoom.toUpperCase().equals("all")) {
-            rooms = roomRepository.findAllByCategoryRoomEquals(typeRoom);
+        if(typeRoom.getName().toUpperCase().equals("all")) {
+            rooms = roomRepository.findAllByCategoryRoom(typeRoom);
         }else{
-            rooms = roomRepository.findAllByCategoryRoomEquals(typeRoom);
+            rooms = roomRepository.findAllByCategoryRoom(typeRoom);
         }
         //recuperer les room occupe pendant la duree
         List<Booking> bookings = bookingRepository.findAllByDateBookBetween(dateService.stringToDate(begin_date), dateService.stringToDate(end_date));
@@ -134,11 +96,25 @@ public class RoomController {
 
 
 
-    @RequestMapping(method = GET, value="/${building}")
-    public List<Room> searchRoomByBuilding(@PathVariable String building){
-        Building b1 = buildingRepository.findBuildingByNameBuildEquals(building);
-        List<Room> rooms = roomRepository.findAllByIdBuildingEquals(b1.getIdBuilding());
-        return rooms;
+
+
+    @RequestMapping(method = POST, value="{idRoom}")
+    public Room updateBookingRoom(@RequestBody Room room){
+        room = roomRepository.findByIdRoom(room.getIdRoom());
+        if (room != null){
+            room = roomRepository.saveAndFlush(room);
+            LOG.info("booking number: "+room.getIdRoom()+" update in bdd, object: " + room.toString());
+        }else{
+            LOG.error("Booking room doest not exist in BDD");
+        }
+        return room;
     }
+
+
+
+
+
+
+
 
 }

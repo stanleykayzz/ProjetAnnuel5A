@@ -3,6 +3,7 @@ package server.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import server.model.Restaurant;
 import server.repository.ClientRepository;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 /**
  * Created by ileossa on 22/05/2017.
@@ -48,13 +50,13 @@ public class RestaurantController {
     }
 
 
-    @RequestMapping(method = POST)
-    public Restaurant newReservation(@RequestParam(value = "name") String name,
-                                     @RequestParam(value = "placeNumber")int nbPlace,
-                                     @RequestParam(value = "idClient") int idClient){
+    @RequestMapping(method = POST, value="/book")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void newReservation(@RequestParam(value = "token") String tokenCLient,
+                                     @RequestParam(value = "type") String type,
+                                     @RequestParam(value = "number") int number){
 
-        Restaurant restaurant = new Restaurant(name, nbPlace, idClient);
-        return restaurantRepository.saveAndFlush(restaurant);
+        Restaurant restaurant = new Restaurant(type, tokenCLient, number);
     }
 
 

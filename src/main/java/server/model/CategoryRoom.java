@@ -2,6 +2,8 @@ package server.model;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static javax.persistence.GenerationType.AUTO;
 
 /**
@@ -20,9 +22,9 @@ public class CategoryRoom {
     private String description;
     private String picturePath;
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name = "id_room")
-    private Room room;
+    private List<Room> room;
 
 
     public CategoryRoom() {
@@ -67,12 +69,12 @@ public class CategoryRoom {
         this.picturePath = picturePath;
     }
 
-    @OneToOne(mappedBy = "CategoryRoom")
-    public Room getRoom() {
+    @OneToMany(mappedBy = "CategoryRoom")
+    public List<Room> getRoom() {
         return room;
     }
 
-    public void setRoom(Room room) {
+    public void setRoom(List<Room> room) {
         this.room = room;
     }
 }
