@@ -53,7 +53,7 @@
         xhr.open("GET", fullPath , true);
         xhr.onload = function () {
             document.getElementById("include_content").innerHTML = this.responseText;
-            views.menu.initViewEvents(name);
+            views.includeContainer.initViewEvents(name);
         };
 
         xhr.send();
@@ -263,9 +263,10 @@
         return diff;
     };
 
+    Core.utils.capitalizeFirstLetter = function (string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
     /**
-     * Facade pattern
-     *
      * @param node
      * @param event
      * @param handler
@@ -283,7 +284,6 @@
     };
 
     /**
-     *
      * @param node
      * @param event
      */
@@ -301,7 +301,6 @@
     };
 
     /**
-     *
      * @param e
      * @returns {boolean}
      */

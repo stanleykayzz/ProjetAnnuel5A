@@ -92,6 +92,8 @@
                 views.includeContainer.switchView("compte");
             },
             error : function(statusCode){
+                var error_container = document.getElementById("error_container");
+                error_container.textContent = "Mauvais mot de passe"
             }
         };
     };
@@ -125,6 +127,7 @@
             },
             error : function(statusCode){
                 Core.class.client.removeSessionStorage();
+                utils.menu.addContextualMenuButtons();
             }
         };
     };

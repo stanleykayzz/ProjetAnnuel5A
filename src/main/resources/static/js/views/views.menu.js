@@ -6,29 +6,6 @@
 
     Core.views.menu = Core.views.menu || {};
 
-    Core.views.menu.initViewEvents = function (viewName) {
-        switch (viewName){
-            case "connexion" :
-                views.includeContainer.signin();
-                views.includeContainer.signup();
-                views.includeContainer.forgetPassword();
-                break;
-            case "logout" :
-                client.logout();
-                break;
-            case "compte" :
-                views.includeContainer.account();
-                views.includeContainer.updateAccount();
-                break;
-            case "confirmation" :
-                views.includeContainer.confirmationCode();
-                break;
-            case "chambre":
-                views.includeContainer.room();
-                break;
-        }
-    };
-
     Core.views.menu.manageMenuButtons = function () {
         utils.addListener(data.getMenu(), "click", function (e) {
             if(e.target.tagName === "A"){
@@ -69,6 +46,8 @@
         var addButtons = function () {
             if(window.client){
                 removeButtons();
+                createButton("btn_restaurant", "Restaurant", menuLastChild);
+                createButton("btn_festiveRoom", "Salle des fêtes", menuLastChild);
                 createButton("btn_compte", "Compte", menuLastChild);
                 createButton("btn_logout", "Déconnecter", menuLastChild);
             } else {

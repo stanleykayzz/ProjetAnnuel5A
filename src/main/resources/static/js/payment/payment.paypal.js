@@ -18,7 +18,7 @@
          script.setAttribute("data-shipping", "0");
          script.setAttribute("data-tax", "0");
          script.setAttribute("data-env", "sandbox");
-         script.setAttribute("data-callback", "http://localhost:63342/ProjetAnnuel2017/static/index.html?_ijt=rl8hb22od9u4sebptbmad6hsa0#")
+         script.setAttribute("data-callback", "http://localhost:63342/ProjetAnnuel2017/static/index.html?token="+client.token);
 
          var div = document.createElement("div");
          div.classList.add("paypal_container");
