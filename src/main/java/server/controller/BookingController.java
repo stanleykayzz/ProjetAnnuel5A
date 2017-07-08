@@ -75,10 +75,13 @@ public class BookingController {
         return bookingRepository.findAllByTokenId(clients.get(0).getToken());
     }
 
+<<<<<<< HEAD
 <<<<<<< d87bee3476928654a5adf72ee69ac84f1ba3490d
 
     // TODO : envoyer un email de confirmation
 =======
+=======
+>>>>>>> de91d9009cb8f6c9fa98c135e1168fab2945f2fb
     // TODO : enregistrer un nouveau booking
 >>>>>>> [FRONT] Booking room
     @RequestMapping(method = POST)
