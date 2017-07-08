@@ -5,33 +5,44 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import server.model.Client;
 import server.model.NewsLetter;
+import server.repository.BookingRepository;
 import server.repository.ClientRepository;
 import server.repository.NewsLetterRepository;
+
+import java.awt.print.Book;
 
 /**
  * Created by ileossa on 03/07/2017.
  */
-@RequestMapping(value = "api/describe/")
+@RequestMapping(value = "api/mail/")
 public class MailController {
 
 
     private NewsLetterRepository newsLetterRepository;
     private ClientRepository clientRepository;
+    private BookingRepository bookingRepository;
 
     @Autowired
-    public MailController(NewsLetterRepository newsLetterRepository, ClientRepository clientRepository) {
+    public MailController(NewsLetterRepository newsLetterRepository, ClientRepository clientRepository, BookingRepository bookingRepository) {
         this.newsLetterRepository = newsLetterRepository;
         this.clientRepository = clientRepository;
+        this.bookingRepository = bookingRepository;
     }
 
 
-    @RequestMapping(value = "/${email}")
+    @RequestMapping(value = "/unsubscribe/${email}")
     public String unsucribe(@PathVariable String email){
         Client client = clientRepository.findClientByEmailEquals(email);
         NewsLetter letter = newsLetterRepository.findNewsLetterByIdClientEquals(client.getClientId());
         letter.setSendNewsLetter(false);
         newsLetterRepository.save(letter);
         return "Description to the newsletter has been well recorded. The cancellation treatment may take a few days.";
+    }
+
+    @RequestMapping(value = "/rate/${email}/${nb}")
+    public void getRateByClient(@PathVariable String email,
+                                @PathVariable int nb){
+        //todo faire le service
     }
 
 }

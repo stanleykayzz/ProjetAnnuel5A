@@ -1,14 +1,12 @@
 package server.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by ileossa on 05/04/2017.
  */
 @Entity
+@Table(name = "restaurant")
 public class Restaurant {
 
     @Id

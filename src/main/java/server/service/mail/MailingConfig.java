@@ -31,6 +31,12 @@ public class MailingConfig {
     private String userName;
     @Value("${mail.support.password}")
     private String password;
+    @Value("${mail.template.path.logo}")
+    private String pathLogo;
+    @Value("${mail.template.url.home}")
+    private String urlHome;
+    @Value("${mail.template.url.unsubscribe}")
+    private String urlUnsubscribe;
 
 
 
@@ -56,5 +62,7 @@ public class MailingConfig {
     }
 
 
-
+    public String getPathLogo() {
+        return pathLogo;
+    }
 }

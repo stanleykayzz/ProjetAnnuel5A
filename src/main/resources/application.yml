@@ -34,11 +34,7 @@ booking:
 spring.mail.path.file.attachement: classpath:/files/confirmation_reservation.pdf
 
 # VELOCITY TEMPLATES
-<<<<<<< HEAD
-#spring.velocity.resource-loader-path: classpath:/templates/velocity
-=======
 spring.velocity.resource-loader-path: classpath:/templates/velocity
->>>>>>> fixe, update, and add h2 database for dev mode, configure postgresql heroku database
 
 # JPA  - USE this to generate table
 spring.jpa.generate-ddl: true
@@ -77,6 +73,11 @@ mail:
   support:
     username: test
     password: test
+  template.path.logo: src\main\resources\static\img\logoRHM.png
+  template:
+    url:
+      home: http://residencedeshautsdemenaye.com/
+      unsubscribe: http://residencedeshautsdemenaye.com/api/mail/unsubscribe/
 
 
 
@@ -105,15 +106,20 @@ server:
     password:
     driver-class-name: org.h2.Driver
 
-# Mailing (download fakeSMTP, and run with java -jar fakeSMTP.jar )
+# Use GrrenMail (cf: http://www.icegreen.com/greenmail/)
 mail:
   protocol: smtp
   smtp:
     host: localhost
-    port: 2505
+    port: 9999
   support:
     username: test
     password: test
+  template.path.logo: src\main\resources\static\img\logoRHM.png
+  template:
+    url:
+      home: http://residencedeshautsdemenaye.com/
+      unsubscribe: http://residencedeshautsdemenaye.com/api/mail/unsubscribe/
 
 
 ---

@@ -8,11 +8,14 @@ import static javax.persistence.CascadeType.ALL;
  * Created by ileossa on 05/04/2017.
  */
 @Entity
+@Table(name = "room")
 public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_room")
     private int idRoom;
+
     private String name;
     private String building;
     private int number;
@@ -22,7 +25,7 @@ public class Room {
 
     @OneToOne
     @JoinColumn(name = "NAME_BUILDING")
-    private int idBuilding;
+    private Building idBuilding;
 
     @OneToOne(cascade = ALL)
     @JoinColumn(name = "CATEGORY_ID_ROOM")
@@ -33,7 +36,7 @@ public class Room {
     public Room() {
     }
 
-    public Room(String name, String building, int number, int idClient, int price, int idBuilding) {
+    public Room(String name, String building, int number, int idClient, int price, Building idBuilding) {
         this.name = name;
         this.building = building;
         this.number = number;
@@ -98,11 +101,11 @@ public class Room {
         this.price = price;
     }
 
-    public int getIdBuilding() {
+    public Building getIdBuilding() {
         return idBuilding;
     }
 
-    public void setIdBuilding(int idBuilding) {
+    public void setIdBuilding(Building idBuilding) {
         this.idBuilding = idBuilding;
     }
 

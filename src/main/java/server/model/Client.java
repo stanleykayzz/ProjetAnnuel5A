@@ -28,9 +28,6 @@ public class Client {
     @NotEmpty(message = "A client must have a first name")
     private String firstName;
 
-    @Column(name = "Sexe")
-    private int sexe;
-
     @Column(name = "Birthday")
     private Date birthday;
 
@@ -62,22 +59,13 @@ public class Client {
     @NotNull
     private String password;
 
-    @Column(name = "Status")
-    private int status;
-
     @Column(name = "Token")
     private String token;
 
     @Column(name = "Token_date")
     private Date tokenDate;
 
-    @Column(name = "Code")
-    private String code;
 
-
-<<<<<<< HEAD
-//--------- GETTERS / SETTERS ---------\\
-=======
     //--------- CONSTRUCTOR ---------\\
 
     public Client() {
@@ -99,7 +87,6 @@ public class Client {
     }
 
     // --------- GETTERS / SETTERS ---------\\
->>>>>>> Update service, add category room.
 
 
     public String getName() {
@@ -141,10 +128,6 @@ public class Client {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-    public int getSexe() { return sexe; }
-
-    public void setSexe(int sexe) { this.sexe = sexe; }
 
     public Date getBirthday() {
         return birthday;
@@ -202,10 +185,6 @@ public class Client {
         this.postalCode = postalCode;
     }
 
-    public int getStatus() { return status; }
-
-    public void setStatus(int status) { this.status = status; }
-
     public String getPassword() {
         return password;
     }
@@ -213,8 +192,4 @@ public class Client {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getCode() { return code; }
-
-    public void setCode(String code) { this.code = code; }
 }
