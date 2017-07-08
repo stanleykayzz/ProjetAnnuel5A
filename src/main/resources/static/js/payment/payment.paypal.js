@@ -7,6 +7,11 @@
     Core.payment.paypal = Core.payment.paypal || {};
 
     Core.payment.paypal.generateButton = function (price, container) {
+        var currentDiv = document.getElementById("paypal_container");
+
+        if(currentDiv !== null && currentDiv !== undefined)
+            currentDiv.parentElement.removeChild(currentDiv);
+        
          var script = document.createElement("script");
          script.async = "async";
          script.src = "https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=residencedeshautsdemenaye-facilitator@outlook.com";
@@ -22,6 +27,7 @@
 
          var div = document.createElement("div");
          div.classList.add("paypal_container");
+         div.id = "paypal_container";
 
          div.appendChild(script);
          container.appendChild(div);

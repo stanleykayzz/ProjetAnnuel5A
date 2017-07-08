@@ -811,7 +811,8 @@
             include_items, btn_book,
             list_booked_items, jsonItems,
             error_container, valide_container;
-        var label_start_date, label_end_date, label_price, btn_return;
+        var label_start_date, label_end_date,
+            label_price, list_items, btn_return;
 
         var resizeContainer = function (type, value) {
             if (type === "+")
@@ -901,7 +902,7 @@
         };
         var initVariables = function () {
             search_container = document.getElementById("search_container");
-            include_container = document.getElementById("include_reservation");
+            include_container = document.getElementById("include_book");
             error_container = document.getElementById("error_container");
             valide_container = document.getElementById("valide_container");
 
@@ -929,6 +930,7 @@
             label_start_date = document.getElementById("label_start_date");
             label_end_date = document.getElementById("label_end_date");
             label_price = document.getElementById("label_price");
+            list_items = document.getElementById("list_items");
             btn_return = document.getElementById("btn_return");
         }();
         var initView = function () {
@@ -955,6 +957,8 @@
 
             utils.removeListener(btn_book, "click");
             utils.addListener(btn_book, "click", function (e) {
+                utils.empty(list_items);
+
                 var jsonValidator = {
                     datepicker_start: startDatepicker,
                     datepicker_end: endDatepicker
@@ -978,12 +982,26 @@
                 if (result.day >= 0 && formValid === true) {
                     error_container.textContent = "";
                     Core.class.festiveRoom.book(json, jsonItems);
+
+                    label_start_date.textContent = startDatepicker.value;
+                    label_end_date.textContent = endDatepicker.value;
+
+                    for(var i = 0 ; i < list_booked_items.children.length ; i++){
+                        var item = list_booked_items.children[i].cloneNode(true);
+                        item.removeChild(item.firstChild);
+                        list_items.appendChild(item);
+                    }
+
                 } else {
                     error_container.textContent = "Veuillez choisir les dates de début et de fin de l'évènement.";
                 }
             }, false);
+
+            utils.removeListener(btn_return, "click");
+            utils.addListener(btn_return, "click", function (e) {
+                include_container.style.display = "none";
+                search_container.style.display = "inline-block";
+            }, false);
         }();
-
-
     };
 })();
