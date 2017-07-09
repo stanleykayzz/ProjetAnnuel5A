@@ -34,7 +34,7 @@ public class CategoryController {
     @RequestMapping(method = POST)
     @ResponseStatus(OK)
     public void newCategory(@RequestParam(value="token")String tokenClient,
-                            @RequestBody CategoryRoom categoryRoom){
+                            @RequestBody CategoryRoom categoryRoom) throws TokenError {
         if(clientService.isAuthorized(tokenClient)){
             categoryRoomRepository.saveAndFlush(categoryRoom);
         }
@@ -45,7 +45,7 @@ public class CategoryController {
     @RequestMapping(method = DELETE)
     @ResponseStatus(OK)
     public void deleteCategory(@RequestParam(value = "token")String tokenClient,
-                               @RequestParam(value = "id") int idCategory){
+                               @RequestParam(value = "id") int idCategory) throws TokenError {
         if(clientService.isAuthorized(tokenClient)){
             categoryRoomRepository.delete(idCategory);
         }
@@ -55,10 +55,7 @@ public class CategoryController {
 
     @RequestMapping(method = GET)
     @ResponseStatus(OK)
-    public List<CategoryRoom> getAll(@RequestParam(value = "token")String tokenClient){
-        if(clientService.isAuthorized(tokenClient)){
-            return categoryRoomRepository.findAll();
-        }
-        throw new TokenError();
+    public List<CategoryRoom> getAll() {
+        return categoryRoomRepository.findAll();
     }
 }

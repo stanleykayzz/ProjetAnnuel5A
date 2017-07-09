@@ -52,16 +52,13 @@ public class RoomController {
 
 
     @RequestMapping(method = GET)
-    public List<Room> getRoomsBooking(@RequestParam(value = "token")String tokenClient){
-        if(clientService.isAuthorized(tokenClient)) {
-            return roomRepository.findAll();
-        }
-        throw new TokenError();
+    public List<Room> getRoomsBooking(){
+        return roomRepository.findAll();
     }
 
     @RequestMapping(method = GET, value = "/client/{idClient}")
     public List<Room> getRoomsBookingByUserId(@PathVariable int idClient,
-                                              @RequestParam(value = "token")String tokenClient){
+                                              @RequestParam(value = "token")String tokenClient) throws TokenError {
         if(clientService.isAuthorized(tokenClient)) {
             return roomRepository.findAllByIdClient(idClient);
         }
@@ -70,7 +67,7 @@ public class RoomController {
 
     @RequestMapping(method = GET, value="/room/{idRoom}")
     public List<Room> getRoomsByRoomId(@PathVariable int idRoom,
-                                       @RequestParam(value = "token")String tokenClient){
+                                       @RequestParam(value = "token")String tokenClient) throws TokenError {
         if(clientService.isAuthorized(tokenClient)) {
           return roomRepository.findAllByIdRoom(idRoom);
         }
@@ -79,7 +76,7 @@ public class RoomController {
 
     @RequestMapping(method = GET, value="/${building}")
     public List<Room> searchRoomByBuilding(@PathVariable String building,
-                                           @RequestParam(value = "token")String tokenClient){
+                                           @RequestParam(value = "token")String tokenClient) throws TokenError {
         if(clientService.isAuthorized(tokenClient)) {
             Building b1 = buildingRepository.findBuildingByNameBuildEquals(building);
             List<Room> rooms = roomRepository.findAllByIdBuildingEquals(b1.getIdBuilding());
@@ -93,7 +90,7 @@ public class RoomController {
     public List<Room> searchRoomFree(@RequestParam(value = "date_start") String begin_date,
                                      @RequestParam(value = "date_end") String end_date,
                                      @RequestParam(value = "type") String nameTypeCategoryRoom,
-                                     @RequestParam(value = "token")String tokenClient){
+                                     @RequestParam(value = "token")String tokenClient) throws TokenError {
         if(clientService.isAuthorized(tokenClient)) {
             CategoryRoom typeRoom = categoryRoomRepository.findCategoryRoomByName(nameTypeCategoryRoom);
             List<Room> rooms = new ArrayList<>();
@@ -117,7 +114,7 @@ public class RoomController {
 
 
     @RequestMapping(method = GET, value = "/category/all")
-    public List<CategoryRoom> getAllCategoriesRoom(@RequestParam(value = "token")String tokenClient){
+    public List<CategoryRoom> getAllCategoriesRoom(@RequestParam(value = "token")String tokenClient) throws TokenError {
         if(clientService.isAuthorized(tokenClient)) {
             return categoryRoomRepository.findAll();
         }
@@ -128,7 +125,7 @@ public class RoomController {
     @RequestMapping(method = POST)
     @ResponseStatus(OK)
     public void newRoom(@RequestParam(value="token")String tokenCLient,
-                        @RequestBody Room room){
+                        @RequestBody Room room) throws TokenError {
         if(clientService.isAuthorized(tokenCLient)) {
             if(clientService.isAuthorized(tokenCLient)) {
                 roomRepository.saveAndFlush(room);
@@ -142,7 +139,7 @@ public class RoomController {
     @RequestMapping(method = PUT)
     @ResponseStatus(OK)
     public Room updateBookingRoom(@RequestParam(value = "token") String tokenClient,
-                                  @RequestBody Room room){
+                                  @RequestBody Room room) throws TokenError {
         if(clientService.isAuthorized(tokenClient)) {
             room = roomRepository.findByIdRoom(room.getIdRoom());
             if (room != null) {
@@ -160,7 +157,7 @@ public class RoomController {
 
     @RequestMapping(method = DELETE, value="/cancel")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void cancelBook(@RequestParam(value="token") String tokenClient){
+    public void cancelBook(@RequestParam(value="token") String tokenClient) throws TokenError {
         if(clientService.isAuthorized(tokenClient)) {
             List<Booking> books = bookingRepository.findAllByTokenId(tokenClient);
             for (Booking book : books){
