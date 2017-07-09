@@ -4,7 +4,9 @@
     if (typeof Core === "undefined")
         throw "Core is not declared";
 
-    Core.utils.templateGenerator = Core.utils.templateGenerator || {};
+    Core.utils.template = Core.utils.template || {};
+
+    Core.utils
 
     Core.utils.templateGenerator.manageDisplay = function (id) {
         var li = document.getElementById(id);
