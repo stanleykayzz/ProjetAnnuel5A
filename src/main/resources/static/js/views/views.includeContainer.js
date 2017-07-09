@@ -45,6 +45,7 @@
                 Core.class.festiveRoom.initView();
                 break;
             case "clientListBook":
+                views.clientListBook.initView();
                 break;
         }
     };

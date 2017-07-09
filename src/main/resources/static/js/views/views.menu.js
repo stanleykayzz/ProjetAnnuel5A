@@ -50,7 +50,7 @@
                 createButton("btn_restaurant", "Restaurant", menuLastChild);
                 createButton("btn_festiveRoom", "Salle des fêtes", menuLastChild);
 
-                if(client.status === 0)
+                if(client.status === 1)
                     createButton("btn_clientListBook", "Réservations", menuLastChild);
 
                 createButton("btn_compte", "Compte", menuLastChild);

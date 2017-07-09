@@ -447,6 +447,7 @@ ul {
 	display: none;
 	border: 1px solid #9B9B9B;
 	border-top: 0px;
+	min-height: 100px;
 }
 
 .div_table {
