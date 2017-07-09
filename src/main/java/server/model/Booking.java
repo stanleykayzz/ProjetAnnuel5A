@@ -2,6 +2,8 @@ package server.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import server.model.Enum.Reason;
+import server.model.Enum.Statut;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,7 +25,6 @@ public class Booking {
     private Date dateBook;
     private Date dateStart;
     private Date dateEnd;
-    private int peopleNumber;
     private float price;
     private String payementMode;
     private int idPartyRoom;
@@ -34,17 +35,19 @@ public class Booking {
     private Reason reason;
     private Statut statut;
 
+    @JoinColumn()
+    private Restaurant restaurant;
+
     //Use by interface repository
 
 
     public Booking() {
     }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, Reason reason, Statut statut) {
+    public Booking(Date dateBook, Date dateStart, Date dateEnd, float price, String payementMode, int idPartyRoom, String tokenId, Reason reason, Statut statut) {
         this.dateBook = dateBook;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
-        this.peopleNumber = peopleNumber;
         this.price = price;
         this.payementMode = payementMode;
         this.idPartyRoom = idPartyRoom;
@@ -56,11 +59,10 @@ public class Booking {
         this.rate = -1;
     }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, int peopleNumber, float price, String payementMode, int idPartyRoom, String tokenId, int idRoomForClient, Reason reason, Statut statut) {
+    public Booking(Date dateBook, Date dateStart, Date dateEnd, float price, String payementMode, int idPartyRoom, String tokenId, int idRoomForClient, Reason reason, Statut statut) {
         this.dateBook = dateBook;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
-        this.peopleNumber = peopleNumber;
         this.price = price;
         this.payementMode = payementMode;
         this.idPartyRoom = idPartyRoom;
@@ -110,14 +112,6 @@ public class Booking {
 
     public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
-    }
-
-    public int getPeopleNumber() {
-        return peopleNumber;
-    }
-
-    public void setPeopleNumber(int peopleNumber) {
-        this.peopleNumber = peopleNumber;
     }
 
     public float getPrice() {
@@ -192,7 +186,6 @@ public class Booking {
         Booking booking = (Booking) o;
 
         if (idBook != booking.idBook) return false;
-        if (peopleNumber != booking.peopleNumber) return false;
         if (Float.compare(booking.price, price) != 0) return false;
         if (idPartyRoom != booking.idPartyRoom) return false;
         if (tokenId != booking.tokenId) return false;
@@ -210,7 +203,6 @@ public class Booking {
         Booking booking = (Booking) o;
 
         if (idBook != booking.idBook) setIdBook(booking.idBook);
-        if (peopleNumber != booking.peopleNumber) setPeopleNumber(booking.peopleNumber);
         if (Float.compare(booking.price, price) != 0) setPrice(booking.price);
         if (idPartyRoom != booking.idPartyRoom) setIdPartyRoom(booking.idPartyRoom);
         if (tokenId != booking.tokenId) setTokenId(booking.tokenId);
