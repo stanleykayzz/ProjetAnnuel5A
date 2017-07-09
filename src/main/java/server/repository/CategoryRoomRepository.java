@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by ileossa on 02/07/2017.
  */
-public interface CategoryRoomRepository extends JpaRepository<CategoryRoom, Long> {
+public interface CategoryRoomRepository extends JpaRepository<CategoryRoom, Integer> {
         List<CategoryRoom> findAllByName(String name);
         CategoryRoom findCategoryRoomByName(String name);
 }

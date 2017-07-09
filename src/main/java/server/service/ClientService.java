@@ -1,8 +1,11 @@
 package server.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import server.model.Client;
+import server.model.Enum.AccreditationUers;
 import server.repository.ClientRepository;
 
 import java.text.ParseException;
@@ -12,6 +15,7 @@ import java.util.*;
 
 @Service
 public class ClientService {
+    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     private ClientRepository clientRepository;
 
@@ -65,17 +69,17 @@ public class ClientService {
         }
     }
 
-    public void deleteClient(Long id) {
+    public void deleteClient(int id) {
         Client clients = getById(id);
         clientRepository.delete(id);
     }
 
-    public Client getById(Long id) {
+    public Client getById(int id) {
         return clientRepository.findOne(id);
     }
 
     public Client addClient(Client client) {
-        System.out.println(client.getSexe());
+        LOG.trace("insert new cient in bdd: " + client.toString());
         return clientRepository.saveAndFlush(client);
     }
 
@@ -132,5 +136,16 @@ public class ClientService {
 
     public void updateTokenDate(Client client) {
         client.setTokenDate(new Date());
+    }
+
+
+    public boolean isAuthorized(String tokenClient){
+        Client client = clientRepository.findDistinctFirstByToken(tokenClient);
+        if(tokenAvailable(client)) {
+            if (client.getAccreditation().equals(AccreditationUers.ADMINISTRATEUR)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

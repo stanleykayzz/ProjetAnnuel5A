@@ -8,5 +8,5 @@ import server.model.Article;
  */
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
 
-
+    Boolean findAllByIdArticleExists(int idArticle);
 }

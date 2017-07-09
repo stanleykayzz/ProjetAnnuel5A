@@ -11,6 +11,8 @@ import server.repository.RestaurantRepository;
 
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.ACCEPTED;
+import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
@@ -50,8 +52,9 @@ public class RestaurantController {
     }
 
 
+
     @RequestMapping(method = POST, value="/book")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(ACCEPTED)
     public void newReservation(@RequestParam(value = "token") String tokenCLient,
                                      @RequestParam(value = "type") String type,
                                      @RequestParam(value = "number") int number){

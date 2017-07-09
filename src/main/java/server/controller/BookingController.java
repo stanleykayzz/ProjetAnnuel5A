@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import server.model.Booking;
 import server.model.CategoryRoom;
 import server.model.Client;
-import server.model.Reason;
+import server.model.Enum.Reason;
 import server.repository.BookingRepository;
 import server.repository.CategoryRoomRepository;
 import server.repository.ClientRepository;

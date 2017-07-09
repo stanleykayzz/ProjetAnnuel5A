@@ -1,4 +1,4 @@
-package server.model;
+package server.model.Enum;
 
 /**
  * Created by ileossa on 08/07/2017.
