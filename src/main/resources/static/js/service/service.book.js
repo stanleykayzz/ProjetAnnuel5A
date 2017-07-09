@@ -58,9 +58,13 @@
             name: "bookFestiveRoom",
             method: "POST",
             url: "",
-            func: function () {
+            func: function (price) {
+                document.getElementById("label_price").textContent = price;
+                Core.payment.paypal.generateButton(price);
             },
             error: function (statusCode) {
+                document.getElementById("valide_container").textContent = "";
+                document.getElementById("error_container").textContent = "La salle des fêtes n'est pas disponible durant cette période."
             }
         };
     };

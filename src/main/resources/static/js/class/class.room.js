@@ -70,7 +70,6 @@
     };
 
     Core.class.room.getList = function () {
-        var paramRequest = "token=" + client.tokenDate;
-        utils.ajaxRequest(Core.service.room.getList(), paramRequest, null);
+        utils.ajaxRequest(Core.service.room.getList(), null, null);
     };
 })();

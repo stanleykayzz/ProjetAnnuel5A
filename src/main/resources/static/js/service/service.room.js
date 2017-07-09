@@ -22,7 +22,6 @@
         };
     };
 
-
     Core.service.room.create = function () {
         return {
             name   : "create",

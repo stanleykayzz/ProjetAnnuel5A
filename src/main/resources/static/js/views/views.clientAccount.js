@@ -87,14 +87,12 @@
             container_account = document.getElementById("show_account");
             container_update = document.getElementById("show_update");
 
-            utils.removeListener(btn_back, "click");
             utils.addListener(btn_back, "click", function () {
                 container_update.style.display = "none";
                 container_account.style.display = "inline-block";
             }, false);
         }();
         var requestEvents = function () {
-            utils.removeListener(btn_update, "click");
             utils.addListener(btn_update, "click", function () {
                 error_container.textContent = "";
 

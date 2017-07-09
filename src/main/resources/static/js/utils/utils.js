@@ -231,14 +231,14 @@
             || tokenDate.getMonth() !== currentDate.getMonth()
             || tokenDate.getDate()  !== currentDate.getDate())
             return false;
-        
+
         if(diffHours === 0){
-            if(diffMin <= 15){                
+            if(diffMin <= 15){
                 return true;
             } else {
                 return false;
             }
-            
+
         } else if(diffHours === 1 && diffMinExc <= 15){
             return true;
         }

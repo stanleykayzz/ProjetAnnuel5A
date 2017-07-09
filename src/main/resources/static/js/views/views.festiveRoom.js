@@ -45,7 +45,7 @@
                 input.max = object.quantity;
                 input.style.width = "70%";
                 utils.addListener(input, "keyup", function (e) {
-                    if(e.target.value === "")
+                    if (e.target.value === "")
                         e.target.value = 0;
 
                     if (parseInt(e.target.value) > parseInt(e.target.max))
@@ -59,6 +59,7 @@
                         div_list = viewList("list_" + object.id, e.target, e.target.value, utils.capitalizeFirstLetter(object.name));
                     } else {
                         div_list = viewList("list_" + object.id, e.target, e.target.value, utils.capitalizeFirstLetter(object.name));
+                        resizeContainer("-", 20);
                         div_list.parentElement.removeChild(div_list);
                     }
                 }, false);
@@ -165,8 +166,7 @@
                 $(endDateID).datepicker("option", "minDate", minDate);
                 label_start_date.textContent = utils.formatDate();
             });
-
-            utils.removeListener(btn_book, "click");
+            
             utils.addListener(btn_book, "click", function (e) {
                 utils.empty(list_items);
 
@@ -192,23 +192,25 @@
 
                 if (result.day >= 0 && formValid === true) {
                     error_container.textContent = "";
-                    Core.class.festiveRoom.book(json, jsonItems);
+                    Core.class.book.bookFestiveRoom(json, jsonItems);
 
                     label_start_date.textContent = startDatepicker.value;
                     label_end_date.textContent = endDatepicker.value;
 
-                    for(var i = 0 ; i < list_booked_items.children.length ; i++){
+                    for (var i = 0; i < list_booked_items.children.length; i++) {
                         var item = list_booked_items.children[i].cloneNode(true);
                         item.removeChild(item.firstChild);
                         list_items.appendChild(item);
                     }
 
+                    search_container.style.display = "none";
+                    include_container.style.display = "inline-block";
+
                 } else {
                     error_container.textContent = "Veuillez choisir les dates de début et de fin de l'évènement.";
                 }
             }, false);
-
-            utils.removeListener(btn_return, "click");
+            
             utils.addListener(btn_return, "click", function (e) {
                 include_container.style.display = "none";
                 search_container.style.display = "inline-block";

@@ -6,9 +6,31 @@
 
     Core.utils.template = Core.utils.template || {};
 
-    Core.utils
+    Core.utils.template.create = function (jsonHeaders, jsonValues, container) {
+        var div_table = document.createElement("div");
+        div_table.classList.add("div_table");
 
-    Core.utils.templateGenerator.manageDisplay = function (id) {
+        var createHeader = function () {
+            var div_row_header = document.createElement("div");
+            div_row_header.classList.add("div_row");
+
+            var div_cell_header = document.createElement("div");
+            div_cell_header.classList.add("div_cell");
+            div_cell_header.classList.add("header_list");
+
+
+            for(var h in jsonHeaders){
+                var clone = div_cell_header.cloneNode(true);
+                clone.textContent = h;
+                div_row_header.appendChild(clone);
+            }
+
+            div_table.appendChild(div_row_header);
+        }();
+
+    };
+
+    Core.utils.template.manageListDisplay = function (id) {
         var li = document.getElementById(id);
 
         utils.addListener(li, "click", function (e) {
