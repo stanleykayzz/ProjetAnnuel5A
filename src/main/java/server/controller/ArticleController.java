@@ -16,6 +16,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 /**
  * Created by ileossa on 09/07/2017.
  */
+@RestController
 @RequestMapping("/api/article")
 public class ArticleController {
 

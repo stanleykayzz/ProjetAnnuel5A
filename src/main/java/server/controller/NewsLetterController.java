@@ -1,10 +1,7 @@
 package server.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import server.model.Client;
 import server.model.NewsLetter;
 import server.repository.BookingRepository;
@@ -21,6 +18,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 /**
  * Created by ileossa on 09/07/2017.
  */
+@RestController
 @RequestMapping("")
 public class NewsLetterController {
 

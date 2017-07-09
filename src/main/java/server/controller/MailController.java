@@ -3,6 +3,7 @@ package server.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import server.model.Client;
 import server.model.NewsLetter;
 import server.repository.BookingRepository;
@@ -15,6 +16,7 @@ import java.util.List;
 /**
  * Created by ileossa on 03/07/2017.
  */
+@RestController
 @RequestMapping(value = "api/mail/")
 public class MailController {
 
