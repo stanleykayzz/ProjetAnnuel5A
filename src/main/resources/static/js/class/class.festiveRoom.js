@@ -6,11 +6,10 @@
 
     Core.class.festiveRoom = Core.class.festiveRoom || {};
 
-
     Core.class.festiveRoom.initView = function () {
         var paramRequest = "token=" + client.token;
-        //utils.ajaxRequest(Core.service.festiveRoom.getItems(), paramRequest, null);
-        Core.service.festiveRoom.getItems().func({
+        //utils.ajaxRequest(Core.service.festiveRoom.services.getList(), paramRequest, null);
+        Core.service.festiveRoom.services.getList().func({
             "0": {
                 id: "0",
                 name: "table 4 personnes",
@@ -57,9 +56,4 @@
 
     };
 
-    Core.class.festiveRoom.book = function (paramJson, bodyJson) {
-        var paramRequest = "token=" + client.token + "&dateStart=" + paramJson.dateStart + "&dateEnd" + paramJson.dateEnd;  
-        //utils.ajaxRequest(Core.service.festiveRoom.book(), paramRequest, bodyJson);
-        Core.service.festiveRoom.book().func("3000");
-    };
 })();

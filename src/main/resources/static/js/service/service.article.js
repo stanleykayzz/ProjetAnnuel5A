@@ -1,16 +1,16 @@
-;(function () {
+;(function(undefined) {
     "use strict";
 
-    if (typeof Core === "undefined")
+    if(typeof Core === "undefined")
         throw "Core is not declared";
 
-    Core.service.restaurant = Core.service.restaurant || {};
+    Core.service.article = Core.service.article || {};
 
-    Core.service.restaurant.create = function () {
+    Core.service.article.create = function () {
         return {
             name   : "create",
             method : "POST",
-            url    : "/restaurant",
+            url    : "/article",
             func : function () {
 
             },
@@ -20,11 +20,11 @@
         };
     };
 
-    Core.service.restaurant.udapte = function () {
+    Core.service.article.udapte = function () {
         return {
-            name   : "create",
+            name   : "udapte",
             method : "PUT",
-            url    : "/restaurant",
+            url    : "/article",
             func : function () {
 
             },
@@ -34,11 +34,11 @@
         };
     };
 
-    Core.service.restaurant.delete = function () {
+    Core.service.article.delete = function () {
         return {
             name   : "delete",
             method : "DELETE",
-            url    : "/restaurant",
+            url    : "/article",
             func : function () {
 
             },
@@ -48,11 +48,11 @@
         };
     };
 
-    Core.service.restaurant.getList = function () {
+    Core.service.article.getList = function () {
         return {
-            name   : "getListTable",
+            name   : "getList",
             method : "GET",
-            url    : "/restaurant",
+            url    : "/article",
             func : function () {
 
             },
@@ -61,6 +61,4 @@
             }
         };
     };
-
-
 })();
