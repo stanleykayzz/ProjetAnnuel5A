@@ -6,44 +6,6 @@
 
     Core.class.room = Core.class.room || {};
 
-    Core.class.room.getListCategories = function () {
-        //utils.ajaxRequest(Core.service.room.getListCategories(), null, null);
-        Core.service.room.getListCategories().func({
-            "0": {
-                id: 0,
-                name: "Chambre Simple",
-                imagePath: "img/room6.jpg",
-                costByNight: 60000,
-                costEuro: 60,
-                description: "Prevent bad actors from posting malicious or low-quality content that can permanently damage your business’ reputation and drive good users off your site."
-            },
-            "1": {
-                id: 1,
-                name: "Chambre Double",
-                imagePath: "img/room7.jpg",
-                costByNight: 100000,
-                costEuro: 100,
-                description: "Prevent bad actors from posting malicious or low-quality content that can permanently damage your business’ reputation and drive good users off your site."
-            },
-            "2": {
-                id: 2,
-                name: "Suite Junior",
-                imagePath: "img/room8.jpg",
-                costByNight: 150000,
-                costEuro: 150,
-                description: "Prevent bad actors from posting malicious or low-quality content that can permanently damage your business’ reputation and drive good users off your site."
-            },
-            "3": {
-                id: 3,
-                name: "Suite Exécutive",
-                imagePath: "img/room9.jpg",
-                costByNight: 200000,
-                costEuro: 200,
-                description: "Prevent bad actors from posting malicious or low-quality content that can permanently damage your business’ reputation and drive good users off your site."
-            }
-        });
-    };
-
     Core.class.room.search = function (json) {
         var paramRequest = "" +
             "date_start=" + json.dateStart +
@@ -92,15 +54,23 @@
         });
     };
 
-    Core.class.room.book = function (json) {
-        var paramRequest = "token=" + client.token;
-        //utils.ajaxRequest(Core.service.room.booking(), paramRequest, json);
-        Core.service.room.book().func("1500");
+    Core.class.room.create = function (json) {
+        var paramRequest = "token=" + client.tokenDate;
+        utils.ajaxRequest(Core.service.room.create(), paramRequest, json);
     };
 
-    Core.class.room.cancelBook = function () {
-        var paramRequest = "token=" + client.token;
-        //utils.ajaxRequest(Core.service.room.cancelBook(), paramRequest, null);
-        Core.service.room.cancelBook().func();
+    Core.class.room.update = function (json) {
+        var paramRequest = "token=" + client.tokenDate;
+        utils.ajaxRequest(Core.service.room.update(), paramRequest, json);
+    };
+
+    Core.class.room.delete = function (id) {
+        var paramRequest = "token=" + client.tokenDate + "&id=" + id;
+        utils.ajaxRequest(Core.service.room.delete(), paramRequest, null);
+    };
+
+    Core.class.room.getList = function () {
+        var paramRequest = "token=" + client.tokenDate;
+        utils.ajaxRequest(Core.service.room.getList(), paramRequest, null);
     };
 })();

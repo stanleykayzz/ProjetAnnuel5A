@@ -42,7 +42,7 @@
         utils.setDatepickerLanguage();
         utils.include(data.viewList.accueil.viewPath, data.viewList.accueil.name);
         
-        Core.class.room.getListCategories();
+        Core.class.category.getListCategories();
     };
 
 }).call(this); //Get current Context (window) into script

@@ -22,51 +22,57 @@
         };
     };
 
-    Core.service.room.getListCategories = function () {
-        return {
-            name   : "getListCategories",
-            method : "GET",
-            url    : "/room/category/getListCategories",
-            func : function (listCategories) {
-                if(listCategories !== null && listCategories !== undefined)
-                    data.listCategories = listCategories;
-                else
-                    return null;
-            },
-            error : function(statusCode){
-            }
-        };
-    };
 
-    Core.service.room.book = function () {
+    Core.service.room.create = function () {
         return {
-            name   : "booking",
+            name   : "create",
             method : "POST",
-            url    : "/room/bookRoom",
-            func : function (price) {
-                if(price !== null && price !== undefined){
-                    document.getElementById("label_price").textContent = price + " €";
-                    Core.payment.paypal.generateButton(price, document.getElementById("button_paypal"));
-                } else {
-                    return null;
-                }
-
-            },
-            error : function(statusCode){
-            }
-        };
-    };
-
-    Core.service.room.cancelBook = function () {
-        return {
-            name   : "booking",
-            method : "DELETE",
-            url    : "/room/cancelBookRoom",
+            url    : "/room",
             func : function () {
-                views.includeContainer.switchView("chambre");
+
             },
             error : function(statusCode){
             }
         };
     };
+
+    Core.service.room.update = function () {
+        return {
+            name   : "update",
+            method : "PUT",
+            url    : "/room",
+            func : function () {
+
+            },
+            error : function(statusCode){
+            }
+        };
+    };
+
+    Core.service.room.delete = function () {
+        return {
+            name   : "delete",
+            method : "DELETE",
+            url    : "/room",
+            func : function () {
+
+            },
+            error : function(statusCode){
+            }
+        };
+    };
+
+    Core.service.room.getList = function () {
+        return {
+            name   : "getList",
+            method : "GET",
+            url    : "/room",
+            func : function (listRoom) {
+
+            },
+            error : function(statusCode){
+            }
+        };
+    };
+
 })();

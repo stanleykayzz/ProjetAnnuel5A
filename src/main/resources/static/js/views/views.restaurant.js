@@ -20,7 +20,7 @@
                 type: typeElement.options[typeElement.selectedIndex].value,
                 number: numberElement.options[numberElement.selectedIndex].value
             };
-            Core.class.restaurant.booking(json);
+            Core.class.book.bookRestaurant(json);
         }, false);
     };
 

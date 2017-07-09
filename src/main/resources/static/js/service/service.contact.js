@@ -6,4 +6,16 @@
 
     Core.service.contact = Core.service.contact || {};
 
+    Core.service.contact.send = function () {
+        return {
+            name: "send",
+            method: "POST",
+            url: "/contact",
+            func: function () {
+
+            },
+            error: function (statusCode) {
+            }
+        }
+    };
 })();
