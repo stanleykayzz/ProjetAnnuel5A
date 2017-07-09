@@ -19,7 +19,7 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id_client")
-    private Long clientId;
+    private int clientId;
 
     @Column(name = "Name")
     @NotEmpty(message = "A client must have a name")
@@ -75,6 +75,9 @@ public class Client {
     @Column(name = "Code")
     private String code;
 
+    @Column(name = "accreditation")
+    private String accreditation;
+
 
 //--------- GETTERS / SETTERS ---------\\
 
@@ -103,11 +106,11 @@ public class Client {
         this.tokenDate = tokenDate;
     }
 
-    public Long getClientId() {
+    public int getClientId() {
         return clientId;
     }
 
-    public void setClientId(Long clientId) {
+    public void setClientId(int clientId) {
         this.clientId = clientId;
     }
 
@@ -194,4 +197,12 @@ public class Client {
     public String getCode() { return code; }
 
     public void setCode(String code) { this.code = code; }
+
+    public String getAccreditation() {
+        return accreditation;
+    }
+
+    public void setAccreditation(String accreditation) {
+        this.accreditation = accreditation;
+    }
 }

@@ -6,11 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import server.model.Client;
+import server.model.Enum.AccreditationUers;
 
 import java.util.List;
 
 @Repository
-public interface ClientRepository  extends JpaRepository<Client, Long> {
+public interface ClientRepository  extends JpaRepository<Client, Integer> {
 
     //todo tout refaire
 
@@ -31,4 +32,6 @@ public interface ClientRepository  extends JpaRepository<Client, Long> {
     List<Client> findClientByEmailEquals(String email);
 
     Client findDistinctFirstByToken(String token);
+
+    Client findClientByAccreditationEquals(String accreditation);
 }
