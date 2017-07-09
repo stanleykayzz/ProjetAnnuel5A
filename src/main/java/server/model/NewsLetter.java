@@ -1,5 +1,7 @@
 package server.model;
 
+import server.model.Enum.Reason;
+
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
@@ -18,15 +20,29 @@ public class NewsLetter {
     private long idClient;
     private boolean sendNewsLetter;
     private String description;
+    private Reason reason;
 
 
     public NewsLetter() {
         this.sendNewsLetter = true;
     }
 
-    public NewsLetter(boolean sendNewsLetter, String description) {
+    public NewsLetter(boolean sendNewsLetter, String description, Reason reason) {
         this.sendNewsLetter = sendNewsLetter;
         this.description = description;
+        this.reason = reason;
+    }
+
+    public int getIdNewsLetter() {
+        return idNewsLetter;
+    }
+
+    public Reason getReason() {
+        return reason;
+    }
+
+    public void setReason(Reason reason) {
+        this.reason = reason;
     }
 
     public long getIdClient() {
