@@ -17,12 +17,9 @@ public class FestiveRoom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "FESTIVE_ROOM_ID")
     private int idPartyRoom;
     private float price;
-
-    @JoinColumn(name = "SERVICES_HOTEL")
-    @OneToMany
-    private List<ServicesHotel> servicesHotel;
 
 
     public FestiveRoom() {
@@ -32,16 +29,17 @@ public class FestiveRoom {
         this.price = price;
     }
 
-    public FestiveRoom(float price, List<ServicesHotel> servicesHotel) {
-        this.price = price;
-        this.servicesHotel = servicesHotel;
+
+    public int getIdPartyRoom() {
+        return idPartyRoom;
     }
+
 
     public float getPrice() {
         return price;
     }
 
-    public int getIdPartyRoom() {
-        return idPartyRoom;
+    public void setPrice(float price) {
+        this.price = price;
     }
 }

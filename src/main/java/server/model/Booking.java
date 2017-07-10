@@ -35,11 +35,21 @@ public class Booking {
     private Reason reason;
     private Statut statut;
 
+    @JoinColumn(name = "ROOM_ID")
+    private int roomId;
+
+    @JoinColumn(name = "FESTIVE_ROOM_ID")
+    private int festiveRoomId;
+
+    @JoinColumn(name = "SERVICES_ID")
+    private int serviceHotelId;
+
+    @JoinColumn(name = "TABLE_RESTAURANT_ID")
+    private int tableRestaurantiD;
+
 
 
     //Use by interface repository
-
-
     public Booking() {
     }
 

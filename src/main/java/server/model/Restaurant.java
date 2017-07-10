@@ -16,17 +16,16 @@ public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "TABLE_RESTAURANT_ID")
     private int idTable;
     private String type;
-    private String tokenClient;
     private int nbClients;
 
     public Restaurant() {
     }
 
-    public Restaurant(String type, String tokenClient, int nbClients) {
+    public Restaurant(String type, int nbClients) {
         this.type = type;
-        this.tokenClient = tokenClient;
         this.nbClients = nbClients;
     }
 
@@ -44,13 +43,6 @@ public class Restaurant {
         this.type = type;
     }
 
-    public String getTokenClient() {
-        return tokenClient;
-    }
-
-    public void setTokenClient(String tokenClient) {
-        this.tokenClient = tokenClient;
-    }
 
     public int getNbClients() {
         return nbClients;
@@ -67,7 +59,6 @@ public class Restaurant {
         Restaurant that = (Restaurant) o;
 
         if (nbClients != that.nbClients) setNbClients(that.nbClients);
-        if (tokenClient != that.tokenClient) setTokenClient(that.tokenClient);
         if (type.equals(that.type)) setType(that.type);
         return this;
     }
