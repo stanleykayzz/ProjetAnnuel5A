@@ -39,7 +39,7 @@ public class NewLetterService {
         List<NewsLetter> listSendMail = newsLetterRepository.findAllBySendNewsLetterEquals(false);
         for (NewsLetter letter : listSendMail){
             if(letter.isSendNewsLetter()){
-                Client client = clientRepository.findClientByClientIdEquals(letter.getIdClient());
+                Client client = clientRepository.findClientById(letter.getIdClient());
                 mailService.sendEmail(client, "La Résidence des hauts de Menaye", "news_letter.vm");
             }
         }

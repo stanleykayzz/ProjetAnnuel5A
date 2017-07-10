@@ -18,7 +18,7 @@ public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int idArticle;
+    int id;
 
     private String title;
     private String content;
@@ -28,14 +28,6 @@ public class Article {
     public Article() {
     }
 
-
-    public int getIdArticle() {
-        return idArticle;
-    }
-
-    public void setIdArticle(int idArticle) {
-        this.idArticle = idArticle;
-    }
 
     public String getTitle() {
         return title;

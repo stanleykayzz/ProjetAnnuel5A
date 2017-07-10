@@ -19,7 +19,7 @@ public class NewsLetter {
 
     @Id
     @GeneratedValue(strategy = AUTO)
-    private int idNewsLetter;
+    private int id;
 
     private long idClient;
     private boolean sendNewsLetter;
@@ -32,8 +32,8 @@ public class NewsLetter {
     }
 
 
-    public int getIdNewsLetter() {
-        return idNewsLetter;
+    public int getId() {
+        return id;
     }
 
     public Reason getReason() {

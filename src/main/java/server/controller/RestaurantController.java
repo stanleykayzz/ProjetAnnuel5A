@@ -5,13 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import server.exception.TokenError;
-import server.model.Booking;
-import server.model.Client;
 import server.model.Restaurant;
 import server.repository.BookingRepository;
 import server.repository.ClientRepository;
 import server.repository.RestaurantRepository;
-import server.service.ClientService;
+import server.service.client.ClientService;
 
 import java.util.List;
 
@@ -40,24 +38,11 @@ public class RestaurantController {
     }
 
     @RequestMapping(method = GET)
-    public List<Restaurant> getAllReservation(){
-        return restaurantRepository.findAll();
-    }
-
-
-    @RequestMapping(method = GET, value="/client/{tokenClient}")
-    public List<Booking> getReservationByClientId(@PathVariable String tokenClient) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
-            Client client = clientRepository.findClientByTokenEquals(tokenClient);
-            return bookingRepository.findAllByIdClient(client.getClientId());
+    public List<Restaurant> getAllReservation(@RequestParam(value = "token") String tokenCLient) throws TokenError {
+        if(clientService.isAdministator(tokenCLient)) {
+            return restaurantRepository.findAll();
         }
         throw new TokenError();
-    }
-
-
-    @RequestMapping(method = GET, value="/restaurant/{idTable}")
-    public Restaurant getRestaurantByRestaurantId(@PathVariable int idTable){
-        return restaurantRepository.findRestaurantByIdTable(idTable);
     }
 
 
@@ -66,7 +51,7 @@ public class RestaurantController {
     @ResponseStatus(ACCEPTED)
     public void create(@RequestParam(value = "token") String tokenCLient,
                        @RequestBody Restaurant restaurant) throws Exception {
-        if(clientService.isAuthorized(tokenCLient)) {
+        if(clientService.isAdministator(tokenCLient)) {
             restaurantRepository.save(restaurant);
         }
         throw new TokenError();
@@ -77,8 +62,8 @@ public class RestaurantController {
     @ResponseStatus(ACCEPTED)
     public void update(@RequestParam(value="token")String tokenClient,
                        @RequestBody Restaurant restaurant) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)){
-            if(restaurantRepository.findOne(restaurant.getIdTable()) != null){
+        if(clientService.isAdministator(tokenClient)){
+            if(restaurantRepository.findOne(restaurant.getId()) != null){
                 restaurantRepository.saveAndFlush(restaurant);
             }
         }
@@ -90,7 +75,7 @@ public class RestaurantController {
     @ResponseStatus(ACCEPTED)
     public void delete(@RequestParam(value = "token")String tokenClient,
                        @RequestParam(value="id") int id) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)){
+        if(clientService.isAdministator(tokenClient)){
             if(restaurantRepository.findOne(id) != null){
                 restaurantRepository.delete(id);
             }

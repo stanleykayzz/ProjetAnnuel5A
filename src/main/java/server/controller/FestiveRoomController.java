@@ -3,7 +3,6 @@ package server.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import server.exception.FestiveRoomErrorBooking;
 import server.model.Booking;
@@ -54,7 +53,7 @@ public class FestiveRoomController {
     @ResponseStatus(OK)
     public List<Booking> getItems(@RequestParam(value="token") String clientToken){
         Client client = clientRepository.findClientByTokenEquals(clientToken);
-        return bookingRepository.findAllByIdClient(client.getClientId());
+        return bookingRepository.findAllById(client.getId());
     }
 
 
@@ -78,7 +77,7 @@ public class FestiveRoomController {
 
     @RequestMapping(method = POST, value="{idPartyRoom}" )
     public FestiveRoom updateReservationFestiveRoom(@RequestBody FestiveRoom festiveRoom){
-        festiveRoom = festiveRoomRepository.findFestiveRoomByIdPartyRoom(festiveRoom.getIdPartyRoom());
+        festiveRoom = festiveRoomRepository.findFestiveRoomById(festiveRoom.getId());
         if( festiveRoom != null){
             festiveRoomRepository.saveAndFlush(festiveRoom);
         }else{

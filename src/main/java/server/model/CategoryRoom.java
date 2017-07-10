@@ -21,7 +21,7 @@ public class CategoryRoom {
 
     @Id
     @GeneratedValue(strategy = AUTO)
-    private int idCategoryRoom;
+    private int id;
 
     private String name;
     private double costByNight;

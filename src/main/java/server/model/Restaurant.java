@@ -20,7 +20,7 @@ public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idTable;
+    private int id;
 
     private String cateringService;
     private int nbClients;
@@ -30,8 +30,8 @@ public class Restaurant {
 
 
 
-    public int getIdTable() {
-        return idTable;
+    public int getId() {
+        return id;
     }
 
     public String getCateringService() {

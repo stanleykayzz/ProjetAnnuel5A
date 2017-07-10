@@ -9,7 +9,7 @@ import server.exception.ObjectExist;
 import server.exception.TokenError;
 import server.model.*;
 import server.repository.*;
-import server.service.ClientService;
+import server.service.client.ClientService;
 import server.service.DateService;
 import server.service.BookingService;
 
@@ -61,7 +61,7 @@ public class RoomController {
     @RequestMapping(method = GET, value = "/client/{idClient}")
     public List<Room> getRoomsBookingByUserId(@PathVariable int idClient,
                                               @RequestParam(value = "token")String tokenClient) throws Exception {
-        if(clientService.isAuthorized(tokenClient)) {
+        if(clientService.isAdministator(tokenClient)) {
             //return roomRepository.findAllByIdClient(idClient);
             throw new Exception("Not current implemented, try soon");
         }
@@ -71,8 +71,8 @@ public class RoomController {
     @RequestMapping(method = GET, value="/room/{idRoom}")
     public List<Room> getRoomsByRoomId(@PathVariable int idRoom,
                                        @RequestParam(value = "token")String tokenClient) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
-          return roomRepository.findAllByIdRoom(idRoom);
+        if(clientService.isAdministator(tokenClient)) {
+          return roomRepository.findAllById(idRoom);
         }
         throw new TokenError();
     }
@@ -80,9 +80,9 @@ public class RoomController {
     @RequestMapping(method = GET, value="/${building}")
     public List<Room> searchRoomByBuilding(@PathVariable String building,
                                            @RequestParam(value = "token")String tokenClient) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
+        if(clientService.isAdministator(tokenClient)) {
             Building b1 = buildingRepository.findBuildingByNameBuildEquals(building);
-            List<Room> rooms = roomRepository.findAllByIdBuildingEquals(b1.getIdBuilding());
+            List<Room> rooms = roomRepository.findAllByIdBuildingEquals(b1.getId());
             return rooms;
         }
         throw new TokenError();
@@ -94,7 +94,7 @@ public class RoomController {
                                      @RequestParam(value = "date_end") String end_date,
                                      @RequestParam(value = "type") String nameTypeCategoryRoom,
                                      @RequestParam(value = "token")String tokenClient) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
+        if(clientService.isAdministator(tokenClient)) {
             CategoryRoom typeRoom = categoryRoomRepository.findCategoryRoomByName(nameTypeCategoryRoom);
             List<Room> rooms = new ArrayList<>();
             if(typeRoom.getName().toUpperCase().equals("all")) {
@@ -119,7 +119,7 @@ public class RoomController {
 
     @RequestMapping(method = GET, value = "/category/all")
     public List<CategoryRoom> getAllCategoriesRoom(@RequestParam(value = "token")String tokenClient) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
+        if(clientService.isAdministator(tokenClient)) {
             return categoryRoomRepository.findAll();
         }
         throw new TokenError();
@@ -130,7 +130,7 @@ public class RoomController {
     @ResponseStatus(OK)
     public void newRoom(@RequestParam(value="token")String tokenCLient,
                         @RequestBody Room room) throws TokenError, ObjectExist {
-        if(clientService.isAuthorized(tokenCLient)) {
+        if(clientService.isAdministator(tokenCLient)) {
             if(roomRepository.findRoomByNumber(room.getNumber()) == null) {
                 roomRepository.saveAndFlush(room);
             }
@@ -145,11 +145,11 @@ public class RoomController {
     @ResponseStatus(OK)
     public Room updateBookingRoom(@RequestParam(value = "token") String tokenClient,
                                   @RequestBody Room room) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
-            room = roomRepository.findByIdRoom(room.getIdRoom());
+        if(clientService.isAdministator(tokenClient)) {
+            room = roomRepository.findById(room.getId());
             if (room != null) {
                 room = roomRepository.saveAndFlush(room);
-                LOG.info("booking number: " + room.getIdRoom() + " update in bdd, object: " + room.toString());
+                LOG.info("booking number: " + room.getId() + " update in bdd, object: " + room.toString());
             } else {
                 LOG.error("Booking room doest not exist in BDD");
             }
@@ -163,9 +163,9 @@ public class RoomController {
     @RequestMapping(method = DELETE, value="/cancel")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void cancelBook(@RequestParam(value="token") String tokenClient) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
+        if(clientService.isAdministator(tokenClient)) {
             Client client = clientRepository.findClientByTokenEquals(tokenClient);
-            List<Booking> books = bookingRepository.findAllByIdClient(client.getClientId());
+            List<Booking> books = bookingRepository.findAllById(client.getId());
             for (Booking book : books){
                 book.setStatut(CANCELED);
                 bookingRepository.saveAndFlush(book);

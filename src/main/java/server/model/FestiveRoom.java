@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by ileossa on 05/04/2017.
@@ -21,7 +20,7 @@ public class FestiveRoom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idPartyRoom;
+    private int id;
 
     private float price;
 
@@ -33,12 +32,12 @@ public class FestiveRoom {
         this.price = price;
     }
 
-    public int getIdPartyRoom() {
-        return idPartyRoom;
+    public int getId() {
+        return id;
     }
 
-    public void setIdPartyRoom(int idPartyRoom) {
-        this.idPartyRoom = idPartyRoom;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public float getPrice() {

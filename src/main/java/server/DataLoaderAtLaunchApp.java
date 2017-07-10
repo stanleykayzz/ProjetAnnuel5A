@@ -10,9 +10,9 @@ import server.model.Enum.AccreditationUers;
 import server.model.FestiveRoom;
 import server.repository.ClientRepository;
 import server.repository.FestiveRoomRepository;
-import server.service.ClientService;
+import server.service.client.ClientService;
 import server.service.DateService;
-import server.utils.ClientUtils;
+import server.service.client.SecurityClient;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -29,31 +29,33 @@ public class DataLoaderAtLaunchApp implements ApplicationRunner{
     private ClientRepository clientRepository;
     private ClientService clientService;
     private DateService dateService;
+    private SecurityClient securityClient;
 
     @Value("${default.price.festive.room}")
     private float pricefestiveRoom;
 
     @Autowired
-    public DataLoaderAtLaunchApp(FestiveRoomRepository festiveRoomRepository, ClientRepository clientRepository, ClientService clientService, DateService dateService) {
+    public DataLoaderAtLaunchApp(FestiveRoomRepository festiveRoomRepository, ClientRepository clientRepository, ClientService clientService, DateService dateService, SecurityClient securityClient) {
         this.festiveRoomRepository = festiveRoomRepository;
         this.clientRepository = clientRepository;
         this.clientService = clientService;
         this.dateService = dateService;
+        this.securityClient = securityClient;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-//        if( festiveRoomRepository.findAll().isEmpty()){
-//            FestiveRoom festiveRoom = FestiveRoom.builder()
-//                    .idPartyRoom(0)
-//                    .price(pricefestiveRoom)
-//                    .build();
-//            festiveRoomRepository.save(festiveRoom);
-//        }
+        if( festiveRoomRepository.findAll().isEmpty()){
+            FestiveRoom festiveRoom = FestiveRoom.builder()
+                    .id(0)
+                    .price(pricefestiveRoom)
+                    .build();
+            festiveRoomRepository.save(festiveRoom);
+        }
         Client admin = clientRepository.findClientByAccreditationEquals(String.valueOf(ADMINISTRATEUR));
         if(admin == null){
             Client client = Client.builder()
-                    .clientId(0)
+                    .id(0)
                     .address("root")
                     .accreditation(AccreditationUers.ADMINISTRATEUR.toString())
                     .birthday(dateService.stringToDate("2000-02-01"))
@@ -66,11 +68,7 @@ public class DataLoaderAtLaunchApp implements ApplicationRunner{
                     .password("Asx$ijrT-45")
                     .phone("000000000")
                     .build();
-            int randomCode = ThreadLocalRandom.current().nextInt(0, 9999);
-            String pswd = ClientUtils.hashPassword(client.getPassword());
-            client.setStatus(0);
-            client.setCode(String.valueOf(randomCode));
-            client.setPassword(pswd.toString());
+            client = securityClient.updatePasswordClient(client);
             clientService.addClient(client);
         }
     }

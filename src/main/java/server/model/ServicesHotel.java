@@ -11,7 +11,7 @@ public class ServicesHotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idServicesHotel;
+    private int id;
     private String name;
     private String type;
     private float price;
@@ -29,12 +29,12 @@ public class ServicesHotel {
     }
 
 
-    public int getIdServicesHotel() {
-        return idServicesHotel;
+    public int getId() {
+        return id;
     }
 
-    public void setIdServicesHotel(int idServicesHotel) {
-        this.idServicesHotel = idServicesHotel;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -72,7 +72,7 @@ public class ServicesHotel {
     @Override
     public String toString() {
         return "ServicesHotel{" +
-                "idServicesHotel=" + idServicesHotel +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", costByNight=" + price +

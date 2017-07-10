@@ -34,7 +34,7 @@ public class MailController {
     @RequestMapping(value = "/unsubscribe/${email}")
     public String unsucribe(@PathVariable String email){
         Client client = clientRepository.findClientByEmailEquals(email);
-        NewsLetter letter = newsLetterRepository.findNewsLetterByIdClientEquals(client.getClientId());
+        NewsLetter letter = newsLetterRepository.findNewsLetterById(client.getId());
         letter.setSendNewsLetter(false);
         newsLetterRepository.saveAndFlush(letter);
         return "Description to the newsletter has been well recorded. The cancellation treatment may take a few days.";
@@ -44,7 +44,7 @@ public class MailController {
     public String getRateByClient(@PathVariable String email,
                                   @PathVariable int nb){
         Client client = clientRepository.findClientByEmailEquals(email);
-        Booking book = bookingRepository.findBookingByIdClient(client.getClientId());
+        Booking book = bookingRepository.findBookingById(client.getId());
         book.setRate(nb);
         bookingRepository.saveAndFlush(book);
         return "redirect:index.html";

@@ -24,7 +24,7 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idBook;
+    private int id;
 
     @Column(nullable = true)
     private Date dateBook;
@@ -74,12 +74,12 @@ public class Booking {
         this.statut = statut;
     }
 
-    public int getIdBook() {
-        return idBook;
+    public int getId() {
+        return id;
     }
 
-    public void setIdBook(int idBook) {
-        this.idBook = idBook;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDateBook() {
@@ -162,7 +162,7 @@ public class Booking {
 
         Booking booking = (Booking) o;
 
-        if (idBook != booking.idBook) return false;
+        if (id != booking.id) return false;
         if (Float.compare(booking.price, price) != 0) return false;
         if (idClient != booking.idClient) return false;
         if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) return false;
@@ -178,7 +178,7 @@ public class Booking {
 
         Booking booking = (Booking) o;
 
-        if (idBook != booking.idBook) setIdBook(booking.idBook);
+        if (id != booking.id) setId(booking.id);
         if (Float.compare(booking.price, price) != 0) setPrice(booking.price);
         if (idClient != booking.idClient) setIdClient(booking.idClient);
         if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) setDateBook(booking.dateBook);

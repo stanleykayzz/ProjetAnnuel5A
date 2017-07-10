@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
 
-    List<Article> findAllByIdArticle(int idArticle);
+    List<Article> findAllById(int idArticle);
 }

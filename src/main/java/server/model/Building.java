@@ -20,7 +20,7 @@ public class Building {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idBuilding;
+    private int id;
 
     private String nameBuild;
 
@@ -36,11 +36,11 @@ public class Building {
         this.nameBuild = nameBuild;
     }
 
-    public int getIdBuilding() {
-        return idBuilding;
+    public int getId() {
+        return id;
     }
 
-    public void setIdBuilding(int idBuilding) {
-        this.idBuilding = idBuilding;
+    public void setId(int id) {
+        this.id = id;
     }
 }

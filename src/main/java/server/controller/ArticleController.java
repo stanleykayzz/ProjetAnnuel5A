@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import server.model.Article;
 import server.repository.ArticleRepository;
 import server.repository.ClientRepository;
-import server.service.ClientService;
+import server.service.client.ClientService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class ArticleController {
     @ResponseStatus(value = OK)
     public void newArticle(@RequestParam(value="token") String tokenClient,
                            @RequestBody Article article){
-        if(clientService.isAuthorized(tokenClient)) {
+        if(clientService.isAdministator(tokenClient)) {
             articleRepository.saveAndFlush(article);
         }
     }
@@ -45,8 +45,8 @@ public class ArticleController {
     @ResponseStatus(value = OK)
     public void  updateArticle(@RequestParam(value="token")String tokenClient,
                                @RequestBody Article article){
-        if(clientService.isAuthorized(tokenClient)) {
-            if(articleRepository.findAllByIdArticle(article.getIdArticle()).isEmpty()){
+        if(clientService.isAdministator(tokenClient)) {
+            if(articleRepository.findAllById(article.getId()).isEmpty()){
                 articleRepository.saveAndFlush(article);
             }
 
@@ -58,8 +58,8 @@ public class ArticleController {
     @ResponseStatus(value = OK)
     public void deleteArticle(@RequestParam(value="token")String tokenClient,
                               @RequestParam(value = "id") int articleId){
-        if(clientService.isAuthorized(tokenClient)) {
-            if(articleRepository.findAllByIdArticle(articleId).isEmpty()){
+        if(clientService.isAdministator(tokenClient)) {
+            if(articleRepository.findAllById(articleId).isEmpty()){
                 articleRepository.delete(articleId);
             }
         }
@@ -69,7 +69,7 @@ public class ArticleController {
     @RequestMapping(method = GET)
     @ResponseStatus(value = OK)
     public List<Article> getList(@RequestParam(value = "token")String tokenClient){
-        if(clientService.isAuthorized(tokenClient)) {
+        if(clientService.isAdministator(tokenClient)) {
             return articleRepository.findAll();
         }
         return new ArrayList<Article>();

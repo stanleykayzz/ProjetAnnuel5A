@@ -2,8 +2,6 @@ package server.model;
 
 import javax.persistence.*;
 
-import java.util.List;
-
 import static javax.persistence.CascadeType.ALL;
 
 /**
@@ -15,7 +13,7 @@ public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idRoom;
+    private int id;
 
     private String name;
     private int number;
@@ -51,12 +49,12 @@ public class Room {
         this.categoryRoom = categoryRoom;
     }
 
-    public int getIdRoom() {
-        return idRoom;
+    public int getId() {
+        return id;
     }
 
-    public void setIdRoom(int idRoom) {
-        this.idRoom = idRoom;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

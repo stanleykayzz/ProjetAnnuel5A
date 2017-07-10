@@ -10,5 +10,5 @@ import server.model.FestiveRoom;
  */
 @Repository
 public interface FestiveRoomRepository extends JpaRepository<FestiveRoom, Integer> {
-    FestiveRoom findFestiveRoomByIdPartyRoom(int idFestiveRoom);
+    FestiveRoom findFestiveRoomById(int idFestiveRoom);
 }
