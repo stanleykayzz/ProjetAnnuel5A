@@ -1,5 +1,0 @@
-<html>
-<body>
-<h3>Hi ${user.name}, your booking it's registry</h3>
-</body>
-</html>
