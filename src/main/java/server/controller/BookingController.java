@@ -72,8 +72,8 @@ public class BookingController {
      */
     @RequestMapping(method = GET, value="{token}")
     List<Booking> getListBookingByIdUser(@PathVariable String token){
-        List<Client> clients = clientRepository.findByToken(token);
-        return bookingRepository.findAllByTokenId(clients.get(0).getToken());
+        Client clients = clientRepository.findClientByTokenEquals(token);
+        return bookingRepository.findBookingByIdClient(clients.getClientId());
     }
 
 
@@ -92,7 +92,7 @@ public class BookingController {
         Date dateEnd = Date.from(dateEndTemp.atStartOfDay(zoneId).toInstant());
 
         Booking result =  bookingRepository.saveAndFlush(booking);
-        Client client = clientRepository.findByToken(booking.getTokenId()).get(0);
+        Client client = clientRepository.findByToken(booking.getIdClient()).get(0);
         if(booking.getReason().equals(Reason.VACANCY))
             mailService.sendEmail(client, booking, "booking registry", "booking_registry_vacancy");
         else {

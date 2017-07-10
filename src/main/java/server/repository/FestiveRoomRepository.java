@@ -10,6 +10,5 @@ import server.model.FestiveRoom;
  */
 @Repository
 public interface FestiveRoomRepository extends JpaRepository<FestiveRoom, Integer> {
-    FestiveRoom findByTokenClientEquals(String tokenClient);
     FestiveRoom findFestiveRoomByIdPartyRoom(int idFestiveRoom);
 }

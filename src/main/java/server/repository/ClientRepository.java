@@ -34,4 +34,6 @@ public interface ClientRepository  extends JpaRepository<Client, Integer> {
     Client findDistinctFirstByToken(String token);
 
     Client findClientByAccreditationEquals(String accreditation);
+
+    Client findClientByTokenEquals(String tokenClient);
 }

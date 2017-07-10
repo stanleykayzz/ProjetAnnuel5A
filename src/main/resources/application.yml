@@ -29,6 +29,8 @@ logging:
 booking:
   timezone: "Africa/Libreville"
 
+path.default.generator.file: classpath:/files/
+
 
 
 spring.mail.path.file.attachement: classpath:/files/confirmation_reservation.pdf

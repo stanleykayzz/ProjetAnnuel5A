@@ -14,10 +14,10 @@ import java.util.List;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Integer> {
 
-    Room findByIdClient(int idClient);
+//    Room findByIdClient(int idClient);
     Room findByIdRoom(int idRoom);
     List<Room> findAllByIdRoom(int idRoom);
-    List<Room> findAllByIdClient(int idClient);
+//    List<Room> findAllByIdClient(int idClient);
     List<Room> findAllByCategoryRoom(CategoryRoom categoryRoom);
     List<Room> findAllByIdBuildingEquals(int idBuilding);
 }

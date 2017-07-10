@@ -50,7 +50,7 @@ public class NewLetterService {
         List<Booking> bookings = bookingRepository.findAllByDateEndIsAfter(dateService.currentLocalTime());
         for (Booking book : bookings){
             if(book.isSendEvaluation()){
-                Client client = clientRepository.findDistinctFirstByToken(book.getTokenId());
+                Client client = clientRepository.findDistinctFirstByToken(book.getIdClient());
                 mailService.sendEmail(client, "La Résidence des hauts de Menaye", "evalution.vm");
                 book.setSendEvaluation(false);
                 bookingRepository.saveAndFlush(book);

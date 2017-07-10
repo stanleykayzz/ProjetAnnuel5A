@@ -1,21 +1,23 @@
 package server.controller;
 
-import org.apache.commons.lang.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import server.exception.FestiveRoomErrorBooking;
-import server.exception.UserOrTokenException;
 import server.model.Booking;
+import server.model.Client;
 import server.model.FestiveRoom;
 import server.repository.BookingRepository;
+import server.repository.ClientRepository;
 import server.repository.FestiveRoomRepository;
 import server.service.DateService;
 
 import java.util.Date;
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -31,12 +33,14 @@ public class FestiveRoomController {
     private FestiveRoomRepository festiveRoomRepository;
     private BookingRepository bookingRepository;
     private DateService dateService;
+    private ClientRepository clientRepository;
 
     @Autowired
-    public FestiveRoomController(FestiveRoomRepository festiveRoomRepository, BookingRepository bookingRepository, DateService dateService) {
+    public FestiveRoomController(FestiveRoomRepository festiveRoomRepository, BookingRepository bookingRepository, DateService dateService, ClientRepository clientRepository) {
         this.festiveRoomRepository = festiveRoomRepository;
         this.bookingRepository = bookingRepository;
         this.dateService = dateService;
+        this.clientRepository = clientRepository;
     }
 
     @RequestMapping(method = GET, value = "/all")
@@ -45,15 +49,12 @@ public class FestiveRoomController {
     }
 
 
-    @RequestMapping(method = GET, value = "/{tokenClient}")
-    public FestiveRoom getReservationFestiveRoomByTokenClient(@PathVariable String  tokenClient){
-        return festiveRoomRepository.findByTokenClientEquals(tokenClient);
-
-    }
 
     @RequestMapping(method = GET, value="/getItems")
-    public void getItems(@RequestParam(value="token") String clientToken){
-        festiveRoomRepository.findByTokenClientEquals(clientToken);
+    @ResponseStatus(OK)
+    public List<Booking> getItems(@RequestParam(value="token") String clientToken){
+        Client client = clientRepository.findClientByTokenEquals(clientToken);
+        return bookingRepository.findBookingByIdClient(client.getClientId());
     }
 
 

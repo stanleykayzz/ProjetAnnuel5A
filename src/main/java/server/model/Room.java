@@ -31,11 +31,6 @@ public class Room {
     @JoinColumn(name = "CATEGORY_ID_ROOM")
     private CategoryRoom categoryRoom;
 
-    @JoinColumn(name= "ID_SERVICE")
-    @OneToMany
-    private List<ServicesHotel> servicesHotel;
-
-
 
     public Room() {
     }

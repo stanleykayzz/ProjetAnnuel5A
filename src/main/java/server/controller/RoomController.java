@@ -7,10 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import server.exception.TokenError;
 import server.model.*;
-import server.repository.BookingRepository;
-import server.repository.BuildingRepository;
-import server.repository.CategoryRoomRepository;
-import server.repository.RoomRepository;
+import server.repository.*;
 import server.service.ClientService;
 import server.service.DateService;
 import server.service.BookingService;
@@ -38,9 +35,10 @@ public class RoomController {
     private BuildingRepository buildingRepository;
     private CategoryRoomRepository categoryRoomRepository;
     private ClientService clientService;
+    private ClientRepository clientRepository;
 
     @Autowired
-    public RoomController(RoomRepository roomRepository, BookingRepository bookingRepository, DateService dateService, BookingService bookingService, BuildingRepository buildingRepository, CategoryRoomRepository categoryRoomRepository, ClientService clientService) {
+    public RoomController(RoomRepository roomRepository, BookingRepository bookingRepository, DateService dateService, BookingService bookingService, BuildingRepository buildingRepository, CategoryRoomRepository categoryRoomRepository, ClientService clientService, ClientRepository clientRepository) {
         this.roomRepository = roomRepository;
         this.bookingRepository = bookingRepository;
         this.dateService = dateService;
@@ -48,6 +46,7 @@ public class RoomController {
         this.buildingRepository = buildingRepository;
         this.categoryRoomRepository = categoryRoomRepository;
         this.clientService = clientService;
+        this.clientRepository = clientRepository;
     }
 
 
@@ -56,11 +55,13 @@ public class RoomController {
         return roomRepository.findAll();
     }
 
+
     @RequestMapping(method = GET, value = "/client/{idClient}")
     public List<Room> getRoomsBookingByUserId(@PathVariable int idClient,
-                                              @RequestParam(value = "token")String tokenClient) throws TokenError {
+                                              @RequestParam(value = "token")String tokenClient) throws Exception {
         if(clientService.isAuthorized(tokenClient)) {
-            return roomRepository.findAllByIdClient(idClient);
+            //return roomRepository.findAllByIdClient(idClient);
+            throw new Exception("Not current implemented, try soon");
         }
         throw new TokenError();
     }
@@ -159,7 +160,8 @@ public class RoomController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void cancelBook(@RequestParam(value="token") String tokenClient) throws TokenError {
         if(clientService.isAuthorized(tokenClient)) {
-            List<Booking> books = bookingRepository.findAllByTokenId(tokenClient);
+            Client client = clientRepository.findClientByTokenEquals(tokenClient);
+            List<Booking> books = bookingRepository.findBookingByIdClient(client.getClientId());
             for (Booking book : books){
                 book.setStatut(CANCELED);
                 bookingRepository.saveAndFlush(book);

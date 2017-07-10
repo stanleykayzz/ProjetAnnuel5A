@@ -46,7 +46,7 @@ public class ArticleController {
     public void  updateArticle(@RequestParam(value="token")String tokenClient,
                                @RequestBody Article article){
         if(clientService.isAuthorized(tokenClient)) {
-            if(articleRepository.findAllByIdArticleExists(article.getIdArticle())){
+            if(articleRepository.findAllByIdArticle(article.getIdArticle()).isEmpty()){
                 articleRepository.saveAndFlush(article);
             }
 
@@ -59,7 +59,7 @@ public class ArticleController {
     public void deleteArticle(@RequestParam(value="token")String tokenClient,
                               @RequestParam(value = "id") int articleId){
         if(clientService.isAuthorized(tokenClient)) {
-            if(articleRepository.findAllByIdArticleExists(articleId)){
+            if(articleRepository.findAllByIdArticle(articleId).isEmpty()){
                 articleRepository.delete(articleId);
             }
         }

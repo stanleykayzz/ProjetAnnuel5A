@@ -18,6 +18,7 @@
         <lombok.version>1.16.8</lombok.version>
         <dbunit.version>2.5.0</dbunit.version>
         <spring-test-dbunit.version>1.2.1</spring-test-dbunit.version>
+        <xdocreport.version>2.0.1</xdocreport.version>
     </properties>
     <dependencies>
         <!--Spring-->
@@ -155,6 +156,33 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.2.2</version>
             <scope>compile</scope>
+        </dependency>
+
+        <!-- PDF Generator -->
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.core</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.document</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.document.docx</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.converter</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.template.freemarker</artifactId>
+            <version>${xdocreport.version}</version>
         </dependency>
 
     </dependencies>

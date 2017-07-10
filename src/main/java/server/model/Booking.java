@@ -28,15 +28,14 @@ public class Booking {
     private float price;
     private String payementMode;
     private int idPartyRoom;
-    private String tokenId;
+    private String idClient;
     private boolean sendEvaluation;
     private int idRoomForClient;
     private int rate;
     private Reason reason;
     private Statut statut;
 
-    @JoinColumn()
-    private Restaurant restaurant;
+
 
     //Use by interface repository
 
@@ -44,14 +43,14 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, float price, String payementMode, int idPartyRoom, String tokenId, Reason reason, Statut statut) {
+    public Booking(Date dateBook, Date dateStart, Date dateEnd, float price, String payementMode, int idPartyRoom, String idClient, Reason reason, Statut statut) {
         this.dateBook = dateBook;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.price = price;
         this.payementMode = payementMode;
         this.idPartyRoom = idPartyRoom;
-        this.tokenId = tokenId;
+        this.idClient = idClient;
         this.reason = reason;
         this.statut = statut;
         this.idRoomForClient = -1;
@@ -59,14 +58,14 @@ public class Booking {
         this.rate = -1;
     }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, float price, String payementMode, int idPartyRoom, String tokenId, int idRoomForClient, Reason reason, Statut statut) {
+    public Booking(Date dateBook, Date dateStart, Date dateEnd, float price, String payementMode, int idPartyRoom, String idClient, int idRoomForClient, Reason reason, Statut statut) {
         this.dateBook = dateBook;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.price = price;
         this.payementMode = payementMode;
         this.idPartyRoom = idPartyRoom;
-        this.tokenId = tokenId;
+        this.idClient = idClient;
         this.idRoomForClient = idRoomForClient;
         this.reason = reason;
         this.statut = statut;
@@ -138,12 +137,12 @@ public class Booking {
         this.idPartyRoom = idPartyRoom;
     }
 
-    public String getTokenId() {
-        return tokenId;
+    public String getIdClient() {
+        return idClient;
     }
 
-    public void setTokenId(String tokenId) {
-        this.tokenId = tokenId;
+    public void setIdClient(String idClient) {
+        this.idClient = idClient;
     }
 
     public boolean isSendEvaluation() {
@@ -188,7 +187,7 @@ public class Booking {
         if (idBook != booking.idBook) return false;
         if (Float.compare(booking.price, price) != 0) return false;
         if (idPartyRoom != booking.idPartyRoom) return false;
-        if (tokenId != booking.tokenId) return false;
+        if (idClient != booking.idClient) return false;
         if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) return false;
         if (dateStart != null ? !dateStart.equals(booking.dateStart) : booking.dateStart != null) return false;
         if (dateEnd != null ? !dateEnd.equals(booking.dateEnd) : booking.dateEnd != null) return false;
@@ -205,7 +204,7 @@ public class Booking {
         if (idBook != booking.idBook) setIdBook(booking.idBook);
         if (Float.compare(booking.price, price) != 0) setPrice(booking.price);
         if (idPartyRoom != booking.idPartyRoom) setIdPartyRoom(booking.idPartyRoom);
-        if (tokenId != booking.tokenId) setTokenId(booking.tokenId);
+        if (idClient != booking.idClient) setIdClient(booking.idClient);
         if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) setDateBook(booking.dateBook);
         if (dateStart != null ? !dateStart.equals(booking.dateStart) : booking.dateStart != null) setDateStart(booking.dateStart);
         if (dateEnd != null ? !dateEnd.equals(booking.dateEnd) : booking.dateEnd != null) setDateEnd(booking.dateEnd);
