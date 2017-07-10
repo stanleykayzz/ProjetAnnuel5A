@@ -2,6 +2,8 @@ package server.service;
 
 import org.dom4j.DocumentException;
 import org.w3c.dom.Document;
+import org.xhtmlrenderer.pdf.ITextRenderer;
+import org.xhtmlrenderer.resource.XMLResource;
 
 import java.io.*;
 import java.text.ParseException;

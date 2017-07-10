@@ -157,6 +157,23 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- PDF Generator -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>core-renderer</artifactId>
+            <version>R8pre2</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

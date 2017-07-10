@@ -373,7 +373,7 @@
                     };
                 }
 
-                Core.class.book.bookRoom(body);
+                Core.class.book.room.bookRoom(body);
                 Core.views.room.roomBooking(startDatepicker.value, endDatepicker.value, body);
 
             }, false);
@@ -405,7 +405,7 @@
 
 
             utils.addListener(btn_return, "click", function (e) {
-                Core.class.book.cancelBookRoom();
+                Core.class.book.room.cancelBookRoom();
             }, false);
         }();
 
