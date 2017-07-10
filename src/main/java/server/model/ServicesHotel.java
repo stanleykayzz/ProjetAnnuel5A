@@ -11,7 +11,6 @@ public class ServicesHotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "SERVICES_ID")
     private int idServicesHotel;
     private String name;
     private String type;

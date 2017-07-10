@@ -1,17 +1,16 @@
 package server.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by ileossa on 28/06/2017.
  */
 @Data
-@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 @Entity
 @Table(name = "article")
 public class Article {
@@ -24,6 +23,11 @@ public class Article {
     private String title;
     private String content;
     private String pathFile;
+    private Date writeDate;
+
+    public Article() {
+    }
+
 
     public int getIdArticle() {
         return idArticle;
@@ -55,5 +59,13 @@ public class Article {
 
     public void setPathFile(String pathFile) {
         this.pathFile = pathFile;
+    }
+
+    public Date getWriteDate() {
+        return writeDate;
+    }
+
+    public void setWriteDate(Date writeDate) {
+        this.writeDate = writeDate;
     }
 }

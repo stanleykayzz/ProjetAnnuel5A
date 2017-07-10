@@ -1,5 +1,7 @@
 package server.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,38 +11,35 @@ import javax.persistence.*;
  * Created by ileossa on 05/04/2017.
  */
 @Entity
+@Builder
+@AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "restaurant")
+@Table(name = "RESTAURANT")
 public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "TABLE_RESTAURANT_ID")
     private int idTable;
-    private String type;
+
+    private String cateringService;
     private int nbClients;
 
     public Restaurant() {
     }
 
-    public Restaurant(String type, int nbClients) {
-        this.type = type;
-        this.nbClients = nbClients;
-    }
+
 
     public int getIdTable() {
         return idTable;
     }
 
-
-
-    public String getType() {
-        return type;
+    public String getCateringService() {
+        return cateringService;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCateringService(String cateringService) {
+        this.cateringService = cateringService;
     }
 
 
@@ -59,7 +58,7 @@ public class Restaurant {
         Restaurant that = (Restaurant) o;
 
         if (nbClients != that.nbClients) setNbClients(that.nbClients);
-        if (type.equals(that.type)) setType(that.type);
+        if (cateringService.equals(that.cateringService)) setCateringService(that.cateringService);
         return this;
     }
 

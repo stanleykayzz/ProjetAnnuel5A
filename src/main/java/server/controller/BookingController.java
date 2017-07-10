@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import server.exception.TokenError;
 import server.model.Booking;
 import server.model.CategoryRoom;
 import server.model.Client;
@@ -13,6 +14,7 @@ import server.repository.BookingRepository;
 import server.repository.CategoryRoomRepository;
 import server.repository.ClientRepository;
 import server.repository.RoomRepository;
+import server.service.ClientService;
 import server.service.DateService;
 import server.service.mail.MailService;
 
@@ -43,15 +45,17 @@ public class BookingController {
     private DateService dateService;
     private CategoryRoomRepository categoryRoomRepository;
     private RoomRepository roomRepository;
+    private ClientService clientService;
 
     @Autowired
-    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, MailService mailService, DateService dateService, CategoryRoomRepository categoryRoomRepository, RoomRepository roomRepository) {
+    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, MailService mailService, DateService dateService, CategoryRoomRepository categoryRoomRepository, RoomRepository roomRepository, ClientService clientService) {
         this.bookingRepository = bookingRepository;
         this.clientRepository = clientRepository;
         this.mailService = mailService;
         this.dateService = dateService;
         this.categoryRoomRepository = categoryRoomRepository;
         this.roomRepository = roomRepository;
+        this.clientService = clientService;
     }
 
     @Value("${booking.timezone}")
@@ -61,8 +65,11 @@ public class BookingController {
 
 
     @RequestMapping(method = GET, value="/all")
-    public List<Booking> getListBooking(){
-        return bookingRepository.findAll();
+    public List<Booking> getListBooking(@RequestParam(value = "toke") String tokenClient) throws TokenError {
+        if(clientService.isAuthorized(tokenClient)) {
+            return bookingRepository.findAll();
+        }
+        throw new TokenError();
     }
 
     /**

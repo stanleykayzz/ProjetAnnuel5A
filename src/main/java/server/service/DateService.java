@@ -15,7 +15,7 @@ import java.util.Date;
 @Service
 public class DateService {
 
-    @Value("booking.timezone")
+    @Value("${booking.timezone}")
     public String zoneId = "Africa/Libreville";
 
     public Date stringToDate(String dateEntry) {

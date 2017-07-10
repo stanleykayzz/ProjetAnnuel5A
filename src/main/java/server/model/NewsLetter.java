@@ -1,5 +1,7 @@
 package server.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import server.model.Enum.Reason;
 
 import javax.persistence.*;
@@ -10,7 +12,9 @@ import static javax.persistence.GenerationType.AUTO;
  * Created by ileossa on 03/07/2017.
  */
 @Entity
-@Table(name = "news_letter")
+@Builder
+@AllArgsConstructor
+@Table(name = "NEWS_LETTER")
 public class NewsLetter {
 
     @Id
@@ -27,11 +31,6 @@ public class NewsLetter {
         this.sendNewsLetter = true;
     }
 
-    public NewsLetter(boolean sendNewsLetter, String description, Reason reason) {
-        this.sendNewsLetter = sendNewsLetter;
-        this.description = description;
-        this.reason = reason;
-    }
 
     public int getIdNewsLetter() {
         return idNewsLetter;

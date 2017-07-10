@@ -9,10 +9,9 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table (name = "client")
+@Table (name = "CLIENT")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Client {
 
@@ -79,7 +78,31 @@ public class Client {
     private String accreditation;
 
 
-//--------- GETTERS / SETTERS ---------\\
+    // FOR hibernate
+    public Client() {
+    }
+
+    public Client(String name, String firstName, int sexe, Date birthday, String email, String phone, String country, String city, String address, String postalCode, String password, int status, String token, Date tokenDate, String code, String accreditation) {
+        this.name = name;
+        this.firstName = firstName;
+        this.sexe = sexe;
+        this.birthday = birthday;
+        this.email = email;
+        this.phone = phone;
+        this.country = country;
+        this.city = city;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.password = password;
+        this.status = status;
+        this.token = token;
+        this.tokenDate = tokenDate;
+        this.code = code;
+        this.accreditation = accreditation;
+    }
+
+
+    //--------- GETTERS / SETTERS ---------\\
 
 
     public String getName() {

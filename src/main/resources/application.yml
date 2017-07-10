@@ -30,7 +30,7 @@ booking:
   timezone: "Africa/Libreville"
 
 path.default.generator.file: classpath:/files/
-
+default.price.festive.room: 10000
 
 
 spring.mail.path.file.attachement: classpath:/files/confirmation_reservation.pdf
@@ -50,7 +50,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
   jmx:
     enabled: true
 # H2 (acces with localhost:port/h2 or localhost:port/h2-console/)

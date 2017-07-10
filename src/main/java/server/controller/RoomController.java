@@ -128,9 +128,8 @@ public class RoomController {
     public void newRoom(@RequestParam(value="token")String tokenCLient,
                         @RequestBody Room room) throws TokenError {
         if(clientService.isAuthorized(tokenCLient)) {
-            if(clientService.isAuthorized(tokenCLient)) {
+            // todo verifier si le numero de la chambre existe deja
                 roomRepository.saveAndFlush(room);
-            }
         }
         throw new TokenError();
     }

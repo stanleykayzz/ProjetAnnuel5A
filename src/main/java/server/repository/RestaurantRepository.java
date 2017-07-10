@@ -12,5 +12,6 @@ import server.model.Restaurant;
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
 
     Restaurant findRestaurantByIdTable(int idTable);
-    Restaurant findRestaurantByTokenClientEquals(String tokenClient);
+//    Restaurant findRestaurantByTokenClientEquals(String tokenClient);
+
 }

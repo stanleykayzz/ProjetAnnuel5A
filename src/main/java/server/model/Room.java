@@ -10,12 +10,11 @@ import static javax.persistence.CascadeType.ALL;
  * Created by ileossa on 05/04/2017.
  */
 @Entity
-@Table(name = "room")
+@Table(name = "ROOM")
 public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ROOM_ID")
     private int idRoom;
 
     private String name;
@@ -35,11 +34,13 @@ public class Room {
     public Room() {
     }
 
-    public Room(String name, String building, int number, int idClient, int price, Building idBuilding) {
+    public Room(String name, int number, int price, int idCategory, Building idBuilding, CategoryRoom categoryRoom) {
         this.name = name;
         this.number = number;
         this.price = price;
+        this.idCategory = idCategory;
         this.idBuilding = idBuilding;
+        this.categoryRoom = categoryRoom;
     }
 
     public CategoryRoom getCategoryRoom() {
