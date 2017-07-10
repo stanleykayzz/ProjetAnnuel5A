@@ -18,7 +18,6 @@ public class FestiveRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idPartyRoom;
-    private String tokenClient;
     private float price;
 
     @JoinColumn(name = "SERVICES_HOTEL")
@@ -29,13 +28,14 @@ public class FestiveRoom {
     public FestiveRoom() {
     }
 
+    public FestiveRoom(float price) {
+        this.price = price;
+    }
 
-    public FestiveRoom(String event, int numberChairs, int numberTables, String tokenClient, int price, List<ServicesHotel> servicesHotel) {
-        this.tokenClient = tokenClient;
+    public FestiveRoom(float price, List<ServicesHotel> servicesHotel) {
         this.price = price;
         this.servicesHotel = servicesHotel;
     }
-
 
     public float getPrice() {
         return price;
