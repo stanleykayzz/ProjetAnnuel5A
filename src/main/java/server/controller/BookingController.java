@@ -78,7 +78,7 @@ public class BookingController {
      * @return
      */
     @RequestMapping(method = GET, value="{token}")
-    List<Booking> getListBookingByIdUser(@PathVariable String token){
+    Booking getListBookingByIdUser(@PathVariable String token){
         Client clients = clientRepository.findClientByTokenEquals(token);
         return bookingRepository.findBookingByIdClient(clients.getClientId());
     }

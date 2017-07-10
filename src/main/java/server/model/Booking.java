@@ -9,6 +9,7 @@ import server.model.Enum.Statut;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by ileossa on 05/04/2017.
@@ -18,7 +19,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "booking")
+@Table(name = "BOOKING")
 public class Booking {
 
     @Id
@@ -33,22 +34,29 @@ public class Booking {
     private String payementMode;
     private String idClient;
     private boolean sendEvaluation;
-    private int idRoomForClient;
     private int rate;
     private Reason reason;
     private Statut statut;
 
-//    @JoinColumn(name = "ROOM_ID")
-    private int roomId;
+    @JoinColumn(name = "BOOKED_ROOMS")
+    @ManyToMany
+    private List<Room> rooms;
 
-//    @JoinColumn(name = "FESTIVE_ROOM_ID")
-    private int festiveRoomId;
+    @JoinColumn(name = "BOOKED_FESTIVE_ROOM")
+    @ManyToMany
+    private List<FestiveRoom> festiveRoomId;
 
-//    @JoinColumn(name = "SERVICES_ID")
-    private int serviceHotelId;
+    @JoinColumn(name = "BOOKED_SERVICES_HOTEL")
+    @ManyToMany
+    private List<ServicesHotel> serviceHotelId;
 
-//    @JoinColumn(name = "TABLE_RESTAURANT_ID")
-    private int tableRestaurantiD;
+    @JoinColumn(name = "BOOKED_TABLE_RESTAURANT")
+    @ManyToMany
+    private List<Restaurant> tableRestaurantiD;
+
+    @JoinColumn(name = "BOOKED_CLIENT_INFOS")
+    @ManyToOne
+    private Client clientInfos;
 
 
 
@@ -130,13 +138,6 @@ public class Booking {
         this.sendEvaluation = sendEvaluation;
     }
 
-    public int getIdRoomForClient() {
-        return idRoomForClient;
-    }
-
-    public void setIdRoomForClient(int idRoomForClient) {
-        this.idRoomForClient = idRoomForClient;
-    }
 
     public int getRate() {
         return rate;
