@@ -25,7 +25,6 @@
             captchaElement = document.getElementById("captchaID");
         }();
         var showViewEvents = function () {
-            utils.removeListener(showSingupBtn, "click");
             utils.addListener(showSingupBtn, "click", function () {
                 document.getElementById("error_container").textContent = "";
                 loginContainer.style.display = "none";
@@ -33,7 +32,6 @@
                 utils.captcha(captchaElement);
             }, false);
 
-            utils.removeListener(showforgetpasswordBtn, "click");
             utils.addListener(showforgetpasswordBtn, "click", function () {
                 document.getElementById("error_container").textContent = "";
                 loginContainer.style.display = "none";
@@ -41,7 +39,6 @@
             }, false);
         }();
         var requestEvent = function () {
-            utils.removeListener(loginBtn, "click");
             utils.addListener(loginBtn, "click", function () {
                 var email = document.getElementById("emailBtn").value;
                 var password = document.getElementById("passwordBtn").value;
@@ -82,7 +79,6 @@
             }
         }();
         var showViewEvents = function () {
-            utils.removeListener(showLoginBtn, "click");
             utils.addListener(showLoginBtn, "click", function () {
                 document.getElementById("error_container").textContent = "";
                 signupContainer.style.display = "none";
@@ -90,7 +86,6 @@
             }, false);
         }();
         var requestEvents = function () {
-            utils.removeListener(signupBtn, "click");
             utils.addListener(signupBtn, "click", function () {
                 var client, firstname, lastname, sexe, female, male, email,
                     password_1, password_2, day, month, year, birthday, phone,
@@ -196,7 +191,6 @@
             forgerpasswordContainer = document.getElementById("forgetpasswordBox");
         }();
         var showViewEvents = function () {
-            utils.removeListener(showLoginFromForgetPassword, "click");
             utils.addListener(showLoginFromForgetPassword, "click", function () {
                 document.getElementById("error_container").textContent = "";
                 forgerpasswordContainer.style.display = "none";

@@ -17,8 +17,7 @@
     };
 
     Core.class.category.getListCategories = function () {
-        var paramRequest = "token" + client.token;
-        //utils.ajaxRequest(Core.service.category.getListCategories(), paramRequest, null);
+        //utils.ajaxRequest(Core.service.category.getListCategories(), null, null);
         Core.service.category.getListCategories().func({
             "0": {
                 id: 0,

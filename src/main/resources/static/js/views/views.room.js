@@ -68,6 +68,7 @@
         var startDatepicker, endDatepicker, type_input, reason, list_reservation, btn_book;
         var startString, endString, formatDateStart, formatDateEnd;
         var list_simple, list_double, list_junior, list_executive;
+        var error_container;
         var jsonQuantity;
 
         var getDays = function () {
@@ -304,6 +305,7 @@
             list_executive = document.getElementById("executive_content");
 
             btn_book = document.getElementById("btn_book");
+            error_container = document.getElementById("error_container");
 
             jsonQuantity = {};
         }();
@@ -332,7 +334,7 @@
             for (type in listType) {
                 if (type_input.value === "all" || type_input.value === type) {
                     var btn = document.getElementById("btn_type_" + type);
-                    utils.removeListener(btn, "click");
+                    console.log(btn)
                     utils.addListener(btn, "click", function (e) {
                         var quantity = e.target.parentElement.getElementsByClassName("quantity_input")[0];
                         var name = e.target.getAttribute("name");
@@ -345,27 +347,35 @@
                 }
             }
 
-            utils.removeListener(btn_book, "click");
             utils.addListener(btn_book, "click", function (e) {
-                if (window.client) {
-                    var body = {};
-                    searchContainer.style.display = "none";
-                    bookingContainer.style.display = "block";
-                    for (var r in jsonQuantity) {
-                        body["reservation_" + r] = {
-                            "date_start": formatDateStart,
-                            "date_end": formatDateEnd,
-                            "type": r,
-                            "quantity": jsonQuantity[r].quantity,
-                            "reason": reason.value
-                        };
-                    }
+                error_container.textContent = "";
 
-                    Core.class.room.book(body);
-                    Core.views.room.roomBooking(startDatepicker.value, endDatepicker.value, body);
-                } else {
-                    views.includeContainer.switchView("connexion");
+                if(Object.keys(jsonQuantity).length === 0 && jsonQuantity.constructor === Object){
+                    error_container.textContent = "Vous devez choisir au moins une chambre pour accéder au paiement";
+                    return;
                 }
+
+                if (!window.client) {
+                    views.includeContainer.switchView("connexion");
+                    return;
+                }
+
+                var body = {};
+                searchContainer.style.display = "none";
+                bookingContainer.style.display = "block";
+                for (var r in jsonQuantity) {
+                    body["reservation_" + r] = {
+                        "date_start": formatDateStart,
+                        "date_end": formatDateEnd,
+                        "type": r,
+                        "quantity": jsonQuantity[r].quantity,
+                        "reason": reason.value
+                    };
+                }
+
+                Core.class.book.bookRoom(body);
+                Core.views.room.roomBooking(startDatepicker.value, endDatepicker.value, body);
+
             }, false);
         }();
     };
@@ -393,9 +403,9 @@
                 labelBook.appendChild(span);
             }
 
-            utils.removeListener(btn_return, "click");
+
             utils.addListener(btn_return, "click", function (e) {
-                Core.class.room.cancelBook();
+                Core.class.book.cancelBookRoom();
             }, false);
         }();
 

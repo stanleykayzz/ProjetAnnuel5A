@@ -10,7 +10,7 @@
         var list_menu = document.getElementsByClassName("li_menu");
 
         for(var i = 0 ; i < list_menu.length ; i++) {
-            utils.templateGenerator.manageDisplay(list_menu[i].id);
+            utils.template.manageListDisplay(list_menu[i].id);
         }
     };
 

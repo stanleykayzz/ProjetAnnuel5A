@@ -12,9 +12,7 @@
         typeElement = document.getElementById("select_time");
         numberElement = document.getElementById("select_number");
         btn_booking = document.getElementById("btn_search_table");
-
-
-        utils.removeListener(btn_booking, "click");
+        
         utils.addListener(btn_booking, "click", function () {
             var json = {
                 type: typeElement.options[typeElement.selectedIndex].value,

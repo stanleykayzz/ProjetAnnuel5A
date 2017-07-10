@@ -27,6 +27,6 @@
     Core.class.book.bookFestiveRoom = function (paramJson, bodyJson) {
         var paramRequest = "token=" + client.token + "&dateStart=" + paramJson.dateStart + "&dateEnd" + paramJson.dateEnd;
         //utils.ajaxRequest(Core.service.festiveRoom.book(), paramRequest, bodyJson);
-        Core.service.book().func("3000");
+        Core.service.book.bookFestiveRoom().func("3000");
     };
 })();
