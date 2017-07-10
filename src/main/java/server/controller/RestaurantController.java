@@ -16,8 +16,7 @@ import server.service.ClientService;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.ACCEPTED;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
  * Created by ileossa on 22/05/2017.
@@ -40,18 +39,17 @@ public class RestaurantController {
         this.bookingRepository = bookingRepository;
     }
 
-    @RequestMapping(method = GET, value = "/all")
+    @RequestMapping(method = GET)
     public List<Restaurant> getAllReservation(){
         return restaurantRepository.findAll();
     }
-
 
 
     @RequestMapping(method = GET, value="/client/{tokenClient}")
     public List<Booking> getReservationByClientId(@PathVariable String tokenClient) throws TokenError {
         if(clientService.isAuthorized(tokenClient)) {
             Client client = clientRepository.findClientByTokenEquals(tokenClient);
-            return bookingRepository.findBookingByIdClient(client.getClientId());
+            return bookingRepository.findAllByIdClient(client.getClientId());
         }
         throw new TokenError();
     }
@@ -66,37 +64,40 @@ public class RestaurantController {
 
     @RequestMapping(method = POST, value="/book")
     @ResponseStatus(ACCEPTED)
-    public void newReservation(@RequestParam(value = "token") String tokenCLient,
-                                     @RequestParam(value = "type") String service,
-                                     @RequestParam(value = "number") int number) throws Exception {
+    public void create(@RequestParam(value = "token") String tokenCLient,
+                       @RequestBody Restaurant restaurant) throws Exception {
         if(clientService.isAuthorized(tokenCLient)) {
-            Client client  = clientRepository.findClientByTokenEquals(tokenCLient);
-            //Booking book = new Booking()
-            throw new Exception("not implement, try soon");
+            restaurantRepository.save(restaurant);
         }
         throw new TokenError();
     }
 
 
-    @RequestMapping(method = POST, value="{idTable}")
-    public Restaurant updateReservation(@RequestParam(value = "idTable") int idTable,
-                                        @RequestParam(value = "name") String name,
-                                        @RequestParam(value = "placeNumber")int nbPlace,
-                                        @RequestParam(value = "idClient") int idClient){
-
-        if(restaurantRepository.findRestaurantByIdTable(idTable) != null){
-            Restaurant restaurant = restaurantRepository.findRestaurantByIdTable(idTable);
-
-            restaurant.check(idTable);
-            restaurant.check(name);
-            restaurant.check(nbPlace);
-            restaurant.check(idClient);
-
-            return restaurant;
+    @RequestMapping(method = PUT)
+    @ResponseStatus(ACCEPTED)
+    public void update(@RequestParam(value="token")String tokenClient,
+                       @RequestBody Restaurant restaurant) throws TokenError {
+        if(clientService.isAuthorized(tokenClient)){
+            if(restaurantRepository.findOne(restaurant.getIdTable()) != null){
+                restaurantRepository.saveAndFlush(restaurant);
+            }
         }
-
-        return new Restaurant();
+        throw new TokenError();
     }
+
+
+    @RequestMapping(method = DELETE)
+    @ResponseStatus(ACCEPTED)
+    public void delete(@RequestParam(value = "token")String tokenClient,
+                       @RequestParam(value="id") int id) throws TokenError {
+        if(clientService.isAuthorized(tokenClient)){
+            if(restaurantRepository.findOne(id) != null){
+                restaurantRepository.delete(id);
+            }
+        }
+        throw new TokenError();
+    }
+
 
 
 
