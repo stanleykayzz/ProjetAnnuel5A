@@ -25,13 +25,6 @@ public class ClientService {
     }
 
 
-    public boolean findByEmail(String Email) {
-        if (clientRepository.findClientByEmailEquals(Email) == null) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public Client findByToken(String Token) {
         List<Client> clients = clientRepository.findByToken(Token);
@@ -80,6 +73,8 @@ public class ClientService {
         return clientRepository.saveAndFlush(client);
     }
 
+
+
     public boolean tokenAvailable(Client client) {
         Date currentDate = new Date();
 
@@ -103,18 +98,7 @@ public class ClientService {
         }
     }
 
-    public void generateToken(Client client) {
-        client.setToken(UUID.randomUUID().toString());
-        Date dateToken = new Date();
-        client.setTokenDate(dateToken);
-        //boolean tokenExists = tokenExists(client.getToken());
-        /*System.out.println(tokenExists);
-        if(tokenExists == true) {
-            this.generateToken(client);
-        }*/
-    }
 
-    
 
     public void updateTokenDate(Client client) {
         client.setTokenDate(new Date());

@@ -6,5 +6,5 @@ package server.model.Enum;
 public enum ClientStatus {
     ACTIF,
     REMOVE,
-    DESACTIVATE
+    DESACTIVATE,
 }

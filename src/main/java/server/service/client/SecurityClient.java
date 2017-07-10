@@ -33,7 +33,7 @@ public class SecurityClient {
     }
 
 
-    public Client updatePasswordClient(Client client) {
+    public Client createAndUpdatePasswordClient(Client client) {
         int randomCode = ThreadLocalRandom.current().nextInt(0, 9999);
 
         String pswd = hashPassword(client.getPassword());

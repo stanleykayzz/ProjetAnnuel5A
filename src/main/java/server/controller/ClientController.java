@@ -3,6 +3,8 @@ package server.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import server.exception.ObjectExist;
+import server.exception.TokenError;
 import server.model.Client;
 import server.model.Enum.ClientStatus;
 import server.repository.ClientRepository;
@@ -11,6 +13,7 @@ import server.service.mail.MailService;
 import server.service.client.SecurityClient;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.springframework.http.HttpStatus.ACCEPTED;
 import static org.springframework.http.HttpStatus.OK;
@@ -43,7 +46,6 @@ public class ClientController {
         Client client = clientService.login(email, pswd);
 
         if(client != null){
-            clientService.generateToken(client);
             clientService.updateClient(client);
             return client;
         } else {
@@ -62,6 +64,17 @@ public class ClientController {
 
         return true;
     }
+
+
+    @RequestMapping(method = GET, value="/adminGetList")
+    @ResponseStatus(OK)
+    public List<Client> getLIstIsAdmin(@RequestParam(value = "token") String tokenClient) throws TokenError {
+        if(clientService.isAdministator(tokenClient)){
+            return clientRepository.findAll();
+        }
+        throw new TokenError();
+    }
+
 
     @RequestMapping(path = "/reloadToken", method = GET)
     @ResponseStatus(value = OK)
@@ -95,7 +108,6 @@ public class ClientController {
         Client client = clientService.confirmation(email, code);
 
         if (client != null) {
-            clientService.generateToken(client);
             client.setCode("OK");
             clientService.updateClient(client);
 
@@ -105,12 +117,12 @@ public class ClientController {
         }
     }
 
-   @RequestMapping(value = "recovery", method = GET)
+   @RequestMapping(value = "/recovery", method = GET)
     @ResponseStatus(OK)
     public void recoveryPasswordClient(@RequestParam(value = "email") String email){
         Client client = clientRepository.findClientByEmailEquals(email);
         if(client != null) {
-            client = securityClient.updatePasswordClient(client);
+            client = securityClient.createAndUpdatePasswordClient(client);
             mailService.sendEmail(client, "Reset password", "account_update.vm");
         }
     }
@@ -119,14 +131,14 @@ public class ClientController {
 
     @RequestMapping(method = POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Client addClient(@RequestBody Client client) {
-        boolean clientExist = clientService.findByEmail(client.getEmail());
+    public Client addClient(@RequestBody Client client) throws ObjectExist {
 
-        if(!clientExist){
-            securityClient.updatePasswordClient(client);
+        Client clientExist = clientRepository.findClientByEmailEquals(client.getEmail());
+        if (clientExist == null) {
+            securityClient.createAndUpdatePasswordClient(client);
             return clientService.addClient(client);
         } else {
-            throw new IllegalArgumentException("error");
+            throw new ObjectExist();
         }
     }
 
