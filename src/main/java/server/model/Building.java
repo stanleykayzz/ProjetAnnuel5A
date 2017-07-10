@@ -20,7 +20,6 @@ public class Building {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_building")
     private int idBuilding;
 
     private String nameBuild;
