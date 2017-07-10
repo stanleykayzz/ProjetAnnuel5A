@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import server.exception.ObjectExist;
 import server.exception.TokenError;
 import server.model.*;
 import server.repository.*;
@@ -13,6 +14,7 @@ import server.service.DateService;
 import server.service.BookingService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.OK;
@@ -102,10 +104,11 @@ public class RoomController {
             }
             //recuperer les room occupe pendant la duree
             List<Booking> bookings = bookingRepository.findAllByDateBookBetween(dateService.stringToDate(begin_date), dateService.stringToDate(end_date));
+            HashSet bookedRooms = new HashSet();
             // enlever de la liste room les chambre prisent
             for (Booking book : bookings){
                 if(bookingService.isFree(book)){
-                    rooms.remove(book.getIdRoomForClient());
+                    //bookedRooms.add(book.getRooms());
                 }
             }
             return rooms;
@@ -126,10 +129,12 @@ public class RoomController {
     @RequestMapping(method = POST)
     @ResponseStatus(OK)
     public void newRoom(@RequestParam(value="token")String tokenCLient,
-                        @RequestBody Room room) throws TokenError {
+                        @RequestBody Room room) throws TokenError, ObjectExist {
         if(clientService.isAuthorized(tokenCLient)) {
-            // todo verifier si le numero de la chambre existe deja
+            if(roomRepository.findRoomByNumber(room.getNumber()) == null) {
                 roomRepository.saveAndFlush(room);
+            }
+            throw new ObjectExist();
         }
         throw new TokenError();
     }
@@ -160,7 +165,7 @@ public class RoomController {
     public void cancelBook(@RequestParam(value="token") String tokenClient) throws TokenError {
         if(clientService.isAuthorized(tokenClient)) {
             Client client = clientRepository.findClientByTokenEquals(tokenClient);
-            List<Booking> books = bookingRepository.findBookingByIdClient(client.getClientId());
+            List<Booking> books = bookingRepository.findAllByIdClient(client.getClientId());
             for (Booking book : books){
                 book.setStatut(CANCELED);
                 bookingRepository.saveAndFlush(book);
