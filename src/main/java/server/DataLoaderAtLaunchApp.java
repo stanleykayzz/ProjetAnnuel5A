@@ -14,8 +14,6 @@ import server.service.client.ClientService;
 import server.service.DateService;
 import server.service.client.SecurityClient;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import static server.model.Enum.AccreditationUers.ADMINISTRATEUR;
 
 /**
@@ -68,7 +66,7 @@ public class DataLoaderAtLaunchApp implements ApplicationRunner{
                     .password("Asx$ijrT-45")
                     .phone("000000000")
                     .build();
-            client = securityClient.updatePasswordClient(client);
+            client = securityClient.createAndUpdatePasswordClient(client);
             clientService.addClient(client);
         }
     }
