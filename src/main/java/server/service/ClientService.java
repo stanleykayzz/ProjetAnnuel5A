@@ -29,7 +29,7 @@ public class ClientService {
     }
 
     public boolean findByEmail(String Email) {
-        if (clientRepository.findClientByEmailEquals(Email).size() > 0) {
+        if (clientRepository.findClientByEmailEquals(Email) == null) {
             return true;
         } else {
             return false;

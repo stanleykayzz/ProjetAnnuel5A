@@ -29,7 +29,7 @@ public interface ClientRepository  extends JpaRepository<Client, Integer> {
 
     Client findClientByClientIdEquals(long clientId );
 
-    List<Client> findClientByEmailEquals(String email);
+    Client findClientByEmailEquals(String email);
 
     Client findDistinctFirstByToken(String token);
 

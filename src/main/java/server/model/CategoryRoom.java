@@ -16,7 +16,7 @@ import static javax.persistence.GenerationType.AUTO;
 @Builder
 @AllArgsConstructor
 @Entity
-@Table(name = "category_room")
+@Table(name = "CATEGORY_NAME")
 public class CategoryRoom {
 
     @Id

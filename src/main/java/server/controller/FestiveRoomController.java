@@ -54,7 +54,7 @@ public class FestiveRoomController {
     @ResponseStatus(OK)
     public List<Booking> getItems(@RequestParam(value="token") String clientToken){
         Client client = clientRepository.findClientByTokenEquals(clientToken);
-        return bookingRepository.findBookingByIdClient(client.getClientId());
+        return bookingRepository.findAllByIdClient(client.getClientId());
     }
 
 

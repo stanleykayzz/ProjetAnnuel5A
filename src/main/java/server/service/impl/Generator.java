@@ -18,9 +18,9 @@ public class Generator {
 
     private Client client;
     private Booking booking;
-    @Value("path.default.generator.file")
+    @Value("${path.default.generator.file}")
     private String pathFile;
-    @Value("path.default.generator.template")
+    @Value("${path.default.generator.template}")
     private String pathTemplate;
 
     ListFormatsSupport formatOutput;
@@ -57,8 +57,6 @@ public class Generator {
 
     public void execute(){
     }
-
-
 
 }
 
