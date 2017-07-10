@@ -6,7 +6,7 @@
 
     Core.utils.template = Core.utils.template || {};
 
-    Core.utils.template.create = function (jsonHeaders, jsonValues, container) {
+    Core.utils.template.create = function (arrayHeaders, jsonValues, container) {
         var div_table = document.createElement("div");
         div_table.classList.add("div_table");
 
@@ -18,13 +18,12 @@
             div_cell_header.classList.add("div_cell");
             div_cell_header.classList.add("header_list");
 
-
-            for(var h in jsonHeaders){
+            for(var i = 0; i < arrayHeaders.length ; i++){
                 var clone = div_cell_header.cloneNode(true);
                 clone.textContent = h;
                 div_row_header.appendChild(clone);
             }
-
+    
             div_table.appendChild(div_row_header);
         }();
 

@@ -192,7 +192,7 @@
 
                 if (result.day >= 0 && formValid === true) {
                     error_container.textContent = "";
-                    Core.class.book.bookFestiveRoom(json, jsonItems);
+                    Core.class.book.festiveRoom.bookFestiveRoom(json, jsonItems);
 
                     label_start_date.textContent = startDatepicker.value;
                     label_end_date.textContent = endDatepicker.value;
