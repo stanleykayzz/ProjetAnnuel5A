@@ -3,13 +3,16 @@ package server.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.validator.constraints.NotEmpty;
+import server.model.Enum.ClientStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
 @Table (name = "CLIENT")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -17,215 +20,69 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id_client")
-    private int clientId;
+    @Column(name = "CLIENT_ID")
+    private int id;
 
-    @Column(name = "Name")
+    @Column(name = "NAME")
     @NotEmpty(message = "A client must have a name")
     private String name;
 
-    @Column(name = "Firstname")
+    @Column(name = "FIRSTNAME")
     @NotEmpty(message = "A client must have a first name")
     private String firstName;
 
-    @Column(name = "Sexe")
+    @Column(name = "SEXE")
     private int sexe;
 
-    @Column(name = "Birthday")
+    @Column(name = "BIRTHDAY")
     private Date birthday;
 
-    @Column(name = "Email", unique = true)
+    @Column(name = "EMAIL", unique = true)
     @NotEmpty(message = "A person must have an Email")
     private String email;
 
-    @Column(name = "Phone")
+    @Column(name = "PHONE")
     @NotEmpty(message = "A person must have an Phone")
     private String phone;
 
-    @Column(name = "Country")
+    @Column(name = "COUNTRY")
     @NotEmpty(message = "A person must have a Country")
     private String country;
 
-    @Column(name = "City")
+    @Column(name = "CITY")
     @NotEmpty(message = "A person must have a City")
     private String city;
 
-    @Column(name = "Address")
+    @Column(name = "ADDRESSE")
     @NotEmpty(message = "A person must have an Address")
     private String address;
 
-    @Column(name = "Postal_code")
+    @Column(name = "POSTAL_CODE")
     @NotEmpty(message = "A person must have an Postal_code")
     private String postalCode;
 
-    @Column(name = "Password")
+    @Column(name = "PASSWORD")
     @NotNull
     private String password;
 
-    @Column(name = "Status")
+    @Column(name = "STATUS")
     private int status;
 
-    @Column(name = "Token")
+    @Column(name = "TOKEN")
     private String token;
 
-    @Column(name = "Token_date")
+    @Column(name = "TOKEN_DATE")
     private Date tokenDate;
 
-    @Column(name = "Code")
+    @Column(name = "CODE")
     private String code;
 
-    @Column(name = "accreditation")
+    @Column(name = "ACCREDITATION")
     private String accreditation;
 
-
-    // FOR hibernate
-    public Client() {
-    }
-
-    public Client(String name, String firstName, int sexe, Date birthday, String email, String phone, String country, String city, String address, String postalCode, String password, int status, String token, Date tokenDate, String code, String accreditation) {
-        this.name = name;
-        this.firstName = firstName;
-        this.sexe = sexe;
-        this.birthday = birthday;
-        this.email = email;
-        this.phone = phone;
-        this.country = country;
-        this.city = city;
-        this.address = address;
-        this.postalCode = postalCode;
-        this.password = password;
-        this.status = status;
-        this.token = token;
-        this.tokenDate = tokenDate;
-        this.code = code;
-        this.accreditation = accreditation;
-    }
+    @Column(name = "STATUT_ACTIF")
+    private ClientStatus clientStatus;
 
 
-    //--------- GETTERS / SETTERS ---------\\
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public Date getTokenDate() {
-        return tokenDate;
-    }
-
-    public void setTokenDate(Date tokenDate) {
-        this.tokenDate = tokenDate;
-    }
-
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public int getSexe() { return sexe; }
-
-    public void setSexe(int sexe) { this.sexe = sexe; }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public int getStatus() { return status; }
-
-    public void setStatus(int status) { this.status = status; }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getCode() { return code; }
-
-    public void setCode(String code) { this.code = code; }
-
-    public String getAccreditation() {
-        return accreditation;
-    }
-
-    public void setAccreditation(String accreditation) {
-        this.accreditation = accreditation;
-    }
 }
