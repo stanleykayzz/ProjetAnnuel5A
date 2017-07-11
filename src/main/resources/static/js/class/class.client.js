@@ -55,6 +55,11 @@
         }
     };
 
+    Core.class.client.initAdminViewListClients = function () {
+        var paramRequest = "token=" + client.token;
+        utils.ajaxRequest(Core.service.client.initAdminViewListClients(), paramRequest, null);
+    };
+
     //Prototype function
 
     Core.class.client.prototype.logout = function () {

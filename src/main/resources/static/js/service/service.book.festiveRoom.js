@@ -10,7 +10,7 @@
             method: "POST",
             url: "",
             func: function (price) {
-                document.getElementById("label_price").textContent = price;
+                document.getElementById("label_price").textContent = price + " CFA";
                 Core.payment.paypal.generateButton(price);
             },
             error: function (statusCode) {
@@ -26,7 +26,22 @@
             method: "GET",
             url: "",
             func: function (json) {
+                var headers = {
+                    id: {
+                        content: "Numéro"
+                    },
+                    date_start : {
+                        content: "Arrivée"
+                    },
+                    date_end: {
+                        content: "Départ"
+                    },
+                    price: {
+                        content: "Prix"
+                    }
+                };
 
+                utils.template.createLiTemplate(headers, json, document.getElementById("book_festiveRoom_content"), "read");
             },
             error: function (statusCode) {
 

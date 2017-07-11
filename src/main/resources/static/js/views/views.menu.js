@@ -50,9 +50,13 @@
                 createButton("btn_restaurant", "Restaurant", menuLastChild);
                 createButton("btn_festiveRoom", "Salle des fêtes", menuLastChild);
 
+                if(client.status === 0)
+                    createButton("btn_admin", "Administration", menuLastChild);
+
                 if(client.status === 1)
                     createButton("btn_clientListBook", "Réservations", menuLastChild);
 
+                createButton("btn_listArticle", "Article", menuLastChild);
                 createButton("btn_compte", "Compte", menuLastChild);
                 createButton("btn_logout", "Déconnecter", menuLastChild);
             } else {

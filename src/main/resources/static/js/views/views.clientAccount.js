@@ -6,6 +6,11 @@
 
     Core.views.clientAccount = Core.views.clientAccount || {};
 
+    Core.views.initView = function () {
+        views.clientAccount.account();
+        views.clientAccount.updateAccount();
+    };
+
     Core.views.clientAccount.account = function () {
         var name, firstName, birthday, email, phone,
             country, city, address, postalCode, sexe;

@@ -167,4 +167,36 @@
             }
         };
     };
+
+    Core.service.client.initAdminViewListClients = function () {
+        return {
+            name : "initAdminViewListClients",
+            method : "GET",
+            url : "/client/adminGetList",
+            func : function (json) {
+                var headers = {
+                    id: {
+                        content: "ID"
+                    },
+                    name: {
+                        content: "Nom"
+                    },
+                    firstName: {
+                        content: "Prénom"
+                    },
+                    email: {
+                        content: "Email"
+                    },
+                    phone: {
+                        content: "Téléphone"
+                    }
+                };
+
+                utils.template.createLiTemplate(headers, json, document.getElementById("list_client_content"), "read");
+            },
+            error : function(statusCode){
+
+            }
+        };
+    };
 })();

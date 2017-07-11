@@ -6,6 +6,12 @@
 
     Core.views.clientSignInAndUp = Core.views.clientSignInAndUp || {};
 
+    Core.views.clientSignInAndUp.initView = function () {
+        views.clientSignInAndUp.signin();
+        views.clientSignInAndUp.signup();
+        views.clientSignInAndUp.forgetPassword();
+    };
+
     Core.views.clientSignInAndUp.signin = function () {
         var loginBtn;
         var showSingupBtn, showforgetpasswordBtn;
@@ -111,7 +117,7 @@
                     address = document.getElementById("signup_address");
                     postalcode = document.getElementById("signup_postalcode");
 
-                    if(style === null)
+                    if (style === null)
                         style = firstname.style.border;
                 }();
 

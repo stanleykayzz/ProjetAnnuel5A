@@ -37,7 +37,7 @@
                 var title_span = document.createElement("span");
                 title_span.classList.add("title_span_black");
                 title_span.style.textAlign = "left";
-                title_span.textContent = utils.capitalizeFirstLetter(object.name) + " " + object.unitPrice + "€";
+                title_span.textContent = utils.capitalizeFirstLetter(object.name) + " " + object.price + " CFA";
 
                 var input = document.createElement("input");
                 input.classList.add("input_green");

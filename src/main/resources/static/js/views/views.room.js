@@ -113,8 +113,8 @@
             var divRoom, imageRoom, contentRoom, container_title,
                 titleRoom, disponible_container, disponible,
                 disponible_result, costbynight_container, costbynight,
-                costbynight_result_euro, costbynight_result_franc,
-                cost_container, cost, cost_result_euro, cost_result_franc,
+                costbynight_result_franc,
+                cost_container, cost, cost_result_franc,
                 description_container, description_text_container, description_result,
                 day_container, day, day_result, btn_add,
                 quantity, quantity_container, quantity_result;
@@ -162,10 +162,6 @@
                 costbynight.classList.add("title_span");
                 costbynight.textContent = "Coût par nuit : ";
 
-                costbynight_result_euro = document.createElement("span");
-                costbynight_result_euro.classList.add("text_span");
-                costbynight_result_euro.textContent = json.costEuro + " €";
-
                 costbynight_result_franc = document.createElement("span");
                 costbynight_result_franc.classList.add("text_span");
                 costbynight_result_franc.textContent = json.costByNight + " francs CFA";
@@ -178,10 +174,6 @@
                 cost = document.createElement("span");
                 cost.classList.add("title_span");
                 cost.textContent = "Coût du séjour : ";
-
-                cost_result_euro = document.createElement("span");
-                cost_result_euro.classList.add("text_span");
-                cost_result_euro.textContent = json.costEuro * getDays().day + " €";
 
                 cost_result_franc = document.createElement("span");
                 cost_result_franc.classList.add("text_span");
@@ -227,7 +219,6 @@
                 quantity_result.min = "1";
                 quantity_result.max = number;
                 utils.addListener(quantity_result, "change", function (e) {
-                    cost_result_euro.textContent = (json.costEuro * getDays().day) * e.target.value + " €";
                     cost_result_franc.textContent = (json.costByNight * getDays().day) * e.target.value + " francs CFA";
                 }, false);
 
@@ -260,11 +251,9 @@
                 disponible_container.appendChild(disponible_result);
 
                 cost_container.appendChild(cost);
-                cost_container.appendChild(cost_result_euro);
                 cost_container.appendChild(cost_result_franc);
 
                 costbynight_container.appendChild(costbynight);
-                costbynight_container.appendChild(costbynight_result_euro);
                 costbynight_container.appendChild(costbynight_result_franc);
 
                 day_container.appendChild(day);
@@ -311,7 +300,7 @@
         }();
         var initView = function () {
             var listType = new Object(null);
-
+            
             for (var r in listRoom) {
                 listType[listRoom[r].type] = listType[listRoom[r].type] || {};
 
@@ -334,7 +323,6 @@
             for (type in listType) {
                 if (type_input.value === "all" || type_input.value === type) {
                     var btn = document.getElementById("btn_type_" + type);
-                    console.log(btn)
                     utils.addListener(btn, "click", function (e) {
                         var quantity = e.target.parentElement.getElementsByClassName("quantity_input")[0];
                         var name = e.target.getAttribute("name");

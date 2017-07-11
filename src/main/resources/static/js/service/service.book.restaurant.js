@@ -26,8 +26,19 @@
             method: "GET",
             url: "",
             func: function (json) {
-                var headers = ["Date", "Nombre de personnes", "Type"];
-                utils.template.create(headers, null, document.getElementById("book_room_active_content"));
+                var headers = {
+                    date : {
+                        content: "Date"
+                    },
+                    type: {
+                       content: "Plage horaire"
+                    },
+                    number:{
+                        content:  "Nombre de personnes"
+                    }
+                };
+
+                utils.template.createLiTemplate(headers, json, document.getElementById("book_restaurant_content"), "read");
             },
             error: function (statusCode) {
 

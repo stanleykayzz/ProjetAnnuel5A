@@ -10,7 +10,7 @@
 
     Core.utils.ajaxRequest = function (objectService, paramRequest, paramBody, option) {
         var requestUrl, requestBody;
-
+        
         var initVariables = function () {
             if(paramRequest !== null && paramRequest !== undefined)
                 requestUrl = data.basicUrl + objectService.url + "?" + paramRequest;

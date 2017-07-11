@@ -21,16 +21,13 @@
     Core.views.includeContainer.initViewEvents = function (viewName) {
         switch (viewName) {
             case "connexion" :
-                views.clientSignInAndUp.signin();
-                views.clientSignInAndUp.signup();
-                views.clientSignInAndUp.forgetPassword();
+                Core.views.clientSignInAndUp.initView();
                 break;
             case "logout" :
                 client.logout();
                 break;
             case "compte" :
-                views.clientAccount.account();
-                views.clientAccount.updateAccount();
+                Core.views.initView();
                 break;
             case "confirmation" :
                 views.code.confirmationCode();
@@ -46,6 +43,15 @@
                 break;
             case "clientListBook":
                 views.clientListBook.initView();
+                break;
+            case "admin":
+                views.admin.initView();
+                break;
+            case "listArticle":
+                views.article.initView();
+                break;
+            case "contact":
+                Core.views.contact.initView();
                 break;
         }
     };

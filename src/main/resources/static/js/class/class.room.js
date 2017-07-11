@@ -69,7 +69,8 @@
         utils.ajaxRequest(Core.service.room.delete(), paramRequest, null);
     };
 
-    Core.class.room.getList = function () {
-        utils.ajaxRequest(Core.service.room.getList(), null, null);
+    Core.class.room.initAdminListRoom = function () {
+        var paramRequest = "token=" + client.token;
+        utils.ajaxRequest(Core.service.room.initAdminListRoom(), paramRequest, null);
     };
 })();

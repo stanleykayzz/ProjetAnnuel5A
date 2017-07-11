@@ -12,9 +12,9 @@
         Core.service.book.festiveRoom.bookFestiveRoom().func("3000");
     };
 
-    Core.class.book.bookFestiveRoom.initListBookFestiveRoom = function (json) {
-        var paramRequest = "token=" + client.token +"&id=" + client.id;
+    Core.class.book.festiveRoom.initListBookFestiveRoom = function () {
+        var paramRequest = "token=" + client.token;
         //utils.ajaxRequest(Core.service.book.festiveRoom.getListBookById(), paramRequest, bodyJson);
-        Core.service.book.festiveRoom.getListBookById().func({});
+        Core.service.book.festiveRoom.getListBookById().func();
     };
 })();

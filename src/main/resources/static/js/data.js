@@ -64,6 +64,16 @@
                 name      : "clientListBook",
                 viewPath  : "clientListBook.html",
                 listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
+            },
+            admin : {
+                name      : "admin",
+                viewPath  : "admin.html",
+                listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
+            },
+            listArticle : {
+                name      : "listArticle",
+                viewPath  : "article.html",
+                listImage : ["img/contact1.jpg","img/contact2.jpg","img/contact3.jpg","img/contact4.jpg","img/contact5.jpg"]
             }
         },
         basicUrl   : "http://localhost:8080/api",

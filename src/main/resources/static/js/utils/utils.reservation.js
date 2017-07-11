@@ -15,6 +15,6 @@
         if(max !== null)
             $(datepickerID).datepicker( "option", "maxDate", max);
 
-        $(datepickerID).datepicker( "option", "autoSize", true );
+        $(datepickerID).datepicker( "option", "autoSize", true);
     };
 })();

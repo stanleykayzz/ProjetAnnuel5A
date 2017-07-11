@@ -1,16 +1,19 @@
+/**
+ * Created by maxime on 11/07/2017.
+ */
 ;(function () {
     "use strict";
 
-    if (typeof Core === "undefined")
+    if(typeof Core === "undefined")
         throw "Core is not declared";
 
-    Core.service.restaurant = Core.service.restaurant || {};
+    Core.service.services = Core.service.services || {};
 
-    Core.service.restaurant.create = function () {
+    Core.service.services.create = function () {
         return {
             name   : "create",
-            method : "POST",
-            url    : "/restaurant",
+            method : "GET",
+            url    : "/services",
             func : function () {
 
             },
@@ -20,11 +23,11 @@
         };
     };
 
-    Core.service.restaurant.udapte = function () {
+    Core.service.services.update = function () {
         return {
-            name   : "create",
+            name   : "update",
             method : "PUT",
-            url    : "/restaurant",
+            url    : "/services",
             func : function () {
 
             },
@@ -34,11 +37,11 @@
         };
     };
 
-    Core.service.restaurant.delete = function () {
+    Core.service.services.delete = function () {
         return {
             name   : "delete",
             method : "DELETE",
-            url    : "/restaurant",
+            url    : "/services",
             func : function () {
 
             },
@@ -48,18 +51,24 @@
         };
     };
 
-    Core.service.restaurant.initAdminViewListRestaurant = function () {
+    Core.service.services.initAdminViewListService = function () {
         return {
-            name   : "initViewListRestaurant",
+            name   : "initViewListServices",
             method : "GET",
-            url    : "/restaurant",
+            url    : "/services",
             func : function (json) {
                 var headers = {
                     id: {
                         content: "ID"
                     },
-                    nbClients: {
-                        content: "Nombre de places"
+                    name: {
+                        content: "Nom"
+                    },
+                    price: {
+                        content: "Prix"
+                    },
+                    quantity: {
+                        content: "Quantité"
                     },
                     button: {
                         update: {
@@ -68,7 +77,7 @@
                             preId: "restaurant_update",
                             func: function (element) {
                                 utils.addListener(element, 'click', function (e) {
-                                    utils.template.eventButtonUpdate(e, Core.service.restaurant.update());
+                                    utils.template.eventButtonUpdate(e, Core.service.services.update());
                                 }, false);
                             }
                         },
@@ -78,21 +87,19 @@
                             preId: "restaurant_delete",
                             func: function (element) {
                                 utils.addListener(element, 'click', function (e) {
-                                    utils.template.eventButtonRemove(e, Core.service.restaurant.delete());
+                                    utils.template.eventButtonRemove(e, Core.service.services.delete());
                                 }, false);
                             }
                         }
                     }
                 };
 
-                utils.template.createLiTemplate(headers, null, document.getElementById("list_restaurant_content"), "create", Core.service.restaurant.create());
-                utils.template.createLiTemplate(headers, json, document.getElementById("list_restaurant_content"), "update");
+                utils.template.createLiTemplate(headers, null, document.getElementById("list_services_content"), "create", Core.service.services.create());
+                utils.template.createLiTemplate(headers, json, document.getElementById("list_services_content"), "update");
             },
             error : function(){
 
             }
         };
     };
-
-
 })();
