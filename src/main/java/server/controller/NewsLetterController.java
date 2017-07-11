@@ -19,7 +19,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  * Created by ileossa on 09/07/2017.
  */
 @RestController
-@RequestMapping("")
+@RequestMapping("/api/newsLetter")
 public class NewsLetterController {
 
     private NewsLetterRepository newsLetterRepository;

@@ -73,10 +73,7 @@ public class ArticleController {
 
     @RequestMapping(method = GET)
     @ResponseStatus(value = OK)
-    public List<Article> getList(@RequestParam(value = "token")String tokenClient){
-        if(clientService.isAdministator(tokenClient)) {
-            return articleRepository.findAll();
-        }
-        return new ArrayList<Article>();
+    public List<Article> getList(){
+        return articleRepository.findAll();
     }
 }

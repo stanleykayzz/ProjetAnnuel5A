@@ -18,6 +18,7 @@ application:
   version: 1.0
 server:
   port: 8080
+  contextPath: /
 
 logging:
   level:
