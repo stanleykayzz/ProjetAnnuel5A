@@ -174,7 +174,7 @@
                         '"country"    : "' + country.value + '",' +
                         '"city"       : "' + city.value + '",' +
                         '"address"    : "' + address.value + '",' +
-                        '"postal_code" : "' + postalcode.value + '",' +
+                        '"postalCode" : "' + postalcode.value + '",' +
                         '"password"   : "' + password_1.value + '"' +
                         '}';
 
