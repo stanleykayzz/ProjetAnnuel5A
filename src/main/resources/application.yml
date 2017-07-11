@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: ${PROFILE:"dev"}
+    active: ${PROFILE}
 
 ---
 #---------------------------------------------------
@@ -65,7 +65,6 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
-
 
 # Mailing (download fakeSMTP, and run with java -jar fakeSMTP.jar )
 mail:
