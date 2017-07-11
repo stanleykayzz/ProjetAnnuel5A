@@ -67,8 +67,7 @@ public class FestiveRoomController {
         List<Booking> books = bookingRepository.findAllByDateBookBetween(startDate, endDate);
         if( books.size() == 0){
             festiveRoomRepository.saveAndFlush(festiveRoom);
-            //return festiveRoom.getPrice() * dateService.numberDaysBetween(dateStart, dateEnd);
-            return 0;
+            return festiveRoom.getPrice() * dateService.numberDaysBetween(dateStart, dateEnd);
         } else {
             throw new FestiveRoomErrorBooking();
         }
