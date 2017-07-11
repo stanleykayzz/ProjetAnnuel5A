@@ -98,13 +98,15 @@ public class MailService {
                 @Override
                 public void prepare(MimeMessage mimeMessage) {
                     try {
-                        MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+                        FileSystemResource logo = new FileSystemResource(new File(mailingConfig.getPathLogo()));
+                        MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true);
                         message.setTo(client.getEmail());
                         message.setSubject(subject);
                         Map model = new HashMap<>();
                         model.put("user", client);
                         message.setText(VelocityEngineUtils.mergeTemplateIntoString(velocityEngine
                                 , template, CHARSET_UTF8, model), true);
+                        message.addAttachment(logo.getFilename(), logo);
                     }catch (Exception e){
                         LOG.error("Failed to send email to {}: {}", client.toString(), e );
                     }
@@ -141,7 +143,8 @@ public class MailService {
             @Override
             public void prepare(MimeMessage mimeMessage) {
                 try {
-                    MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+                    FileSystemResource logo = new FileSystemResource(new File(mailingConfig.getPathLogo()));
+                    MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true);
                     message.setTo(client.getEmail());
                     message.setSubject(subject);
                     Map model = new HashMap<>();
@@ -149,6 +152,7 @@ public class MailService {
                     model.put("booking", booking);
                     message.setText(VelocityEngineUtils.mergeTemplateIntoString(velocityEngine
                             , template, CHARSET_UTF8, model), true);
+                    message.addAttachment(logo.getFilename(), logo);
                 }catch (Exception e){
                     LOG.error("Failed to send email for booking: {} to {}: {}", booking.toString(), client.toString(), e );
                 }
@@ -161,7 +165,8 @@ public class MailService {
             @Override
             public void prepare(MimeMessage mimeMessage) {
                 try {
-                     MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+                    FileSystemResource logo = new FileSystemResource(new File(mailingConfig.getPathLogo()));
+                    MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true);
                     message.setTo(client.getEmail());
                     message.setSubject(subject);
                     Map model = new HashMap<>();
@@ -170,6 +175,7 @@ public class MailService {
                     message.setText(VelocityEngineUtils.mergeTemplateIntoString(velocityEngine
                             , template, CHARSET_UTF8, model), true);
                     addFileInMimeMessage(message, pathFile);
+                    message.addAttachment(logo.getFilename(), logo);
                 }catch (Exception e){
                     LOG.error("Failed to send email for booking: {} to {}: {}", booking.toString(), client.toString(), e );
                 }

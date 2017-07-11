@@ -25,8 +25,8 @@ public class MailingConfig {
     private String mailProtocol;
     @Value("${mail.smtp.host}")
     private String host;
-//    @Value("${mail.smtp.port}")
-    private int port = 2505;
+    @Value("${mail.smtp.port}")
+    private int port;
     @Value("${mail.support.username}")
     private String userName;
     @Value("${mail.support.password}")
