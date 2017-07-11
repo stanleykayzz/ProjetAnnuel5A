@@ -20,7 +20,6 @@ import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-@CrossOrigin(origins = "http://localhost:63342")
 @RestController
 @RequestMapping("/api/client")
 public class ClientController {
