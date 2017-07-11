@@ -44,7 +44,7 @@
         views.menu.addContextualMenuButtons();
         views.menu.manageMenuButtons();
 
-        utils.manageImages(data.viewList.accueil.listImage, data.mainImageID);
+        //utils.manageImages(data.viewList.accueil.listImage, data.mainImageID);
         utils.setDatepickerLanguage();
         utils.include(data.viewList.accueil.viewPath, data.viewList.accueil.name);
         

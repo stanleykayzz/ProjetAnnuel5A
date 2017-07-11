@@ -13,7 +13,7 @@
             Core.class.client.reloadClient();
             utils.empty(data.getIncludeContainer());
             utils.include(pageObject.viewPath, pageObject.name);
-            utils.manageImages(pageObject.listImage, data.mainImageID);
+            //utils.manageImages(pageObject.listImage, data.mainImageID);
             data.currentPath = pageObject.viewPath;
         }
     };

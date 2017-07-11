@@ -43,7 +43,7 @@
         xhr.onerror = function (res) {
             objectService.error(xhr.status);
         };
-
+        console.log(requestBody);
         xhr.send(requestBody);
     };
 
