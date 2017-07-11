@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import server.exception.ObjectExist;
 import server.exception.TokenError;
 import server.model.Client;
+import server.model.Enum.AccreditationUers;
 import server.model.Enum.ClientStatus;
 import server.repository.ClientRepository;
 import server.service.client.ClientService;
@@ -135,7 +136,9 @@ public class ClientController {
         Client clientExist = clientRepository.findClientByEmailEquals(client.getEmail());
         if (clientExist == null) {
             securityClient.createAndUpdatePasswordClient(client);
-            mailService.sendEmail(client, "Confirmation registration", "registration-confirmation.vm");
+            client.setClientStatus(ClientStatus.ACTIF);
+            client.setAccreditation(AccreditationUers.USER.toString());
+            mailService.sendEmail(client, "Confirmation registration", "registration_confirmation.vm");
             return clientService.addClient(client);
         } else {
             throw new ObjectExist();

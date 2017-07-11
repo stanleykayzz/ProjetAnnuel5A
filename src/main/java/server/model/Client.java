@@ -3,6 +3,7 @@ package server.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.validator.constraints.NotEmpty;
+import server.model.Enum.AccreditationUers;
 import server.model.Enum.ClientStatus;
 
 import javax.persistence.*;
@@ -82,7 +83,5 @@ public class Client {
 
     @Column(name = "STATUT_ACTIF")
     private ClientStatus clientStatus;
-
-
 
 }
