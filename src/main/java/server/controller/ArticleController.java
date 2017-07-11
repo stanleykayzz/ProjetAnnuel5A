@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import server.model.Article;
 import server.repository.ArticleRepository;
 import server.repository.ClientRepository;
+import server.service.DateService;
 import server.service.client.ClientService;
 
 import java.util.ArrayList;
@@ -23,12 +24,14 @@ public class ArticleController {
     private ArticleRepository articleRepository;
     private ClientRepository clientRepository;
     private ClientService clientService;
+    private DateService dateService;
 
     @Autowired
-    public ArticleController(ArticleRepository articleRepository, ClientRepository clientRepository, ClientService clientService) {
+    public ArticleController(ArticleRepository articleRepository, ClientRepository clientRepository, ClientService clientService, DateService dateService) {
         this.articleRepository = articleRepository;
         this.clientRepository = clientRepository;
         this.clientService = clientService;
+        this.dateService = dateService;
     }
 
     @RequestMapping(method = POST)
@@ -36,6 +39,7 @@ public class ArticleController {
     public void newArticle(@RequestParam(value="token") String tokenClient,
                            @RequestBody Article article){
         if(clientService.isAdministator(tokenClient)) {
+            article.setWriteDate(dateService.currentLocalTime());
             articleRepository.saveAndFlush(article);
         }
     }
@@ -47,6 +51,7 @@ public class ArticleController {
                                @RequestBody Article article){
         if(clientService.isAdministator(tokenClient)) {
             if(articleRepository.findAllById(article.getId()).isEmpty()){
+                article.setWriteDate(dateService.currentLocalTime());
                 articleRepository.saveAndFlush(article);
             }
 
