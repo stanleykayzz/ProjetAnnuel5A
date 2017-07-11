@@ -4,18 +4,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import server.exception.InternalError;
 import server.exception.TokenError;
-import server.model.Booking;
-import server.model.Client;
+import server.model.*;
+import server.model.Enum.Reason;
 import server.model.Enum.Statut;
-import server.model.FestiveRoom;
-import server.model.Room;
-import server.repository.BookingRepository;
-import server.repository.ClientRepository;
-import server.repository.RoomRepository;
+import server.repository.*;
 import server.service.DateService;
 import server.service.client.ClientService;
+import server.service.mail.MailService;
 
+import java.awt.print.Book;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -39,16 +39,23 @@ public class BookingController {
     private ClientRepository clientRepository;
     private DateService dateService;
     private RoomRepository roomRepository;
-    private FestiveRoom festiveRoom;
+    private FestiveRoomRepository festiveRoomRepository;
+    private MailService mailService;
+    private RestaurantRepository restaurantRepository;
+    private ServicesHotelRepository servicesHotelRepository;
+
 
 
     @Autowired
-    public BookingController(BookingRepository bookingRepository, ClientService clientService, ClientRepository clientRepository, DateService dateService, RoomRepository roomRepository) {
+    public BookingController(BookingRepository bookingRepository, ClientService clientService, ClientRepository clientRepository, DateService dateService, RoomRepository roomRepository, FestiveRoomRepository festiveRoomRepository, MailService mailService, RestaurantRepository restaurantRepository) {
         this.bookingRepository = bookingRepository;
         this.clientService = clientService;
         this.clientRepository = clientRepository;
         this.dateService = dateService;
         this.roomRepository = roomRepository;
+        this.festiveRoomRepository = festiveRoomRepository;
+        this.mailService = mailService;
+        this.restaurantRepository = restaurantRepository;
     }
 
 
@@ -127,13 +134,36 @@ public class BookingController {
     @RequestMapping(method = POST)
     @ResponseStatus(ACCEPTED)
     public void newBooking(@RequestParam(value="token") String tokenClient,
-                           @RequestBody Booking booking) throws TokenError {
+                           @RequestParam(value="idRoom") int idRoom,
+                           @RequestParam(value="idFestiveRoom") int idFestiveRoom,
+                           @RequestParam(value="idRestaurant") int idRestaurant,
+                           @RequestParam(value="idServices") int idServices,
+                           @RequestBody Booking booking) throws TokenError, InternalError {
+        String pathPdf = null;
         if(clientService.isUser(tokenClient)){
             //todo doit attribuer une chambre de libre (essayer de regrouper les chambre)
             Client client = clientRepository.findClientByTokenEquals(tokenClient);
-//            Room room = roomRepository.findById();
-//            FestiveRoom festiveRoom =
+            Room room = roomRepository.findOne(idRoom);
+            FestiveRoom festiveRoom = festiveRoomRepository.findOne(idFestiveRoom);
+            Restaurant restaurant = restaurantRepository.findOne(idRestaurant);
+            ServicesHotel servicesHotel = servicesHotelRepository.findOne(idServices);
 
+            booking.setRooms(Arrays.asList(room));
+            booking.setFestiveRoomId(Arrays.asList(festiveRoom));
+            booking.setTableRestaurantiD(Arrays.asList(restaurant));
+            booking.setServiceHotelId(Arrays.asList(servicesHotel));
+
+            Booking test = bookingRepository.saveAndFlush(booking);
+            if(test != null) {
+                if (booking.getReason().equals(Reason.VACANCY)) {
+                    mailService.sendEmailWithAttachement(client, booking, "Booking confirmation", "booking_registry_vacancy.vm", pathPdf);
+                }
+                if (booking.getReason().equals(Reason.WORK)) {
+                    mailService.sendEmailWithAttachement(client, booking, "Booking confirmation", "booking_registry_work.vm", pathPdf);
+                }
+            }else{
+                throw new InternalError();
+            }
         }
         throw  new TokenError();
     }
