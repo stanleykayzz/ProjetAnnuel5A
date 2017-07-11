@@ -10,6 +10,11 @@ import java.util.List;
  * Created by ileossa on 02/07/2017.
  */
 public interface CategoryRoomRepository extends JpaRepository<CategoryRoom, Integer> {
-        List<CategoryRoom> findAllByName(String name);
+
+        /***
+         * Find and return CategoryRoom object if equals by param passed
+         * @param name
+         * @return
+         */
         CategoryRoom findCategoryRoomByName(String name);
 }

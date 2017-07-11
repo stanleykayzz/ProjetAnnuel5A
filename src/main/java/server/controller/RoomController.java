@@ -19,7 +19,7 @@ import java.util.List;
 
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
-import static server.model.Enum.Statut.CANCELED;
+import static server.model.vluesUtils.Statut.CANCELED;
 
 /**
  * Created by ileossa on 23/05/2017.

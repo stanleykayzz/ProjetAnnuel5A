@@ -9,5 +9,11 @@ import server.model.Building;
  */
 @Repository
 public interface BuildingRepository extends JpaRepository<Building, Integer>{
+
+    /***
+     * Find and return one object Building if name equals param passed
+     * @param nameBuild
+     * @return
+     */
     Building findBuildingByNameEquals(String nameBuild);
 }

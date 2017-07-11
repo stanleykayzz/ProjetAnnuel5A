@@ -33,6 +33,7 @@ public class MailController {
 
     @RequestMapping(value = "/unsubscribe/${email}")
     public String unsucribe(@PathVariable String email){
+        // get emial in url path
         Client client = clientRepository.findClientByEmailEquals(email);
         NewsLetter letter = newsLetterRepository.findNewsLetterById(client.getId());
         letter.setSendNewsLetter(false);
@@ -40,11 +41,17 @@ public class MailController {
         return "Description to the newsletter has been well recorded. The cancellation treatment may take a few days.";
     }
 
+    /**
+     * Controller for email rate, when client finish booking
+     * @param email
+     * @param nb
+     * @return
+     */
     @RequestMapping(value = "/rate/${email}/${nb}")
     public String getRateByClient(@PathVariable String email,
                                   @PathVariable int nb){
         Client client = clientRepository.findClientByEmailEquals(email);
-        Booking book = bookingRepository.findBookingById(client.getId());
+        Booking book = bookingRepository.findBookingByIdClient(client.getId());
         book.setRate(nb);
         bookingRepository.saveAndFlush(book);
         return "redirect:index.html";

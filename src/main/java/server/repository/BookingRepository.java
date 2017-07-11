@@ -14,10 +14,39 @@ import java.util.List;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
-    Booking findBookingById(int idClient);
+    /***
+     * Return one object Booking by idClient passed to the function
+     * @param idClient
+     * @return
+     */
+    Booking findBookingByIdClient(int idClient);
+
+    /***
+     *  Return All object Booking by idClient passed to the function
+     * @param idClient
+     * @return
+     */
     List<Booking> findAllByIdClient(int idClient);
+
+    /***
+     * Return all object Booking if date_end is after the param date passed
+     * @param dateEnd
+     * @return
+     */
     List<Booking> findAllByDateEndIsAfter(Date dateEnd);
+
+    /***
+     * Return all Booking object if date_book between in two param passed
+     * @param dateStart
+     * @param dateEnd
+     * @return
+     */
     List<Booking> findAllByDateBookBetween(Date dateStart, Date dateEnd);
-    List<Booking> findAllByDateStartAfterAndDateEndAfter(Date dateStart, Date dateEnd);
-    List<Booking> findAllByOrderByDateEndAsc(Date dateStart);
+
+    /***
+     *  Return all Booking  if date_start by order ASC in sql, with date passed in param
+     * @param dateStart
+     * @return
+     */
+    List<Booking> findAllByOrderByDateStartAsc(Date dateStart);
 }

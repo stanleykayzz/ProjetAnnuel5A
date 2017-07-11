@@ -47,6 +47,15 @@ public class MailService {
         this.mailingConfig = mailingConfig;
     }
 
+    public void sendEmail(String email, String subject, String template) {
+        MimeMessagePreparator preparator = getSimpleMimeMessagePreparator(email, subject, template);
+        this.javaMailSender.send(preparator);
+        LOG.debug(" mail send to {} with subject: {}. Template used: {}",
+                email,
+                subject,
+                template);
+    }
+
     public void sendEmail(final Client client, String subject, String template) {
         MimeMessagePreparator preparator = getMimeMessagePreparator(client, subject, template);
         this.javaMailSender.send(preparator);
@@ -92,6 +101,25 @@ public class MailService {
 
 
 // -----------------------------
+
+    private MimeMessagePreparator getSimpleMimeMessagePreparator(String email, String subject, String template) {
+        return new MimeMessagePreparator() {
+            @Override
+            public void prepare(MimeMessage mimeMessage) {
+                try {
+                    MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+                    message.setTo(email);
+                    message.setSubject(subject);
+                    Map model = new HashMap<>();
+                    message.setText(VelocityEngineUtils.mergeTemplateIntoString(velocityEngine
+                            , template, CHARSET_UTF8, model), true);
+                }catch (Exception e){
+                    LOG.error("cannnot send simplyMail");
+                }
+            }
+        };
+    }
+
 
     private MimeMessagePreparator getMimeMessagePreparator(Client client, String subject, String template) {
         return new MimeMessagePreparator() {

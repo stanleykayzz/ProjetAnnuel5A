@@ -10,5 +10,10 @@ import java.util.List;
  */
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
 
+    /***
+     *  Return Article model is exist in dataBase, by Id
+     * @param idArticle
+     * @return
+     */
     List<Article> findAllById(int idArticle);
 }

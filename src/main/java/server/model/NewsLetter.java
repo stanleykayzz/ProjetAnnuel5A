@@ -2,7 +2,7 @@ package server.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import server.model.Enum.Reason;
+import server.model.vluesUtils.Reason;
 
 import javax.persistence.*;
 

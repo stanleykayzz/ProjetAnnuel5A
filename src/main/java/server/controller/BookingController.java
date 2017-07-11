@@ -7,14 +7,13 @@ import org.springframework.web.bind.annotation.*;
 import server.exception.InternalError;
 import server.exception.TokenError;
 import server.model.*;
-import server.model.Enum.Reason;
-import server.model.Enum.Statut;
+import server.model.vluesUtils.Reason;
+import server.model.vluesUtils.Statut;
 import server.repository.*;
 import server.service.DateService;
 import server.service.client.ClientService;
 import server.service.mail.MailService;
 
-import java.awt.print.Book;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -81,6 +80,7 @@ public class BookingController {
         HashSet<Booking> listeFinal =  new HashSet<>();
         if(clientService.isUser(tokenUser)){
             List<Booking> books = bookingRepository.findAll();
+            // get typeReservation and compare, if equal add to list
             for (Booking booking: books) {
                 if(typeReservation.equals("room")){
                         if(booking.getRooms() != null){
@@ -104,6 +104,14 @@ public class BookingController {
         return listeFinal;
     }
 
+    /**
+     * Return all booking in futur based on date_start model Booking
+     *  If Client, return only this booking
+     *  If Administrator return all booking in futur
+     * @param tokenUser
+     * @return
+     * @throws TokenError
+     */
     @RequestMapping(method = GET, value = "/futur")
     @ResponseStatus(OK)
     public List<Booking> getListBookingInFutur(@RequestParam(value="token") String tokenUser) throws TokenError {
@@ -112,11 +120,18 @@ public class BookingController {
             return bookingRepository.findAllByIdClient(user.getId());
         }
         if(clientService.isAdministator(tokenUser)){
-            return bookingRepository.findAllByOrderByDateEndAsc(dateService.currentLocalTime());
+            return bookingRepository.findAllByOrderByDateStartAsc(dateService.currentLocalTime());
         }
         throw new TokenError();
     }
 
+
+    /**
+     * Special in past, pls cf getListBookingFutur
+     * @param tokenUser
+     * @return
+     * @throws TokenError
+     */
     @RequestMapping(method = GET, value = "/past")
     @ResponseStatus(OK)
     public List<Booking> getListBookingPast(@RequestParam(value = "token") String tokenUser) throws TokenError {
@@ -125,12 +140,23 @@ public class BookingController {
             return bookingRepository.findAllByIdClient(user.getId());
         }
         if(clientService.isAdministator(tokenUser)){
-            return bookingRepository.findAllByOrderByDateEndAsc(dateService.currentLocalTime());
+            return bookingRepository.findAllByOrderByDateStartAsc(dateService.currentLocalTime());
         }
         throw new TokenError();
     }
 
 
+    /**
+     * Booking reservation room or a another type service. In terminat by send mail.
+     * @param tokenClient
+     * @param idRoom
+     * @param idFestiveRoom
+     * @param idRestaurant
+     * @param idServices
+     * @param booking
+     * @throws TokenError
+     * @throws InternalError
+     */
     @RequestMapping(method = POST)
     @ResponseStatus(ACCEPTED)
     public void newBooking(@RequestParam(value="token") String tokenClient,
@@ -141,7 +167,6 @@ public class BookingController {
                            @RequestBody Booking booking) throws TokenError, InternalError {
         String pathPdf = null;
         if(clientService.isUser(tokenClient)){
-            //todo doit attribuer une chambre de libre (essayer de regrouper les chambre)
             Client client = clientRepository.findClientByTokenEquals(tokenClient);
             Room room = roomRepository.findOne(idRoom);
             FestiveRoom festiveRoom = festiveRoomRepository.findOne(idFestiveRoom);
@@ -175,7 +200,7 @@ public class BookingController {
                            @RequestParam(value = "id") int idBooking) throws TokenError {
         if(clientService.accesPerTokenValidate(tokenUser)){
             Client client = clientRepository.findClientByTokenEquals(tokenUser);
-            Booking booked = bookingRepository.findBookingById(client.getId());
+            Booking booked = bookingRepository.findBookingByIdClient(client.getId());
             booked.setStatut(Statut.CANCELED);
             bookingRepository.saveAndFlush(booked);
         }

@@ -14,9 +14,19 @@ import java.util.List;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Integer> {
 
+    /***
+     * Return only one object room if == param
+     * @param idRoom
+     * @return
+     */
     Room findById(int idRoom);
     Room findRoomByNumber(int numberRoom);
 
+    /**
+     *  Return all object if equald with param passed
+     * @param idRoom
+     * @return
+     */
     List<Room> findAllById(int idRoom);
     List<Room> findAllByCategoryRoom(CategoryRoom categoryRoom);
     List<Room> findAllByIdBuildingEquals(int idBuilding);

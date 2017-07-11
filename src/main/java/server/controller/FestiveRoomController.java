@@ -42,11 +42,6 @@ public class FestiveRoomController {
         this.clientRepository = clientRepository;
     }
 
-    @RequestMapping(method = GET, value = "/all")
-    public List<FestiveRoom> getReservationFestiveRoom(){
-        return festiveRoomRepository.findAll();
-    }
-
 
 
     @RequestMapping(method = GET, value="/getItems")

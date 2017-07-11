@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import server.model.Enum.Reason;
-import server.model.Enum.Statut;
+import server.model.vluesUtils.Reason;
+import server.model.vluesUtils.Statut;
 
 import javax.persistence.*;
 import java.util.Date;

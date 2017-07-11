@@ -12,7 +12,18 @@ import java.util.List;
 @Repository
 public interface NewsLetterRepository extends JpaRepository<NewsLetter, Integer>{
 
+        /***
+         * find all object if send news letter equals boolean passed
+         * @param b
+         * @return
+         */
         List<NewsLetter> findAllBySendNewsLetterEquals(Boolean b);
+
+        /**
+         * find and return news letter if id == param
+         * @param idClient
+         * @return
+         */
         NewsLetter findNewsLetterById(long idClient);
 
 }

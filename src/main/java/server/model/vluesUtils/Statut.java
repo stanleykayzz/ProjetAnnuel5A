@@ -1,4 +1,4 @@
-package server.model.Enum;
+package server.model.vluesUtils;
 
 /**
  * Created by ileossa on 08/07/2017.

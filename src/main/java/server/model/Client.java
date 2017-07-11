@@ -3,8 +3,7 @@ package server.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.validator.constraints.NotEmpty;
-import server.model.Enum.AccreditationUers;
-import server.model.Enum.ClientStatus;
+import server.model.vluesUtils.ClientStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -90,5 +89,8 @@ public class Client {
 
     @Column(name = "TYPE_PLATEFORM")
     private String typePlateform;
+
+    @Column(name = "SEND_NEWSLETTER", columnDefinition = "boolean default false")
+    private boolean newsLetter;
 
 }

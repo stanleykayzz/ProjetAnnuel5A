@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import server.model.Client;
-import server.model.Enum.AccreditationUers;
+import server.model.vluesUtils.AccreditationUers;
 import server.repository.ClientRepository;
 
 import java.util.*;

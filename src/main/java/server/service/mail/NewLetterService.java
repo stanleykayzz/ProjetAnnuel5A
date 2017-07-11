@@ -35,18 +35,28 @@ public class NewLetterService {
         this.dateService = dateService;
     }
 
+    /***
+     * You can send newsLetter,
+     */
     @Scheduled(cron="0 0 7 * * *")  //Every days at 7 AM, this cron launched
     public void sendNewsLetter(){
         List<NewsLetter> listSendMail = newsLetterRepository.findAllBySendNewsLetterEquals(false);
         for (NewsLetter letter : listSendMail){
             if(letter.isSendNewsLetter()){
                 Client client = clientRepository.findClientById(letter.getIdClient());
-                mailService.sendEmail(client, "La Résidence des hauts de Menaye", "news_letter.vm");
+                if(client.isNewsLetter() == false) {
+                    mailService.sendEmail(client, "La Résidence des hauts de Menaye", "news_letter.vm");
+                }
+                client.setNewsLetter(true);
+                clientRepository.saveAndFlush(client);
             }
         }
     }
 
-    @Scheduled(cron= "0 0 0 * * *")
+    /**
+     * send evaluation by email after date_end in Booking model
+     */
+    @Scheduled(cron= "0 0 0 * * *") //Every days at 0 AM, this cron launched
     public void sendEvaluation(){
         List<Booking> bookings = bookingRepository.findAllByDateEndIsAfter(dateService.currentLocalTime());
         for (Booking book : bookings){
@@ -60,7 +70,10 @@ public class NewLetterService {
     }
 
 
-    @Scheduled(cron= "0 0 1 * * *")
+    /**
+     * Send mail, if user can't booking a romm or other service. After 6 Month == 180
+     */
+    @Scheduled(cron= "0 0 1 * * *") // Every days at 1 AM
     public void relanceUserIfNotBookingAfter6Month(){
         List<Booking> bookings = bookingRepository.findAll();
         String currentDate = dateService.currentLocalTime().toString();
