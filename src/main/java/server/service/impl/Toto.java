@@ -18,7 +18,7 @@ import fr.opensagres.xdocreport.template.formatter.FieldsMetadata;
 /**
  * Created by ileossa on 10/07/2017.
  */
-public class toto {
+public class Toto {
     /**
      * Takes file path as input and returns the stream opened on it
      * @param filePath
