@@ -60,7 +60,7 @@ And after you can deploy this application on the service with
 ```
 cd ProjetAnnuel5A
 git init 
-git push heroku master:master
+git push heroku myBranch:master
 ```
 
 
