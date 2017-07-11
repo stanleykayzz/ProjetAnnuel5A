@@ -3,32 +3,27 @@ package server.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import server.exception.TokenError;
 import server.model.Booking;
-import server.model.CategoryRoom;
 import server.model.Client;
-import server.model.Enum.Reason;
+import server.model.Enum.Statut;
+import server.model.FestiveRoom;
+import server.model.Room;
 import server.repository.BookingRepository;
-import server.repository.CategoryRoomRepository;
 import server.repository.ClientRepository;
 import server.repository.RoomRepository;
-import server.service.client.ClientService;
 import server.service.DateService;
-import server.service.mail.MailService;
+import server.service.client.ClientService;
 
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.ACCEPTED;
+import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 /**
  * Created by ileossa on 18/05/2017.
@@ -40,122 +35,122 @@ public class BookingController {
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     private BookingRepository bookingRepository;
-    private ClientRepository clientRepository;
-    private MailService mailService;
-    private DateService dateService;
-    private CategoryRoomRepository categoryRoomRepository;
-    private RoomRepository roomRepository;
     private ClientService clientService;
+    private ClientRepository clientRepository;
+    private DateService dateService;
+    private RoomRepository roomRepository;
+    private FestiveRoom festiveRoom;
+
 
     @Autowired
-    public BookingController(BookingRepository bookingRepository, ClientRepository clientRepository, MailService mailService, DateService dateService, CategoryRoomRepository categoryRoomRepository, RoomRepository roomRepository, ClientService clientService) {
+    public BookingController(BookingRepository bookingRepository, ClientService clientService, ClientRepository clientRepository, DateService dateService, RoomRepository roomRepository) {
         this.bookingRepository = bookingRepository;
-        this.clientRepository = clientRepository;
-        this.mailService = mailService;
-        this.dateService = dateService;
-        this.categoryRoomRepository = categoryRoomRepository;
-        this.roomRepository = roomRepository;
         this.clientService = clientService;
+        this.clientRepository = clientRepository;
+        this.dateService = dateService;
+        this.roomRepository = roomRepository;
     }
 
-    @Value("${booking.timezone}")
-    String zoneIdForUtcOffset;
 
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+    @RequestMapping(method = GET)
+    @ResponseStatus(OK)
+    public List<Booking> getListAll(){
+        return bookingRepository.findAll();
+    }
 
-
-    @RequestMapping(method = GET, value="/all")
-    public List<Booking> getListBooking(@RequestParam(value = "toke") String tokenClient) throws TokenError {
-        if(clientService.isAdministator(tokenClient)) {
+    @RequestMapping(method = GET, value="/adminGetList")
+    @ResponseStatus(OK)
+    public List<Booking> getListIsAdministrator(@RequestParam(value = "token") String token) throws TokenError {
+        if(clientService.isAdministator(token)) {
             return bookingRepository.findAll();
         }
         throw new TokenError();
     }
 
-    /**
-     *   renvoie la list de Booking d'un idClient passé en parametre
-     * @param token
-     * @return
-     */
-    @RequestMapping(method = GET, value="{token}")
-    Booking getListBookingByIdUser(@PathVariable String token){
-        Client clients = clientRepository.findClientByTokenEquals(token);
-        return bookingRepository.findBookingById(clients.getId());
+    @RequestMapping(method = GET, value = "/type")
+    @ResponseStatus(OK)
+    public HashSet<Booking> getBookPerType(@RequestParam(value="token") String tokenUser,
+                                           @RequestParam(value = "type") String typeReservation){
+        HashSet<Booking> listeFinal =  new HashSet<>();
+        if(clientService.isUser(tokenUser)){
+            List<Booking> books = bookingRepository.findAll();
+            for (Booking booking: books) {
+                if(typeReservation.equals("room")){
+                        if(booking.getRooms() != null){
+                            listeFinal.add(booking);
+                        }
+                }if(typeReservation.equals("restaurant")){
+                        if(booking.getTableRestaurantiD() != null){
+                            listeFinal.add(booking);
+                        }
+                }if(typeReservation.equals("FestiveRoom")){
+                    if(booking.getFestiveRoomId() != null){
+                        listeFinal.add(booking);
+                    }
+                }if(typeReservation.equals("serviceHotel")){
+                    if(booking.getServiceHotelId() != null){
+                        listeFinal.add(booking);
+                    }
+                }
+            }
+        }
+        return listeFinal;
+    }
+
+    @RequestMapping(method = GET, value = "/futur")
+    @ResponseStatus(OK)
+    public List<Booking> getListBookingInFutur(@RequestParam(value="token") String tokenUser) throws TokenError {
+        if(clientService.isUser(tokenUser)){
+            Client user = clientRepository.findClientByTokenEquals(tokenUser);
+            return bookingRepository.findAllById(user.getId());
+        }
+        if(clientService.isAdministator(tokenUser)){
+            return bookingRepository.findAllByOrderByDateEndAsc(dateService.currentLocalTime());
+        }
+        throw new TokenError();
+    }
+
+    @RequestMapping(method = GET, value = "/past")
+    @ResponseStatus(OK)
+    public List<Booking> getListBookingPast(@RequestParam(value = "token") String tokenUser) throws TokenError {
+        if(clientService.isUser(tokenUser)){
+            Client user = clientRepository.findClientByTokenEquals(tokenUser);
+            return bookingRepository.findAllById(user.getId());
+        }
+        if(clientService.isAdministator(tokenUser)){
+            return bookingRepository.findAllByOrderByDateEndAsc(dateService.currentLocalTime());
+        }
+        throw new TokenError();
     }
 
 
     @RequestMapping(method = POST)
-    public Booking newBooking(@RequestBody Booking booking){
-        //Convertion String to Date
-        LocalDate dateStartTemp = LocalDate.parse(booking.getDateStart().toString());
-        LocalDate dateEndTemp = LocalDate.parse(booking.getDateEnd().toString());
-       // Get current Date + Time + zoneId
-        Instant now = Instant.now();
-        ZoneId zoneId = ZoneId.of(zoneIdForUtcOffset);
-        ZonedDateTime dateBook = ZonedDateTime.ofInstant(now, zoneId);
+    @ResponseStatus(ACCEPTED)
+    public void newBooking(@RequestParam(value="token") String tokenClient,
+                           @RequestBody Booking booking) throws TokenError {
+        if(clientService.isUser(tokenClient)){
+            //todo doit attribuer une chambre de libre (essayer de regrouper les chambre)
+            Client client = clientRepository.findClientByTokenEquals(tokenClient);
+//            Room room = roomRepository.findById();
+//            FestiveRoom festiveRoom =
 
-        //convert localDate to Date
-        Date dateStart = Date.from(dateStartTemp.atStartOfDay(zoneId).toInstant());
-        Date dateEnd = Date.from(dateEndTemp.atStartOfDay(zoneId).toInstant());
-
-        Booking result =  bookingRepository.saveAndFlush(booking);
-        Client client = clientRepository.findByToken(booking.getIdClient()).get(0);
-        if(booking.getReason().equals(Reason.VACANCY))
-            mailService.sendEmail(client, booking, "booking registry", "booking_registry_vacancy");
-        else {
-            mailService.sendEmail(client, booking, "booking registry", "booking_registry_work");
         }
-        return result;
+        throw  new TokenError();
     }
 
 
-
-    @RequestMapping(method = PUT)
-    public Booking updateBooking (@RequestParam(value = "idBooking") int idBooking,
-                               @RequestParam(value="tokenClient")String tokenClient ,
-                               @RequestParam(value="idPartyRoom")int idPartyRoom ,
-                               @RequestParam(value = "dateStart") String dateStartEntry ,
-                               @RequestParam(value = "dateEnd") String dateEndEntry ,
-                               @RequestParam(value = "nbPerson") int nbPerson ,
-                               @RequestParam(value = "price") float price ,
-                               @RequestParam(value = "payementMode") String payementMode){
-        if(bookingRepository.findOne(idBooking) != null){
-
-            Booking booking = bookingRepository.findOne(idBooking);
-
-            booking.check(tokenClient);
-            booking.check(idPartyRoom);
-            booking.check(dateService.stringToDate(dateStartEntry));
-            booking.check(dateService.stringToDate(dateEndEntry));
-            booking.check(nbPerson);
-            booking.check(price);
-            booking.check(payementMode);
-            Client client = clientRepository.findByToken(tokenClient).get(0);
-            mailService.sendEmail(client, booking, "reservation updated", "reservation_updated.vm");
-            return booking;
+    @RequestMapping(method = DELETE)
+    @ResponseStatus(ACCEPTED)
+    public void cancelBook(@RequestParam(value="token")String tokenUser,
+                           @RequestParam(value = "id") int idBooking) throws TokenError {
+        if(clientService.accesPerTokenValidate(tokenUser)){
+            Client client = clientRepository.findClientByTokenEquals(tokenUser);
+            Booking booked = bookingRepository.findBookingById(client.getId());
+            booked.setStatut(Statut.CANCELED);
+            bookingRepository.saveAndFlush(booked);
         }
-        return new Booking();
-    }
+        throw new TokenError();
 
-
-
-
-    @RequestMapping(method = GET)
-    public double costByNight(@RequestParam(value="date_start") String dateStartEnter,
-                           @RequestParam(value = "date_end") String dateEndEnter,
-                           @RequestParam(value = "reservation_type") String typeReservation){
-
-        // recup le liste des type avec prix
-        List<CategoryRoom> categories = categoryRoomRepository.findAll();
-        for(CategoryRoom one : categories){
-            if(one.getName().equals(typeReservation)){
-                Date dateStart = dateService.stringToDate(dateStartEnter);
-                Date dateEnd = dateService.stringToDate(dateEndEnter);
-                long diff = dateEnd.getTime() - dateStart.getTime();
-                return diff * one.getCostByNight();
-            }
-        }
-        return Double.MAX_VALUE;
     }
 
 

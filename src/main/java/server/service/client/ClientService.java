@@ -105,15 +105,6 @@ public class ClientService {
     }
 
 
-    public boolean isAdministator(String tokenClient){
-        Client client = clientRepository.findDistinctFirstByToken(tokenClient);
-        if(tokenAvailable(client)) {
-            if (client.getAccreditation().equals(AccreditationUers.ADMINISTRATEUR)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
 
     public Client updateNewInformationsClient(@RequestBody Client newClient, Client client, String psw) {
@@ -138,4 +129,32 @@ public class ClientService {
         }
     }
 
+    public boolean isAdministator(String tokenClient){
+        Client client = clientRepository.findDistinctFirstByToken(tokenClient);
+        if(tokenAvailable(client)) {
+            if (client.getAccreditation().equals(AccreditationUers.ADMINISTRATEUR)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean isUser(String tokenClient) {
+        Client client = clientRepository.findDistinctFirstByToken(tokenClient);
+        if(tokenAvailable(client)) {
+            if (client.getAccreditation().equals(AccreditationUers.USER)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean accesPerTokenValidate(String tokenClient){
+        if(isUser(tokenClient) || isAdministator(tokenClient)){
+            return true;
+        }
+        return false;
+    }
 }

@@ -22,18 +22,18 @@ public class Building {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String nameBuild;
+    private String name;
 
     public Building() {
     }
 
 
-    public String getNameBuild() {
-        return nameBuild;
+    public String getName() {
+        return name;
     }
 
-    public void setNameBuild(String nameBuild) {
-        this.nameBuild = nameBuild;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {

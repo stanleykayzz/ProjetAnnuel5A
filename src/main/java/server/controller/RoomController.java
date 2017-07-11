@@ -81,7 +81,7 @@ public class RoomController {
     public List<Room> searchRoomByBuilding(@PathVariable String building,
                                            @RequestParam(value = "token")String tokenClient) throws TokenError {
         if(clientService.isAdministator(tokenClient)) {
-            Building b1 = buildingRepository.findBuildingByNameBuildEquals(building);
+            Building b1 = buildingRepository.findBuildingByNameEquals(building);
             List<Room> rooms = roomRepository.findAllByIdBuildingEquals(b1.getId());
             return rooms;
         }

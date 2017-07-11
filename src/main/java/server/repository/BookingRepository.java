@@ -19,6 +19,5 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
     List<Booking> findAllByDateEndIsAfter(Date dateEnd);
     List<Booking> findAllByDateBookBetween(Date dateStart, Date dateEnd);
     List<Booking> findAllByDateStartAfterAndDateEndAfter(Date dateStart, Date dateEnd);
-    List<Booking> findAllByOrderByDateEndAsc();
-
+    List<Booking> findAllByOrderByDateEndAsc(Date dateStart);
 }
