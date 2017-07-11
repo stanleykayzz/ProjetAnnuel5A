@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -5,7 +10,14 @@
         throw "Core is not declared";
 
     Core.utils.form = Core.utils.form || {};
-
+    /**
+     * Check all the values send to validate or not all forms from the application
+     * @param jsonObject
+     * @param key_style
+     * @param style
+     * @param error_style
+     * @returns {boolean}
+     */
     Core.utils.form.formValidator = function (jsonObject, key_style, style, error_style) {
         var validation = true;
         var sexe = null;

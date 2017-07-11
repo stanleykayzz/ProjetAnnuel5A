@@ -9,6 +9,10 @@
 
     Core.views.contact = Core.views.contact || {};
 
+    /**
+     * Init the contact view
+     * @param json
+     */
     Core.views.contact.initView = function (json) {
         var btn = document.getElementById("btn_contact");
 

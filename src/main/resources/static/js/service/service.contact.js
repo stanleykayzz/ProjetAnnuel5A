@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function(undefined) {
     "use strict";
 
@@ -6,6 +11,10 @@
 
     Core.service.contact = Core.service.contact || {};
 
+    /**
+     * 
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.contact.send = function () {
         return {
             name: "send",

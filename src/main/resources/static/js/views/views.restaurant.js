@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,9 @@
 
     Core.views.restaurant = Core.views.restaurant || {};
 
+    /**
+     * Init the restaurant view and events
+     */
     Core.views.restaurant.initView = function () {
         var typeElement, numberElement, btn_booking;
 

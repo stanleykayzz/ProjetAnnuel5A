@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function(undefined) {
     "use strict";
 
@@ -6,6 +11,10 @@
     
     Core.service.client = Core.service.client || {};
 
+    /**
+     * Create the session if the client code is available , else redirect on confirmation view
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.client.login = function () {
         return {
             name   : "login",
@@ -32,6 +41,10 @@
         };
     };
 
+    /**
+     * Redirect on the singin page if the signup is available
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.client.signup = function () {
         return {
             name : "signup",
@@ -65,6 +78,10 @@
         };
     };
 
+    /**
+     * Remove the client session
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.client.logout = function () {
         return {
             name : "logout",
@@ -81,6 +98,10 @@
         };
     };
 
+    /**
+     * Update the client account
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.client.update = function () {
         return {
             name : "update",
@@ -98,6 +119,10 @@
         };
     };
 
+    /**
+     * Update the token client date
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.client.reloadToken = function () {
         return {
             name : "reloadToken",
@@ -117,6 +142,10 @@
         };
     };
 
+    /**
+     * Store the client into a global variable
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.client.getClientByToken = function () {
         return {
             name : "getClientByToken",
@@ -132,6 +161,10 @@
         };
     };
 
+    /**
+     * Validate the email and create the client session
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.client.confirmation = function () {
         return {
             name : "confirmation",
@@ -154,6 +187,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.client.passwordRecovery = function () {
         return {
             name : "passwordRecovery",
@@ -168,6 +205,10 @@
         };
     };
 
+    /**
+     * Generate the client list template into the admin panel
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.client.initAdminViewListClients = function () {
         return {
             name : "initAdminViewListClients",

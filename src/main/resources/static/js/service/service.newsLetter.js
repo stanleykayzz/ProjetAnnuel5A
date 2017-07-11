@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function(undefined) {
     "use strict";
 
@@ -6,6 +11,10 @@
 
     Core.service.newsLetter = Core.service.newsLetter || {};
 
+    /**
+     * 
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.newsLetter.send = function () {
         return {
             name   : "send",

@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,9 @@
 
     Core.views.room = Core.views.room || {};
 
+    /**
+     * Init the room view and events
+     */
     Core.views.room.initView = function () {
         var startDatepicker, endDatepicker, type, btnSearch;
         var container;
@@ -63,6 +71,10 @@
         }();
     };
 
+    /**
+     * Search the room by date start and end
+     * @param listRoom
+     */
     Core.views.room.roomSearch = function (listRoom) {
         var container, searchContainer, bookingContainer, listReservationContainer;
         var startDatepicker, endDatepicker, type_input, reason, list_reservation, btn_book;
@@ -368,6 +380,12 @@
         }();
     };
 
+    /**
+     * Init the view book room
+     * @param dateStart
+     * @param dateEnd
+     * @param list
+     */
     Core.views.room.roomBooking = function (dateStart, dateEnd, list) {
         var labelDateStart, labelDateEnd, labelBook, image,
             container, button_container, btn_return;

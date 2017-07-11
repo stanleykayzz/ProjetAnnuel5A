@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,14 @@
 
     Core.utils.template = Core.utils.template || {};
 
+    /**
+     * Generate template to display data lists
+     * @param jsonHeaders
+     * @param jsonValues
+     * @param container
+     * @param type
+     * @param createFunc
+     */
     Core.utils.template.createLiTemplate = function (jsonHeaders, jsonValues, container, type, createFunc) {
         var div_table = document.createElement("div");
         div_table.classList.add("div_table");
@@ -153,6 +166,11 @@
         }();
     };
 
+    /**
+     * Create a template to display an article
+     * @param container
+     * @param json
+     */
     Core.utils.template.createArticleTemplate = function (container, json) {
         var title = document.createElement("h1");
         title.classList.add("article_title");
@@ -171,6 +189,10 @@
         container.appendChild(div_date);
     };
 
+    /**
+     * Show or hide an element by clicking on an li
+     * @param id
+     */
     Core.utils.template.manageListDisplay = function (id) {
         var li = document.getElementById(id);
 
@@ -189,6 +211,11 @@
         }, false);
     };
 
+    /**
+     * Return the row template from an element
+     * @param btn
+     * @returns {*}
+     */
     Core.utils.template.getRowFromTarget = function (btn) {
         var parent = btn.parentElement;
         while (!parent.classList.contains("div_row")) {
@@ -198,6 +225,11 @@
         return parent;
     };
 
+    /**
+     * Create a body response from a row tempalte
+     * @param row
+     * @returns {{}}
+     */
     Core.utils.template.generateBodyFromRow = function (row) {
         var body = {};
         var children = row.getElementsByTagName("INPUT");
@@ -210,6 +242,11 @@
         return body;
     };
 
+    /**
+     *
+     * @param row
+     * @param type
+     */
     Core.utils.template.manageInputRow = function (row, type) {
         var children = row.children;
         var clone;
@@ -242,6 +279,11 @@
         }
     };
 
+    /**
+     * Manage the event when user want to update a row
+     * @param e
+     * @param service
+     */
     Core.utils.template.eventButtonUpdate = function (e, service) {
         var row = utils.template.getRowFromTarget(e.target);
 
@@ -288,6 +330,11 @@
         }
     };
 
+    /**
+     * Manage the event when user want to delete a row
+     * @param e
+     * @param service
+     */
     Core.utils.template.eventButtonRemove = function (e, service) {
         var row = utils.template.getRowFromTarget(e.target);
         row.parentElement.removeChild(row);
@@ -297,6 +344,13 @@
         //utils.ajaxRequest(service, paramRequest, null);
     };
 
+    /**
+     * Generate template to display an article list
+     * @param jsonHeaders
+     * @param jsonValues
+     * @param container
+     * @param type
+     */
     Core.utils.template.createArticleLiTemplate = function (jsonHeaders, jsonValues, container, type) {
         var div_table = document.createElement("div");
         div_table.classList.add("div_table");
@@ -417,6 +471,11 @@
         }();
     };
 
+    /**
+     * Manage the button to update an article
+     * @param e
+     * @param service
+     */
     Core.utils.template.eventArticleButtonUpdate = function (e, service) {
         var id;
         var title, content;

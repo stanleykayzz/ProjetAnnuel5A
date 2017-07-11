@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,11 @@
 
     Core.payment.paypal = Core.payment.paypal || {};
 
+    /**
+     * Generate the paypal button with a price
+     * Send the client token into tue callback URL
+     * @param price
+     */
     Core.payment.paypal.generateButton = function (price) {
         var container = document.getElementById("paypal_div");
         var currentDiv = document.getElementById("paypal_container");

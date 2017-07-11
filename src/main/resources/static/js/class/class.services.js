@@ -9,6 +9,9 @@
 
     Core.class.services = Core.class.services || {};
 
+    /**
+     * Init the services list into the admin panel
+     */
     Core.class.services.initAdminViewListServices = function () {
         var paramRequest = "token=" + client.token;
         utils.ajaxRequest(Core.service.services.initAdminViewListService(), paramRequest, null);

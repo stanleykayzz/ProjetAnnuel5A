@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,9 @@
 
     Core.views.code = Core.views.code || {};
 
+    /**
+     * Init the confirmation code
+     */
     Core.views.code.confirmationCode = function () {
         var btn_code = document.getElementById("btn_code");
         var ipt_code = document.getElementById("codeBtn");

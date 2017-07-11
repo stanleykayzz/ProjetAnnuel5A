@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function (undefined) {
     "use strict";
 
@@ -6,6 +11,10 @@
 
     Core.service.category = Core.service.category || {};
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.category.create = function () {
         return {
             name: "create",
@@ -20,6 +29,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.category.delete = function () {
         return {
             name: "delete",
@@ -34,6 +47,10 @@
         };
     };
 
+    /**
+     * Store the category list into a global variable
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.category.getListCategories = function () {
         return {
             name: "getListCategories",
@@ -50,6 +67,10 @@
         };
     };
 
+    /**
+     * Generate the template containing categories list
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.category.initViewListCategories = function () {
         return {
             name: "initViewListCategories",

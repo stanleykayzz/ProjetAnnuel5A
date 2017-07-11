@@ -1,9 +1,18 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     if(typeof Core === "undefined")
         throw "Core is not declared";
 
     Core.service.book.festiveRoom = Core.service.book.festiveRoom || {};
 
+    /**
+     * 
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.book.festiveRoom.bookFestiveRoom = function () {
         return {
             name: "bookFestiveRoom",
@@ -20,6 +29,10 @@
         };
     };
 
+    /**
+     * 
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.book.festiveRoom.getListBookById = function () {
         return {
             name: "getListBookById",

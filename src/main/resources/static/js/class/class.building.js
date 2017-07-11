@@ -9,6 +9,9 @@
 
     Core.class.building = Core.class.building || {};
 
+    /**
+     * init Admin View List Building
+     */
     Core.class.building.initAdminViewListBuilding = function () {
         utils.ajaxRequest(Core.service.building.initAdminViewListBuilding(), null, null);
     };
