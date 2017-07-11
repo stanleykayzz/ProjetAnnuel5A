@@ -164,4 +164,9 @@ mail:
   support:
     username: ${EMAIL_USER}
     password: ${EMAIL_PASS}
-
+  template:
+    url:
+      home: http://residencedeshautsdemenaye.com/
+      unsubscribe: http://residencedeshautsdemenaye.com/api/mail/unsubscribe/
+    path:
+      logo: src\main\resources\static\img\logoRHM.png
