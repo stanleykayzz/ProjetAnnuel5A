@@ -51,7 +51,7 @@ public class MailService {
         MimeMessagePreparator preparator = getMimeMessagePreparator(client, subject, template);
         this.javaMailSender.send(preparator);
         LOG.debug("Clientid: {}, mail send to {} with subject: {}. Template used: {}",
-                client.getClientId(),
+                client.getId(),
                 client.getEmail(),
                 subject,
                 template);
@@ -62,7 +62,7 @@ public class MailService {
         MimeMessagePreparator preparator = getMimeMessagePreparator(client, booking, subject, template);
         this.javaMailSender.send(preparator);
         LOG.debug("BookingId: {}, mail send to {} with subject: {}. Template used: {}",
-                booking.getIdBook(),
+                booking.getId(),
                 client.getEmail(),
                 subject,
                 template);
@@ -73,7 +73,7 @@ public class MailService {
         MimeMessagePreparator preparator = getMimeMessagePreparator(client, booking, subject, template, pathFile);
         this.javaMailSender.send(preparator);
         LOG.debug("BookingId: {}, mail send to {} with subject: {}. Template used: {}",
-                booking.getIdBook(),
+                booking.getId(),
                 client.getEmail(),
                 subject,
                 template);
@@ -83,7 +83,7 @@ public class MailService {
         MimeMessagePreparator preparator = getMimeMessagePreparator(client, subject, template, pathFile);
         this.javaMailSender.send(preparator);
         LOG.debug("Clientid: {}, mail send to {} with subject: {}. Template used: {}",
-                client.getClientId(),
+                client.getId(),
                 client.getEmail(),
                 subject,
                 template);

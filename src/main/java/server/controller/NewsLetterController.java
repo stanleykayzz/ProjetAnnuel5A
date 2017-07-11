@@ -7,7 +7,7 @@ import server.model.NewsLetter;
 import server.repository.BookingRepository;
 import server.repository.ClientRepository;
 import server.repository.NewsLetterRepository;
-import server.service.ClientService;
+import server.service.client.ClientService;
 import server.service.mail.MailService;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  * Created by ileossa on 09/07/2017.
  */
 @RestController
-@RequestMapping("")
+@RequestMapping("/api/newsLetter")
 public class NewsLetterController {
 
     private NewsLetterRepository newsLetterRepository;
@@ -41,12 +41,12 @@ public class NewsLetterController {
     @ResponseStatus(OK)
     public void newModel(@RequestParam(value="token")String tokenCLient,
                          @RequestBody NewsLetter newsLetter){
-        if(clientService.isAuthorized(tokenCLient)){
+        if(clientService.isAdministator(tokenCLient)){
             newsLetterRepository.saveAndFlush(newsLetter);
             List<Client> clients = clientRepository.findAll();
             for (Client client: clients) {
                 //check if reason booking == newsletter reason  => true(send) / false(skip)s
-                if(bookingRepository.findOne(client.getClientId()).getReason().equals(newsLetter.getReason())) {
+                if(bookingRepository.findOne(client.getId()).getReason().equals(newsLetter.getReason())) {
                     mailService.sendEmail(client, "Newsletter", "news_letter.vm");
                 }
             }

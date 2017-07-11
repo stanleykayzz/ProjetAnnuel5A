@@ -14,8 +14,10 @@ import java.util.List;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
-    List<Booking>findBookingByIdClient(int idClient);
+    Booking findBookingById(int idClient);
+    List<Booking> findAllById(int idClient);
     List<Booking> findAllByDateEndIsAfter(Date dateEnd);
     List<Booking> findAllByDateBookBetween(Date dateStart, Date dateEnd);
-
+    List<Booking> findAllByDateStartAfterAndDateEndAfter(Date dateStart, Date dateEnd);
+    List<Booking> findAllByOrderByDateEndAsc(Date dateStart);
 }

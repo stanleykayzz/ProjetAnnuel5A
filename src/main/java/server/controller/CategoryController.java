@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import server.exception.TokenError;
 import server.model.CategoryRoom;
 import server.repository.CategoryRoomRepository;
-import server.service.ClientService;
+import server.service.client.ClientService;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class CategoryController {
     @ResponseStatus(OK)
     public void newCategory(@RequestParam(value="token")String tokenClient,
                             @RequestBody CategoryRoom categoryRoom) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)){
+        if(clientService.isAdministator(tokenClient)){
             categoryRoomRepository.saveAndFlush(categoryRoom);
         }
         throw new TokenError();
@@ -46,7 +46,7 @@ public class CategoryController {
     @ResponseStatus(OK)
     public void deleteCategory(@RequestParam(value = "token")String tokenClient,
                                @RequestParam(value = "id") int idCategory) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)){
+        if(clientService.isAdministator(tokenClient)){
             categoryRoomRepository.delete(idCategory);
         }
         throw new TokenError();

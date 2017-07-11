@@ -1,42 +1,46 @@
 package server.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /**
  * Created by ileossa on 03/07/2017.
  */
+@Builder
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "building")
 public class Building {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_building")
-    private int idBuilding;
+    private int id;
 
-
-    private String nameBuild;
+    private String name;
 
     public Building() {
     }
 
-    public Building(String nameBuild) {
-        this.nameBuild = nameBuild;
+
+    public String getName() {
+        return name;
     }
 
-    public String getNameBuild() {
-        return nameBuild;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNameBuild(String nameBuild) {
-        this.nameBuild = nameBuild;
+    public int getId() {
+        return id;
     }
 
-    public int getIdBuilding() {
-        return idBuilding;
-    }
-
-    public void setIdBuilding(int idBuilding) {
-        this.idBuilding = idBuilding;
+    public void setId(int id) {
+        this.id = id;
     }
 }

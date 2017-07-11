@@ -1,16 +1,14 @@
-package server.service;
+package server.service.client;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import server.model.Client;
 import server.model.Enum.AccreditationUers;
 import server.repository.ClientRepository;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -18,23 +16,15 @@ public class ClientService {
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     private ClientRepository clientRepository;
+    private SecurityClient securityClient;
 
     @Autowired
-    public ClientService(ClientRepository clientRepository) {
+    public ClientService(ClientRepository clientRepository, SecurityClient securityClient) {
         this.clientRepository = clientRepository;
+        this.securityClient = securityClient;
     }
 
-    public List<Client> getAll() {
-        return clientRepository.findAll();
-    }
 
-    public boolean findByEmail(String Email) {
-        if (clientRepository.findClientByEmailEquals(Email).size() > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public Client findByToken(String Token) {
         List<Client> clients = clientRepository.findByToken(Token);
@@ -69,10 +59,6 @@ public class ClientService {
         }
     }
 
-    public void deleteClient(int id) {
-        Client clients = getById(id);
-        clientRepository.delete(id);
-    }
 
     public Client getById(int id) {
         return clientRepository.findOne(id);
@@ -86,6 +72,8 @@ public class ClientService {
     public Client updateClient(Client client) {
         return clientRepository.saveAndFlush(client);
     }
+
+
 
     public boolean tokenAvailable(Client client) {
         Date currentDate = new Date();
@@ -110,41 +98,62 @@ public class ClientService {
         }
     }
 
-    public void generateToken(Client client) {
-        client.setToken(UUID.randomUUID().toString());
-        Date dateToken = new Date();
-        client.setTokenDate(dateToken);
-        //boolean tokenExists = tokenExists(client.getToken());
-        /*System.out.println(tokenExists);
-        if(tokenExists == true) {
-            this.generateToken(client);
-        }*/
-    }
 
-    public void passwordRecovery(String email) {
-        char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-        StringBuilder sb = new StringBuilder();
-        Random random = new Random();
-        for (int i = 0; i < 20; i++) {
-            char c = chars[random.nextInt(chars.length)];
-            sb.append(c);
-        }
-
-        String output = sb.toString();
-        System.out.println(output);
-    }
 
     public void updateTokenDate(Client client) {
         client.setTokenDate(new Date());
     }
 
 
-    public boolean isAuthorized(String tokenClient){
+
+
+    public Client updateNewInformationsClient(@RequestBody Client newClient, Client client, String psw) {
+        if(client != null) {
+            if(client.getPassword().equals(psw)){
+                client.setPhone(newClient.getPhone());
+                client.setCountry(newClient.getCountry());
+                client.setCity(newClient.getCity());
+                client.setAddress(newClient.getAddress());
+                client.setPostalCode(newClient.getPostalCode());
+                client.setPassword(securityClient.hashPassword(newClient.getPassword()));
+
+                updateTokenDate(client);
+                updateClient(client);
+
+                return client;
+            } else {
+                throw new IllegalArgumentException("error");
+            }
+        } else {
+            throw new IllegalArgumentException("error");
+        }
+    }
+
+    public boolean isAdministator(String tokenClient){
         Client client = clientRepository.findDistinctFirstByToken(tokenClient);
         if(tokenAvailable(client)) {
             if (client.getAccreditation().equals(AccreditationUers.ADMINISTRATEUR)) {
                 return true;
             }
+        }
+        return false;
+    }
+
+
+    public boolean isUser(String tokenClient) {
+        Client client = clientRepository.findDistinctFirstByToken(tokenClient);
+        if(tokenAvailable(client)) {
+            if (client.getAccreditation().equals(AccreditationUers.USER)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean accesPerTokenValidate(String tokenClient){
+        if(isUser(tokenClient) || isAdministator(tokenClient)){
+            return true;
         }
         return false;
     }

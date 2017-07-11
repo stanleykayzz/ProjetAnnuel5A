@@ -9,5 +9,5 @@ import server.model.Building;
  */
 @Repository
 public interface BuildingRepository extends JpaRepository<Building, Integer>{
-    Building findBuildingByNameBuildEquals(String nameBuild);
+    Building findBuildingByNameEquals(String nameBuild);
 }

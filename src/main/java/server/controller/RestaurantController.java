@@ -3,19 +3,18 @@ package server.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import server.exception.TokenError;
 import server.model.Restaurant;
+import server.repository.BookingRepository;
 import server.repository.ClientRepository;
 import server.repository.RestaurantRepository;
+import server.service.client.ClientService;
 
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.ACCEPTED;
-import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
  * Created by ileossa on 22/05/2017.
@@ -27,61 +26,63 @@ public class RestaurantController {
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     private RestaurantRepository restaurantRepository;
+    private ClientService clientService;
+    private BookingRepository bookingRepository;
+    private ClientRepository clientRepository;
 
     @Autowired
-    public RestaurantController(RestaurantRepository restaurantRepository) {
+    public RestaurantController(RestaurantRepository restaurantRepository, ClientService clientService, BookingRepository bookingRepository) {
         this.restaurantRepository = restaurantRepository;
+        this.clientService = clientService;
+        this.bookingRepository = bookingRepository;
     }
 
-    @RequestMapping(method = GET, value = "/all")
-    public List<Restaurant> getAllReservation(){
-        return restaurantRepository.findAll();
-    }
-
-
-
-    @RequestMapping(method = GET, value="/client/{tokenClient}")
-    public Restaurant getReservationByClientId(@PathVariable String tokenClient){
-        return restaurantRepository.findRestaurantByTokenClientEquals(tokenClient);
-    }
-
-
-    @RequestMapping(method = GET, value="/restaurant/{idTable}")
-    public Restaurant getRestaurantByRestaurantId(@PathVariable int idTable){
-        return restaurantRepository.findRestaurantByIdTable(idTable);
+    @RequestMapping(method = GET)
+    public List<Restaurant> getAllReservation(@RequestParam(value = "token") String tokenCLient) throws TokenError {
+        if(clientService.isAdministator(tokenCLient)) {
+            return restaurantRepository.findAll();
+        }
+        throw new TokenError();
     }
 
 
 
     @RequestMapping(method = POST, value="/book")
     @ResponseStatus(ACCEPTED)
-    public void newReservation(@RequestParam(value = "token") String tokenCLient,
-                                     @RequestParam(value = "type") String type,
-                                     @RequestParam(value = "number") int number){
-
-        Restaurant restaurant = new Restaurant(type, tokenCLient, number);
-    }
-
-
-    @RequestMapping(method = POST, value="{idTable}")
-    public Restaurant updateReservation(@RequestParam(value = "idTable") int idTable,
-                                        @RequestParam(value = "name") String name,
-                                        @RequestParam(value = "placeNumber")int nbPlace,
-                                        @RequestParam(value = "idClient") int idClient){
-
-        if(restaurantRepository.findRestaurantByIdTable(idTable) != null){
-            Restaurant restaurant = restaurantRepository.findRestaurantByIdTable(idTable);
-
-            restaurant.check(idTable);
-            restaurant.check(name);
-            restaurant.check(nbPlace);
-            restaurant.check(idClient);
-
-            return restaurant;
+    public void create(@RequestParam(value = "token") String tokenCLient,
+                       @RequestBody Restaurant restaurant) throws Exception {
+        if(clientService.isAdministator(tokenCLient)) {
+            restaurantRepository.save(restaurant);
         }
-
-        return new Restaurant();
+        throw new TokenError();
     }
+
+
+    @RequestMapping(method = PUT)
+    @ResponseStatus(ACCEPTED)
+    public void update(@RequestParam(value="token")String tokenClient,
+                       @RequestBody Restaurant restaurant) throws TokenError {
+        if(clientService.isAdministator(tokenClient)){
+            if(restaurantRepository.findOne(restaurant.getId()) != null){
+                restaurantRepository.saveAndFlush(restaurant);
+            }
+        }
+        throw new TokenError();
+    }
+
+
+    @RequestMapping(method = DELETE)
+    @ResponseStatus(ACCEPTED)
+    public void delete(@RequestParam(value = "token")String tokenClient,
+                       @RequestParam(value="id") int id) throws TokenError {
+        if(clientService.isAdministator(tokenClient)){
+            if(restaurantRepository.findOne(id) != null){
+                restaurantRepository.delete(id);
+            }
+        }
+        throw new TokenError();
+    }
+
 
 
 

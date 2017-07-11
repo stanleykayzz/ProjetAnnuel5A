@@ -13,6 +13,6 @@ import java.util.List;
 public interface NewsLetterRepository extends JpaRepository<NewsLetter, Integer>{
 
         List<NewsLetter> findAllBySendNewsLetterEquals(Boolean b);
-        NewsLetter findNewsLetterByIdClientEquals(long idClient);
+        NewsLetter findNewsLetterById(long idClient);
 
 }

@@ -1,28 +1,28 @@
 package server.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by ileossa on 05/04/2017.
  */
+@Builder
+@AllArgsConstructor
 @Entity
 @Getter
 @Setter
-@Table(name = "festive_room")
+@Table(name = "FESTIVE_ROOM")
 public class FestiveRoom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idPartyRoom;
-    private float price;
+    private int id;
 
-    @JoinColumn(name = "SERVICES_HOTEL")
-    @OneToMany
-    private List<ServicesHotel> servicesHotel;
+    private float price;
 
 
     public FestiveRoom() {
@@ -32,16 +32,19 @@ public class FestiveRoom {
         this.price = price;
     }
 
-    public FestiveRoom(float price, List<ServicesHotel> servicesHotel) {
-        this.price = price;
-        this.servicesHotel = servicesHotel;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public float getPrice() {
         return price;
     }
 
-    public int getIdPartyRoom() {
-        return idPartyRoom;
+    public void setPrice(float price) {
+        this.price = price;
     }
 }

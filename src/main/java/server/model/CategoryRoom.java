@@ -1,5 +1,9 @@
 package server.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
 import javax.persistence.*;
 
 import java.util.List;
@@ -9,33 +13,26 @@ import static javax.persistence.GenerationType.AUTO;
 /**
  * Created by ileossa on 02/07/2017.
  */
+@Builder
+@AllArgsConstructor
 @Entity
-@Table(name = "category_room")
+@Table(name = "CATEGORY_NAME")
 public class CategoryRoom {
 
     @Id
     @GeneratedValue(strategy = AUTO)
-    private int idCategoryRoom;
+    private int id;
 
     private String name;
     private double costByNight;
     private String description;
     private String picturePath;
 
-    @OneToMany
-    @JoinColumn(name = "id_room")
-    private List<Room> room;
-
 
     public CategoryRoom() {
     }
 
-    public CategoryRoom(String name, Long costByNight, String description, String picturePath) {
-        this.name = name;
-        this.costByNight = costByNight;
-        this.description = description;
-        this.picturePath = picturePath;
-    }
+
 
     public String getName() {
         return name;
@@ -69,12 +66,4 @@ public class CategoryRoom {
         this.picturePath = picturePath;
     }
 
-    @OneToMany(mappedBy = "CategoryRoom")
-    public List<Room> getRoom() {
-        return room;
-    }
-
-    public void setRoom(List<Room> room) {
-        this.room = room;
-    }
 }

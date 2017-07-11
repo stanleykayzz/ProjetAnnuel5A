@@ -8,7 +8,7 @@ import server.exception.ItemNotFound;
 import server.exception.TokenError;
 import server.model.ServicesHotel;
 import server.repository.ServicesHotelRepository;
-import server.service.ClientService;
+import server.service.client.ClientService;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class ServicesHotelController {
     }
 
     public List<ServicesHotel> getAllServiceHotel(@RequestParam(value = "token")String tokenClient) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
+        if(clientService.isAdministator(tokenClient)) {
             return servicesHotelRepository.findAll();
         }
         throw new TokenError();
@@ -47,8 +47,8 @@ public class ServicesHotelController {
     @ResponseStatus(OK)
     public ServicesHotel newServiceHotel(@RequestParam(value="token")String tokenCLient,
                                          @RequestBody ServicesHotel newServicesHotel) throws TokenError {
-        if(clientService.isAuthorized(tokenCLient)) {
-            if(servicesHotelRepository.findOne(newServicesHotel.getIdServicesHotel()) == null){
+        if(clientService.isAdministator(tokenCLient)) {
+            if(servicesHotelRepository.findOne(newServicesHotel.getId()) == null){
                 servicesHotelRepository.saveAndFlush(newServicesHotel);
             }
         }
@@ -60,8 +60,8 @@ public class ServicesHotelController {
     @ResponseStatus(OK)
     public ServicesHotel updateServiceHotel(@RequestParam(value = "token") String tokenClient,
                                             @RequestBody ServicesHotel servicesHotel) throws ItemNotFound, TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
-            if(servicesHotelRepository.findOne(servicesHotel.getIdServicesHotel()) != null){
+        if(clientService.isAdministator(tokenClient)) {
+            if(servicesHotelRepository.findOne(servicesHotel.getId()) != null){
                 servicesHotelRepository.saveAndFlush(servicesHotel);
             }else {
                 throw new ItemNotFound();
@@ -74,7 +74,7 @@ public class ServicesHotelController {
     @ResponseStatus(value = OK)
     public void deleteService(@RequestParam(value = "token")String tokenClient,
                               @RequestParam(value="id")int idService) throws ItemNotFound, TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
+        if(clientService.isAdministator(tokenClient)) {
             if(servicesHotelRepository.findOne(idService) != null){
                 servicesHotelRepository.delete(idService);
             }else {
@@ -87,7 +87,7 @@ public class ServicesHotelController {
     @RequestMapping(method = GET)
     @ResponseStatus(value = OK)
     public List<ServicesHotel> getListServicesHotel(@RequestParam(value="token")String tokenClient) throws TokenError {
-        if(clientService.isAuthorized(tokenClient)) {
+        if(clientService.isAdministator(tokenClient)) {
             return servicesHotelRepository.findAll();
         }
         throw new TokenError();

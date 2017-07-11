@@ -1,83 +1,33 @@
 package server.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /**
  * Created by ileossa on 18/06/2017.
  */
+@Builder
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "services_hotel")
 public class ServicesHotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID_SERVICE")
-    private int idServicesHotel;
+    private int id;
     private String name;
-    private String type;
     private float price;
-    private String comment;
+    private int quantity;
 
 
     public ServicesHotel() {
     }
 
-    public ServicesHotel(String name, String type, float price, String comment) {
-        this.name = name;
-        this.type = type;
-        this.price = price;
-        this.comment = comment;
-    }
 
-
-    public int getIdServicesHotel() {
-        return idServicesHotel;
-    }
-
-    public void setIdServicesHotel(int idServicesHotel) {
-        this.idServicesHotel = idServicesHotel;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    @Override
-    public String toString() {
-        return "ServicesHotel{" +
-                "idServicesHotel=" + idServicesHotel +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", costByNight=" + price +
-                ", comment='" + comment + '\'' +
-                '}';
-    }
 }

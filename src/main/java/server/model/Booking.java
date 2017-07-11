@@ -1,5 +1,7 @@
 package server.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import server.model.Enum.Reason;
@@ -7,19 +9,22 @@ import server.model.Enum.Statut;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by ileossa on 05/04/2017.
  */
+@Builder
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "booking")
+@Table(name = "BOOKING")
 public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idBook;
+    private int id;
 
     @Column(nullable = true)
     private Date dateBook;
@@ -27,51 +32,39 @@ public class Booking {
     private Date dateEnd;
     private float price;
     private String payementMode;
-    private int idPartyRoom;
     private String idClient;
     private boolean sendEvaluation;
-    private int idRoomForClient;
     private int rate;
     private Reason reason;
     private Statut statut;
 
+    @JoinColumn(name = "BOOKED_ROOMS")
+    @ManyToMany
+    private List<Room> rooms;
+
+    @JoinColumn(name = "BOOKED_FESTIVE_ROOM")
+    @ManyToMany
+    private List<FestiveRoom> festiveRoomId;
+
+    @JoinColumn(name = "BOOKED_SERVICES_HOTEL")
+    @ManyToMany
+    private List<ServicesHotel> serviceHotelId;
+
+    @JoinColumn(name = "BOOKED_TABLE_RESTAURANT")
+    @ManyToMany
+    private List<Restaurant> tableRestaurantiD;
+
+    @JoinColumn(name = "BOOKED_CLIENT_INFOS")
+    @ManyToOne
+    private Client clientInfos;
+
 
 
     //Use by interface repository
-
-
     public Booking() {
     }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, float price, String payementMode, int idPartyRoom, String idClient, Reason reason, Statut statut) {
-        this.dateBook = dateBook;
-        this.dateStart = dateStart;
-        this.dateEnd = dateEnd;
-        this.price = price;
-        this.payementMode = payementMode;
-        this.idPartyRoom = idPartyRoom;
-        this.idClient = idClient;
-        this.reason = reason;
-        this.statut = statut;
-        this.idRoomForClient = -1;
-        this.sendEvaluation = true;
-        this.rate = -1;
-    }
 
-    public Booking(Date dateBook, Date dateStart, Date dateEnd, float price, String payementMode, int idPartyRoom, String idClient, int idRoomForClient, Reason reason, Statut statut) {
-        this.dateBook = dateBook;
-        this.dateStart = dateStart;
-        this.dateEnd = dateEnd;
-        this.price = price;
-        this.payementMode = payementMode;
-        this.idPartyRoom = idPartyRoom;
-        this.idClient = idClient;
-        this.idRoomForClient = idRoomForClient;
-        this.reason = reason;
-        this.statut = statut;
-        this.sendEvaluation = true;
-        this.rate = -1;
-    }
 
     public Statut getStatut() {
         return statut;
@@ -81,12 +74,12 @@ public class Booking {
         this.statut = statut;
     }
 
-    public int getIdBook() {
-        return idBook;
+    public int getId() {
+        return id;
     }
 
-    public void setIdBook(int idBook) {
-        this.idBook = idBook;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDateBook() {
@@ -129,14 +122,6 @@ public class Booking {
         this.payementMode = payementMode;
     }
 
-    public int getIdPartyRoom() {
-        return idPartyRoom;
-    }
-
-    public void setIdPartyRoom(int idPartyRoom) {
-        this.idPartyRoom = idPartyRoom;
-    }
-
     public String getIdClient() {
         return idClient;
     }
@@ -153,13 +138,6 @@ public class Booking {
         this.sendEvaluation = sendEvaluation;
     }
 
-    public int getIdRoomForClient() {
-        return idRoomForClient;
-    }
-
-    public void setIdRoomForClient(int idRoomForClient) {
-        this.idRoomForClient = idRoomForClient;
-    }
 
     public int getRate() {
         return rate;
@@ -184,9 +162,8 @@ public class Booking {
 
         Booking booking = (Booking) o;
 
-        if (idBook != booking.idBook) return false;
+        if (id != booking.id) return false;
         if (Float.compare(booking.price, price) != 0) return false;
-        if (idPartyRoom != booking.idPartyRoom) return false;
         if (idClient != booking.idClient) return false;
         if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) return false;
         if (dateStart != null ? !dateStart.equals(booking.dateStart) : booking.dateStart != null) return false;
@@ -201,9 +178,8 @@ public class Booking {
 
         Booking booking = (Booking) o;
 
-        if (idBook != booking.idBook) setIdBook(booking.idBook);
+        if (id != booking.id) setId(booking.id);
         if (Float.compare(booking.price, price) != 0) setPrice(booking.price);
-        if (idPartyRoom != booking.idPartyRoom) setIdPartyRoom(booking.idPartyRoom);
         if (idClient != booking.idClient) setIdClient(booking.idClient);
         if (dateBook != null ? !dateBook.equals(booking.dateBook) : booking.dateBook != null) setDateBook(booking.dateBook);
         if (dateStart != null ? !dateStart.equals(booking.dateStart) : booking.dateStart != null) setDateStart(booking.dateStart);

@@ -1,5 +1,7 @@
 package server.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,48 +11,37 @@ import javax.persistence.*;
  * Created by ileossa on 05/04/2017.
  */
 @Entity
+@Builder
+@AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "restaurant")
+@Table(name = "RESTAURANT")
 public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idTable;
-    private String type;
-    private String tokenClient;
+    private int id;
+
+    private String cateringService;
     private int nbClients;
 
     public Restaurant() {
     }
 
-    public Restaurant(String type, String tokenClient, int nbClients) {
-        this.type = type;
-        this.tokenClient = tokenClient;
-        this.nbClients = nbClients;
+
+
+    public int getId() {
+        return id;
     }
 
-    public int getIdTable() {
-        return idTable;
+    public String getCateringService() {
+        return cateringService;
     }
 
-
-
-    public String getType() {
-        return type;
+    public void setCateringService(String cateringService) {
+        this.cateringService = cateringService;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getTokenClient() {
-        return tokenClient;
-    }
-
-    public void setTokenClient(String tokenClient) {
-        this.tokenClient = tokenClient;
-    }
 
     public int getNbClients() {
         return nbClients;
@@ -67,8 +58,7 @@ public class Restaurant {
         Restaurant that = (Restaurant) o;
 
         if (nbClients != that.nbClients) setNbClients(that.nbClients);
-        if (tokenClient != that.tokenClient) setTokenClient(that.tokenClient);
-        if (type.equals(that.type)) setType(that.type);
+        if (cateringService.equals(that.cateringService)) setCateringService(that.cateringService);
         return this;
     }
 
