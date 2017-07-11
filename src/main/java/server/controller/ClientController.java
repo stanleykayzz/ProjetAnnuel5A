@@ -135,7 +135,7 @@ public class ClientController {
         Client clientExist = clientRepository.findClientByEmailEquals(client.getEmail());
         if (clientExist == null) {
             securityClient.createAndUpdatePasswordClient(client);
-            mailService.sendEmail(client, "Confirmation registration", "registration-confirmation.vm");
+            mailService.sendEmail(client, "Confirmation registration", "registration_confirmation.vm");
             return clientService.addClient(client);
         } else {
             throw new ObjectExist();
