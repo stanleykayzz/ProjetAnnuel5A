@@ -163,6 +163,7 @@
 
                 if (formValid === true && sexeValid === true) {
                     birthday = year.value + "-" + month.getElementsByTagName("option")[month.selectedIndex].getAttribute("name") + "-" + day.value;
+
                     client = '{' +
                         '"name"       : "' + lastname.value + '",' +
                         '"firstName"  : "' + firstname.value + '",' +
@@ -173,7 +174,7 @@
                         '"country"    : "' + country.value + '",' +
                         '"city"       : "' + city.value + '",' +
                         '"address"    : "' + address.value + '",' +
-                        '"postalCode" : "' + postalcode.value + '",' +
+                        '"postal_code" : "' + postalcode.value + '",' +
                         '"password"   : "' + password_1.value + '"' +
                         '}';
 
