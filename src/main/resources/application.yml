@@ -50,7 +50,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
   jmx:
     enabled: true
 # H2 (acces with localhost:port/h2 or localhost:port/h2-console/)
@@ -149,7 +149,7 @@ spring:
     show-sql: false
     database: POSTGRESQL
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
   jmx:
     enabled: true
 server:
