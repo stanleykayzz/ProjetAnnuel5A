@@ -32,7 +32,7 @@ public class Booking {
     private Date dateEnd;
     private float price;
     private String payementMode;
-    private String idClient;
+    private int idClient;
     private boolean sendEvaluation;
     private int rate;
     private Reason reason;
@@ -122,12 +122,52 @@ public class Booking {
         this.payementMode = payementMode;
     }
 
-    public String getIdClient() {
+    public int getIdClient() {
         return idClient;
     }
 
-    public void setIdClient(String idClient) {
+    public void setIdClient(int idClient) {
         this.idClient = idClient;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public List<FestiveRoom> getFestiveRoomId() {
+        return festiveRoomId;
+    }
+
+    public void setFestiveRoomId(List<FestiveRoom> festiveRoomId) {
+        this.festiveRoomId = festiveRoomId;
+    }
+
+    public List<ServicesHotel> getServiceHotelId() {
+        return serviceHotelId;
+    }
+
+    public void setServiceHotelId(List<ServicesHotel> serviceHotelId) {
+        this.serviceHotelId = serviceHotelId;
+    }
+
+    public List<Restaurant> getTableRestaurantiD() {
+        return tableRestaurantiD;
+    }
+
+    public void setTableRestaurantiD(List<Restaurant> tableRestaurantiD) {
+        this.tableRestaurantiD = tableRestaurantiD;
+    }
+
+    public Client getClientInfos() {
+        return clientInfos;
+    }
+
+    public void setClientInfos(Client clientInfos) {
+        this.clientInfos = clientInfos;
     }
 
     public boolean isSendEvaluation() {

@@ -84,4 +84,7 @@ public class Client {
     @Column(name = "STATUT_ACTIF")
     private ClientStatus clientStatus;
 
+    @Column(name = "TYPE_PLATEFORM")
+    private String typePlateform;
+
 }
