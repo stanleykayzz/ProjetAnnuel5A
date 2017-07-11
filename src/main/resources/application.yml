@@ -133,7 +133,7 @@ mail:
 spring:
   profiles: prod
   datasource:
-    username: ${DATABASE_USER}
+    username: jdbc:${DATABASE_USER}
     password: ${DATABASE_PASS}
     url: ${DATABASE_URL}
     maxActive: 10
