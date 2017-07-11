@@ -136,6 +136,7 @@ public class ClientController {
         Client clientExist = clientRepository.findClientByEmailEquals(client.getEmail());
         if (clientExist == null) {
             securityClient.createAndUpdatePasswordClient(client);
+            mailService.sendEmail(client, "Confirmation registration", "registration-confirmation.vm");
             return clientService.addClient(client);
         } else {
             throw new ObjectExist();
@@ -149,7 +150,7 @@ public class ClientController {
     public Client updateClient(@RequestBody Client newClient, @RequestParam String token, @RequestParam String password) {
         Client client = clientService.findByToken(token);
         String psw = securityClient.hashPassword(password);
-
+        mailService.sendEmail(client, "Update account", "account_update.vm");
         return clientService.updateNewInformationsClient(newClient, client, psw);
     }
 
