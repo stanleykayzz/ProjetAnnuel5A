@@ -11,6 +11,7 @@ import server.repository.ClientRepository;
 import server.repository.NewsLetterRepository;
 import server.service.DateService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -50,11 +51,26 @@ public class NewLetterService {
         List<Booking> bookings = bookingRepository.findAllByDateEndIsAfter(dateService.currentLocalTime());
         for (Booking book : bookings){
             if(book.isSendEvaluation()){
-                Client client = clientRepository.findDistinctFirstByToken(book.getIdClient());
+                Client client = clientRepository.getOne(book.getClientInfos().getId());
                 mailService.sendEmail(client, "La Résidence des hauts de Menaye", "evalution.vm");
                 book.setSendEvaluation(false);
                 bookingRepository.saveAndFlush(book);
             }
         }
     }
+
+
+    @Scheduled(cron= "0 0 1 * * *")
+    public void relanceUserIfNotBookingAfter6Month(){
+        List<Booking> bookings = bookingRepository.findAll();
+        String currentDate = dateService.currentLocalTime().toString();
+        for (Booking book:bookings){
+            long delay = dateService.numberDaysBetween(book.getDateBook().toString(), currentDate);
+            if(delay == 180){
+                Client client = clientRepository.getOne(book.getClientInfos().getId());
+                mailService.sendEmail(client, "Special Offer", "news_letter.vm" );
+            }
+        }
+    }
+
 }
