@@ -23,6 +23,7 @@ public class ServicesHotel {
     private int id;
     private String name;
     private float price;
+    private int quantity;
 
 
     public ServicesHotel() {
