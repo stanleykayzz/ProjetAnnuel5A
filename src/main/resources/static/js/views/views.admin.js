@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,9 @@
 
     Core.views.admin = Core.views.admin || {};
 
+    /**
+     * Init and display all the datas into the admin panel
+     */
     Core.views.admin.initView = function () {
         Core.class.book.room.initListBookRoomCurrent();
         Core.class.book.room.initListBookRoomHold();

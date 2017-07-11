@@ -9,6 +9,10 @@
 
     Core.service.services = Core.service.services || {};
 
+    /**
+     * 
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.services.create = function () {
         return {
             name   : "create",
@@ -23,6 +27,10 @@
         };
     };
 
+    /**
+     * 
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.services.update = function () {
         return {
             name   : "update",
@@ -37,6 +45,10 @@
         };
     };
 
+    /**
+     * 
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.services.delete = function () {
         return {
             name   : "delete",
@@ -51,6 +63,10 @@
         };
     };
 
+    /**
+     * Generate the template list service into the admin panel
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.services.initAdminViewListService = function () {
         return {
             name   : "initViewListServices",

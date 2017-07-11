@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function(undefined) {
     "use strict";
 
@@ -6,6 +11,10 @@
 
     Core.service.article = Core.service.article || {};
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.article.create = function () {
         return {
             name   : "create",
@@ -20,6 +29,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.article.udapte = function () {
         return {
             name   : "udapte",
@@ -34,6 +47,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.article.delete = function () {
         return {
             name   : "delete",
@@ -48,6 +65,10 @@
         };
     };
 
+    /**
+     * The callback func create the article list into the view article
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.article.getList = function () {
         return {
             name   : "getList",
@@ -64,6 +85,10 @@
         };
     };
 
+    /**
+     * The callback func create the template article into the admin panel
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.article.initAdminViewListArticles = function () {
         return {
             name   : "initAdminViewListArticles",

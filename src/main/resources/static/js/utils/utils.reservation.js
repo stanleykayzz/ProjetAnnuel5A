@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,12 @@
 
     Core.utils.reservation = Core.utils.reservation || {};
 
+    /**
+     * Init a datepicker
+     * @param datepickerID
+     * @param min
+     * @param max
+     */
     Core.utils.reservation.datePicker = function (datepickerID, min, max) {
         $(datepickerID).datepicker();
 

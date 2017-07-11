@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function(undefined) {
     "use strict";
 
@@ -8,6 +13,13 @@
     var _eventHandlers = {};
     var _timeoutsID = [];
 
+    /**
+     * Allow all type of ajax request
+     * @param objectService
+     * @param paramRequest
+     * @param paramBody
+     * @param option
+     */
     Core.utils.ajaxRequest = function (objectService, paramRequest, paramBody, option) {
         var requestUrl, requestBody;
         
@@ -43,10 +55,15 @@
         xhr.onerror = function (res) {
             objectService.error(xhr.status);
         };
-        console.log(requestBody);
+
         xhr.send(requestBody);
     };
 
+    /**
+     * Include an html page into the include_container
+     * @param path
+     * @param name
+     */
     Core.utils.include = function (path, name) {
         var fullPath = data.pathHtml + path;
         var xhr = new XMLHttpRequest();
@@ -59,12 +76,19 @@
         xhr.send();
     };
 
+    /**
+     * Remove all the child from an element
+     * @param element
+     */
     Core.utils.empty = function (element) {
         while(element.firstChild){
             element.removeChild(element.firstChild);
         }
     };
 
+    /**
+     * Remove all timeOuts
+     */
     Core.utils.removeTimeouts = function () {
         var length = _timeoutsID.length;
         for(var  i = 0 ; i < length ; i++){
@@ -74,6 +98,11 @@
         _timeoutsID = [];
     };
 
+    /**
+     * Display images menu
+     * @param background
+     * @param idContainer
+     */
     Core.utils.manageImages = function (background, idContainer) {
         var divHeader = document.getElementById(idContainer);
         var jqueryID  = "#" + idContainer;
@@ -103,6 +132,10 @@
         timeOut(0);
     };
 
+    /**
+     * Generate a captcha into an element
+     * @param element
+     */
     Core.utils.captcha = function (element) {
         var catchpaElement, value1, value2, operator, result;
         var type = Math.floor((Math.random() * 3) + 1);
@@ -135,6 +168,12 @@
         }, false);
     };
 
+    /**
+     * Check if a date if valid
+     * @param type
+     * @param value
+     * @returns {boolean}
+     */
     Core.utils.checkDate = function (type, value) {
         var currentTime = new Date();
 
@@ -165,6 +204,12 @@
         };
     };
 
+    /**
+     * Format a date into string variable
+     * @param time
+     * @param type
+     * @returns {string}
+     */
     Core.utils.formatDate = function (time, type) {
         var year, month, day;
         var dateObject = new Date(time);
@@ -193,6 +238,9 @@
         }       return  year + "-" + month + "-" + day;
     };
 
+    /**
+     * Set the datePicker in french language
+     */
     Core.utils.setDatepickerLanguage = function () {
         $.datepicker.regional['fr'] = {clearText: 'Effacer', clearStatus: '',
             closeText: 'Fermer', closeStatus: 'Fermer sans modifier',
@@ -214,11 +262,21 @@
         $.datepicker.setDefaults($.datepicker.regional['fr']);
     };
 
+    /**
+     * Check if the email is valid
+     * @param email
+     * @returns {boolean}
+     */
     Core.utils.emailValidator = function (email) {
         var rgx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return rgx.test(email.value);
     };
 
+    /**
+     * Check the session
+     * @param token_date
+     * @returns {boolean}
+     */
     Core.utils.verifSessionStorage = function (token_date) {
         var currentDate = new Date();
         var tokenDate   = new Date(token_date);
@@ -245,6 +303,12 @@
         return false;
     };
 
+    /**
+     * Return the days between two dates
+     * @param date_start
+     * @param date_end
+     * @returns {{}}
+     */
     Core.utils.getDays = function (date_start, date_end) {
         var diff = {};
         var tmp = date_end - date_start;
@@ -264,10 +328,17 @@
         return diff;
     };
 
+    /**
+     * capitalizeFirstLetter
+     * @param string
+     * @returns {string}
+     */
     Core.utils.capitalizeFirstLetter = function (string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
+
     /**
+     * Add a listener into an array
      * @param node
      * @param event
      * @param handler
@@ -285,6 +356,7 @@
     };
 
     /**
+     * Remove a listener from an array
      * @param node
      * @param event
      */
@@ -302,6 +374,7 @@
     };
 
     /**
+     * Stop an event
      * @param e
      * @returns {boolean}
      */

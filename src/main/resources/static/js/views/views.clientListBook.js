@@ -12,6 +12,9 @@
 
     Core.views.clientListBook = Core.views.clientListBook || {};
 
+    /**
+     * Display all list book for a client
+     */
     Core.views.clientListBook.initView = function () {
         Core.class.book.room.initListBookRoomCurrent();
         Core.class.book.room.initListBookRoomHold();

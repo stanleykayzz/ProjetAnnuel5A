@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,9 @@
 
     Core.class.newsLetter = Core.class.newsLetter || {};
 
+    /**
+     * Init the news letter view in the admin panel
+     */
     Core.class.iniAdminViewNewsLetter = function () {
         var btn = document.getElementById("btn_newsLetter");
         utils.addListener(btn, "click", function () {
@@ -26,6 +34,10 @@
 
     };
 
+    /**
+     * Send the news letter content
+     * @param json
+     */
     Core.class.newsLetter.send = function (json) {
         var paramRequest = "token=" + client.token;
         utils.ajax(Core.service.newsLetter.send(), paramRequest, json)

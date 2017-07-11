@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,10 @@
 
     Core.service.restaurant = Core.service.restaurant || {};
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.restaurant.create = function () {
         return {
             name   : "create",
@@ -20,6 +29,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.restaurant.udapte = function () {
         return {
             name   : "create",
@@ -34,6 +47,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.restaurant.delete = function () {
         return {
             name   : "delete",
@@ -48,6 +65,10 @@
         };
     };
 
+    /**
+     * Init the restaurant book into the admin panel
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.restaurant.initAdminViewListRestaurant = function () {
         return {
             name   : "initViewListRestaurant",
@@ -93,6 +114,4 @@
             }
         };
     };
-
-
 })();

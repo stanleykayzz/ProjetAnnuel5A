@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,12 +11,18 @@
 
     Core.views.clientSignInAndUp = Core.views.clientSignInAndUp || {};
 
+    /**
+     * Init the different views
+     */
     Core.views.clientSignInAndUp.initView = function () {
         views.clientSignInAndUp.signin();
         views.clientSignInAndUp.signup();
         views.clientSignInAndUp.forgetPassword();
     };
 
+    /**
+     * Init the events for the singin view
+     */
     Core.views.clientSignInAndUp.signin = function () {
         var loginBtn;
         var showSingupBtn, showforgetpasswordBtn;
@@ -54,6 +65,9 @@
         }();
     };
 
+    /**
+     * Init the events for the signup view
+     */
     Core.views.clientSignInAndUp.signup = function () {
         var signupBtn;
         var showLoginBtn;
@@ -187,6 +201,9 @@
         }();
     };
 
+    /**
+     * Init the events for the forgetPassword view
+     */
     Core.views.clientSignInAndUp.forgetPassword = function () {
         var showLoginFromForgetPassword;
         var loginContainer, forgerpasswordContainer;

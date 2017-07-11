@@ -1,9 +1,18 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     if(typeof Core === "undefined")
         throw "Core is not declared";
 
     Core.service.book.restaurant = Core.service.book.restaurant || {};
 
+    /**
+     * The callback func display to the client if the book is available
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.book.restaurant.bookRestaurant = function () {
         return {
             name: "bookRestaurant",
@@ -20,6 +29,10 @@
         };
     };
 
+    /**
+     * Generate the restaurant list book by id client
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.book.restaurant.getListBookById = function () {
         return {
             name: "bookRestaurant",

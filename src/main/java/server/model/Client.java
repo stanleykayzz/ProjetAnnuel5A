@@ -9,7 +9,11 @@ import server.model.Enum.ClientStatus;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

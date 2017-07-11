@@ -9,6 +9,10 @@
 
     Core.service.building = Core.service.building || {};
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.building.create = function () {
         return {
             name   : "create",
@@ -23,6 +27,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.building.update = function () {
         return {
             name   : "update",
@@ -37,6 +45,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.building.delete = function () {
         return {
             name   : "delete",
@@ -51,6 +63,10 @@
         };
     };
 
+    /**
+     * Generate the building list into the admin panel
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.building.initAdminViewListBuilding = function () {
         return {
             name   : "initViewListBuilding",

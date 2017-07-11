@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,10 @@
 
     Core.service.room = Core.service.room || {};
 
+    /**
+     * Return the listRoom found
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.room.search = function () {
         return {
             name   : "searchRoom",
@@ -22,6 +31,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.room.create = function () {
         return {
             name   : "create",
@@ -35,6 +48,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.room.update = function () {
         return {
             name   : "update",
@@ -48,6 +65,10 @@
         };
     };
 
+    /**
+     *
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.room.delete = function () {
         return {
             name   : "delete",
@@ -61,6 +82,10 @@
         };
     };
 
+    /**
+     * Generate the template list room into the admin pnale
+     * @returns {{name: string, method: string, url: string, func: func, error: error}}
+     */
     Core.service.room.initAdminListRoom = function () {
         return {
             name   : "initAdminListRoom",

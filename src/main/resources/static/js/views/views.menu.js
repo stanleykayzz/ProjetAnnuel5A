@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,9 @@
 
     Core.views.menu = Core.views.menu || {};
 
+    /**
+     * Manage the menu buttons
+     */
     Core.views.menu.manageMenuButtons = function () {
         utils.addListener(data.getMenu(), "click", function (e) {
             if(e.target.tagName === "A"){
@@ -16,8 +24,11 @@
                 views.includeContainer.switchView(pageName);
             }
         }, false);
-    };    
+    };
 
+    /**
+     * add the contextual menu buttons when the client if connected
+     */
     Core.views.menu.addContextualMenuButtons = function () {
         var menu = data.getMenu();
         var menuLastChild = menu.children[menu.children.length-1];
@@ -66,6 +77,9 @@
         }();
     };
 
+    /**
+     * Reload on the same page when the client press F5
+     */
     Core.views.menu.reloadPage = function () {
         utils.addListener(document, "keydown", function(e){
             if(e.keyCode === 116){

@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,10 @@
 
     Core.views.includeContainer = Core.views.includeContainer || {};
 
+    /**
+     * Switch the different views
+     * @param key
+     */
     Core.views.includeContainer.switchView = function (key) {
         var pageObject = data.viewList[key.toString()];
 
@@ -18,6 +27,10 @@
         }
     };
 
+    /**
+     * initViewEvents
+     * @param viewName
+     */
     Core.views.includeContainer.initViewEvents = function (viewName) {
         switch (viewName) {
             case "connexion" :

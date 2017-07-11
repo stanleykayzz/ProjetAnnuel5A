@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,11 +11,17 @@
 
     Core.views.clientAccount = Core.views.clientAccount || {};
 
+    /**
+     * Init the account views
+     */
     Core.views.initView = function () {
         views.clientAccount.account();
         views.clientAccount.updateAccount();
     };
 
+    /**
+     * Display the view account for a client
+     */
     Core.views.clientAccount.account = function () {
         var name, firstName, birthday, email, phone,
             country, city, address, postalCode, sexe;
@@ -58,6 +69,9 @@
         }();
     };
 
+    /**
+     * Display the update view account for a client
+     */
     Core.views.clientAccount.updateAccount = function () {
         var phone_update, country_update, city_update, address_update, postalCode_update,
             new_password_update, verif_paswword_update, current_password_update, jsonPassword;

@@ -1,3 +1,8 @@
+/**
+ * Created by maxime.
+ *
+ * version 1.0.0
+ */
 ;(function () {
     "use strict";
 
@@ -6,6 +11,10 @@
 
     Core.views.festiveRoom = Core.views.festiveRoom || {};
 
+    /**
+     * Init the festive room view and events
+     * @param items
+     */
     Core.views.festiveRoom.initView = function (items) {
         var include_container, search_container;
         var startDateID, endDateID;
