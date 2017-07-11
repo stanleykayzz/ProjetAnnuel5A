@@ -58,12 +58,16 @@ public class RoomController {
     }
 
 
-    @RequestMapping(method = GET, value = "/client/{idClient}")
-    public List<Room> getRoomsBookingByUserId(@PathVariable int idClient,
-                                              @RequestParam(value = "token")String tokenClient) throws Exception {
+    @RequestMapping(method = GET, value = "/client/client")
+    public HashSet<Room> getRoomsBookingByUserId(@RequestParam(value = "token")String tokenClient) throws Exception {
         if(clientService.isAdministator(tokenClient)) {
-            //return roomRepository.findAllByIdClient(idClient);
-            throw new Exception("Not current implemented, try soon");
+            Client cl = clientRepository.findClientByTokenEquals(tokenClient);
+            List<Booking> listBook = bookingRepository.findAllByIdClient(cl.getId());
+            HashSet<Room> rooms = new HashSet<>();
+            for (Booking booking: listBook){
+                rooms.addAll(booking.getRooms());
+            }
+            return rooms;
         }
         throw new TokenError();
     }
@@ -165,7 +169,7 @@ public class RoomController {
     public void cancelBook(@RequestParam(value="token") String tokenClient) throws TokenError {
         if(clientService.isAdministator(tokenClient)) {
             Client client = clientRepository.findClientByTokenEquals(tokenClient);
-            List<Booking> books = bookingRepository.findAllById(client.getId());
+            List<Booking> books = bookingRepository.findAllByIdClient(client.getId());
             for (Booking book : books){
                 book.setStatut(CANCELED);
                 bookingRepository.saveAndFlush(book);

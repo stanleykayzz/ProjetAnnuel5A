@@ -109,7 +109,7 @@ public class BookingController {
     public List<Booking> getListBookingInFutur(@RequestParam(value="token") String tokenUser) throws TokenError {
         if(clientService.isUser(tokenUser)){
             Client user = clientRepository.findClientByTokenEquals(tokenUser);
-            return bookingRepository.findAllById(user.getId());
+            return bookingRepository.findAllByIdClient(user.getId());
         }
         if(clientService.isAdministator(tokenUser)){
             return bookingRepository.findAllByOrderByDateEndAsc(dateService.currentLocalTime());
@@ -122,7 +122,7 @@ public class BookingController {
     public List<Booking> getListBookingPast(@RequestParam(value = "token") String tokenUser) throws TokenError {
         if(clientService.isUser(tokenUser)){
             Client user = clientRepository.findClientByTokenEquals(tokenUser);
-            return bookingRepository.findAllById(user.getId());
+            return bookingRepository.findAllByIdClient(user.getId());
         }
         if(clientService.isAdministator(tokenUser)){
             return bookingRepository.findAllByOrderByDateEndAsc(dateService.currentLocalTime());
