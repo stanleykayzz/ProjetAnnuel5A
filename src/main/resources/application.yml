@@ -134,8 +134,8 @@ spring:
   profiles: prod
   datasource:
     username: ${DATABASE_USER}
-    password: jdbc:postgres://oxisyzbsanalxj:2fbb453cf023e8d93f4f620684df36f41e55854e3633406fc3cb81c9bad04ac7@ec2-54-247-189-141.eu-west-1.compute.amazonaws.com:5432/d6eoh07c8lsg6r
-    url: ${DATABASE_URL}
+    password: ${DATABASE_PASS}
+    url: jdbc:postgres://oxisyzbsanalxj:2fbb453cf023e8d93f4f620684df36f41e55854e3633406fc3cb81c9bad04ac7@ec2-54-247-189-141.eu-west-1.compute.amazonaws.com:5432/d6eoh07c8lsg6r
     maxActive: 10
     maxIdle: 5
     min-idle: 2
